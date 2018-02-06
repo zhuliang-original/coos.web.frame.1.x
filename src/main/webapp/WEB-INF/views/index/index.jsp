@@ -1,4 +1,4 @@
-<%@ page trimDirectiveWhitespaces="true"%><%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%><%@ page import="java.util.*"%><%@ include file="/views/base/base.jsp"%>
+<%@ page trimDirectiveWhitespaces="true"%><%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%><%@ page import="java.util.*"%><%@ include file="/WEB-INF/views/base/base.jsp"%>
 <div class="coos-column-12 coos-page" style="margin: 10px auto;width: 1024px;">
 	<div class="coos-page-header  ">
 		<h1 class="coos-page-title pdb-5">框架使用说明</h1>
@@ -167,25 +167,25 @@
 				</pre>
 
 			</div>
-		
-			</div>
-			<div class="coos-panel  coos-panel-bd-left coos-panel-light">
-				<div class="coos-panel-header no-title">
-					<h3 class="coos-panel-title"></h3>
-					<div class="coos-panel-menu">
-						<div class="coos-menu  baseMinimizeBtn">
-							<i class="fa fa-minus"></i>
-						</div>
-						<div class="coos-menu  removePanelBtn">
-							<div>
-								<i class="fa fa-remove"></i>
-							</div>
+
+		</div>
+		<div class="coos-panel  coos-panel-bd-left coos-panel-light">
+			<div class="coos-panel-header no-title">
+				<h3 class="coos-panel-title"></h3>
+				<div class="coos-panel-menu">
+					<div class="coos-menu  baseMinimizeBtn">
+						<i class="fa fa-minus"></i>
+					</div>
+					<div class="coos-menu  removePanelBtn">
+						<div>
+							<i class="fa fa-remove"></i>
 						</div>
 					</div>
 				</div>
-				<div class="coos-panel-body">
-					<h2 class="pdb-10">框架主题初始化JS (main.js)</h2>
-					<pre style="white-space: pre;">
+			</div>
+			<div class="coos-panel-body">
+				<h2 class="pdb-10">框架主题初始化JS (main.js)</h2>
+				<pre style="white-space: pre;">
 &lt;script type="text/javascript" &gt;
 (function() {
 	"use strict";
@@ -220,7 +220,7 @@
 })();
 &lt;/script&gt;
 				</pre>
-				</div>
 			</div>
 		</div>
 	</div>
+</div>

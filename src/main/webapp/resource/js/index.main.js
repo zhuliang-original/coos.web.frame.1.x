@@ -19,11 +19,11 @@
 	var menu = {};
 	menu.menuid = 21;
 	menu.name = "基础JS";
-//	menu.servletpath = "/js/index.html";
-	menu.onClick = function() {
-		coos.box.info('功能暂未上线，敬请期待！');
-		return false;
-	}
+	menu.servletpath = "/js/index.html";
+//	menu.onClick = function() {
+//		coos.box.info('功能暂未上线，敬请期待！');
+//		return false;
+//	}
 	menus[menus.length] = menu;
 
 	var menu = {};

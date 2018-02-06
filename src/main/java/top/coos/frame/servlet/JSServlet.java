@@ -20,14 +20,8 @@ public class JSServlet extends DefaultServlet {
 	@RequestMapping("/index.html")
 	public String index(HttpServletRequest request, HttpServletResponse response, ModelMap map) throws Exception {
 
-		map.put(WebConstant.Param.THIS_PAGE_ID, "/views/doc/js/index.jsp");
-		return "/views/public.jsp";
+		map.put(WebConstant.Param.THIS_PAGE_ID, "doc/js/index.jsp");
+		return WebConstant.Page.WEB_INF_VIEW_PUBLIC_JSP;
 	}
 
-	@RequestMapping("/component.html")
-	public String component(HttpServletRequest request, HttpServletResponse response, ModelMap map) throws Exception {
-
-		map.put(WebConstant.Param.THIS_PAGE_ID, "/views/doc/js/component.jsp");
-		return "/views/public.jsp";
-	}
 }
