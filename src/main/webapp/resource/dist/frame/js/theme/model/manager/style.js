@@ -1,11 +1,19 @@
-var DEFAULT_THEME_MAP = {};
 (function() {
+	var style_map = {};
+	co.frame.theme.model.get("MANAGER").getStyle = function(name) {
+		name = name || "STYLE-2";
+		return style_map[name] || {};
+	};
+	co.frame.theme.model.get("MANAGER").getStyleMap = function() {
+		return style_map;
+	};
+
 	var title = co.getTitle();
 	if (window.THIS_PROJECT) {
 		title = window.THIS_PROJECT.title;
 	}
 	var theme = {
-		themeid : coos.getNumber(),
+		themeid : co.getNumber(),
 		type : "MANAGER",
 		minwidth : 1024,
 		config : {
@@ -34,6 +42,9 @@ var DEFAULT_THEME_MAP = {};
 					type : "USER",
 					showrule : "USER_INFO != null",
 					childbuttons : [ {
+						label : "修改密码",
+						type : "UPDATE-PASSWORD"
+					}, {
 						label : "退出",
 						type : "LOGOUT"
 					} ]
@@ -64,18 +75,20 @@ var DEFAULT_THEME_MAP = {};
 		}
 	};
 
-	var themeDemo1 = jQuery.extend(true, {}, {}, theme);
-	themeDemo1.themeid = coos.getNumber();
-	themeDemo1.name = "STYLE-1";
-	themeDemo1.open = true;
-	themeDemo1.forsizes = "all";
-	DEFAULT_THEME_MAP[themeDemo1.name] = themeDemo1;
-
 	var themeDemo = jQuery.extend(true, {}, {}, theme);
-	themeDemo.themeid = coos.getNumber();
+	themeDemo.themeid = co.getNumber();
+	themeDemo.typeSchemeType = "STYLE-1";
+	themeDemo.label = "后台管理样式";
 	themeDemo.open = true;
 	themeDemo.forsizes = "all";
-	themeDemo.name = "STYLE-2";
+	style_map[themeDemo.typeSchemeType] = themeDemo;
+
+	var themeDemo = jQuery.extend(true, {}, {}, theme);
+	themeDemo.themeid = co.getNumber();
+	themeDemo.open = true;
+	themeDemo.forsizes = "all";
+	themeDemo.typeSchemeType = "STYLE-2";
+	themeDemo.label = "平台样式";
 	themeDemo.width = "";
 	themeDemo.minwidth = "1024";
 	themeDemo.backgroundcolor = "#e7e8eb";
@@ -131,5 +144,6 @@ var DEFAULT_THEME_MAP = {};
 	themeDemo.body.config.activeacolor = "";
 	themeDemo.body.config.activeabackgroundcolor = "";
 	themeDemo.footer.open = false;
-	DEFAULT_THEME_MAP[themeDemo.name] = themeDemo;
+	style_map[themeDemo.typeSchemeType] = themeDemo;
+
 })();

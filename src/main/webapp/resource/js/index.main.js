@@ -30,7 +30,7 @@
 
 	coos.setTitle('COOS Frame');
 
-	var thisTheme = coos.frame.theme.getTheme('STYLE-2', {
+	var thisTheme = coos.frame.theme.getTheme('MANAGER', 'STYLE-2', {
 		config : {
 			menuplaces : 'HEADER'
 
@@ -49,13 +49,15 @@
 		}
 
 	});
+	thisTheme.header.config.buttons = [];
 
 	coos.page.config.single = true;
 	coos.config.server.fileServerUrl = fileServerUrl;
 	coos.frame.init({
 		project : {
 			title : "COOS Frame",
-			themes : [ thisTheme ]
+			themes : [ thisTheme ],
+			header_buttons : []
 		},
 		menus : menus
 	});

@@ -1,14 +1,24 @@
-var DEFAULT_THEME_COLOR_SCHEME_MAP = {};
-var DEFAULT_THEME_LAYOUT_SCHEME_MAP = {};
 (function() {
-	// 0 0 0
-	// 255 0 0
-	// 255 255 0
-	// 0 255 0
-	// 0 255 255
-	// 255 255 255
-	// 255 0 255
-	// 0 0 255
+	var color_map = {};
+
+	co.frame.theme.model.get("MANAGER").getColor = function(name, config) {
+		name = co.isEmpty(name) ? "COLOR-SCHEME-1" : name;
+		config = config || {};
+		var data = color_map[name] || {};
+		var demo = jQuery.extend(true, {}, data);
+		demo = jQuery.extend(true, {}, demo, config);
+		return demo;
+	};
+	co.frame.theme.model.get("MANAGER").initColor = function(name, config) {
+		var colorScheme = co.frame.theme.model.get("MANAGER").getColor(name, config);
+		var usingTheme = co.frame.getUsingTheme();
+		var usingThemeObject = co.frame.getUsingThemeObject();
+		jQuery.extend(true, usingTheme, colorScheme);
+		usingThemeObject.writeStyle();
+	};
+	co.frame.theme.model.get("MANAGER").getColorMap = function() {
+		return color_map;
+	};
 
 	window.getPartRGB = function(index, part) {
 		part = part || 5;
@@ -49,11 +59,11 @@ var DEFAULT_THEME_LAYOUT_SCHEME_MAP = {};
 		var c3 = "#ffffff";
 		var c4 = "#ffffff";
 		var b1 = getPartRGB(((index - 1)), 4);
-		var b2 = coos.color.getSimilar(b1, 30);
+		var b2 = co.color.getSimilar(b1, 30);
 
 		var b3 = b1;
-		var b4 = coos.color.getSimilar(b1, -10);
-		var b5 = coos.color.getSimilar(b4, -30);
+		var b4 = co.color.getSimilar(b1, -10);
+		var b5 = co.color.getSimilar(b4, -30);
 		var b6 = b5;
 		var b7 = b5;
 		var b8 = b1;
@@ -91,7 +101,7 @@ var DEFAULT_THEME_LAYOUT_SCHEME_MAP = {};
 			}
 		};
 		colorScheme.colorSchemeType = "COLOR-SCHEME-" + index;
-		DEFAULT_THEME_COLOR_SCHEME_MAP[colorScheme.colorSchemeType] = colorScheme;
+		color_map[colorScheme.colorSchemeType] = colorScheme;
 	}
 	// 亮色
 	var count = index + 28;
@@ -113,7 +123,7 @@ var DEFAULT_THEME_LAYOUT_SCHEME_MAP = {};
 		var b5 = getPartRGB(((index - 1)), 4);
 		var b6 = b5;
 		var b7 = "#3ce0d3";
-		var b7 = coos.color.getSimilar(b5, -30);
+		var b7 = co.color.getSimilar(b5, -30);
 		var b8 = "#ffffff";
 
 		var colorScheme = {
@@ -150,29 +160,6 @@ var DEFAULT_THEME_LAYOUT_SCHEME_MAP = {};
 			}
 		};
 		colorScheme.colorSchemeType = "COLOR-SCHEME-" + index;
-		DEFAULT_THEME_COLOR_SCHEME_MAP[colorScheme.colorSchemeType] = colorScheme;
+		color_map[colorScheme.colorSchemeType] = colorScheme;
 	}
-	var layoutScheme = {
-		width : "",
-		minwidth : "1024",
-		header : {
-			height : "",
-			width : "",
-			minwidth : "",
-			maxwidth : "",
-			contentwidth : "",
-			contentmaxwidth : "",
-			leftwidth : ""
-		},
-		body : {
-			width : "",
-			minwidth : "",
-			maxwidth : "",
-			leftwidth : "",
-			rightwidth : "",
-			margin : "20px auto 20px"
-		}
-	};
-	layoutScheme.layoutSchemeType = "LAYOUT-SCHEME-1";
-	DEFAULT_THEME_LAYOUT_SCHEME_MAP[layoutScheme.layoutSchemeType] = layoutScheme;
 })();

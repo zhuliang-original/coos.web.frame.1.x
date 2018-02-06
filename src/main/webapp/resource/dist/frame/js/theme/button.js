@@ -3,6 +3,7 @@ co.frame.theme.getButton = function(button, isChild) {
 	var $li = $('<li></li>');
 	var $button = $('<a class="" ></a>');
 	$li.append($button);
+	var USER_INFO = window.USER_INFO;
 	if (!coos.isEmpty(button.showrule)) {
 		try {
 			var showrule = button.showrule;
@@ -53,8 +54,8 @@ co.frame.theme.getButton = function(button, isChild) {
 		$button.addClass('doLogoutBtn');
 	} else if (type == "USER") {
 
-		if (!hasLabel && USER_INFO) {
-			$button.append(USER_INFO.username);
+		if (!hasLabel && window.USER_INFO) {
+			$button.append(window.USER_INFO.username);
 		}
 	}
 	if (!coos.isEmpty(button.addClass)) {

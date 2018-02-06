@@ -14,6 +14,11 @@ var themes = null;
 		this.themes = config.themes || this.project.themes || [];
 		this.menus = config.menus || [];
 		this.default_theme = co.frame.theme.getTheme();
+
+		var header_buttons = config.header_buttons;
+		if (header_buttons != null) {
+			this.default_theme.header.config.buttons = header_buttons;
+		}
 		this.init();
 	};
 
