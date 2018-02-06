@@ -108,8 +108,14 @@ co.frame.menu = new Object();
 				li.addClass('active');
 			});
 		}
+
 		$menu.find('a').append('' + name + '');
 		$menu.find('a').data("menu", menu);
+		if (menu.onClick) {
+			$menu.find('a').click(function() {
+				return menu.onClick();
+			});
+		}
 		return $menu;
 	};
 

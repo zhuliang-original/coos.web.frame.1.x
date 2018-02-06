@@ -1,5 +1,4 @@
 (function() {
-	co.component = co.component || new Object();
 
 	var OverTool = function(config) {
 		this.config = config || {};

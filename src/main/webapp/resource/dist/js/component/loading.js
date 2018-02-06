@@ -1,5 +1,4 @@
 (function() {
-	co.component = co.component || new Object();
 
 	var Loading = function(config) {
 		this.config = config || {};

@@ -101,7 +101,7 @@
 
 			return $option_one;
 		}
-		co.element.initImage($model);
+		co.element.init($model);
 
 		var windowconfig = {};
 		windowconfig.title = title;

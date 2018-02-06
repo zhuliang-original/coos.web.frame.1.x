@@ -22,6 +22,10 @@
 	});
 
 	co.plugin.plugins = {
+		bootstrap_slider : {
+			js : [ "resource/plugins/bootstrap/slider/bootstrap-slider.js" ],
+			css : [ "resource/plugins/bootstrap/slider/bootstrap-slider.css" ]
+		},
 		bootstrap_switch : {
 			js : [ "resource/plugins/bootstrap/switch/bootstrap-switch.min.js" ],
 			css : [ "resource/plugins/bootstrap/switch/bootstrap-switch.css" ]
@@ -53,6 +57,20 @@
 		jquery_ui_widgets : {
 			js : [ "resource/plugins/jquery/ui/widgets/jquery-ui.min.js" ],
 			css : [ "resource/plugins/jquery/ui/widgets/jquery-ui.min.css", "resource/plugins/jquery/ui/widgets/jquery-ui.theme.min.css" ]
+		},
+		kindeditor : {
+			js : [ "resource/plugins/kindeditor/kindeditor.js", "resource/plugins/kindeditor/lang/zh_CN.js", "resource/plugins/kindeditor/plugins/code/prettify.js" ],
+			css : [ "resource/plugins/kindeditor/themes/default/default.css", "resource/plugins/kindeditor/plugins/code/prettify.css" ],
+			themesPath : "resource/plugins/kindeditor/themes/"
+		},
+		codemirror : {
+			js : [ "resource/plugins/codemirror/codemirror.js", "resource/plugins/codemirror/mode/css/css.js", "resource/plugins/codemirror/mode/xml/xml.js",
+					"resource/plugins/codemirror/mode/javascript/javascript.js", "resource/plugins/codemirror/mode/htmlmixed/htmlmixed.js" ],
+			css : [ "resource/plugins/codemirror/codemirror.css", "resource/plugins/codemirror/theme/zenburn.css" ]
+		},
+		emmet : {
+			js : [ "resource/plugins/emmet/emmet.js" ],
+			css : []
 		}
 	};
 

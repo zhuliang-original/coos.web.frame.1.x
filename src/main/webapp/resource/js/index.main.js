@@ -18,14 +18,38 @@
 
 	var menu = {};
 	menu.menuid = 21;
-	menu.name = "CSS组件";
-	menu.servletpath = "/css/component.html";
+	menu.name = "基础JS";
+//	menu.servletpath = "/js/index.html";
+	menu.onClick = function() {
+		coos.box.info('功能暂未上线，敬请期待！');
+		return false;
+	}
+	menus[menus.length] = menu;
+
+	var menu = {};
+	menu.menuid = 21;
+	menu.name = "表单组件";
+	menu.servletpath = "/component/form.html";
+	menus[menus.length] = menu;
+
+	var menu = {};
+	menu.menuid = 21;
+	menu.name = "其它组件";
+//	menu.servletpath = "/component/other.html";
+	menu.onClick = function() {
+		coos.box.info('功能暂未上线，敬请期待！');
+		return;
+	}
 	menus[menus.length] = menu;
 
 	var menu = {};
 	menu.menuid = 21;
 	menu.name = "JS组件";
-	menu.servletpath = "/js/component.html";
+//	menu.servletpath = "/component/js.html";
+	menu.onClick = function() {
+		coos.box.info('功能暂未上线，敬请期待！');
+		return false;
+	}
 	menus[menus.length] = menu;
 
 	coos.setTitle('COOS Frame');
