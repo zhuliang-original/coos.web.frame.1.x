@@ -62,46 +62,4 @@ coos.frame.bindedbodysizechange = true;
 
 $(function() {
 
-	/* 返回顶部 */
-	$('html').on('click', '.coos-back-top', function(e) {
-		e.preventDefault();
-		$('body,html').animate({
-			scrollTop : 0
-		}, 800);
-		window.setTimeout(function() {
-			checkBackTop();
-		}, 800);
-	});
-	$(window).on("scroll", function() {
-		checkBackTop();
-	});
-	$('html').on('click', '[coos-action="full-or-empty-horizontal"]', function(e) {
-		lastThemeObject.fullOrEmptyHorizontal();
-	});
-	$('html').on('click', '[coos-action="full-or-empty-vertical"]', function(e) {
-		lastThemeObject.fullOrEmptyVertical();
-	});
-	$('html').on('click', '[coos-action="full-or-empty-screen"]', function(e) {
-		lastThemeObject.fullOrEmptyScreen();
-	});
-	$('html').on('click', '.coos-control-body-left', function(e) {
-		var $frame = $('.coos-frame')
-		if ($frame.hasClass('coos-open-body-left')) {
-			$frame.removeClass('coos-open-body-left');
-			$(this).removeClass('active');
-		} else {
-			$frame.addClass('coos-open-body-left');
-			$(this).addClass('active');
-		}
-	});
-	$('html').on('click', '.coos-control-body-right', function(e) {
-		var $frame = $('.coos-frame');
-		if ($frame.hasClass('coos-open-body-right')) {
-			$frame.removeClass('coos-open-body-right');
-			$(this).removeClass('active');
-		} else {
-			$frame.addClass('coos-open-body-right');
-			$(this).addClass('active');
-		}
-	});
 });

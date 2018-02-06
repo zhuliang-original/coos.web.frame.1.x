@@ -1,0 +1,99 @@
+.coos-card {
+	position: relative;
+	transition: all .3s ease 0s;
+}
+
+.coos-card .coos-hover-out {
+	transition: all .3s ease 0s;
+	width: 150%;
+	height: 150%;
+	transform: scale(0);
+	left: -25%;
+	top: -25%;
+	position: absolute;
+	background-color: white;
+	z-index: 1;
+	top: -25%;
+}
+
+.coos-card-box .coos-card-image {
+	width: 100%;
+	border: none;
+	padding-top: 50%;
+}
+
+.coos-card .coos-hover-show {
+	
+}
+
+.coos-card:hover .coos-hover-out {
+	transform: scale(1);
+	left: -25%;
+	top: -25%;
+	background-color: white;
+}
+
+.coos-card:hover .coos-hover-out-left {
+	left: 0%;
+}
+
+.coos-card:hover .coos-hover-out-right {
+	left: -50%;
+}
+
+.coos-card:hover .coos-hover-out-top {
+	top: 0%;
+}
+
+.coos-card:hover .coos-hover-out-bottom {
+	top: -50%;
+}
+
+.coos-card:hover .coos-card-box.coos-hover-hide {
+	
+}
+
+.coos-card:hover .coos-card-box.coos-hover-show {
+	
+}
+
+.coos-card-box {
+	display: block;
+	position: relative;
+	text-align: center;
+	height: 100%;
+	opacity: 1;
+	filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=100);
+	transition: all .3s ease 0s;
+	-ms-box-shadow: 0 2px 30px 4px rgba(14, 5, 10, .15);
+	-o-box-shadow: 0 2px 30px 4px rgba(14, 5, 10, .15);
+	box-shadow: 0 2px 30px 4px rgba(14, 5, 10, .15);
+	position: relative;
+}
+
+.coos-card-title {
+	font-size: 18px;
+	color: #2d2d2d;
+	line-height: 44px;
+	padding-top: 20px;
+}
+
+.coos-card-detail {
+	font-size: 14px;
+	color: #838383;
+	line-height: 26px;
+}
+
+.coos-card-buttons {
+	zoom: 1;
+	left: 0;
+	bottom: 5px;
+}
+
+.coos-card-buttons .coos-card-button {
+	display: inline-block;
+	width: 102px;
+	margin: 0 7px 12px;
+	border: none;
+	color: #f79013 !important;
+}

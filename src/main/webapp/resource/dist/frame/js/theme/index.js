@@ -475,12 +475,12 @@ co.frame.theme = new Object();
 		this.$body.find(".coos-body-right").removeClass('scrollbar-sm');
 
 		if (theme.header.open) {
-			this.$header.show();
+			this.$headerbox.show();
 			if (theme.header.fixed) {
 				this.$frame.addClass('coos-header-fixed');
 			}
 		} else {
-			this.$header.hide();
+			this.$headerbox.hide();
 		}
 		if (theme.body.fixedleft) {
 			this.$frame.addClass('coos-body-fixed-left');
@@ -495,12 +495,12 @@ co.frame.theme = new Object();
 			this.$body.find(".coos-body-right").addClass('scrollbar-sm');
 		}
 		if (theme.footer.open) {
-			this.$footer.show();
+			this.$footerbox.show();
 			if (theme.footer.fixed) {
 				this.$frame.addClass('coos-footer-fixed');
 			}
 		} else {
-			this.$footer.hide();
+			this.$footerbox.hide();
 		}
 
 		this.$frame.removeClass('coos-hide-back-top');
