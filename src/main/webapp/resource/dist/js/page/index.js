@@ -14,6 +14,9 @@ co.page = new Object();
 	};
 	co.page.loaded = function() {
 		co.input.init();
+		co.element.init();
+		co.button.init();
+
 		$(loadCallbacks).each(function(index, loadCallback) {
 			if (co.isFunction(loadCallback)) {
 				loadCallback();

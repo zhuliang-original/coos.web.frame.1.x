@@ -197,7 +197,7 @@
 			if (element.data('not-get-date')) {
 				continue;
 			}
-			var result = co.element.validate(form, element);
+			var result = co.form.input.validate(form, element);
 			if (!result.valid) {
 				// 验证表单错误显示错误信息
 				var code = result.error.code;
