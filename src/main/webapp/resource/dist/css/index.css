@@ -46,3 +46,16 @@ body {
 .coos-pointer {
 	cursor: pointer;
 }
+
+
+.coos-middle-box {
+	width: 100%;
+	height: 100%;
+	display: table;
+}
+
+.coos-middle-box-conent {
+	vertical-align: middle;
+	text-align: center;
+	display: table-cell;
+}

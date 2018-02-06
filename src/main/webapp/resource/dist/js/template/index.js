@@ -62,4 +62,8 @@
 			callback && callback(this_);
 		});
 	}
+	
+	$(function(){
+		co.template.load();
+	});
 })();

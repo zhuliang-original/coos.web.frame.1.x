@@ -1,0 +1,75 @@
+.coos-pack {
+	width: 100%;
+}
+
+.coos-pack .coos-pack-one {
+	margin-bottom: 10px;
+	cursor: pointer;
+}
+
+.coos-pack-one .coos-pack-one-box {
+	width: 94%;
+	margin: 0px 3%;
+}
+
+.coos-pack-one .coos-image-icon {
+	width: 100%;
+	padding-top: 100%;
+	border-radius: 5px;
+	position: relative;
+	background-color: #fafafa;
+	float: none;
+	margin-bottom: 0px;
+}
+
+.coos-pack-one-box .coos-pack-hover-show {
+	display: none;
+	transition: all .3s ease 0s;
+}
+
+.coos-pack-one-box:hover .coos-text-icon.coos-pack-hover-hide {
+	display: none;
+}
+
+.coos-pack-one-box:hover .coos-image-icon.coos-pack-hover-hide {
+	display: none;
+}
+
+.coos-pack-one-box:hover .coos-text-icon.coos-pack-hover-show {
+	display: block;
+}
+
+.coos-pack-one-box:hover .coos-image-icon.coos-pack-hover-show {
+	display: block;
+}
+
+.coos-pack-one .coos-title {
+	height: 40px;
+	text-align: center;
+	margin-top: 5px;
+	color: black;
+	font-size: 12px;
+	vertical-align: middle;
+}
+
+.coos-text-icon {
+	width: 100%;
+	padding-top: 100%;
+	border-radius: 5px;
+	position: relative;
+	background-color: #f89c2c;
+}
+
+.coos-text-icon .coos-text-icon-box {
+	position: absolute;
+	top: 0px;
+	left: 0px;
+	width: 100%;
+	height: 100%;
+}
+
+.coos-text-icon .coos-text {
+	padding: 8%;
+	color: white;
+	font-size: 15px;
+}

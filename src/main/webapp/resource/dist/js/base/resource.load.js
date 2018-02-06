@@ -80,41 +80,5 @@
 			}
 		});
 	};
-
-	var loadResource = function() {
-		if (co.isEmpty(co.config.resourcePath)) {
-			return;
-		}
-		window.setTimeout(function() {
-			co.showLoading();
-		}, 1);
-		var action = co.config.resourcePath;
-		var data = {};
-		co.POST(action, data, 'json', function(data) {
-			var file = data.file;
-			var jsfiles = file.js;
-			var cssfiles = file.css;
-			cssfiles = cssfiles == null ? [] : cssfiles;
-			for (var i = 0; i < cssfiles.length; i++) {
-				var cssfile = cssfiles[i];
-				var src = cssfile.src;
-				if (!src || src == '')
-					continue;
-				if (src.indexOf('http') != 0)
-					src = basePath + src;
-				document.write("<link href='" + src + "' rev='stylesheet' media ='screen' rel='stylesheet' type='text/css'>");
-			}
-			jsfiles = jsfiles == null ? [] : jsfiles;
-			for (var i = 0; i < jsfiles.length; i++) {
-				var jsfile = jsfiles[i];
-				var src = jsfile.src;
-				if (!src || src == '')
-					continue;
-				if (src.indexOf('http') != 0)
-					src = basePath + src;
-				document.write("<script type='text/javascript' src='" + src + "'></script>");
-			}
-			co.hideLoading();
-		}, false);
-	}
+	
 })();
