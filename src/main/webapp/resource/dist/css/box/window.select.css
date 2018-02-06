@@ -1,0 +1,77 @@
+.coos-select-header {
+	text-align: left;
+	height: 40px;
+}
+
+.coos-select-header .coos-select-search-input {
+	padding: 7px 5px 5px;
+	width: 150px;
+	border: 1px solid #ddd;
+}
+
+.coos-select-header .coos-select-search-button {
+	padding: 5px 7px;
+	border: 1px solid #ddd;
+	margin-left: 5px;
+	cursor: pointer;
+}
+
+.coos-select-content {
+	padding: 20px 5px;
+	border: 0px dotted #ddd;
+	min-height: 300px;
+	padding-top: 5px;
+}
+
+.coos-select-content .coos-one-option {
+	width: 20%;
+	min-width: 200px;
+	float: left;
+	cursor: pointer;
+	overflow: hidden;
+}
+
+.coos-select-content .coos-one-option input {
+	cursor: pointer;
+}
+
+.coos-select-content .coos-one-option-value {
+	float: left;
+	margin-top: 6px;
+}
+
+.coos-select-content .coos-one-option-detail {
+	margin-left: 18px;
+	font-size: 13px;
+	color: #777a80;
+	font-weight: 700;
+}
+
+.coos-select-content .coos-select-center {
+	overflow: hidden;
+	text-align: left;
+}
+
+.coos-select-center.coos-has-image .coos-one-option {
+	height: 60px;
+}
+
+.coos-select-center.coos-has-image .coos-one-option .coos-one-option-value
+	{
+	margin-top: 36px;
+}
+
+.coos-select-center.coos-has-image .coos-one-option .coos-one-option-detail
+	{
+	margin-top: 30px;
+}
+
+.coos-select-content .coos-one-option-image {
+	float: left;
+	width: 40px;
+	height: 40px;
+	border: 1px solid #ddd;
+	margin-top: -20px;
+	margin-left: 5px;
+	margin-right: 5px;
+}

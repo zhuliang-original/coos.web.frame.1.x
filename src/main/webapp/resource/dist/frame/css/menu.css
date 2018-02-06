@@ -1,0 +1,184 @@
+.coos-header-menu {
+	height: 100%;
+	clear: both;
+}
+
+.coos-header ul li, .coos-body-left ul li, .coos-body-right ul li {
+	list-style: none;
+	white-space: nowrap;
+	display: block;
+	position: relative;
+}
+
+.coos-header ul li a, .coos-body-left ul li a, .coos-body-right ul li a
+	{
+	list-style: none;
+	white-space: nowrap;
+	display: block;
+	position: relative;
+	cursor: pointer;
+	padding: 0px 10px;
+}
+
+.coos-header-menu ul li a {
+	font-size: 15px;
+}
+
+.coos-header-menu ul li a .arrow {
+	padding-left: 10px;
+}
+
+.coos-header-menu ul li a .icon {
+	margin-right: 10px;
+}
+
+.coos-header-menu .coos-child-menu li a .arrow {
+	position: absolute;
+	top: 8px;
+	right: 10px;
+}
+
+.coos-header-menu ul li .coos-child-menu {
+	display: none !important;
+	position: absolute;
+	top: 100%;
+	z-index: 1;
+	background-color: white;
+	min-width: 100%;
+	padding: 5px 0px;
+	border: 1px solid #ccc;
+	color: #262626;
+}
+
+.coos-header-menu ul li .coos-child-menu li {
+	float: none;
+}
+
+.coos-header-menu ul li .coos-child-menu li a {
+	float: none;
+	padding: 0px 15px;
+	line-height: 30px;
+	height: 30px;
+	padding-right: 30px;
+}
+
+.coos-header-menu ul li .coos-child-menu li a:hover, .coos-header-menu ul li .coos-child-menu li a:focus
+	{
+	color: #262626 !important;
+	text-decoration: none;
+	background-color: #f5f5f5 !important;
+}
+
+.coos-header-menu ul li:hover>.coos-child-menu {
+	display: block !important;
+}
+
+.coos-header-menu .coos-child-menu .coos-child-menu {
+	left: 100%;
+	top: 0px;
+}
+
+.coos-body-menu {
+	height: 100%;
+	width: 100%;
+	outline: 1px solid #eaeaea;
+}
+
+.coos-body-menu .coos-menu-navigation>li {
+	border-top: 1px solid #e7e7eb;
+}
+
+.coos-body-menu-center ul li .coos-child-menu .coos-child-menu {
+	border-top: 1px solid #e7e7eb;
+}
+
+.coos-body-menu-center .coos-menu-title {
+	height: 60px;
+	line-height: 60px;
+	font-size: 24px;
+	padding-left: 20px;
+}
+
+.coos-body-menu-top {
+	width: 100%;
+	clear: both;
+}
+
+.coos-body-menu-center {
+	width: 100%;
+	clear: both;
+}
+
+.coos-body-menu-bottom {
+	width: 100%;
+	clear: both;
+}
+
+.coos-body-menu-center ul {
+	overflow: hidden;
+	width: 100%;
+}
+
+.coos-body-menu-center ul li {
+	list-style: none;
+}
+
+.coos-body-menu-center ul li a {
+	display: block;
+	padding: 0px 20px;
+	font-size: 14px;
+	line-height: 35px;
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
+}
+
+.coos-body-menu-center ul li .coos-child-menu {
+	display: none;
+}
+
+.coos-body-menu-center ul li a:hover {
+	cursor: pointer;
+}
+
+.coos-body-menu-center ul li .icon {
+	font-size: 19px;
+	margin-right: 15px;
+	margin-top: 7px;
+	float: left;
+}
+
+.coos-body-menu-center ul li a .arrow {
+	transition: all .3s ease 0s;
+}
+
+.coos-body-menu-center ul li a .arrow {
+	float: right;
+	font-size: 14px;
+	line-height: 35px;
+	position: absolute;
+	right: 15px;
+}
+
+.coos-body-menu-center .arrow.rotate-90 {
+	-webkit-transform: rotate(90deg);
+	-ms-transform: rotate(90deg);
+	transform: rotate(90deg);
+	filter: progid:DXImageTransform.Microsoft.BasicImage(rotation=0);
+}
+
+.coos-body-menu.coos-body-menu-open .coos-child-menu {
+	display: block !important;
+}
+
+.coos-body-menu .coos-child-menu li a {
+	padding-left: 40px;
+}
+
+.coos-body-menu .coos-child-menu .coos-child-menu li a {
+	padding-left: 60px;
+}
+
+.coos-body-menu.coos-body-menu-open ul li a .arrow {
+	display: none;
+}

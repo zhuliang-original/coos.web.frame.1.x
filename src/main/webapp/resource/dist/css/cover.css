@@ -1,0 +1,73 @@
+.coos-cover-window {
+	position: fixed;
+	z-index: 99;
+	left: 0px;
+	right: 0px;
+	bottom: 0px;
+	top: 0px;
+	background-color: black;
+	opacity: 0.5;
+	filter: progid:DXImageTransform.Microsoft.Alpha(opacity=50);
+	font-size: 30px;
+	text-align: center;
+	color: white;
+}
+
+.coos-cover-loading-window {
+	position: fixed;
+	z-index: 100;
+	left: 0px;
+	right: 0px;
+	bottom: 0px;
+	top: 0px;
+	font-size: 30px;
+	text-align: center;
+	color: white;
+}
+
+.coos-cover-loading-image {
+	background-image: url(../images/image/loading.gif);
+	width: 40px;
+	height: 40px;
+	margin: 15px auto;
+	background-position: center;
+	background-size: 100%;
+}
+
+.coos-cover-uploading-window {
+	position: fixed;
+	z-index: 100;
+	left: 0px;
+	right: 0px;
+	bottom: 0px;
+	top: 0px;
+	font-size: 30px;
+	text-align: center;
+	color: white;
+}
+
+.coos-cover-uploading-image {
+	background-image: url(../images/image/loading.gif);
+	width: 40px;
+	height: 40px;
+	margin: 15px auto;
+	background-position: center;
+	background-size: 100%;
+}
+
+.coos-cover-mask {
+	border-radius: 5px;
+	background-color: black;
+	position: fixed;
+	width: 100px;
+	height: 100px;
+	left: 50%;
+	top: 50%;
+	margin-top: -100px;
+	margin-left: -50px;
+}
+
+.coos-cover-mask-font {
+	font-size: 15px;
+	font-family: monospace;
+}

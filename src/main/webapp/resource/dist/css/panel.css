@@ -1,0 +1,256 @@
+/*	@TODO 面板样式	*/
+.coos-panel-menu {
+	position: absolute;
+	right: 0;
+	top: 0;
+}
+/*  Panel  */
+.coos-panel {
+	position: relative;
+	margin-bottom: 20px;
+	background: none;
+	border: 1px solid #eaeaea;
+	border-radius: 4px;
+}
+
+.coos-panel-window {
+	border: 0px solid #eaeaea;
+	border-radius: 0px;
+}
+
+.coos-panel-one {
+	position: relative;
+}
+
+.coos-panel:before, .coos-panel:after {
+	content: " ";
+	display: table;
+}
+
+.coos-panel:after {
+	clear: both;
+}
+
+.coos-move:hover {
+	cursor: move;
+}
+
+.coos-panel .coos-panel-menu {
+	right: 15px;
+	top: 4px;
+}
+
+.coos-panel .coos-panel-menu .coos-menu {
+	border: none;
+	line-height: 22px;
+	margin-right: 2px;
+	color: #F0F0F0;
+	font-size: 12px;
+	height: 24px;
+	width: 22px;
+}
+
+.coos-panel .coos-panel-menu>.entypo-icon {
+	font-size: 18px;
+	line-height: 26px;
+}
+
+.coos-panel .coos-panel-menu>.smaller-font {
+	font-size: 14px;
+}
+
+.coos-panel .coos-panel-menu>.coos-menu:hover, .coos-panel .coos-panel-menu>.coos-menu.active
+	{
+	background-color: rgb(162, 162, 162);
+	color: #FFFFFF;
+}
+
+.coos-panel .coos-panel-menu .coos-child-menu {
+	font-size: 13px;
+}
+
+.coos-panel-bd-left {
+	border-left: 3px solid #1fae66;
+}
+
+.coos-panel-bd-top {
+	border-top: 3px solid #1fae66;
+}
+
+.coos-panel-bd-left {
+	border-left: 3px solid #1fae66;
+}
+/* Specific Widget Mega Menu */
+.coos-panel .coos-panel-menu .coos-mega-menu-content {
+	margin-top: 5px;
+}
+
+.coos-mega-menu-content .coos-child-menu a {
+	color: #5e656b;
+}
+
+.coos-panel .coos-panel-menu .coos-menu .coos-mega-menu-content.left-xs,
+	.coos-panel .coos-panel-menu .coos-menu .coos-mega-menu-content.left-sm,
+	.coos-panel .coos-panel-menu .coos-menu .coos-mega-menu-content.left-md,
+	.coos-panel .coos-panel-menu .coos-menu .coos-mega-menu-content.left-lg
+	{
+	margin-left: auto;
+	margin-right: -13px;
+}
+
+.coos-panel .no-title {
+	height: 30px;
+}
+
+.coos-panel .coos-panel-header {
+	position: relative;
+	padding: 7px 15px;
+}
+
+.coos-panel .coos-panel-header .coos-panel-title .coos-menu-icon {
+	margin-right: 5px;
+	width: 20px;
+	height: 21px;
+	line-height: 21px;
+	display: inline-block;
+	text-align: center;
+}
+
+.coos-panel .coos-panel-title {
+	color: #ffffff;
+}
+
+.coos-panel .coos-panel-title a:hover, .coos-panel .coos-panel-title a:focus
+	{
+	color: #ffffff;
+}
+
+.coos-panel .coos-panel-body, .coos-panel .coos-panel-body-list {
+	background: #ffffff;
+	position: relative;
+}
+
+.coos-panel .coos-panel-body:before, .coos-panel .coos-panel-body-list:before,
+	.coos-panel .coos-panel-body:after, .coos-panel .coos-panel-body-list:after
+	{
+	content: " ";
+	display: table;
+}
+
+.coos-panel .coos-panel-body:after, .coos-panel .coos-panel-body-list:after
+	{
+	clear: both;
+}
+
+.coos-panel .coos-panel-body-list .coos-table {
+	margin-bottom: 0;
+}
+
+.coos-panel .coos-panel-body {
+	padding: 15px 15px 25px;
+}
+
+.coos-box-window .coos-panel-window .coos-panel-body {
+	padding: 5px 5px 15px;
+}
+
+.coos-panel-group .coos-panel .coos-panel-header {
+	padding-top: 10px;
+	padding-bottom: 10px;
+}
+
+.coos-panel-group .coos-panel .coos-panel-header .coos-panel-title a {
+	display: block;
+}
+
+/* Panel Menu */
+.coos-panel-header {
+	position: relative;
+}
+
+.coos-panel-menu .coos-menu {
+	display: block;
+	float: left;
+	width: 26px;
+	height: 26px;
+	line-height: 24px;
+	text-align: center;
+	cursor: pointer;
+	font-size: 14px;
+	margin-right: 10px;
+	vertical-align: middle;
+	border: 1px solid #ffffff;
+	color: #ffffff;
+	position: relative;
+}
+
+.coos-panel-menu .coos-menu .glyphicon {
+	top: 2px;
+}
+
+.coos-panel-menu .coos-mega-menu-content {
+	font-size: 13px;
+}
+
+.coos-panel-menu .coos-menu:hover, .coos-panel-menu .coos-menu.active,
+	.coos-panel-menu .text-menu:hover, .coos-panel-menu .text-menu.active {
+	background-color: #ffffff;
+	color: #1fae66;
+	cursor: pointer;
+}
+
+.coos-panel-menu .text-menu {
+	margin-right: 10px;
+	padding: 2px 8px;
+}
+
+.coos-panel-header {
+	background: #FFFFFF;
+}
+
+.coos-panel-menu .coos-menu-trigger {
+	display: block;
+}
+
+.coos-panel-light .coos-panel-header {
+	background: #FFFFFF;
+}
+
+.coos-panel-light .coos-panel-header .coos-panel-title {
+	color: #888888;
+}
+
+.coos-panel-light .coos-panel-menu .coos-menu {
+	color: #b5b5b5;
+}
+
+.coos-panel-light .bordered {
+	border-bottom: 1px solid #EEEEEE;
+}
+
+.coos-panel-body-dark {
+	color: #FFF;
+}
+
+.coos-panel-dark .coos-panel-header .coos-panel-title {
+	color: #FFFFFF;
+}
+
+.coos-panel-dark .coos-panel-menu .coos-menu {
+	color: #FFFFFF;
+}
+
+.coos-panel-header.bordered {
+	padding-top: 6px;
+}
+
+.coos-panel-dark .bordered {
+	border-bottom: 1px solid #F5F5F5;
+}
+
+.coos-panel-bd-top .coos-panel-header {
+	padding-top: 5px;
+	padding-bottom: 6px;
+}
+
+/*	@TODO 面板样式结束	*/

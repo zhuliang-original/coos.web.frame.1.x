@@ -1,0 +1,24 @@
+.display-none, .coos-xs .display-xs-none, .coos-sm .display-sm-none,
+	.coos-md .display-md-none, .coos-lg .display-lg-none {
+	display: none !important;
+}
+
+.display-block, .coos-xs .display-xs-block, .coos-sm .display-sm-block,
+	.coos-md .display-md-block, .coos-lg .display-lg-block {
+	display: block !important;
+}
+
+.display-table, .coos-xs .display-xs-table, .coos-sm .display-sm-table,
+	.coos-md .display-md-table, .coos-lg .display-lg-table {
+	display: table !important;
+}
+
+.display-table-cell, .coos-xs .display-xs-table-cell, .coos-sm .display-sm-table-cell,
+	.coos-md .display-md-table-cell, .coos-lg .display-lg-table-cell {
+	display: table !important;
+}
+
+.display-table-row, .coos-xs .display-xs-table-row, .coos-sm .display-sm-table-row,
+	.coos-md .display-md-table-row, .coos-lg .display-lg-table-row {
+	display: table !important;
+}

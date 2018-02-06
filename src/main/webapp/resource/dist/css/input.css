@@ -1,0 +1,181 @@
+.coos-input {
+	position: relative;
+	display: table;
+}
+
+.option-select {
+	display: none !important;
+}
+
+.coos-input input, .coos-input select, .coos-input textarea {
+	width: 100%;
+	border: 1px solid #ddd;
+	font-size: 13px;
+	padding: 6px 10px 7px;
+	appearance: none;
+	-ms-appearance: none;
+	-moz-appearance: none;
+	-webkit-appearance: none;
+	border-radius: 3px;
+}
+
+.coos-input select {
+	outline: none;
+	background: url("../images/icon/arrow.png") no-repeat scroll right
+		center transparent;
+	padding-right: 14px;
+	background-color: #FFF;
+	padding-right: 0px \9;
+}
+
+.coos-input textarea {
+	height: 92px;
+}
+
+.coos-input select::expand, .coos-input select::-ms-expand, .coos-input select::-moz-expand,
+	.coos-input select::-webkit-expand {
+	display: none;
+}
+
+.coos-input *::placeholder, .coos-input *::-ms-placeholder, .coos-input  *::-moz-placeholder,
+	.coos-input *::-webkit-placeholder {
+	color: #b1b1b1;
+}
+
+.coos-input *::input-placeholder, .coos-input *::-ms-input-placeholder,
+	.coos-input *::-moz-input-placeholder, .coos-input *::-webkit-input-placeholder
+	{
+	color: #b1b1b1;
+}
+
+.coos-input input[type="radio"], .coos-input input[type="checkbox"] {
+	width: auto;
+	border: none;
+	font-size: 13px;
+	padding: 0px;
+	outline: none;
+	float: left;
+	margin-top: 10px;
+}
+
+.coos-radio-group, .coos-checkbox-group {
+	height: 30px;
+	cursor: pointer;
+}
+
+.coos-checkbox-group .label, .coos-radio-group .label {
+	color: gray;
+	margin: 4px 0px 0px 0px;
+	position: relative;
+	float: left;
+	margin-right: 10px;
+	cursor: pointer;
+	padding: 0px 0px 0px 5px;;
+}
+
+.coos-input input[type="radio"] {
+	appearance: radio;
+	-ms-appearance: radio;
+	-moz-appearance: radio;
+	-webkit-appearance: radio;
+}
+
+.coos-input input[type="checkbox"] {
+	appearance: checkbox;
+	-ms-appearance: checkbox;
+	-moz-appearance: checkbox;
+	-webkit-appearance: checkbox;
+}
+
+.coos-input-addon {
+	padding: 6px 12px;
+	font-size: 14px;
+	font-weight: 400;
+	line-height: 1;
+	color: #555;
+	text-align: center;
+	background-color: #eee;
+	border: 1px solid #ccc;
+	display: table-cell !important;
+	width: 1%;
+	white-space: nowrap;
+	vertical-align: middle;
+	position: relative;
+	min-width: 40px;
+}
+
+.coos-input-addon:last-child {
+	border-left: 0;
+	border-bottom-left-radius: 0;
+	border-top-left-radius: 0;
+}
+
+.coos-input-addon:first-child {
+	border-right: 0;
+	border-bottom-right-radius: 0;
+	border-top-right-radius: 0;
+}
+
+.coos-input-addon-before {
+	border-right: 0px;
+}
+
+.coos-input-addon-after {
+	border-left: 0px;
+}
+
+.coos-input-group {
+	margin-bottom: 5px;
+	position: relative;
+}
+
+.coos-input-group .coos-input {
+	padding-left: 10px;
+	padding-right: 10px;
+}
+
+.coos-label {
+	text-align: right;
+	padding-top: 3px;
+	padding-bottom: 1px;
+	padding-left: 10px;
+	padding-right: 10px;
+	color: #5e656b;
+}
+
+.coos-input-help {
+	color: #999;
+	padding-top: 3px;
+	padding-bottom: 1px;
+	padding-left: 10px;
+	padding-right: 10px;
+}
+
+.coos-image-group {
+	height: 105px;
+	overflow: hidden;
+	display: table-row;
+}
+
+.coos-image {
+	float: left;
+	margin-right: 10px;
+	margin-top: 5px;
+	margin-bottom: 5px;
+}
+
+.coos-image img {
+	width: 95px;
+	height: 95px;
+}
+
+.coos-image .coos-image-remove {
+	position: absolute;
+	width: 15px;
+	height: 15px;
+	right: -8px;
+	top: -5px;
+	background-image: url("../images/icon/delete.png");
+	z-index: 1;
+	cursor: pointer;
+}

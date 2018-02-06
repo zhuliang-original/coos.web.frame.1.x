@@ -1,0 +1,23 @@
+.font-xs,.core-xs .font-xs-xs,.core-sm .font-sm-xs,.core-md .font-md-xs,.core-lg .font-lg-xs
+	{
+	font-size: 12px !important;
+}
+
+.font-sm,.core-xs .font-xs-sm,.core-sm .font-sm-sm,.core-md .font-md-sm,.core-lg .font-lg-sm
+	{
+	font-size: 16px !important;
+}
+
+.font-md,.core-xs .font-xs-md,.core-sm .font-sm-md,.core-md .font-md-md,.core-lg .font-lg-md
+	{
+	font-size: 20px !important;
+}
+
+.font-lg,.core-xs .font-xs-lg,.core-sm .font-sm-lg,.core-md .font-md-lg,.core-lg .font-lg-lg
+	{
+	font-size: 25px !important;
+}
+
+.font-transparent {
+	color: transparent !important;
+}

@@ -1,0 +1,38 @@
+.coos-page {
+	position: relative;
+}
+
+.coos-page-header {
+	padding: 15px 15px;
+	position: relative;
+}
+
+.coos-page-header .coos-page-title {
+	margin: 0px;
+	font-size: 1.6em;
+	color: #555555;
+	font-weight: bold;
+	/* padding-right: 180px; */
+	line-height: 1.1;
+}
+
+.coos-page-header .coos-subtitle {
+	font-size: 12px;
+	margin-left: 2px;
+	padding-right: 180px;
+	color: #666666;
+	font-weight: 300;
+	letter-spacing: .3px;
+	line-height: 23px;
+}
+
+.coos-page-content {
+	padding: 15px;
+	padding-top: 25px;
+	border-top: 1px solid #F8F8F8;
+}
+
+.coos-page-header .coos-panel-menu {
+	top: 11px;
+	right: 20px;
+}
