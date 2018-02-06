@@ -142,7 +142,7 @@
 			return;
 		}
 		var this_ = this;
-		var $image = $('<div class="coos-image one"><img class="init-rule-image" /></div>');
+		var $image = $('<div class="coos-image one"><img class="element-rule-image" /></div>');
 		var $remove = $('<div class="coos-image-remove"></div>');
 		if (!this.isreadonly) {
 			$image.find('img').before($remove);
@@ -154,7 +154,7 @@
 		}
 		$image.find('img').attr('coos-path', url);
 		this.$uploadimg.before($image);
-		co.initImage($image.find('img'));
+		co.element.init($image);
 		$remove.click(function() {
 			var path = $(this).next('img').attr('path');
 			this_.removeFile(path);
