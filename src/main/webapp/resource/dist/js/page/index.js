@@ -36,6 +36,9 @@ co.page = new Object();
 		co.page.init();
 	});
 	var lastAccessPageUrl = co.url.getCurrentUrl();
+	co.page.pushLoadCallback(function() {
+		lastAccessPageUrl = co.url.getCurrentUrl();
+	});
 	co.page.toSinglePage = function(url) {
 		var url = url || co.url.getCurrentUrl();
 
