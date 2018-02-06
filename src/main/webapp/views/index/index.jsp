@@ -1,8 +1,24 @@
-<%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
+<%@ page trimDirectiveWhitespaces="true"%><%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%><%@ page import="java.util.*"%><%@ include file="/views/base/base.jsp"%>
 <div class="coos-column-12 coos-page" style="margin: 10px auto;width: 1024px;">
 	<div class="coos-page-header  ">
 		<h1 class="coos-page-title pdb-5">Core框架起步</h1>
-		<small class="coos-subtitle ">Core框架起步，依赖库、初始化等介绍 <br /> 核心库： <a class=" coos-button-link mg-5" href="${core_css_path }"> core.css </a>| <a class="coos-button-link mg-5" href="${core_js_path }"> core.js </a> <br /> 主题库： <a class=" coos-button-link mg-5" href="${core_theme_css_path }"> core.theme.css </a>| <a class="coos-button-link mg-5" href="${core_theme_js_path }"> core.theme.js </a> <br /> 打包下载： <a class=" coos-button-link mg-5" href="${core_resource_zip_path }"> resource.zip </a>
+		<small class="coos-subtitle ">Core框架起步，依赖库、初始化等介绍 <br /> 
+			核心库： 
+			<a class=" coos-button-link mg-5" href="${coos_css_path }"> coos.css </a>
+			| 
+			<a class="coos-button-link mg-5" href="${coos_js_path }"> coos.js </a>
+			<br /> 
+			框架主题库： 
+			<a class=" coos-button-link mg-5" href="${coos_frame_css_path }"> coos.frame.css </a>
+			| 
+			<a class="coos-button-link mg-5" href="${coos_frame_js_path }"> coos.frame.js </a> 
+			<br /> 
+			页面框架库： 
+			<a class=" coos-button-link mg-5" href="${coos_page_css_path }"> coos.page.css </a>
+			| 
+			<a class="coos-button-link mg-5" href="${coos_page_js_path }"> coos.page.js </a> 
+			<br /> 
+			打包下载： <a class=" coos-button-link mg-5" href="${basePath }/resource/coos/merge/resource.zip"> resource.zip </a>
 			<div class="coos-panel-menu"></div>
 	</div>
 	<div class="coos-page-content">

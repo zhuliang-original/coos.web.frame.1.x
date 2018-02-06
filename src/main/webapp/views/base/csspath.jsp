@@ -2,6 +2,6 @@
 
 <link href="${basePath}/resource/plugins/fontawesome/css/font-awesome.css" rel="stylesheet" media="screen">
 
-<link href="${basePath}/resource/coos/merge/coos.css" rel="stylesheet">
-<link href="${basePath}/resource/coos/merge/coos.frame.css" rel="stylesheet">
-<link href="${basePath}/resource/coos/merge/coos.page.css" rel="stylesheet">
+<link href="${coos_css_path}" rel="stylesheet">
+<link href="${coos_frame_css_path}" rel="stylesheet">
+<link href="${coos_page_css_path}" rel="stylesheet">

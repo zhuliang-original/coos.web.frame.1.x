@@ -2,6 +2,6 @@
 
 <script type="application/javascript" src="${basePath}/resource/plugins/jquery/jquery.js"></script>
 
-<script type="application/javascript" src="${basePath}/resource/coos/merge/coos.js"></script>
-<script type="application/javascript" src="${basePath}/resource/coos/merge/coos.frame.js"></script>
-<script type="application/javascript" src="${basePath}/resource/coos/merge/coos.page.js"></script>
+<script type="application/javascript" src="${coos_js_path}"></script>
+<script type="application/javascript" src="${coos_frame_js_path}"></script>
+<script type="application/javascript" src="${coos_page_js_path}"></script>
