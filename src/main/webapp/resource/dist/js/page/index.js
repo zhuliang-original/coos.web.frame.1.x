@@ -1,7 +1,7 @@
 co.page = new Object();
 (function() {
 	co.page.config = {
-		single : false,
+		single : true,
 		animation : false,
 		frame : {
 			content : "#page-body-content",

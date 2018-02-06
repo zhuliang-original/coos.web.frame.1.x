@@ -12,6 +12,8 @@ import javax.servlet.annotation.WebFilter;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import top.coos.config.CoreConfig;
+
 @WebFilter(urlPatterns = "*.html")
 public class FrameFilter implements Filter {
 
@@ -48,6 +50,7 @@ public class FrameFilter implements Filter {
 
 		String method = request.getMethod();
 		if (method.equals("GET")) {
+			request.setAttribute("CORE_CONFIG", CoreConfig.CONFIG);
 		}
 		return true;
 	}
