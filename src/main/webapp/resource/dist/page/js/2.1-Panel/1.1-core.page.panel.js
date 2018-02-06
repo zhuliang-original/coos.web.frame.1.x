@@ -1,5 +1,5 @@
-(function(window, jQuery, coos) {
-	coos.page.panel = coos.page.panel || {};
+(function(window, jQuery) {
+	co.page.panel = co.page.panel || {};
 	var html = '<div class="coos-panel-one"><div class="coos-panel-one-content"></div></div>';
 
 	var Panel = function(config) {
@@ -17,7 +17,7 @@
 		var panel = config.panel;
 		var panelConfig = panel.config;
 		if (panelConfig != null) {
-			if (coos.isString(panelConfig)) {
+			if (co.isString(panelConfig)) {
 				panelConfig = JSON.parse(panelConfig);
 			}
 		}
@@ -26,15 +26,51 @@
 	};
 
 	Panel.prototype.loadDataBefore = function() {
+		var config = this.config;
+		var panel = config.panel;
+		if (!co.isEmpty(panel.beforedataloadexecute)) {
+			try {
+				eval('(' + panel.beforedataloadexecute + ')')(this);
+			} catch (e) {
+				console.log(e);
+			}
+		}
 	};
 
-	Panel.prototype.loadDataAfter = function() {
+	Panel.prototype.loadDataAfter = function(result) {
+		var config = this.config;
+		var panel = config.panel;
+		if (!co.isEmpty(panel.afterdataloadexecute)) {
+			try {
+				eval('(' + panel.afterdataloadexecute + ')')(this, result);
+			} catch (e) {
+				console.log(e);
+			}
+		}
 	};
 
 	Panel.prototype.initViewBefore = function() {
+		var config = this.config;
+		var panel = config.panel;
+		if (!co.isEmpty(panel.beforeviewloadexecute)) {
+			try {
+				eval('(' + panel.beforeviewloadexecute + ')')(this);
+			} catch (e) {
+				console.log(e);
+			}
+		}
 	};
 
 	Panel.prototype.initViewAfter = function() {
+		var config = this.config;
+		var panel = config.panel;
+		if (!co.isEmpty(panel.afterviewloadexecute)) {
+			try {
+				eval('(' + panel.afterviewloadexecute + ')')(this);
+			} catch (e) {
+				console.log(e);
+			}
+		}
 	};
 
 	Panel.prototype.initView = function() {
@@ -47,7 +83,7 @@
 		this.$view.attr('type', panel.type);
 
 		var columnsize = panel.columnsize;
-		if (coos.isEmpty(columnsize)) {
+		if (co.isEmpty(columnsize)) {
 			columnsize = 12;
 		}
 		if (columnsize == "0" || columnsize == 0) {
@@ -72,11 +108,11 @@
 		var layouts = panel.layouts;
 		for (var i = 0; i < layouts.length; i++) {
 			var layout = layouts[i];
-			if (!coos.isEmpty(layout.parentid)) {
+			if (!co.isEmpty(layout.parentid)) {
 				continue;
 			}
 			var name = layout.name;
-			var layoutObject = coos.page.panel.layout.create({
+			var layoutObject = co.page.panel.layout.create({
 				layout : layout,
 				design : this.config.design,
 				page : this.config.page,
@@ -95,7 +131,7 @@
 		for (var i = 0; i < this.config.page.panels.length; i++) {
 			var panel = this.config.page.panels[i];
 			var bindlayoutforsearch = panel.bindlayoutforsearch;
-			if (!coos.isEmpty(bindlayoutforsearch)) {
+			if (!co.isEmpty(bindlayoutforsearch)) {
 				$(bindlayoutforsearch.split(',')).each(function(index, bindlayoutforsearchid) {
 					if (bindlayoutforsearchid == layoutid) {
 						objects[objects.length] = getPanelObject(panel.panelid);
@@ -106,7 +142,7 @@
 		for (var i = 0; i < this.panel.layouts.length; i++) {
 			var layout = this.panel.layouts[i];
 			var bindlayoutforsearch = layout.bindlayoutforsearch;
-			if (!coos.isEmpty(bindlayoutforsearch)) {
+			if (!co.isEmpty(bindlayoutforsearch)) {
 				$(bindlayoutforsearch.split(',')).each(function(index, bindlayoutforsearchid) {
 					if (bindlayoutforsearchid == layoutid) {
 						objects[objects.length] = getLayoutObject(layout.layoutid);
@@ -117,7 +153,7 @@
 		for (var i = 0; i < this.panel.layouts.length; i++) {
 			var layout = this.panel.layouts[i];
 			var relationlayoutid = layout.relationlayoutid;
-			if (!coos.isEmpty(relationlayoutid)) {
+			if (!co.isEmpty(relationlayoutid)) {
 				$(relationlayoutid.split(',')).each(function(index, id) {
 					if (id == layoutid) {
 						objects[objects.length] = getLayoutObject(layout.layoutid);
@@ -130,9 +166,9 @@
 
 	Panel.prototype.getSearchLayouts = function(searchlayoutname) {
 		var forSearchLayouts = [];
-		if (!coos.isEmpty(searchlayoutname)) {
+		if (!co.isEmpty(searchlayoutname)) {
 			var names = [ searchlayoutname ];
-			if (coos.has(searchlayoutname, ",")) {
+			if (co.has(searchlayoutname, ",")) {
 				names = searchlayoutname.split(",");
 			}
 			$(names).each(function(index, name) {
@@ -145,7 +181,9 @@
 	};
 
 	Panel.prototype.getSearchData = function(searchlayoutname) {
-		var searchData = this.config.pageObject.config.requestmap || {};
+		var requestmap = this.config.pageObject.config.requestmap || {};
+		requestmap = jQuery.extend(true, {}, requestmap);
+		var searchData = requestmap || {};
 		var forSearchLayouts = this.getSearchLayouts(searchlayoutname);
 
 		if (forSearchLayouts.length == 0) {
@@ -194,23 +232,23 @@
 			}
 			if (config.jumppage) {
 				var config = {};
-				config.action = coos.getThisAction().split('?')[0];
+				config.action = co.getThisAction().split('?')[0];
 				config.data = searchData;
-				coos.toAction(config);
+				co.toAction(config);
 				return;
 			}
 		}
 		this.loadDataBefore();
-		if (!coos.isEmpty(this.panel.serviceid)) {
+		if (!co.isEmpty(this.panel.serviceid)) {
 			var this_ = this;
 			loadServiceData(this.panel.serviceid, searchData, function(resultMap) {
 				this_.appendResult(resultMap);
+				this_.loadDataAfter(resultMap);
 				this_.loadLayoutData(config.callback);
-				this_.loadDataAfter();
 			});
 		} else {
 			this.loadLayoutData(config.callback);
-			this.loadDataAfter();
+			this.loadDataAfter({});
 		}
 
 	};
@@ -235,7 +273,7 @@
 	Panel.prototype.appendResult = function(resultMap) {
 		for ( var modelname in resultMap) {
 			$(this.layoutObjects).each(function(index, layoutObject) {
-				if (!coos.isEmpty(layoutObject.layout.servicemodelname) && layoutObject.layout.servicemodelname == modelname) {
+				if (!co.isEmpty(layoutObject.layout.servicemodelname) && layoutObject.layout.servicemodelname == modelname) {
 					layoutObject.processResult({
 						resultMap : resultMap,
 						result : resultMap[name],
@@ -246,6 +284,6 @@
 			});
 		}
 	};
-	coos.page.panel.Panel = Panel;
+	co.page.panel.Panel = Panel;
 
-})(window, jQuery, coos);
+})(window, jQuery);

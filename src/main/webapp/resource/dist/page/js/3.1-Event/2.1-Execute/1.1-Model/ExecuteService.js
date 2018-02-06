@@ -1,12 +1,12 @@
-(function(window, jQuery, coos) {
+(function(window, jQuery) {
 	function ThisExecute(config) {
-		coos.page.event.execute.Execute.call(this, config);
+		co.page.event.execute.Execute.call(this, config);
 	}
 
 	(function() {
 		var Super = function() {
 		};
-		Super.prototype = coos.page.event.execute.Execute.prototype;
+		Super.prototype = co.page.event.execute.Execute.prototype;
 		ThisExecute.prototype = new Super();
 	})();
 
@@ -18,7 +18,7 @@
 		var execute = this.execute;
 		var serviceid = execute.config.serviceid;
 		var this_ = this;
-		if (!coos.isEmpty(serviceid)) {
+		if (!co.isEmpty(serviceid)) {
 			var data = this.getData();
 			jQuery.extend(true, data, paramData);
 			var config = {};
@@ -30,7 +30,7 @@
 				if (status.errcode == 0) {
 					resultMap = status.result;
 					promptmessage = execute.config.successprompt;
-					if (coos.isEmpty(promptmessage)) {
+					if (co.isEmpty(promptmessage)) {
 						promptmessage = "操作成功！";
 					}
 					if (!execute.config.successneedprompt) {
@@ -38,7 +38,7 @@
 					}
 				} else {
 					if (status.errcode == 20001) {
-						coos.box.confirm(status.errmsg + "<br/>点击确认，强制删除！", function() {
+						co.box.confirm(status.errmsg + "<br/>点击确认，强制删除！", function() {
 							this_.doExecute(executeCallback, {
 								forciblyremove : true
 							});
@@ -48,7 +48,7 @@
 						return;
 					}
 					promptmessage = execute.config.errorprompt;
-					if (coos.isEmpty(promptmessage)) {
+					if (co.isEmpty(promptmessage)) {
 						promptmessage = status.errmsg;
 					}
 					if (!execute.config.errorneedprompt) {
@@ -59,12 +59,12 @@
 					executeCallback && executeCallback();
 					if (status.errcode == 0) {
 
-						if (!coos.isEmpty(execute.config.layoutids)) {
+						if (!co.isEmpty(execute.config.layoutids)) {
 							var layoutObjects = getLayoutObject(execute.config.layoutids);
 							$(layoutObjects).each(function(index, layoutObject) {
 								layoutObject.executeData = data;
 								var servicemodelname = layoutObject.layout.servicemodelname;
-								if (coos.isEmpty(layoutObject.layout.servicemodelname)) {
+								if (co.isEmpty(layoutObject.layout.servicemodelname)) {
 									for ( var name in resultMap) {
 										servicemodelname = name;
 										break;
@@ -76,18 +76,19 @@
 									result : result,
 									isTop : true
 								});
+								layoutObject.loadDataAfter && layoutObject.loadDataAfter(layoutObject, resultMap);
 							});
 						}
 						this_.eventChildExecutes();
 					}
 				};
-				if (!coos.isEmpty(promptmessage)) {
-					if (coos.isEmpty(execute.config.boxtype) || execute.config.boxtype == "alert") {
-						coos.box.alert(promptmessage, function() {
+				if (!co.isEmpty(promptmessage)) {
+					if (co.isEmpty(execute.config.boxtype) || execute.config.boxtype == "alert") {
+						co.box.alert(promptmessage, function() {
 							callback();
 						});
 					} else if (execute.config.boxtype == "info") {
-						coos.box.info(promptmessage);
+						co.box.info(promptmessage);
 						callback();
 					}
 				} else {
@@ -95,7 +96,7 @@
 
 				}
 			}
-			coos.executeService(config);
+			co.executeService(config);
 
 		} else {
 			executeCallback && executeCallback();
@@ -141,5 +142,5 @@
 			uselayout : true
 		} ]
 	};
-	coos.page.event.execute.model.defind("SERVICE", ThisExecuteConfig, ThisExecute);
-})(window, jQuery, coos);
+	co.page.event.execute.model.defind("SERVICE", ThisExecuteConfig, ThisExecute);
+})(window, jQuery);

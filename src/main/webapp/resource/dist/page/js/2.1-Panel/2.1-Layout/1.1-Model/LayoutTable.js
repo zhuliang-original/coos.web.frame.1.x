@@ -1,13 +1,13 @@
-(function(window, jQuery, coos) {
+(function(window, jQuery) {
 	var html = '<div class="coos-column-12 table-responsive"><table class="coos-table"><thead><tr></tr></thead><tbody></tbody></table></div>';
 
 	function ThisLayout(config) {
-		coos.page.panel.layout.Layout.call(this, config);
+		co.page.panel.layout.Layout.call(this, config);
 	}
 	(function() {
 		var Super = function() {
 		};
-		Super.prototype = coos.page.panel.layout.Layout.prototype;
+		Super.prototype = co.page.panel.layout.Layout.prototype;
 		ThisLayout.prototype = new Super();
 	})();
 
@@ -31,6 +31,9 @@
 		return $view;
 	};
 	ThisLayout.prototype.getButtonContainer = function($container, button) {
+		if (!this.layout.config.displaybutton) {
+			return $('<div></div>');
+		}
 		var $buttoncontainer = $container.find('.coos-button-container');
 		if ($buttoncontainer.length > 0) {
 			return $buttoncontainer;
@@ -42,9 +45,13 @@
 
 	ThisLayout.prototype.getOneContainerView = function(config) {
 		var $view = $(html);
+		if (this.layout.config.displaytitle) {
+			var $title = $('<div class="pdtb-5">' + this.layout.title + '</div>')
+			$view.find('table').before($title);
+		}
 		var $tbody = $view.find('tbody');
 		if (this.layout.config.haspagesize) {
-			var $ul = coos.getPaginationUl({}, function() {
+			var $ul = co.getPaginationUl({}, function() {
 			});
 			$ul.addClass('mgb-0');
 			$view.append($ul);
@@ -99,7 +106,7 @@
 
 		if (this.layout.config.isformtable) {
 
-			var trData = coos.form.validate($button.closest('tr'));
+			var trData = co.form.validate($button.closest('tr'));
 			if (trData) {
 				for ( var n in data) {
 					if (trData[n] == null) {
@@ -119,7 +126,7 @@
 		if (this.layout.config.haspagesize) {
 			result = result || {};
 			var this_ = this;
-			var $ul = coos.getPaginationUl(result, function(currentpage) {
+			var $ul = co.getPaginationUl(result, function(currentpage) {
 				var data = {};
 				data.currentpage = currentpage;
 				this_.reloadResult({
@@ -139,6 +146,10 @@
 		hasElement : true,
 		hasButton : true,
 		columns : [ {
+			text : "显示标题",
+			name : "displaytitle",
+			inputtype : "switch"
+		}, {
 			text : "分页",
 			name : "haspagesize",
 			inputtype : "switch"
@@ -164,13 +175,13 @@
 			inputtype : "switch"
 		} ],
 		getElementModelList : function() {
-			var models = coos.page.panel.layout.element.model.list();
+			var models = co.page.panel.layout.element.model.list();
 			$(models).each(function(index, model) {
-				coos.page.panel.layout.element.model.appendBaseColumns(model.config);
+				co.page.panel.layout.element.model.appendBaseColumns(model.config);
 			});
 			return models;
 		}
 
 	};
-	coos.page.panel.layout.model.defind("TABLE", ThisLayoutConfig, ThisLayout);
-})(window, jQuery, coos);
+	co.page.panel.layout.model.defind("TABLE", ThisLayoutConfig, ThisLayout);
+})(window, jQuery);

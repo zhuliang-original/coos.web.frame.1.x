@@ -18,9 +18,9 @@
 		}
 		var start = line.start;
 		var end = line.end;
-		var $start = $('<div class="core-component-line-point"></div>');
-		var $line = $('<div class="core-component-line"></div>');
-		var $end = $('<div class="core-component-line-point"></div>');
+		var $start = $('<div class="coos-component-line-point"></div>');
+		var $line = $('<div class="coos-component-line"></div>');
+		var $end = $('<div class="coos-component-line-point"></div>');
 		$start.css('left', start.x);
 		$start.css('top', start.y);
 		$line.css('left', start.x);
@@ -65,7 +65,7 @@
 				angle = (Math.asin(a / c) * 360 / (2 * Math.PI));
 			}
 		}
-		$line.attr('core-width', width);
+		$line.attr('coos-width', width);
 		$line.css("transform-origin", "0 0");
 		$line.css("transform", "rotate(" + angle + "deg)");
 		$line.css("-ms-transform", "rotate(" + angle + "deg)");
@@ -121,13 +121,13 @@
 				var $end = lineGroup.$end;
 				var $line = lineGroup.$line;
 				if (this_.showed) {
-					$start.addClass('core-show');
-					$line.addClass('core-show');
+					$start.addClass('coos-show');
+					$line.addClass('coos-show');
 				} else {
-					$start.removeClass('core-show');
-					$line.removeClass('core-show');
+					$start.removeClass('coos-show');
+					$line.removeClass('coos-show');
 				}
-				var width = $line.attr('core-width');
+				var width = $line.attr('coos-width');
 				if (!this_.showed) {
 					width = 0;
 				}
@@ -135,9 +135,9 @@
 					width : width + "px"
 				}, time, function() {
 					if (this_.showed) {
-						$end.addClass('core-show');
+						$end.addClass('coos-show');
 					} else {
-						$end.removeClass('core-show');
+						$end.removeClass('coos-show');
 					}
 					callback && callback();
 				});
@@ -162,13 +162,13 @@
 				var $end = lineGroup.$end;
 				var $line = lineGroup.$line;
 				if (this_.showed) {
-					$end.addClass('core-show');
-					$line.addClass('core-show');
+					$end.addClass('coos-show');
+					$line.addClass('coos-show');
 				} else {
-					$end.removeClass('core-show');
-					$line.removeClass('core-show');
+					$end.removeClass('coos-show');
+					$line.removeClass('coos-show');
 				}
-				var width = $line.attr('core-width');
+				var width = $line.attr('coos-width');
 				if (!this_.showed) {
 					width = 0;
 				}
@@ -176,9 +176,9 @@
 					width : width + "px"
 				}, time, function() {
 					if (this_.showed) {
-						$start.addClass('core-show');
+						$start.addClass('coos-show');
 					} else {
-						$start.removeClass('core-show');
+						$start.removeClass('coos-show');
 					}
 					callback && callback();
 				});

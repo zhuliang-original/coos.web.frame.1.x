@@ -234,7 +234,7 @@
 			$selector.after(afterIcon);
 		}
 
-		var $corelabel = $group.find('.coos-label');
+		var $label = $group.find('.coos-label');
 		// 必须的
 		if (isreadonly) {
 			$selector.attr('readonly', "readonly");
@@ -244,12 +244,12 @@
 		// 是必填项
 		if (!cannull) {
 			if (!isreadonly) {
-				$corelabel.append("<span class=\"coos-red\">*</span>");
+				$label.append("<span class=\"coos-red\">*</span>");
 			} else {
-				$corelabel.append("<span class=\"coos-red font-transparent \">*</span>");
+				$label.append("<span class=\"coos-red font-transparent \">*</span>");
 			}
 		} else {
-			$corelabel.append("<span class=\"coos-red font-transparent\">*</span>");
+			$label.append("<span class=\"coos-red font-transparent\">*</span>");
 		}
 		var $options = null;
 		if ($optionselect) {

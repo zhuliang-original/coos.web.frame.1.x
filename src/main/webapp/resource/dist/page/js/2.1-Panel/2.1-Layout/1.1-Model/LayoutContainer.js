@@ -1,13 +1,13 @@
-(function(window, jQuery, coos) {
+(function(window, jQuery) {
 	var html = '<div class="coos-layout-content"><div class=" coos-layout-container "></div></div>';
 
 	function ThisLayout(config) {
-		coos.page.panel.layout.Layout.call(this, config);
+		co.page.panel.layout.Layout.call(this, config);
 	}
 	(function() {
 		var Super = function() {
 		};
-		Super.prototype = coos.page.panel.layout.Layout.prototype;
+		Super.prototype = co.page.panel.layout.Layout.prototype;
 		ThisLayout.prototype = new Super();
 	})();
 
@@ -16,6 +16,15 @@
 	ThisLayout.prototype.getData = function() {
 		return {};
 	}
+
+	ThisLayout.prototype.getOneContainerView = function(config) {
+		if (this.layout.config.displaytitle) {
+			var $title = $('<div class="pdtb-5">' + this.layout.title + '</div>')
+			this.$view.find('.coos-layout-one-content:first').before($title);
+		}
+		return this.$view.find('.coos-layout-one-content:first');
+	};
+
 	ThisLayout.prototype.getOneView = function(config) {
 		var $one = $(html);
 		return $one;
@@ -24,35 +33,35 @@
 	ThisLayout.prototype.initContent = function() {
 		var layout = this.layout;
 		var layoutConfig = layout.config;
-		if (!coos.isEmpty(layoutConfig.width)) {
+		if (!co.isEmpty(layoutConfig.width)) {
 			this.$view.removeClass('coos-column-' + layout.columnsize);
 			this.$content.css('width', layoutConfig.width);
 		}
-		if (!coos.isEmpty(layoutConfig.height)) {
+		if (!co.isEmpty(layoutConfig.height)) {
 			this.$content.css('height', layoutConfig.height);
 		}
-		if (!coos.isEmpty(layoutConfig.minheight)) {
+		if (!co.isEmpty(layoutConfig.minheight)) {
 			this.$content.css('min-height', layoutConfig.minheight);
 		}
-		if (!coos.isEmpty(layoutConfig.maxheight)) {
+		if (!co.isEmpty(layoutConfig.maxheight)) {
 			this.$content.css('max-height', layoutConfig.maxheight);
 		}
-		if (!coos.isEmpty(layoutConfig["float"])) {
+		if (!co.isEmpty(layoutConfig["float"])) {
 			this.$view.css('float', layoutConfig["float"]);
 		}
-		if (!coos.isEmpty(layoutConfig.margin)) {
-			if (coos.isEmpty(layoutConfig.width)) {
+		if (!co.isEmpty(layoutConfig.margin)) {
+			if (co.isEmpty(layoutConfig.width)) {
 				this.$content.css('margin', layoutConfig.margin);
 			} else {
 				this.$view.css('margin', layoutConfig.margin);
 			}
 		}
-		if (!coos.isEmpty(layoutConfig.border)) {
+		if (!co.isEmpty(layoutConfig.border)) {
 			this.$content.css('border', layoutConfig.border);
 		} else {
 			// this.$content.addClass('coos-bd');
 		}
-		if (!coos.isEmpty(layoutConfig.padding)) {
+		if (!co.isEmpty(layoutConfig.padding)) {
 			this.$content.css('padding', layoutConfig.padding);
 		}
 		if (this.design) {
@@ -65,6 +74,10 @@
 		hasElement : false,
 		hasButton : false,
 		columns : [ {
+			text : "显示标题",
+			name : "displaytitle",
+			inputtype : "switch"
+		}, {
 			text : "宽度",
 			name : "width",
 			inputtype : "number"
@@ -107,5 +120,5 @@
 		} ],
 		element : {}
 	};
-	coos.page.panel.layout.model.defind("CONTAINER", ThisLayoutConfig, ThisLayout);
-})(window, jQuery, coos);
+	co.page.panel.layout.model.defind("CONTAINER", ThisLayoutConfig, ThisLayout);
+})(window, jQuery);

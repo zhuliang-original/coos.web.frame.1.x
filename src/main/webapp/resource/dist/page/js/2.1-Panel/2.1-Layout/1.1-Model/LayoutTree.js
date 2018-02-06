@@ -1,11 +1,11 @@
-(function(window, jQuery, coos) {
+(function(window, jQuery) {
 	function ThisLayout(config) {
-		coos.page.panel.layout.Layout.call(this, config);
+		co.page.panel.layout.Layout.call(this, config);
 	}
 	(function() {
 		var Super = function() {
 		};
-		Super.prototype = coos.page.panel.layout.Layout.prototype;
+		Super.prototype = co.page.panel.layout.Layout.prototype;
 		ThisLayout.prototype = new Super();
 	})();
 	ThisLayout.prototype.initData = function() {
@@ -39,15 +39,15 @@
 		var resultMap = config.resultMap || {};
 		var layout = this.layout;
 		var treeConfig = {};
-		if (!coos.isEmpty(layout.config.treeulheight) && layout.config.treeulheight > 0) {
+		if (!co.isEmpty(layout.config.treeulheight) && layout.config.treeulheight > 0) {
 			treeConfig.treeUlHeight = layout.config.treeulheight;
 		} else {
 			treeConfig.treeUlHeight = null;
 		}
-		if (!coos.isEmpty(layout.config.topid)) {
+		if (!co.isEmpty(layout.config.topid)) {
 			treeConfig.topid = layout.config.topid;
 		}
-		if (!coos.isEmpty(layout.config.openLevel)) {
+		if (!co.isEmpty(layout.config.openLevel)) {
 			treeConfig.openLevel = layout.config.openlevel;
 		} else {
 			treeConfig.openLevel = 2;
@@ -67,7 +67,7 @@
 			treeConfig.hasCheckbox = true;
 			var checkedservicemodel = this.layout.config.checkedservicemodel;
 			var checkedfieldname = this.layout.config.checkedfieldname;
-			if (!coos.isEmpty(checkedservicemodel) && !coos.isEmpty(checkedfieldname)) {
+			if (!co.isEmpty(checkedservicemodel) && !co.isEmpty(checkedfieldname)) {
 				var checkedresult = resultMap[checkedservicemodel] || {};
 				var checkedvalue = checkedresult;
 				if (checkedresult && checkedresult.value) {
@@ -75,7 +75,7 @@
 				}
 				var checkedIds = [];
 				$(checkedvalue).each(function(index, checkedone) {
-					if (checkedone && !coos.isEmpty(checkedone[checkedfieldname])) {
+					if (checkedone && !co.isEmpty(checkedone[checkedfieldname])) {
 						checkedIds[checkedIds.length] = checkedone[checkedfieldname];
 					}
 				});
@@ -86,8 +86,8 @@
 		treeConfig.datas = list;
 		this.$content.empty();
 		treeConfig.content = this.$content;
-		this.tree = coos.tree(treeConfig);
-		if (coos.isEmpty(layout.config.treeulheight) || layout.config.treeulheight <= 0) {
+		this.tree = co.tree(treeConfig);
+		if (co.isEmpty(layout.config.treeulheight) || layout.config.treeulheight <= 0) {
 			this.tree.$tree.css('border-bottom', '0px');
 		}
 		this.firstclicked = false;
@@ -227,5 +227,5 @@
 			cannull : false
 		} ]
 	};
-	coos.page.panel.layout.model.defind("TREE", ThisLayoutConfig, ThisLayout);
-})(window, jQuery, coos);
+	co.page.panel.layout.model.defind("TREE", ThisLayoutConfig, ThisLayout);
+})(window, jQuery);

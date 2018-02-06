@@ -1,5 +1,5 @@
-(function(window, jQuery, coos) {
-	coos.page.panel.layout = {};
+(function(window, jQuery) {
+	co.page.panel.layout = {};
 	var html = '<div class=" coos-layout-one "><div class="coos-layout-one-content mgtb-5 "></div></div>';
 	var Layout = function(config) {
 		this.config = config;
@@ -14,7 +14,7 @@
 		var layout = config.layout;
 		var layoutConfig = layout.config;
 		if (layoutConfig != null) {
-			if (coos.isString(layoutConfig)) {
+			if (co.isString(layoutConfig)) {
 				layoutConfig = JSON.parse(layoutConfig);
 			}
 		}
@@ -25,27 +25,68 @@
 	};
 
 	Layout.prototype.loadDataBefore = function() {
+		var config = this.config;
+		var layout = config.layout;
+		if (!co.isEmpty(layout.beforedataloadexecute)) {
+			try {
+				eval('(' + layout.beforedataloadexecute + ')')(this);
+			} catch (e) {
+				console.log(e);
+			}
+
+		}
 	};
 
-	Layout.prototype.loadDataAfter = function() {
+	Layout.prototype.loadDataAfter = function(result) {
+		var config = this.config;
+		var layout = config.layout;
+		if (!co.isEmpty(layout.afterdataloadexecute)) {
+			try {
+				eval('(' + layout.afterdataloadexecute + ')')(this, result);
+			} catch (e) {
+				console.log(e);
+			}
+		}
 	};
 
 	Layout.prototype.initViewBefore = function() {
+		var config = this.config;
+		var layout = config.layout;
+		if (!co.isEmpty(layout.beforeviewloadexecute)) {
+			try {
+				eval('(' + layout.beforeviewloadexecute + ')')(this);
+			} catch (e) {
+				console.log(e);
+			}
+		}
 	};
 
 	Layout.prototype.initViewAfter = function() {
+		var config = this.config;
+		var layout = config.layout;
+		if (!co.isEmpty(layout.afterviewloadexecute)) {
+			try {
+				eval('(' + layout.afterviewloadexecute + ')')(this);
+			} catch (e) {
+				console.log(e);
+			}
+
+		}
 	};
 
 	Layout.prototype.initView = function() {
 		this.initViewBefore();
 		var layout = this.layout;
 		this.$view = $(html);
+		if (!co.isEmpty(layout.styleconfig)) {
+			this.$view.attr('style', layout.styleconfig);
+		}
 		this.config.$container && this.config.$container.append(this.$view);
 		this.$view.attr('layoutid', layout.layoutid);
 		this.$view.attr('type', layout.type);
 
 		var columnsize = layout.columnsize;
-		if (coos.isEmpty(columnsize)) {
+		if (co.isEmpty(columnsize)) {
 			columnsize = 12;
 		}
 		if (columnsize == "0" || columnsize == 0) {
@@ -53,7 +94,7 @@
 		}
 		layout.columnsize = columnsize;
 		if (layout.showtitle) {
-			if (!coos.isEmpty(layout.title)) {
+			if (!co.isEmpty(layout.title)) {
 				this.$view.find('.coos-layout-one-content').append('<h3 class="pdtb-5">' + layout.title + '</h3>');
 			}
 		}
@@ -115,7 +156,7 @@
 	};
 
 	Layout.prototype.getElementObject = function(element) {
-		var elementObject = coos.page.panel.layout.element.create({
+		var elementObject = co.page.panel.layout.element.create({
 			layout : this.layout,
 			design : this.config.design,
 			page : this.config.page,
@@ -129,7 +170,7 @@
 	};
 
 	Layout.prototype.getButtonObject = function(button) {
-		var buttonObject = coos.page.panel.layout.button.create({
+		var buttonObject = co.page.panel.layout.button.create({
 			layout : this.layout,
 			design : this.config.design,
 			page : this.config.page,
@@ -179,15 +220,18 @@
 		this.appendData(list, config);
 	};
 	Layout.prototype.clear = function() {
-		coos.form.clear(this.$view);
+		co.form.clear(this.$view);
 	};
 
 	Layout.prototype.appendData = function(list, config) {
 		this.appendDataBefore(config);
 		this.$oneViews = [];
+		if (this.getNewOneContainerView) {
+			this.$oneContainerView = this.getNewOneContainerView();
+		}
 		this.$oneContainerView.empty();
 		if (list != null) {
-			if (!coos.isArray(list)) {
+			if (!co.isArray(list)) {
 				list = [ list ];
 			}
 		}
@@ -269,14 +313,14 @@
 		if (!this.config.design) {
 			this.bindEvent($oneView, config);
 		}
-		coos.element.init(this.$view);
+		co.element.init(this.$view);
 	};
 
 	Layout.prototype.bindEvent = function($oneView, dataConfig) {
 		var this_ = this;
 		dataConfig.$row = $oneView;
 		$(this.layout.events).each(function(index, event) {
-			coos.page.event.bind({
+			co.page.event.bind({
 				event : event,
 				$view : $oneView,
 				$row : $oneView,
@@ -338,15 +382,16 @@
 			}
 			if (config.jumppage) {
 				var config = {};
-				config.action = coos.getThisAction().split('?')[0];
+				config.action = co.getThisAction().split('?')[0];
 				config.data = searchData;
-				coos.toAction(config);
+				co.toAction(config);
 				return;
 			}
 		}
 		this.loadDataBefore();
-		if (!coos.isEmpty(this.layout.serviceid)) {
-			if (!coos.isEmpty(this.layout.relationlayoutid)) {
+
+		if (!co.isEmpty(this.layout.serviceid)) {
+			if (!co.isEmpty(this.layout.relationlayoutid)) {
 				var object = getLayoutObject(this.layout.relationlayoutid);
 				if (object != null && object.clickData != null) {
 					for ( var n in object.clickData) {
@@ -362,7 +407,7 @@
 			var this_ = this;
 			loadServiceData(this.layout.serviceid, searchData, function(resultMap) {
 				var servicemodelname = this_.layout.servicemodelname;
-				if (coos.isEmpty(this_.layout.servicemodelname)) {
+				if (co.isEmpty(this_.layout.servicemodelname)) {
 					for ( var name in resultMap) {
 						servicemodelname = name;
 						break;
@@ -375,12 +420,12 @@
 					isTop : true,
 					formLoadObject : this_
 				});
+				this_.loadDataAfter(resultMap);
 				this_.loadChildLayoutData(config.callback);
-				this_.loadDataAfter();
 			});
 		} else {
 			this.loadChildLayoutData(config.callback);
-			this.loadDataAfter();
+			this.loadDataAfter({});
 		}
 
 	};
@@ -454,7 +499,7 @@
 			var layouts = this.config.panel.layouts;
 			for (var i = 0; i < layouts.length; i++) {
 				var layout = layouts[i];
-				if (coos.isEmpty(layout.parentid)) {
+				if (co.isEmpty(layout.parentid)) {
 					continue;
 				}
 				if (layout.layoutid == this.layout.layoutid) {
@@ -464,7 +509,7 @@
 					continue;
 				}
 				var name = layout.name;
-				var layoutObject = coos.page.panel.layout.create({
+				var layoutObject = co.page.panel.layout.create({
 					layout : layout,
 					design : this.design,
 					pageObject : this.config.pageObject,
@@ -490,5 +535,5 @@
 		this.formLoadObject && this.formLoadObject.loadData(config);
 	};
 
-	coos.page.panel.layout.Layout = Layout;
-})(window, jQuery, coos);
+	co.page.panel.layout.Layout = Layout;
+})(window, jQuery);

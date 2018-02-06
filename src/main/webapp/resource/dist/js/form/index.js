@@ -191,7 +191,7 @@
 		}
 		form = $(form);
 		var data = {};
-		var parameters = form.find('.elementparameter,.parameter').removeClass('core-validate-error');
+		var parameters = form.find('.elementparameter,.parameter').removeClass('coos-validate-error');
 		for (var i = 0; i < parameters.length; i++) {
 			var element = $(parameters[i]);
 			if (element.data('not-get-date')) {
@@ -203,7 +203,7 @@
 				var code = result.error.code;
 				var message = result.error.show;
 
-				(element).addClass('core-validate-error');
+				(element).addClass('coos-validate-error');
 
 				var ishidden = element.is(":hidden");
 				if (ishidden) {
@@ -229,7 +229,7 @@
 				// 处理验证错误的字符串
 				throw co.error(code, message, element);
 			} else {
-				$(element).removeClass('core-validate-error');
+				$(element).removeClass('coos-validate-error');
 				data[result.name] = result.value;
 			}
 		}
@@ -283,7 +283,7 @@
 			var setname = "";
 			$(modelForms).each(function(index, modelForm) {
 				modelForm = $(modelForm);
-				datatype = modelForm.attr('core-data-type') || 'ONE';
+				datatype = modelForm.attr('coos-data-type') || 'ONE';
 				setname = modelForm.attr('model-set-name') || '';
 				var modelData = co.form.validate(modelForm, showerror);
 				modelDatas[modelDatas.length] = modelData;
@@ -300,8 +300,8 @@
 				}
 			} else {
 
-				var coreChildForm = form.find('[model-name="' + modelName + '"]').closest('.core-child-form');
-				var deleteDatas = coreChildForm.data('delete-datas');
+				var $childForm = form.find('[model-name="' + modelName + '"]').closest('.coos-child-form');
+				var deleteDatas = $childForm.data('delete-datas');
 				if (co.isEmpty(setname)) {
 					setname = modelName + '_datas';
 				}

@@ -1,40 +1,40 @@
-(function(window, jQuery, coos) {
+(function(window, jQuery) {
 	function ThisExecute(config) {
-		coos.page.event.execute.Execute.call(this, config);
+		co.page.event.execute.Execute.call(this, config);
 	}
 
 	(function() {
 		var Super = function() {
 		};
-		Super.prototype = coos.page.event.execute.Execute.prototype;
+		Super.prototype = co.page.event.execute.Execute.prototype;
 		ThisExecute.prototype = new Super();
 	})();
 
 	ThisExecute.prototype.eventExecute = function(executeCallback) {
 		var execute = this.execute;
-		if (!coos.isEmpty(execute.config.panelids)) {
+		if (!co.isEmpty(execute.config.panelids)) {
 			var panelObjects = getPanelObject(execute.config.panelids);
 			$(panelObjects).each(function(index, panelObject) {
 				panelObject.show && panelObject.show();
 			});
 		}
-		if (!coos.isEmpty(execute.config.layoutids)) {
+		if (!co.isEmpty(execute.config.layoutids)) {
 			var objects = getLayoutObject(execute.config.layoutids);
 			$(objects).each(function(index, object) {
 				object.show && object.show();
 			});
 		}
-		if (!coos.isEmpty(execute.config.elementids)) {
+		if (!co.isEmpty(execute.config.elementids)) {
 			$(execute.config.elementids.split()).each(function(index, elementid) {
-				if (!coos.isEmpty(elementid)) {
+				if (!co.isEmpty(elementid)) {
 					var $object = $('.coos-one-element[elementid="' + elementid + '"]');
 					$object.show();
 				}
 			});
 		}
-		if (!coos.isEmpty(execute.config.buttonids)) {
+		if (!co.isEmpty(execute.config.buttonids)) {
 			$(execute.config.buttonids.split()).each(function(index, buttonid) {
-				if (!coos.isEmpty(buttonid)) {
+				if (!co.isEmpty(buttonid)) {
 					var $object = $('.coos-one-button[buttonid="' + buttonid + '"]');
 					$object.show();
 				}
@@ -84,5 +84,5 @@
 			usebutton : true
 		} ]
 	};
-	coos.page.event.execute.model.defind("SHOW", ThisExecuteConfig, ThisExecute);
-})(window, jQuery, coos);
+	co.page.event.execute.model.defind("SHOW", ThisExecuteConfig, ThisExecute);
+})(window, jQuery);

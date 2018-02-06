@@ -1,7 +1,7 @@
-(function(window, jQuery, coos) {
+(function(window, jQuery) {
 	var PageModelMap = {};
-	coos.page.model = {};
-	coos.page.model.defind = function(type, config, constructor) {
+	co.page.model = {};
+	co.page.model.defind = function(type, config, constructor) {
 		config = config || {};
 		if (PageModelMap[type] == null) {
 			config.type = type;
@@ -10,35 +10,37 @@
 			PageModelMap[type].constructor = constructor;
 		}
 	};
-	coos.page.model.get = function(type) {
+	co.page.model.get = function(type) {
 		return PageModelMap[type];
 	};
-	coos.page.model.list = function() {
+	co.page.model.list = function() {
 		var list = [];
 		for ( var type in PageModelMap) {
 			list[list.length] = PageModelMap[type];
 		}
 		return list;
 	};
-	coos.page.model.create = function(type, config) {
+	co.page.model.create = function(type, config) {
 		return new PageModelMap[type].constructor(config);
 	};
 
-	coos.page.create = function(config) {
+	co.page.create = function(config) {
 
 		var pageid = config.pageid;
-		if (!coos.isEmpty(pageid)) {
-			config.page = loadEntityPage(pageid, config.requestmap, config.design);
+		if (!co.isEmpty(pageid)) {
+			var requestmap = config.requestmap || {};
+			requestmap = jQuery.extend(true, {}, requestmap);
+			config.page = loadEntityPage(pageid, requestmap, config.design);
 		}
 		var page = config.page;
 		var type = page.type;
-		if (coos.isEmpty(type)) {
+		if (co.isEmpty(type)) {
 			type = "BASE";
 		}
 		page.type = type;
-		if (coos.page.model.get(type) == null) {
+		if (co.page.model.get(type) == null) {
 			throw new Error(type + " page is not defined");
 		}
-		return coos.page.model.create(type, config);
+		return co.page.model.create(type, config);
 	};
-})(window, jQuery, coos);
+})(window, jQuery);

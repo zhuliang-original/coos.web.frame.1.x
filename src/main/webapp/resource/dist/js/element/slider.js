@@ -11,7 +11,7 @@
 			var max = $element.attr('data-slider-max') || 100;
 			$element.attr('data-slider-min', min);
 			$element.attr('data-slider-max', max);
-			var isinterval = $element.attr('core-is-interval-search') ? true : false;
+			var isinterval = $element.attr('coos-is-interval-search') ? true : false;
 			if (isinterval) {
 				$element.attr('data-slider-value', '[' + min + ',' + max + ']');
 			} else {
@@ -43,8 +43,8 @@
 						setvalue = value;
 					} else {
 						setvalue = value[0] + value[1];
-						$element.closest('.core-form').find('[name="' + name + '_start"]').val(value[0]);
-						$element.closest('.core-form').find('[name="' + name + '_end"]').val(value[1]);
+						$element.closest('.coos-form').find('[name="' + name + '_start"]').val(value[0]);
+						$element.closest('.coos-form').find('[name="' + name + '_end"]').val(value[1]);
 					}
 					slider.data('slider').setValue(value);
 					$element.val(setvalue);

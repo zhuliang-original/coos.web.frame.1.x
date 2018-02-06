@@ -5,17 +5,17 @@
 
 	co.element.isInited = function(element, type) {
 		element = $(element);
-		var inited = element.data('core-' + type + '-inited');
+		var inited = element.data('coos-' + type + '-inited');
 		if (inited) {
 			return true;
 		}
-		if (element.closest('[core-model]').length > 0) {
+		if (element.closest('[coos-model]').length > 0) {
 			return true;
 		}
-		if (element.closest('[core-template]').length > 0) {
+		if (element.closest('[coos-template]').length > 0) {
 
 		}
-		element.data('core-' + type + '-inited', true);
+		element.data('coos-' + type + '-inited', true);
 		return false;
 
 	};

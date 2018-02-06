@@ -153,12 +153,12 @@
 				});
 				if (co.config.openUploadProgress) {
 					uploadProgress();
-					co.cover.model.uploading.find('.core-upload-progress-div').show();
-					co.cover.model.uploading.find('.core-upload-text').css('margin-top', '20px');
+					co.cover.model.uploading.find('.coos-upload-progress-div').show();
+					co.cover.model.uploading.find('.coos-upload-text').css('margin-top', '20px');
 				} else {
 
-					co.cover.model.uploading.find('.core-upload-progress-div').hide();
-					co.cover.model.uploading.find('.core-upload-text').css('margin-top', '0px');
+					co.cover.model.uploading.find('.coos-upload-progress-div').hide();
+					co.cover.model.uploading.find('.coos-upload-text').css('margin-top', '0px');
 				}
 
 			});
@@ -167,10 +167,10 @@
 			var data = {};
 			data.uploadid = uploadid;
 			co.POST(progressUrl, data, 'json', function(o) {
-				co.cover.model.uploading.find('.core-upload-progress').css('width', (o * 100) + '%');
+				co.cover.model.uploading.find('.coos-upload-progress').css('width', (o * 100) + '%');
 				if (fileUploaded) {
 					refreshUpload();
-					co.cover.model.uploading.find('.core-upload-progress').css('width', '100%');
+					co.cover.model.uploading.find('.coos-upload-progress').css('width', '100%');
 					co.cover.hideUploading({
 						place : 'file upload'
 					});

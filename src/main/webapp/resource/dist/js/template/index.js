@@ -3,18 +3,18 @@
 	co.template = co.template || {};
 	co.template.load = function(content) {
 		content = content || $('body');
-		var $elements = $(content).find('[core-template]');
+		var $elements = $(content).find('[coos-template]');
 		$elements.each(function(index, element) {
 			var $element = $(element);
-			if ($element.find('[core-template]').length > 0) {
+			if ($element.find('[coos-template]').length > 0) {
 				co.template.load($element);
 			}
-			var name = $element.attr('core-template');
+			var name = $element.attr('coos-template');
 			if (!co.isEmpty(name)) {
 				if (TemplateMap[name] != null) {
 					console.log(name + "模版已经存在");
 				}
-				$element.removeAttr('core-template');
+				$element.removeAttr('coos-template');
 				TemplateMap[name] = element;
 			} else {
 			}

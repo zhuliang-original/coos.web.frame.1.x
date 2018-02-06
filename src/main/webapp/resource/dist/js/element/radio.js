@@ -9,13 +9,13 @@
 					return;
 				}
 				element = $(element);
-				var optionGroup = $('<div class="core-radio-group"></div>');
+				var optionGroup = $('<div class="coos-radio-group"></div>');
 				var name = element.attr('name');
 				var name = name;
 				element.before(optionGroup);
 				element.hide();
 				element.removeAttr('name');
-				var options = element.parent().find('select.core-select-option').find('option');
+				var options = element.parent().find('select.coos-select-option').find('option');
 				options.each(function(index, option) {
 					option = $(option);
 					var value = option.attr('value');

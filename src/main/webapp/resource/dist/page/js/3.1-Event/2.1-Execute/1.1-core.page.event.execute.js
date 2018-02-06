@@ -1,5 +1,5 @@
-(function(window, jQuery, coos) {
-	coos.page.event.execute = {};
+(function(window, jQuery) {
+	co.page.event.execute = {};
 	var Execute = function(config) {
 		this.config = config;
 		this.execute = config.execute;
@@ -11,7 +11,7 @@
 		var execute = config.execute;
 		var executeConfig = execute.config;
 		if (executeConfig != null) {
-			if (coos.isString(executeConfig)) {
+			if (co.isString(executeConfig)) {
 				executeConfig = JSON.parse(executeConfig);
 			}
 		}
@@ -26,12 +26,12 @@
 		var executeData = {};
 		this.execute.datas = this.execute.datas || [];
 
-		for ( var index = 0; index < this.execute.datas.length; index++) {
+		for (var index = 0; index < this.execute.datas.length; index++) {
 			var data = this.execute.datas[index];
 			var setvaluename = data.setvaluename;
 			var value = this.getDataValue(data);
 			if (typeof (value) != "undefined") {
-				if (coos.isObject(value)) {
+				if (co.isObject(value)) {
 					jQuery.extend(true, executeData, value);
 				} else {
 					executeData[setvaluename] = value;
@@ -54,7 +54,7 @@
 		var dataConfig = this.config.dataConfig;
 
 		var value = executeData.value;
-		if (!coos.isEmpty(executeData.layoutid)) {
+		if (!co.isEmpty(executeData.layoutid)) {
 			var layoutObjects = getLayoutObject(executeData.layoutid);
 			var layoutData = {};
 			var executeData = {};
@@ -66,7 +66,7 @@
 			});
 			dataConfig.layoutData = layoutData;
 			dataConfig.executeData = executeData;
-			if (coos.isEmpty(value)) {
+			if (co.isEmpty(value)) {
 				return layoutData;
 			}
 		}
@@ -101,16 +101,16 @@
 	Execute.prototype.eventChildExecutes = function() {
 		this.config.event.executes = this.config.event.executes || [];
 
-		for ( var index = 0; index < this.config.event.executes.length; index++) {
+		for (var index = 0; index < this.config.event.executes.length; index++) {
 			var execute = this.config.event.executes[index];
-			if (!coos.isEmpty(execute.parentid) && execute.parentid == this.execute.executeid) {
+			if (!co.isEmpty(execute.parentid) && execute.parentid == this.execute.executeid) {
 				var config = this.config;
 				config.execute = execute;
-				var executeObject = coos.page.event.execute.create(config);
+				var executeObject = co.page.event.execute.create(config);
 				executeObject.run();
 			}
 		}
 	};
 
-	coos.page.event.execute.Execute = Execute;
-})(window, jQuery, coos);
+	co.page.event.execute.Execute = Execute;
+})(window, jQuery);

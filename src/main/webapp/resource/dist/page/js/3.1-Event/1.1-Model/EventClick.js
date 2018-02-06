@@ -1,12 +1,12 @@
-(function(window, jQuery, coos) {
+(function(window, jQuery) {
 	function ThisEvent(config) {
-		coos.page.event.Event.call(this, config);
+		co.page.event.Event.call(this, config);
 	}
 
 	(function() {
 		var Super = function() {
 		};
-		Super.prototype = coos.page.event.Event.prototype;
+		Super.prototype = co.page.event.Event.prototype;
 		ThisEvent.prototype = new Super();
 	})();
 
@@ -16,7 +16,7 @@
 			this.$view.on('click', function() {
 				if (this_.event.config.needconfirm) {
 					var confirmmessage = this_.event.config.confirmmessage || "确认执行本次操作？";
-					coos.box.confirm(confirmmessage, function() {
+					co.box.confirm(confirmmessage, function() {
 						this_.eventExecutes();
 					});
 				} else {
@@ -37,5 +37,5 @@
 			name : "confirmmessage"
 		} ]
 	};
-	coos.page.event.model.defind("CLICK", ThisEventConfig, ThisEvent);
-})(window, jQuery, coos);
+	co.page.event.model.defind("CLICK", ThisEventConfig, ThisEvent);
+})(window, jQuery);

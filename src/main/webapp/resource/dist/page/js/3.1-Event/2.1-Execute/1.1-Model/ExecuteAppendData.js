@@ -1,19 +1,19 @@
-(function(window, jQuery, coos) {
+(function(window, jQuery) {
 	function ThisExecute(config) {
-		coos.page.event.execute.Execute.call(this, config);
+		co.page.event.execute.Execute.call(this, config);
 	}
 
 	(function() {
 		var Super = function() {
 		};
-		Super.prototype = coos.page.event.execute.Execute.prototype;
+		Super.prototype = co.page.event.execute.Execute.prototype;
 		ThisExecute.prototype = new Super();
 	})();
 
 	ThisExecute.prototype.eventExecute = function(executeCallback) {
 		var execute = this.execute;
 		var data = this.getData();
-		if (!coos.isEmpty(execute.config.layoutids)) {
+		if (!co.isEmpty(execute.config.layoutids)) {
 			var layoutObjects = getLayoutObject(execute.config.layoutids);
 			$(layoutObjects).each(function(index, layoutObject) {
 				layoutObject.executeData = data;
@@ -49,5 +49,5 @@
 			usebutton : true
 		} ]
 	};
-	coos.page.event.execute.model.defind("APPEND-DATA", ThisExecuteConfig, ThisExecute);
-})(window, jQuery, coos);
+	co.page.event.execute.model.defind("APPEND-DATA", ThisExecuteConfig, ThisExecute);
+})(window, jQuery);

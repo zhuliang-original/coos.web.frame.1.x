@@ -62,7 +62,7 @@
 			}
 		}
 		if (action == null || action.length < 1 || action == '/') {
-			action = core.config.action.toIndex;
+			action = co.config.action.toIndex;
 		}
 		return co.url.format(action);
 	};
@@ -83,7 +83,7 @@
 			}
 		}
 		if (action == null || action.length < 1 || action == '/') {
-			action = coos.config.action.toIndex;
+			action = co.config.action.toIndex;
 		}
 		if (action.indexOf('?') > 0) {
 			action = action.split("?")[0];

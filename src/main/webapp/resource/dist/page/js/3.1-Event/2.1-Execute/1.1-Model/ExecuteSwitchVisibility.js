@@ -1,18 +1,18 @@
-(function(window, jQuery, coos) {
+(function(window, jQuery) {
 	function ThisExecute(config) {
-		coos.page.event.execute.Execute.call(this, config);
+		co.page.event.execute.Execute.call(this, config);
 	}
 
 	(function() {
 		var Super = function() {
 		};
-		Super.prototype = coos.page.event.execute.Execute.prototype;
+		Super.prototype = co.page.event.execute.Execute.prototype;
 		ThisExecute.prototype = new Super();
 	})();
 
 	ThisExecute.prototype.eventExecute = function(executeCallback) {
 		var execute = this.execute;
-		if (!coos.isEmpty(execute.config.panelids)) {
+		if (!co.isEmpty(execute.config.panelids)) {
 			var panelObjects = getPanelObject(execute.config.panelids);
 			$(panelObjects).each(function(index, panelObject) {
 				panelObject.switchVisibility();
@@ -63,5 +63,5 @@
 			usebutton : true
 		} ]
 	};
-	coos.page.event.execute.model.defind("SWITCH-VISIBILITY", ThisExecuteConfig, ThisExecute);
-})(window, jQuery, coos);
+	co.page.event.execute.model.defind("SWITCH-VISIBILITY", ThisExecuteConfig, ThisExecute);
+})(window, jQuery);

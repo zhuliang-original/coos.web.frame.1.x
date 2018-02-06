@@ -2,7 +2,7 @@
 	co.element.initTablist = function(content) {
 		content = content || $('body');
 		// 下拉框
-		var actives = $(content).find('.core-tab-buttons>[core-target].active,.core-tab-one>[core-target].active');
+		var actives = $(content).find('.coos-tab-buttons>[coos-target].active,.coos-tab-one>[coos-target].active');
 
 		$(actives).each(function(index, active) {
 			chooseOne($(active));
@@ -10,12 +10,12 @@
 	};
 	function chooseOne($li) {
 		var $li = $($li);
-		var core_tag = $li.closest('.core-tab');
-		var core_tag_ones = core_tag.find('>.core-tab-one');
-		var $spans = core_tag.find('>.core-tab-spans>.core-tab-span,>.core-tab-one>.core-tab-span');
-		var $lis = core_tag.find('>.core-tab-buttons>[core-target],>.core-tab-one>[core-target]');
-		var core_target = core_tag.find($li.attr('core-target'));
-		if ($li.length == 0 || core_target.length == 0) {
+		var $tag = $li.closest('.coos-tab');
+		var $tag_ones = $tag.find('>.coos-tab-one');
+		var $spans = $tag.find('>.coos-tab-spans>.coos-tab-span,>.coos-tab-one>.coos-tab-span');
+		var $lis = $tag.find('>.coos-tab-buttons>[coos-target],>.coos-tab-one>[coos-target]');
+		var $target = $tag.find($li.attr('coos-target'));
+		if ($li.length == 0 || $target.length == 0) {
 			return;
 		}
 		$lis.each(function(index, li) {
@@ -26,25 +26,25 @@
 			}
 		});
 		$spans.each(function(index, span) {
-			if (span == core_target[0]) {
-				core_target.addClass('active');
-				// if ($(span).parent().hasClass('core-tab-one')) {
+			if (span == $target[0]) {
+				$target.addClass('active');
+				// if ($(span).parent().hasClass('coos-tab-one')) {
 				// $(span).slideDown();
 				// }
 			} else {
 				$(span).removeClass('active');
-				// if ($(span).parent().hasClass('core-tab-one')) {
+				// if ($(span).parent().hasClass('coos-tab-one')) {
 				// $(span).slideUp();
 				// }
 			}
 		});
 	}
 	$(function() {
-		$('html').on('click', '.core-tab-buttons>[core-target]', function() {
+		$('html').on('click', '.coos-tab-buttons>[coos-target]', function() {
 			var $this = $(this);
 			chooseOne($this);
 		});
-		$('html').on('click', '.core-tab-one>[core-target]', function() {
+		$('html').on('click', '.coos-tab-one>[coos-target]', function() {
 			var $this = $(this);
 			chooseOne($this);
 		});

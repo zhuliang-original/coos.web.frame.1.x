@@ -1,11 +1,11 @@
-(function(window, jQuery, coos) {
+(function(window, jQuery) {
 	function ButtonBase(config) {
-		coos.page.panel.layout.button.Button.call(this, config);
+		co.page.panel.layout.button.Button.call(this, config);
 	}
 	(function() {
 		var Super = function() {
 		};
-		Super.prototype = coos.page.panel.layout.button.Button.prototype;
+		Super.prototype = co.page.panel.layout.button.Button.prototype;
 		ButtonBase.prototype = new Super();
 	})();
 
@@ -16,23 +16,23 @@
 		var button = this.button;
 		var config = button.config;
 		var $button = $('<a class="coos-button "></a>');
-		if (!coos.isEmpty(config.icon)) {
+		if (!co.isEmpty(config.icon)) {
 			$button.append('<i class="fa ' + config.icon + '"></i>');
 		}
-		if (!coos.isEmpty(config.icon) && !coos.isEmpty(config.label)) {
+		if (!co.isEmpty(config.icon) && !co.isEmpty(config.label)) {
 			$button.append(' ');
 		}
-		if (!coos.isEmpty(config.label)) {
+		if (!co.isEmpty(config.label)) {
 			$button.append(config.label);
 		}
 		$button.attr('buttonid', button.buttonid);
 		var color = config.color;
 		var size = config.size;
 		var negatecolor = config.negatecolor;
-		if (coos.isEmpty(color)) {
+		if (co.isEmpty(color)) {
 			color = "green";
 		}
-		if (coos.isEmpty(size)) {
+		if (co.isEmpty(size)) {
 			size = "xs";
 		}
 		if (negatecolor) {
@@ -118,5 +118,5 @@
 		} ],
 		element : {}
 	};
-	coos.page.panel.layout.button.model.defind("BASE", ButtonBaseConfig, ButtonBase);
-})(window, jQuery, coos);
+	co.page.panel.layout.button.model.defind("BASE", ButtonBaseConfig, ButtonBase);
+})(window, jQuery);

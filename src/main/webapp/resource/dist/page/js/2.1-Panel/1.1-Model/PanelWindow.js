@@ -1,11 +1,11 @@
-(function(window, jQuery, coos) {
+(function(window, jQuery) {
 	var ThisPanel = function(config) {
-		coos.page.panel.Panel.call(this, config);
+		co.page.panel.Panel.call(this, config);
 	};
 	(function() {
 		var Super = function() {
 		};
-		Super.prototype = coos.page.panel.Panel.prototype;
+		Super.prototype = co.page.panel.Panel.prototype;
 		ThisPanel.prototype = new Super();
 	})();
 
@@ -30,7 +30,7 @@
 		var $view = $(ThisPanelConfig.html);
 		var $content = this.$content;
 		$content.append($view);
-		if (!this.config.design) {
+		if (this.config.$container) {
 			var windowConfig = {};
 			windowConfig.title = panel.title;
 			windowConfig.html = this.$view;
@@ -43,9 +43,28 @@
 			var this_ = this;
 			windowConfig.cancelCallback = function() {
 			};
-			this.window = coos.box.window(windowConfig);
+			this.window = co.box.window(windowConfig);
 		} else {
 			$view.find('.coos-panel-body').append(panel.body);
+		}
+
+	};
+	ThisPanel.prototype.initViewAfter = function() {
+		if (this.config.design && this.config.$container) {
+			this.show();
+			var $window = this.window.$model;
+			this.config.$container && (this.config.$container.append($window));
+			$window.addClass('coos-column-12 mgb-20');
+			$window.css('position', 'relative');
+			$window.find('.coos-box-title').append("&nbsp;&nbsp;&nbsp;&nbsp;[窗口面板]");
+			$window.find('.coos-box-cover').remove();
+			$window.find('.coos-box-content').css('top', 'relative');
+			$window.find('.coos-box-content').css('position', 'relative');
+			$window.find('.coos-box-center').css('height', 'auto');
+			$window.find('.coos-box-center').css('padding-top', '25px');
+			$window.show();
+			$("body").removeClass('coos-over-hidden');
+
 		}
 	};
 
@@ -66,5 +85,5 @@
 		} ],
 		element : {}
 	};
-	coos.page.panel.model.defind("WINDOW", ThisPanelConfig, ThisPanel);
-})(window, jQuery, coos);
+	co.page.panel.model.defind("WINDOW", ThisPanelConfig, ThisPanel);
+})(window, jQuery);

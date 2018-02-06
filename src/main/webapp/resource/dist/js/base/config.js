@@ -15,7 +15,6 @@
 		doLogin : "login/doLogin.do",
 		doUpload : "core/file/file.upload",
 		uploadProgress : "core/file/file.progress",
-		coreSocket : "core/websocket",
 		error : {
 			404 : "error/404.do",
 			500 : "error/500.do",

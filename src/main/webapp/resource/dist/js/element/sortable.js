@@ -4,7 +4,7 @@
 	co.element.initSortable = function(content) {
 		content = content || $('body');
 
-		var sortables = $(content).find('.core-need-init-sortable');
+		var sortables = $(content).find('.coos-need-init-sortable');
 		if (sortables.length > 0) {
 			co.plugins.load("jquery_sortable", function() {
 
@@ -29,7 +29,7 @@
 							var idstr = '';
 							ones = $("[sortableindex=" + thisindex + "]").find(sortable_one);
 							ones.each(function(index, one) {
-								idstr += $(one).attr('core-recordid') + ",";
+								idstr += $(one).attr('coos-recordid') + ",";
 								$(one).find('[name="' + sequencecolumnname + '"]').val(index + 1);
 							});
 							if (((tablename != null && tablename != '') || (tableid != null && tableid != '')) && idstr != null && idstr != '') {

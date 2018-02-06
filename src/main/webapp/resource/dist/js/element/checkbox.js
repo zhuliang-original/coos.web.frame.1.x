@@ -9,12 +9,12 @@
 					return;
 				}
 				element = $(element);
-				var optionGroup = $('<div class="core-checkbox-group"></div>');
+				var optionGroup = $('<div class="coos-checkbox-group"></div>');
 				var name = element.attr('name');
 				element.before(optionGroup);
 				element.hide();
 				element.removeAttr('name');
-				var options = element.parent().find('select.core-select-option').find('option');
+				var options = element.parent().find('select.coos-select-option').find('option');
 				options.each(function(index, option) {
 					option = $(option);
 					var value = option.attr('value');

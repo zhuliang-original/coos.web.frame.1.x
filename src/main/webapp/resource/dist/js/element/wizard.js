@@ -2,12 +2,12 @@
 	co.wizard = co.wizard || {};
 	var defaultConfig = {};
 	defaultConfig.selector = {};
-	defaultConfig.selector.pills = ".core-wizard-pills>li";
-	defaultConfig.selector.spans = ".core-wizard-spans>.core-wizard-span";
-	defaultConfig.selector.prev = ".core-wizard-button-prev";
-	defaultConfig.selector.next = ".core-wizard-button-next";
-	defaultConfig.selector.finish = ".core-wizard-button-finish";
-	defaultConfig.selector.bar = ".core-progress-bar";
+	defaultConfig.selector.pills = ".coos-wizard-pills>li";
+	defaultConfig.selector.spans = ".coos-wizard-spans>.coos-wizard-span";
+	defaultConfig.selector.prev = ".coos-wizard-button-prev";
+	defaultConfig.selector.next = ".coos-wizard-button-next";
+	defaultConfig.selector.finish = ".coos-wizard-button-finish";
+	defaultConfig.selector.bar = ".coos-progress-bar";
 
 	var Wizard = function(config) {
 		config = jQuery.extend(true, {}, config, defaultConfig);

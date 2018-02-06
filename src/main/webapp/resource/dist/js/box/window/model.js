@@ -41,7 +41,7 @@
 		this.config.html = $model;
 		var buttons = [];
 		buttons[buttons.length] = {
-			className : "core-bg-green core-white",
+			className : "coos-bg-green coos-white",
 			label : isForm ? "保存" : "确认",
 			bindEnterKey : true,
 			callback : function() {

@@ -71,7 +71,7 @@
 		$(paths).each(function(index, path) {
 			co.resource.load.loaded[path] = true;
 			var url = co.url.format(path);
-			$('[core-main]').before("<link href='" + url + "' rel='stylesheet' type='text/css'>");
+			$('[coos-main]').before("<link href='" + url + "' rel='stylesheet' type='text/css'>");
 			length++;
 			if (length == paths.length) {
 				if (callback) {

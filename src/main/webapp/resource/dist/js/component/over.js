@@ -17,8 +17,8 @@
 		this.initEvent();
 	};
 	OverTool.prototype.initView = function() {
-		this.$view = $('<div class="core-over-tool-window"><div class="core-over-tool-window-container"><div class="core-over-tool-window-content"></div></div></div>');
-		this.$view.find('.core-over-tool-window-content').append(this.$content);
+		this.$view = $('<div class="coos-over-tool-window"><div class="coos-over-tool-window-container"><div class="coos-over-tool-window-content"></div></div></div>');
+		this.$view.find('.coos-over-tool-window-content').append(this.$content);
 		$('body').append(this.$view);
 	};
 	OverTool.prototype.initPlace = function() {
@@ -115,16 +115,16 @@
 			lines : lines,
 			showEnd : function() {
 				if (this_.showed) {
-					this_.$view.addClass('core-show');
+					this_.$view.addClass('coos-show');
 				} else {
-					this_.$view.removeClass('core-show');
+					this_.$view.removeClass('coos-show');
 				}
 			},
 			hideEnd : function() {
 				if (this_.showed) {
-					this_.$view.addClass('core-show');
+					this_.$view.addClass('coos-show');
 				} else {
-					this_.$view.removeClass('core-show');
+					this_.$view.removeClass('coos-show');
 				}
 			}
 		});
@@ -142,11 +142,11 @@
 		}
 		this.showed = false;
 		this.line.hide();
-		this.$view.removeClass('core-show');
+		this.$view.removeClass('coos-show');
 	};
 	OverTool.prototype.initEvent = function() {
 		var this_ = this;
-		$(this.$element).attr('core-over-id', this.overid);
+		$(this.$element).attr('coos-over-id', this.overid);
 		$(this.$element).mouseenter(function() {
 			this_.initPlace();
 			this_.show();

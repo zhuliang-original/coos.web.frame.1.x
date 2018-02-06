@@ -199,7 +199,7 @@
 	};
 
 	co.page.reload = function() {
-		if (core.config.openSinglePage) {
+		if (co.page.config.openSinglePage) {
 			var action = co.url.getCurrentUrl();
 			var config = {};
 			config.action = action;

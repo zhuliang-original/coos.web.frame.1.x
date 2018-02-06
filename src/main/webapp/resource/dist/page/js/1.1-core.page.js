@@ -1,5 +1,5 @@
-(function(window, jQuery, coos) {
-	coos.page = coos.page || {};
+(function(window, jQuery) {
+	co.page = co.page || {};
 	var Page = function(config) {
 		this.config = config;
 		this.page = config.page;
@@ -14,7 +14,7 @@
 		var page = config.page;
 		var pageConfig = page.config;
 		if (pageConfig != null) {
-			if (coos.isString(pageConfig)) {
+			if (co.isString(pageConfig)) {
 				pageConfig = JSON.parse(pageConfig);
 			}
 		}
@@ -59,7 +59,7 @@
 		for (var i = 0; i < panels.length; i++) {
 			var panel = panels[i];
 			var name = panel.name;
-			var panelObject = coos.page.panel.create({
+			var panelObject = co.page.panel.create({
 				panel : panel,
 				page : this.page,
 				pageObject : this,
@@ -96,5 +96,5 @@
 		}
 		execute();
 	};
-	coos.page.Page = Page;
-})(window, jQuery, coos);
+	co.page.Page = Page;
+})(window, jQuery);

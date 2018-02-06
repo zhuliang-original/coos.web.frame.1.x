@@ -29,7 +29,7 @@ window.getPanelObject = function(key) {
 		keys = key.split(',');
 	}
 	$(keys).each(function(index, key) {
-		if (!coos.isEmpty(key) && PANELID_PANEL_OBJECT_MAP[key] != null) {
+		if (!co.isEmpty(key) && PANELID_PANEL_OBJECT_MAP[key] != null) {
 			objects[objects.length] = PANELID_PANEL_OBJECT_MAP[key];
 		}
 	});
@@ -51,7 +51,7 @@ window.getLayoutObject = function(key) {
 		keys = key.split(',');
 	}
 	$(keys).each(function(index, key) {
-		if (!coos.isEmpty(key) && LAYOUTID_LAYOUT_OBJECT_MAP[key] != null) {
+		if (!co.isEmpty(key) && LAYOUTID_LAYOUT_OBJECT_MAP[key] != null) {
 			objects[objects.length] = LAYOUTID_LAYOUT_OBJECT_MAP[key];
 		}
 	});
@@ -60,7 +60,7 @@ window.getLayoutObject = function(key) {
 };
 
 window.loadEntityPage = function(pageid, requestmap, design) {
-	var action = "/coos/data/getPage.data";
+	var action = "/core/common/getPage.data";
 	var page = null;
 	// var data = requestmap || {};
 	var data = jQuery.extend(true, {}, requestmap);
@@ -68,10 +68,10 @@ window.loadEntityPage = function(pageid, requestmap, design) {
 	if (design) {
 		data["coos-page-design"] = true;
 	}
-	coos.POST(action, data, 'json', function(o) {
+	co.POST(action, data, 'json', function(o) {
 		var status = o.data;
 		if (status.errcode != 0) {
-			coos.box.info(status.errmsg);
+			co.box.info(status.errmsg);
 		} else {
 			page = status.result;
 		}
@@ -88,19 +88,19 @@ window.loadServiceData = function(serviceid, searchData, callback) {
 		if (result.errcode == 0) {
 			map = result.result;
 		} else {
-			coos.box.info(result.errmsg);
+			co.box.info(result.errmsg);
 		}
 		callback && callback(map);
 	}
-	coos.executeService(config);
+	co.executeService(config);
 };
 // TODO 默认空为false
 window.initDataDefaultFalse = function(data, name) {
 	var value = data[name];
-	if (coos.isEmpty(value)) {
+	if (co.isEmpty(value)) {
 		value = false;
 	} else {
-		if (!coos.isBoolean(value)) {
+		if (!co.isBoolean(value)) {
 			if ((value == "false" || value == "0")) {
 				value = false;
 			} else {
@@ -114,10 +114,10 @@ window.initDataDefaultFalse = function(data, name) {
 // TODO 默认空位true
 window.initDataDefaultTrue = function(data, name) {
 	var value = data[name];
-	if (coos.isEmpty(value)) {
+	if (co.isEmpty(value)) {
 		value = true;
 	} else {
-		if (!coos.isBoolean(value)) {
+		if (!co.isBoolean(value)) {
 			if ((value == "false" || value == "0")) {
 				value = false;
 			} else {

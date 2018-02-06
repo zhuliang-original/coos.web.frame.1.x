@@ -82,7 +82,7 @@
 		var isdatetime = $element.attr('isdatetime') != null;
 		var isinteger = $element.attr('isinteger') != null;
 		var isidcard = $element.attr('isidcard') != null;
-		var validate = $element.attr('core-validate');
+		var validate = $element.attr('coos-validate');
 		var minlength = parseInt($element.attr('minlength'), 10);
 		var maxlength = parseInt($element.attr('maxlength'), 10);
 		var eq = $element.attr('eq');

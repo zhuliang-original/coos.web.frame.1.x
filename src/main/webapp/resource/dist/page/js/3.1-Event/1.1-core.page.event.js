@@ -1,4 +1,4 @@
-(function(window, jQuery, coos) {
+(function(window, jQuery) {
 	var Event = function(config) {
 		this.config = config;
 		this.event = config.event;
@@ -10,7 +10,7 @@
 		var event = config.event;
 		var eventConfig = event.config;
 		if (eventConfig != null) {
-			if (coos.isString(eventConfig)) {
+			if (co.isString(eventConfig)) {
 				eventConfig = JSON.parse(eventConfig);
 			}
 		}
@@ -29,9 +29,9 @@
 	Event.prototype.eventExecutes = function() {
 		this.event.executes = this.event.executes || [];
 
-		for ( var index = 0; index < this.event.executes.length; index++) {
+		for (var index = 0; index < this.event.executes.length; index++) {
 			var execute = this.event.executes[index];
-			if (coos.isEmpty(execute.parentid)) {
+			if (co.isEmpty(execute.parentid)) {
 				this.eventExecute(execute);
 			}
 		}
@@ -40,8 +40,8 @@
 	Event.prototype.eventExecute = function(execute) {
 		var config = this.config;
 		config.execute = execute;
-		var executeObject = coos.page.event.execute.create(config);
+		var executeObject = co.page.event.execute.create(config);
 		executeObject.run();
 	};
-	coos.page.event.Event = Event;
-})(window, jQuery, coos);
+	co.page.event.Event = Event;
+})(window, jQuery);

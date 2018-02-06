@@ -1,11 +1,11 @@
-(function(window, jQuery, coos) {
+(function(window, jQuery) {
 	function ThisElement(config) {
-		coos.page.panel.layout.element.Element.call(this, config);
+		co.page.panel.layout.element.Element.call(this, config);
 	}
 	(function() {
 		var Super = function() {
 		};
-		Super.prototype = coos.page.panel.layout.element.Element.prototype;
+		Super.prototype = co.page.panel.layout.element.Element.prototype;
 		ThisElement.prototype = new Super();
 	})();
 
@@ -13,9 +13,10 @@
 		this.$input.attr('isphone', true);
 	};
 
-	var ThisElementConfig = {
+	var ThisElementConfig =
+	{
 		name : "手机号",
 		columns : []
 	};
-	coos.page.panel.layout.element.model.defind("PHONE", ThisElementConfig, ThisElement);
-})(window, jQuery, coos);
+	co.page.panel.layout.element.model.defind("PHONE", ThisElementConfig, ThisElement);
+})(window, jQuery);

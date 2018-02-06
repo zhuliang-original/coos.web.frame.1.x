@@ -1,9 +1,11 @@
-(function(window, jQuery, coos) {
-	coos.page.event = {};
-	coos.page.event.bind = function(config) {
+(function(window, jQuery) {
+	co.page.event = {};
+	co.page.event.bind = function(config) {
 		config = config || {};
 		var dataConfig = config.dataConfig || {};
-		dataConfig.request = config.pageObject.config.requestmap;
-		coos.page.event.create(config);
+		var requestmap = config.pageObject.config.requestmap || {};
+		requestmap = jQuery.extend(true, {}, requestmap);
+		dataConfig.request = requestmap;
+		co.page.event.create(config);
 	};
-})(window, jQuery, coos);
+})(window, jQuery);

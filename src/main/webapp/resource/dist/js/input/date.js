@@ -25,7 +25,6 @@
 	}
 
 	function bindDatetimepicker(element, type) {
-		var coreid = element.attr('core-id');
 		var minTo = element.attr('minTo');
 		var maxTo = element.attr('maxTo');
 		if (minTo) {

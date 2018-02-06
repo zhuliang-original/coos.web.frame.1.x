@@ -1,7 +1,7 @@
-(function(window, jQuery, coos) {
+(function(window, jQuery) {
 	var ElementModelMap = {};
-	coos.page.panel.layout.element.model = {};
-	coos.page.panel.layout.element.model.defind = function(type, config, constructor) {
+	co.page.panel.layout.element.model = {};
+	co.page.panel.layout.element.model.defind = function(type, config, constructor) {
 		config = config || {};
 		if (ElementModelMap[type] == null) {
 			config.type = type;
@@ -10,37 +10,37 @@
 			ElementModelMap[type].constructor = constructor;
 		}
 	};
-	coos.page.panel.layout.element.model.appendInputColumns = function(config) {
+	co.page.panel.layout.element.model.appendInputColumns = function(config) {
 
 	};
 
-	coos.page.panel.layout.element.model.get = function(type) {
+	co.page.panel.layout.element.model.get = function(type) {
 		return ElementModelMap[type];
 	};
 
-	coos.page.panel.layout.element.model.list = function() {
+	co.page.panel.layout.element.model.list = function() {
 		var list = [];
 		for ( var type in ElementModelMap) {
 			list[list.length] = ElementModelMap[type];
 		}
 		return list;
 	};
-	coos.page.panel.layout.element.model.create = function(type, config) {
+	co.page.panel.layout.element.model.create = function(type, config) {
 		return new ElementModelMap[type].constructor(config);
 	};
 
-	coos.page.panel.layout.element.create = function(config) {
+	co.page.panel.layout.element.create = function(config) {
 		var element = config.element;
 		var type = element.type;
-		if (coos.isEmpty(type)) {
+		if (co.isEmpty(type)) {
 			throw new Error("element type is null");
 		}
-		if (coos.page.panel.layout.element.model.get(type) == null) {
+		if (co.page.panel.layout.element.model.get(type) == null) {
 			throw new Error(type + " element is not defined");
 		}
-		return coos.page.panel.layout.element.model.create(type, config);
+		return co.page.panel.layout.element.model.create(type, config);
 	};
-	coos.page.panel.layout.element.model.appendBaseColumns = function(config) {
+	co.page.panel.layout.element.model.appendBaseColumns = function(config) {
 		$(baseColumns).each(function(index, column) {
 			if (!hasColumn(config, column)) {
 				config.columns[config.columns.length] = column;
@@ -56,21 +56,21 @@
 		});
 		return has;
 	};
-	coos.page.panel.layout.element.model.appendInputColumns = function(config) {
+	co.page.panel.layout.element.model.appendInputColumns = function(config) {
 		$(inputColumns).each(function(index, column) {
 			if (!hasColumn(config, column)) {
 				config.columns[config.columns.length] = column;
 			}
 		});
 	};
-	coos.page.panel.layout.element.model.appendTagColumns = function(config) {
+	co.page.panel.layout.element.model.appendTagColumns = function(config) {
 		$(tagColumns).each(function(index, column) {
 			if (!hasColumn(config, column)) {
 				config.columns[config.columns.length] = column;
 			}
 		});
 	};
-	coos.page.panel.layout.element.model.appendValidateColumns = function(config) {
+	co.page.panel.layout.element.model.appendValidateColumns = function(config) {
 		$(validateColumns).each(function(index, column) {
 			if (!hasColumn(config, column)) {
 				config.columns[config.columns.length] = column;
@@ -80,6 +80,9 @@
 	var baseColumns = [ {
 		text : "标签",
 		name : "label"
+	}, {
+		text : "默认值",
+		name : "defaultvalue"
 	}, {
 		text : "显示",
 		name : "display",
@@ -167,4 +170,4 @@
 		text : "后置标签点击",
 		name : "afteraddononclick"
 	} ];
-})(window, jQuery, coos);
+})(window, jQuery);

@@ -1,11 +1,11 @@
-(function(window, jQuery, coos) {
+(function(window, jQuery) {
 	var ThisPanel = function(config) {
-		coos.page.panel.Panel.call(this, config);
+		co.page.panel.Panel.call(this, config);
 	};
 	(function() {
 		var Super = function() {
 		};
-		Super.prototype = coos.page.panel.Panel.prototype;
+		Super.prototype = co.page.panel.Panel.prototype;
 		ThisPanel.prototype = new Super();
 	})();
 
@@ -25,33 +25,36 @@
 			var notitle = config.notitle;
 			var title = panel.title;
 			var body = panel.body;
+			if (co.isEmpty(config.blankpanel)) {
+				config.blankpanel = false;
+			}
 
 			$content.find('.coos-panel').addClass('coos-panel-light');
 			$content.find('.coos-panel').attr('panelid', panel.panelid);
-			if (hasheaderborder) {
+			if (!config.blankpanel && hasheaderborder) {
 				$content.find('.coos-panel-header').addClass('bordered');
 			}
-			if (!coos.isEmpty(headerbackgroundcolor)) {
+			if (!config.blankpanel && !co.isEmpty(headerbackgroundcolor)) {
 				if (headerbackgroundcolor == 'white') {
 				} else {
 					$content.find('.coos-panel').removeClass('coos-panel-light').addClass('coos-panel-dark');
 				}
 				$content.find('.coos-panel-header').addClass('coos-bg-' + headerbackgroundcolor);
 			}
-			if (!coos.isEmpty(bodybackgroundcolor)) {
+			if (!co.isEmpty(bodybackgroundcolor)) {
 				if (bodybackgroundcolor == 'white') {
 				} else {
 					$content.find('.coos-panel-body').addClass('coos-white');
 				}
 				$content.find('.coos-panel-body').addClass('coos-bg-' + bodybackgroundcolor);
 			}
-			if (!coos.isEmpty(bodertopcolor)) {
+			if (!config.blankpanel && !co.isEmpty(bodertopcolor)) {
 				$content.find('.coos-panel').addClass('coos-panel-bd-top coos-bdt-' + bodertopcolor);
 			}
-			if (!coos.isEmpty(boderleftcolor)) {
+			if (!config.blankpanel && !co.isEmpty(boderleftcolor)) {
 				$content.find('.coos-panel').addClass('coos-panel-bd-left coos-bdl-' + boderleftcolor);
 			}
-			if (!coos.isEmpty(title)) {
+			if (!co.isEmpty(title)) {
 				$content.find('.coos-panel-title').text(title);
 			} else {
 				$content.find('.coos-panel-title').html('&nbsp;');
@@ -62,8 +65,16 @@
 			if (config.noheader) {
 				$content.find('.coos-panel-header').hide();
 			}
-			if (!coos.isEmpty(body)) {
+			if (!co.isEmpty(body)) {
 				$content.find('.coos-panel-body').html(body);
+			}
+			if (config.blankpanel) {
+				$content.find('.coos-panel-header').hide();
+				$content.find('.coos-panel').css('border', '0px solid #ddd');
+				$content.find('.coos-panel').css('border-radius', '0px');
+				if (this.config.design) {
+					$content.find('.coos-panel').css('border', '1px solid #ddd');
+				}
 			}
 		}
 
@@ -88,6 +99,10 @@
 			name : "hasheaderborder",
 			inputtype : "switch"
 		}, {
+			text : "空白面板",
+			name : "blankpanel",
+			inputtype : "switch"
+		}, {
 			text : "顶部边框",
 			name : "bodertopcolor",
 			inputtype : "select",
@@ -110,5 +125,5 @@
 		} ],
 		element : {}
 	};
-	coos.page.panel.model.defind("BASE", ThisPanelConfig, ThisPanel);
-})(window, jQuery, coos);
+	co.page.panel.model.defind("BASE", ThisPanelConfig, ThisPanel);
+})(window, jQuery);

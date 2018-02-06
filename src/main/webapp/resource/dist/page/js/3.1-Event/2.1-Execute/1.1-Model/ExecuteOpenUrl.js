@@ -1,12 +1,12 @@
-(function(window, jQuery, coos) {
+(function(window, jQuery) {
 	function ThisExecute(config) {
-		coos.page.event.execute.Execute.call(this, config);
+		co.page.event.execute.Execute.call(this, config);
 	}
 
 	(function() {
 		var Super = function() {
 		};
-		Super.prototype = coos.page.event.execute.Execute.prototype;
+		Super.prototype = co.page.event.execute.Execute.prototype;
 		ThisExecute.prototype = new Super();
 	})();
 
@@ -14,16 +14,16 @@
 		var execute = this.execute;
 		var url = execute.config.url;
 		var data = this.getData();
-		if (!coos.isEmpty(url)) {
+		if (!co.isEmpty(url)) {
 			var opentype = execute.config.opentype;
 			opentype = opentype || "currentpage";
 			if (opentype == 'currentpage') {
-				coos.toAction({
+				co.toAction({
 					data : data,
 					action : url
 				});
 			} else if (opentype == 'openpage') {
-				coos.openUrl(url, data);
+				co.openUrl(url, data);
 			}
 		}
 		executeCallback && executeCallback();
@@ -51,5 +51,5 @@
 			} ]
 		}, ]
 	};
-	coos.page.event.execute.model.defind("OPEN-URL", ThisExecuteConfig, ThisExecute);
-})(window, jQuery, coos);
+	co.page.event.execute.model.defind("OPEN-URL", ThisExecuteConfig, ThisExecute);
+})(window, jQuery);

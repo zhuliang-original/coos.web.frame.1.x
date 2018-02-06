@@ -1,10 +1,10 @@
 (function() {
-	var CoreWindow = function(config) {
+	var BaseWindow = function(config) {
 		this.config = config;
 		this.init();
 		return this;
 	}
-	CoreWindow.prototype.init = function() {
+	BaseWindow.prototype.init = function() {
 		// 标题
 		this.title = this.config.title;
 		// 内容代码
@@ -19,7 +19,7 @@
 		this.build();
 	};
 
-	CoreWindow.prototype.build = function() {
+	BaseWindow.prototype.build = function() {
 		this.$model = $(co.box.html.window);
 		this.$model.find('.coos-box-title').text(co.config.label.title);
 		this.$model.find('.coos-box-footer .coos-box-define').text(co.config.label.define);
@@ -77,7 +77,7 @@
 		});
 		$('body').append(this.$model);
 	};
-	CoreWindow.prototype.initLine = function() {
+	BaseWindow.prototype.initLine = function() {
 		if (this.config.showLine) {
 			var width = this.$model.find('>.coos-box-content').width();
 			var height = this.$model.find('>.coos-box-content').height();
@@ -159,10 +159,10 @@
 			});
 		}
 	};
-	CoreWindow.prototype.hide = function() {
+	BaseWindow.prototype.hide = function() {
 		this.hide_();
 	};
-	CoreWindow.prototype.hide_ = function() {
+	BaseWindow.prototype.hide_ = function() {
 		if (!this.showed) {
 			return;
 		}
@@ -174,10 +174,10 @@
 			this.$model.hide();
 		}
 	};
-	CoreWindow.prototype.remove = function() {
+	BaseWindow.prototype.remove = function() {
 		this.remove_();
 	};
-	CoreWindow.prototype.remove_ = function() {
+	BaseWindow.prototype.remove_ = function() {
 		$("body").removeClass('coos-over-hidden');
 		this.$model.remove();
 
@@ -185,7 +185,7 @@
 			this.line.remove();
 		}
 	};
-	CoreWindow.prototype.show_ = function() {
+	BaseWindow.prototype.show_ = function() {
 		if (this.showed) {
 			return;
 		}
@@ -200,7 +200,7 @@
 			this.$model.show();
 		}
 	};
-	CoreWindow.prototype.show = function() {
+	BaseWindow.prototype.show = function() {
 		$("body").addClass('coos-over-hidden');
 		var this_ = this;
 		this.$model.show();
@@ -280,6 +280,6 @@
 		this.show_();
 	};
 	co.box.window = function(config) {
-		return new CoreWindow(config);
+		return new BaseWindow(config);
 	}
 })();

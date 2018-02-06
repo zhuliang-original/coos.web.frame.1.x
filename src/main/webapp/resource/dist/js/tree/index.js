@@ -196,11 +196,11 @@
 			liclass = addClass;
 		}
 		var liattr = '';
-		liattr += ' core-recordid="' + id + '" ';
-		liattr += ' core-thistreebeanid="' + bean.thistreebeanid + '" ';
+		liattr += ' coos-recordid="' + id + '" ';
+		liattr += ' coos-thistreebeanid="' + bean.thistreebeanid + '" ';
 
 		if (!co.isEmpty(parentid)) {
-			liattr += ' core-recordparentid="' + parentid + '" ';
+			liattr += ' coos-recordparentid="' + parentid + '" ';
 		}
 		if (!co.isEmpty(title)) {
 			liattr += ' title="' + title + '" ';
@@ -220,7 +220,7 @@
 			dataicon += '<i class="fa data-icon ' + icon + '"></i>';
 		}
 		if (!co.isEmpty(image)) {
-			dataicon += '<img class="core-need-init-image data-image" core-path="' + image + '"/>';
+			dataicon += '<img class="coos-need-init-image data-image" coos-path="' + image + '"/>';
 		}
 		var datatext = '';
 		datatext = text;
@@ -256,7 +256,7 @@
 		});
 
 		var li_html = '<li ' + liattr + ' li-level="#lilevel" class=" ' + liclass + ' ">';
-		li_html += '<div class="core-row core-tree-row"><div class="tree-row-content">';
+		li_html += '<div class="coos-row coos-tree-row"><div class="tree-row-content">';
 		li_html += '<div class="tree-row-left"><i class="fa icon li-icon"></i>' + leftinput + '</div>';
 		li_html += '<div class="tree-row-center">' + dataicon + '<span class="data-text">' + datatext + '</span></div>';
 		li_html += '<div class="tree-row-right"><div class="tree-button-group">' + rightbutton + '</div></div>';
@@ -493,7 +493,7 @@
 		if (windowConfig.defineCallback) {
 			var button = {};
 			button.label = co.config.label.define;
-			button.className = "core-box-define core-button";
+			button.className = "coos-box-define coos-button";
 			button.callback = function() {
 				var result = this_.getCheckedDatas();
 				var result = windowConfig.defineCallback(result);
@@ -596,9 +596,9 @@
 			this.openParentLiByBean(bean.parent);
 		}
 		var thistreebeanid = bean.thistreebeanid;
-		var $li = this.$tree.find('[core-thistreebeanid="' + thistreebeanid + '"]');
+		var $li = this.$tree.find('[coos-thistreebeanid="' + thistreebeanid + '"]');
 		if ($li.length > 0) {
-			$li.find('>.core-tree-row .li-icon.fa-chevron-right').click();
+			$li.find('>.coos-tree-row .li-icon.fa-chevron-right').click();
 		}
 	};
 	Tree.prototype.getScrollObject = function($object) {
@@ -617,9 +617,9 @@
 		var bean = this.dataModel.getBean(data);
 		this.openParentLiByBean(bean.parent);
 		var thistreebeanid = bean.thistreebeanid;
-		var $li = this.$tree.find('[core-thistreebeanid="' + thistreebeanid + '"]');
+		var $li = this.$tree.find('[coos-thistreebeanid="' + thistreebeanid + '"]');
 		if ($li.length > 0) {
-			$li.addClass('core-tree-search-for-high-light');
+			$li.addClass('coos-tree-search-for-high-light');
 			var $scrollObject = this.$scrollObject;
 			var scrollTop = $li.offset().top - $scrollObject.offset().top - 60;
 			$scrollObject.animate({
@@ -632,7 +632,7 @@
 		var $searchContainer = this.$searchContainer;
 		var $searchPrompt = this.$searchPrompt;
 		if ($searchPrompt == null) {
-			this.$searchPrompt = $('<div class="core-tree-search-prompt"><ul class=""></ul></div>');
+			this.$searchPrompt = $('<div class="coos-tree-search-prompt"><ul class=""></ul></div>');
 			$searchPrompt = this.$searchPrompt;
 			$searchContainer.append($searchPrompt);
 		}
@@ -641,8 +641,8 @@
 		var $tree = this.$tree;
 		var this_ = this;
 		var $modelLi = $('<li></li>');
-		$modelLi.append('<div class="core-row core-tree-row"></div>');
-		$modelLi.find('.core-tree-row').append('<div class="tree-row-content"></div>');
+		$modelLi.append('<div class="coos-row coos-tree-row"></div>');
+		$modelLi.find('.coos-tree-row').append('<div class="tree-row-content"></div>');
 		$modelLi.find('.tree-row-content').append('<div class="tree-row-center"><span class="data-text"></span</div>');
 		$modelLi.find('.tree-row-content').append('<div class="tree-row-right"></div>');
 		var textname = this.config.property.text;
@@ -650,7 +650,7 @@
 		var parentidname = this.config.property.parentid;
 		if (searchDatas.length == 0) {
 			var $li = $modelLi.clone();
-			var $noDataLi = $('<li><div class="core-no-matching-data">' + co.config.label.noMatchingData + '</div></li>');
+			var $noDataLi = $('<li><div class="coos-no-matching-data">' + co.config.label.noMatchingData + '</div></li>');
 			$ul.append($noDataLi);
 		} else {
 			$(searchDatas).each(function(index, searchData) {
@@ -688,7 +688,7 @@
 
 		} else {
 			$content.find('li').removeClass('tree-search-not-find tree-search-find');
-			$content.find('li.core-tree-has-child').addClass('open');
+			$content.find('li.coos-tree-has-child').addClass('open');
 		}
 		if (co.isEmpty(searchText)) {
 			return [];
@@ -740,7 +740,7 @@
 	Tree.prototype.searchContent = function(searchText, $content) {
 		$content = $content || this.$tree;
 		var searchDatas = this.searchData(searchText);
-		$content.find('.core-tree-search-for-high-light').removeClass('core-tree-search-for-high-light');
+		$content.find('.coos-tree-search-for-high-light').removeClass('coos-tree-search-for-high-light');
 		this.initSearchPrompt(searchDatas);
 		if (co.isEmpty(searchText)) {
 			this.$searchPrompt.hide();
@@ -784,17 +784,17 @@
 
 				if (count > 0) {
 					for (var i = 1; i <= count; i++) {
-						$($content.find('[li-level=' + i + '].core-tree-has-child')).each(function(index, $li) {
+						$($content.find('[li-level=' + i + '].coos-tree-has-child')).each(function(index, $li) {
 							this_.opendOrCloseLi($($li), true);
 						});
 						// $content.find('[li-level=' + i +
-						// '].core-tree-has-child').addClass('open');
+						// '].coos-tree-has-child').addClass('open');
 					}
 				} else {
-					$($content.find('li.core-tree-has-child')).each(function(index, $li) {
+					$($content.find('li.coos-tree-has-child')).each(function(index, $li) {
 						this_.opendOrCloseLi($($li), true);
 					});
-					// $content.find('li.core-tree-has-child').addClass('open');
+					// $content.find('li.coos-tree-has-child').addClass('open');
 				}
 				this.openLiByIds(this.config.openIds);
 			} else {
@@ -822,7 +822,7 @@
 		if (!this.config.showLevelLine) {
 			$li = $($li);
 			var level = Number($li.attr('li-level'));
-			$li.find('>.core-row .tree-row-content').css('margin-left', (Number(level) - 1) * 25);
+			$li.find('>.coos-row .tree-row-content').css('margin-left', (Number(level) - 1) * 25);
 		}
 	};
 
@@ -839,11 +839,11 @@
 		}
 		$li = $($li);
 		if ($li.length > 0) {
-			var $input = $li.find('>.core-row').find('input[type="checkbox"]:first');
+			var $input = $li.find('>.coos-row').find('input[type="checkbox"]:first');
 			if ($input.length > 0) {
 				$input[0].checked = checked;
 			}
-			var $input = $li.find('>.core-row').find('input[type="radio"]:first');
+			var $input = $li.find('>.coos-row').find('input[type="radio"]:first');
 			if ($input.length > 0) {
 				$input[0].checked = checked;
 			}
@@ -1020,7 +1020,7 @@
 			var checkedDeleteIds = [];
 			var checkedDeleteDatas = [];
 			$(this_.checkedIds).each(function(index, checkedId) {
-				var $li = this_.$tree.find('li[core-recordid="' + checkedId + '"]');
+				var $li = this_.$tree.find('li[coos-recordid="' + checkedId + '"]');
 				if ($li.length > 0 && !$li.data('checked')) {
 					checkedDeleteIds[checkedDeleteIds.length] = checkedId;
 					checkedDeleteDatas[checkedDeleteDatas.length] = $li.data('data');
@@ -1048,21 +1048,21 @@
 	// if (!co.isEmpty(noChildTextIcon)) {
 	// $icons.removeClass(noChildTextIcon);
 	// }
-	// $content.find('.core-tree-has-not-child
+	// $content.find('.coos-tree-has-not-child
 	// ').find('.li-icon:first').addClass(noChildTextIcon);
-	// $content.find('.core-tree-has-not-child
-	// ').find('.li-icon:first').removeClass('core-cursor-auto');
+	// $content.find('.coos-tree-has-not-child
+	// ').find('.li-icon:first').removeClass('coos-cursor-auto');
 	// if (co.isEmpty(noChildTextIcon)) {
-	// $content.find('.core-tree-has-not-child
-	// ').find('.li-icon:first').addClass('core-cursor-auto');
+	// $content.find('.coos-tree-has-not-child
+	// ').find('.li-icon:first').addClass('coos-cursor-auto');
 	// }
-	// $content.find('.core-tree-has-child:not(.open)
+	// $content.find('.coos-tree-has-child:not(.open)
 	// ').find('.li-icon:first').addClass('fa fa-chevron-right');
 	// if (!this_.config.openSingleLevel) {
-	// $content.find('.core-tree-has-child.open ').find('
+	// $content.find('.coos-tree-has-child.open ').find('
 	// .li-icon:first').addClass('fa fa-chevron-down');
 	// } else {
-	// $content.find('.core-tree-has-child.open ').find('
+	// $content.find('.coos-tree-has-child.open ').find('
 	// .li-icon:first').addClass('fa fa-chevron-right');
 	// }
 	// $($childuls).each(function(liindex, $childul) {
@@ -1079,7 +1079,7 @@
 	// });
 	// $content = $content || this.$tree;
 	//
-	// var $childuls = $content.find('.core-tree-child');
+	// var $childuls = $content.find('.coos-tree-child');
 	// var this_ = this;
 	// $content.find('li .tree-row-content').unbind('click').on('click',
 	// function(e) {
@@ -1119,7 +1119,7 @@
 		return this.getBean($li).data;
 	};
 	Tree.prototype.getBean = function($li) {
-		var thistreebeanid = $li.attr('core-thistreebeanid');
+		var thistreebeanid = $li.attr('coos-thistreebeanid');
 		var bean = this.dataModel.getBeanById(thistreebeanid);
 		return bean;
 	};
@@ -1187,7 +1187,7 @@
 		if (bean.mustcheckedchild) {
 			$($lis).each(function(index, $li_) {
 				$li_ = $($li_);
-				var recordid = $li_.attr('core-recordid');
+				var recordid = $li_.attr('coos-recordid');
 				var bean_ = $li_.data('bean');
 				bean_.mustcheckedchild = true;
 				this_.checkLi($li_, true);
@@ -1195,7 +1195,7 @@
 		} else {
 			$($lis).each(function(index, $li_) {
 				$li_ = $($li_);
-				var recordid = $li_.attr('core-recordid');
+				var recordid = $li_.attr('coos-recordid');
 				if (checkedIdMap[recordid]) {
 					if ($li_.closest('[delete-for-checkedid]').length < 1) {
 						this_.checkLi($li_, true);
@@ -1265,14 +1265,14 @@
 	};
 
 	Tree.prototype.opendLi = function($li) {
-		if (!$li.attr('core-recordid')) {
+		if (!$li.attr('coos-recordid')) {
 			return;
 		}
 		if (!this.config.openSingleLevel) {
 			if (!$li.hasClass('open')) {
 				var this_ = this;
 				this.beforeOpen($li, function() {
-					var $icon = $li.find('>.core-row .fa-chevron-down:first,>.core-row .fa-chevron-right:first');
+					var $icon = $li.find('>.coos-row .fa-chevron-down:first,>.coos-row .fa-chevron-right:first');
 					$icon.removeClass('fa-chevron-down fa-chevron-right');
 					$li.addClass('open');
 					$icon.addClass('fa fa-chevron-down');
@@ -1294,7 +1294,7 @@
 	Tree.prototype.closeLi = function($li) {
 
 		this.beforeClose($li);
-		var $icon = $li.find('>.core-row .fa-chevron-down:first,>.core-row .fa-chevron-right:first');
+		var $icon = $li.find('>.coos-row .fa-chevron-down:first,>.coos-row .fa-chevron-right:first');
 		$icon.removeClass('fa-chevron-down fa-chevron-right');
 
 		$li.removeClass('open');
@@ -1306,11 +1306,11 @@
 	Tree.prototype.initParentSingleLevel = function($li) {
 		// 打开单层
 		if (this.config.openSingleLevel) {
-			var parentid = $li.attr('core-recordparentid');
+			var parentid = $li.attr('coos-recordparentid');
 			if (co.isEmpty(parentid)) {
 				return;
 			}
-			var $parentli = $li.closest('ul').closest('[core-recordid="' + parentid + '"]');
+			var $parentli = $li.closest('ul').closest('[coos-recordid="' + parentid + '"]');
 			if ($parentli.length > 0) {
 				this.initSingleLevel($parentli);
 			}
@@ -1326,7 +1326,7 @@
 				var this_ = this;
 				this.beforeOpen($li, function() {
 					var level = getLiLevel($li);
-					$li.closest('ul').find('.core-tree-has-child').css('margin-top', '0px');
+					$li.closest('ul').find('.coos-tree-has-child').css('margin-top', '0px');
 					$li.closest('ul').find('li.open').removeClass('open');
 					// this.$tree.find('li.open').removeClass('open');
 					$li.addClass('open').css('margin-top', '0px');
@@ -1371,7 +1371,7 @@
 		}
 		$onLineTree.prepend($li);
 
-		if (!$handleUl.hasClass('core-tree')) {
+		if (!$handleUl.hasClass('coos-tree')) {
 			var $icon = $('<i class="right-icon fa fa-angle-right"></i>');
 			$li.find('.tree-row-center').before($icon);
 			appendOnLineTree($onLineTree, $handleUl.closest('li'), true);
@@ -1395,7 +1395,7 @@
 	function getLiLevel($li, level) {
 		level = level || 1;
 		var $ul = $li.closest('ul');
-		if ($ul.hasClass('core-tree')) {
+		if ($ul.hasClass('coos-tree')) {
 			return level;
 		} else {
 			return getLiLevel($ul.closest('li'), level + 1);
@@ -1408,7 +1408,7 @@
 		// this.config.openSearchPrompt = true;
 		// }
 		this.$content.append($ul);
-		$ul.addClass('core-tree ');
+		$ul.addClass('coos-tree ');
 		this.$scrollObject = this.config.$scrollObject;
 		if (!co.isEmpty(this.config.treeUlHeight)) {
 			$ul.css('height', this.config.treeUlHeight);
@@ -1418,23 +1418,23 @@
 			this.$scrollObject = $('html,body');
 		}
 		if (!this.config.showLevelLine) {
-			$ul.addClass('core-tree-no-level-line');
+			$ul.addClass('coos-tree-no-level-line');
 		}
 		if (!this.config.showLevel) {
-			$ul.addClass('core-tree-no-level');
+			$ul.addClass('coos-tree-no-level');
 		}
 
 		if (this.config.hasSearch) {
-			var $searchContainer = this.$searchContainer = $('<div class="core-tree-search-container"></div>');
-			this.$searchInput = $('<input class="core-tree-search-input" />');
+			var $searchContainer = this.$searchContainer = $('<div class="coos-tree-search-container"></div>');
+			this.$searchInput = $('<input class="coos-tree-search-input" />');
 			this.$searchInput.attr('placeholder', this.config.searchInputPlaceholder || co.config.label.searchInputPlaceholder);
-			this.$searchButton = $('<a class="core-tree-search-button">' + co.config.label.search + '</a>');
+			this.$searchButton = $('<a class="coos-tree-search-button">' + co.config.label.search + '</a>');
 			if (!co.isEmpty(this.config.searchButtonText)) {
 				this.$searchButton.text(this.config.searchButtonText);
 			} else {
 				this.$searchButton.html("<i class='fa fa-search'></i>");
 			}
-			var $onLineTreeContent = $('<div class="core-on-line-container"></div>');
+			var $onLineTreeContent = $('<div class="coos-on-line-container"></div>');
 			$searchContainer.append(this.$searchInput);
 			$searchContainer.append(this.$searchButton);
 			$ul.before($searchContainer);
@@ -1495,9 +1495,9 @@
 
 		}
 		if (this.config.openSingleLevel) {
-			$ul.addClass('core-tree-open-single-level');
-			this.$onLineTree = $('<ul class="core-on-line-tree"></ul>');
-			var $onLineTreeContent = $('<div class="core-on-line-container"></div>');
+			$ul.addClass('coos-tree-open-single-level');
+			this.$onLineTree = $('<ul class="coos-on-line-tree"></ul>');
+			var $onLineTreeContent = $('<div class="coos-on-line-container"></div>');
 			$onLineTreeContent.append(this.$onLineTree);
 			$ul.before($onLineTreeContent);
 		}
@@ -1537,7 +1537,7 @@
 			co.element.initImage(this.$tree);
 			this.initCheckeds();
 		} else {
-			var $noDataLi = $('<li><div class="core-no-matching-data">' + co.config.label.noMatchingData + '</div></li>');
+			var $noDataLi = $('<li><div class="coos-no-matching-data">' + co.config.label.noMatchingData + '</div></li>');
 			$ul.append($noDataLi);
 		}
 
@@ -1559,7 +1559,7 @@
 		appendFront = appendFront || false;
 		if (childBeans == null || childBeans.length == 0) {
 			if (!this.config.openLazyLoadChildData || !haschild) {
-				$li.addClass('core-tree-has-not-child');
+				$li.addClass('coos-tree-has-not-child');
 				return null;
 			}
 		}
@@ -1574,15 +1574,15 @@
 		var $firstli = null;
 		if ($ul.length < 1) {
 			$ul = createUl(level);
-			$ul.addClass('core-tree-child');
+			$ul.addClass('coos-tree-child');
 			$li.append($ul);
 		} else {
 			$firstli = $ul.find('>li:first');
 			$firstli = $firstli.length < 1 ? null : $firstli;
 		}
 		var $lis = [];
-		$li.addClass('core-tree-has-child');
-		$li.find('>.core-tree-row .li-icon').addClass('fa-chevron-right');
+		$li.addClass('coos-tree-has-child');
+		$li.find('>.coos-tree-row .li-icon').addClass('fa-chevron-right');
 		if (!openLazyRendering || isLazyRendering) {
 			var this_ = this;
 			bean.childLoaded = true;
@@ -1613,7 +1613,7 @@
 		var checkedIds = this.config.checkedIds;
 		var this_ = this;
 		$(checkedIds).each(function(index, checkedId) {
-			var $li = $tree.find('li[core-recordid="' + checkedId + '"]');
+			var $li = $tree.find('li[coos-recordid="' + checkedId + '"]');
 			this_.checkLi($li, true);
 		});
 	};
@@ -1675,7 +1675,7 @@
 		}
 	};
 	Tree.prototype.appendLiEndInfo = function($li, info) {
-		var $row = $li.find('>.core-row');
+		var $row = $li.find('>.coos-row');
 		var $rowright = $row.find('.tree-row-right');
 		var hasButton = $row.find('.tree-button').length > 0;
 		$rowright.removeClass('has-end-info');

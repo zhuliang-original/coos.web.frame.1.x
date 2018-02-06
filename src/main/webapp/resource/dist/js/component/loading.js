@@ -11,12 +11,12 @@
 		this.initView();
 	};
 	Loading.prototype.initView = function() {
-		this.$loading = $('<div class="core-component-loading"><div class="core-component-loading-content"></div></div>');
-		this.$text = $('<div class="text-center core-green"><span class="core-progress-text"></span><span class="core-progress-percentage"></span></div>');
-		this.$progress = $('<div class="core-progress "><div class="core-progress-bar " style="width: 0%;"></div></div>');
+		this.$loading = $('<div class="coos-component-loading"><div class="coos-component-loading-content"></div></div>');
+		this.$text = $('<div class="text-center coos-green"><span class="coos-progress-text"></span><span class="coos-progress-percentage"></span></div>');
+		this.$progress = $('<div class="coos-progress "><div class="coos-progress-bar " style="width: 0%;"></div></div>');
 
-		this.$loading.find('.core-component-loading-content').append(this.$text);
-		this.$loading.find('.core-component-loading-content').append(this.$progress);
+		this.$loading.find('.coos-component-loading-content').append(this.$text);
+		this.$loading.find('.coos-component-loading-content').append(this.$progress);
 		this.$loading.appendTo('body');
 	};
 	Loading.prototype.load = function(callback) {
@@ -125,9 +125,9 @@
 		if (("" + percentageText).indexOf('.') >= 0) {
 			percentageText = Number(percentageText).toFixed(1)
 		}
-		this.$text.find('.core-progress-text').text(text);
-		this.$text.find('.core-progress-percentage').text(percentageText + "%");
-		this.$progress.find('.core-progress-bar').css('width', percentage + "%");
+		this.$text.find('.coos-progress-text').text(text);
+		this.$text.find('.coos-progress-percentage').text(percentageText + "%");
+		this.$progress.find('.coos-progress-bar').css('width', percentage + "%");
 	};
 	Loading.prototype.destroy = function() {
 		this.$loading.remove();

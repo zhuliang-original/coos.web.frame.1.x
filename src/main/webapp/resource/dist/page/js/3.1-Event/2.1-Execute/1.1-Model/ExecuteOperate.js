@@ -1,12 +1,12 @@
-(function(window, jQuery, coos) {
+(function(window, jQuery) {
 	function ThisExecute(config) {
-		coos.page.event.execute.Execute.call(this, config);
+		co.page.event.execute.Execute.call(this, config);
 	}
 
 	(function() {
 		var Super = function() {
 		};
-		Super.prototype = coos.page.event.execute.Execute.prototype;
+		Super.prototype = co.page.event.execute.Execute.prototype;
 		ThisExecute.prototype = new Super();
 	})();
 
@@ -23,19 +23,19 @@
 			jQuery.extend(true, data, paramData);
 			var this_ = this;
 			if (operate.type == 'TO_PAGE') {
-				coos.toAction({
+				co.toAction({
 					data : data,
-					operate : servletpath
+					action : servletpath
 				});
 				executeCallback && executeCallback();
 				this_.eventChildExecutes();
 			} else if (operate.type == 'DO_POST') {
-				coos.POST(servletpath, data, 'json', function(o) {
+				co.POST(servletpath, data, 'json', function(o) {
 					var status = o.data;
 					var promptmessage = "";
 					if (status.errcode == 0) {
 						promptmessage = execute.config.successprompt;
-						if (coos.isEmpty(promptmessage)) {
+						if (co.isEmpty(promptmessage)) {
 							promptmessage = "操作成功！";
 						}
 
@@ -44,7 +44,7 @@
 						}
 					} else {
 						if (status.errcode == 20001) {
-							coos.box.confirm(status.errmsg + "<br/>点击确认，强制删除！", function() {
+							co.box.confirm(status.errmsg + "<br/>点击确认，强制删除！", function() {
 								this_.doExecute(executeCallback, {
 									forciblyremove : true
 								});
@@ -54,21 +54,21 @@
 							return;
 						}
 						promptmessage = execute.config.errorprompt;
-						if (coos.isEmpty(promptmessage)) {
+						if (co.isEmpty(promptmessage)) {
 							promptmessage = status.errmsg;
 						}
 						if (!execute.config.errorneedprompt) {
 							promptmessage = null;
 						}
 					}
-					if (!coos.isEmpty(promptmessage)) {
-						if (coos.isEmpty(execute.config.boxtype) || execute.config.boxtype == "alert") {
-							coos.box.alert(promptmessage, function() {
+					if (!co.isEmpty(promptmessage)) {
+						if (co.isEmpty(execute.config.boxtype) || execute.config.boxtype == "alert") {
+							co.box.alert(promptmessage, function() {
 								executeCallback && executeCallback();
 								this_.eventChildExecutes();
 							});
 						} else if (execute.config.boxtype == "info") {
-							coos.box.info(promptmessage);
+							co.box.info(promptmessage);
 							executeCallback && executeCallback();
 							this_.eventChildExecutes();
 						}
@@ -116,5 +116,5 @@
 			name : "errorprompt"
 		} ]
 	};
-	coos.page.event.execute.model.defind("ACTION", ThisExecuteConfig, ThisExecute);
-})(window, jQuery, coos);
+	co.page.event.execute.model.defind("OPERATE", ThisExecuteConfig, ThisExecute);
+})(window, jQuery);

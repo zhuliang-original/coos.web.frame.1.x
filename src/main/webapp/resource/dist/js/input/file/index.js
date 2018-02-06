@@ -152,7 +152,7 @@
 		} else {
 			url = co.config.server.fileServerUrl + url;
 		}
-		$image.find('img').attr('core-path', url);
+		$image.find('img').attr('coos-path', url);
 		this.$uploadimg.before($image);
 		co.initImage($image.find('img'));
 		$remove.click(function() {

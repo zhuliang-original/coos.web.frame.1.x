@@ -45,7 +45,7 @@ co.define = function(arg1, arg2) {
 	}
 	$(names).each(function(index, name) {
 		var arr = name.split('.');
-		var context = core;
+		var context = coos;
 		for (var i = 0; i < arr.length - 1; i++) {
 			var str = arr[i];
 			if (!context[str]) {

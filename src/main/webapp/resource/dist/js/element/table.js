@@ -1,11 +1,11 @@
 (function() {
 	co.element.initDataTables = function(content) {
 		content = content || $('body');
-		var elements = $(content).find('.core-need-init-data-tables');
+		var elements = $(content).find('.coos-need-init-data-tables');
 		if (elements.length > 0) {
 			co.plugins.load("data_tables", function() {
 				$(elements).each(function(index, element) {
-					if (co.element.isInited(element, 'core-need-init-data-tables')) {
+					if (co.element.isInited(element, 'coos-need-init-data-tables')) {
 						return;
 					}
 

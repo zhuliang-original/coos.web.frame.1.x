@@ -1,4 +1,4 @@
-(function(window, jQuery, coos) {
+(function(window, jQuery) {
 	var html = '<div class=" "></div>';
 	var Element = function(config) {
 		this.config = config;
@@ -12,7 +12,7 @@
 		var element = config.element;
 		var elementConfig = element.config;
 		if (elementConfig != null) {
-			if (coos.isString(elementConfig)) {
+			if (co.isString(elementConfig)) {
 				elementConfig = JSON.parse(elementConfig);
 			}
 		}
@@ -44,7 +44,7 @@
 	};
 
 	Element.prototype.getSelectData = function(value) {
-		if (!coos.isEmpty(value)) {
+		if (!co.isEmpty(value)) {
 			var selectdata = this.selectdatamap["" + value];
 			if (selectdata == null) {
 				if (("" + value) == ("true")) {
@@ -60,7 +60,7 @@
 
 	Element.prototype.getSelectDataText = function(value) {
 		var text = "";
-		if (!coos.isEmpty(value)) {
+		if (!co.isEmpty(value)) {
 			var vs = ("" + value).split(',');
 			var this_ = this;
 			$(vs).each(function(index, v) {
@@ -70,7 +70,7 @@
 				}
 			});
 		}
-		if (!coos.isEmpty(text)) {
+		if (!co.isEmpty(text)) {
 			text = text.replace(',', '');
 		} else {
 			text = "";
@@ -104,7 +104,7 @@
 		var name = this.element.name;
 		var label = config.label;
 		var inputtype = this.element.type;
-		if (coos.isEmpty(inputtype)) {
+		if (co.isEmpty(inputtype)) {
 			inputtype = "TEXT";
 		}
 		if (this.forsearch && (inputtype == 'SWITCH' || inputtype == 'RADIO')) {
@@ -116,43 +116,43 @@
 		this.$input.attr('elementid', this.element.elementid);
 		this.$input.attr('addClass', 'coos-one-element');
 		this.$input.attr('need-addon', 'true');
-		if (!coos.isEmpty(config.pattern)) {
+		if (!co.isEmpty(config.pattern)) {
 			this.$input.attr('pattern', config.pattern);
 		}
-		if (!coos.isEmpty(config.eq)) {
+		if (!co.isEmpty(config.eq)) {
 			this.$input.attr('eq', config.eq);
 		}
-		if (!coos.isEmpty(config.eqto)) {
+		if (!co.isEmpty(config.eqto)) {
 			this.$input.attr('eqto', config.eqto);
 		}
-		if (!coos.isEmpty(config.gt)) {
+		if (!co.isEmpty(config.gt)) {
 			this.$input.attr('gt', config.gt);
 		}
-		if (!coos.isEmpty(config.gtto)) {
+		if (!co.isEmpty(config.gtto)) {
 			this.$input.attr('gtto', config.gtto);
 		}
-		if (!coos.isEmpty(config.gte)) {
+		if (!co.isEmpty(config.gte)) {
 			this.$input.attr('gte', config.gte);
 		}
-		if (!coos.isEmpty(config.gteto)) {
+		if (!co.isEmpty(config.gteto)) {
 			this.$input.attr('gteto', config.gteto);
 		}
-		if (!coos.isEmpty(config.lt)) {
+		if (!co.isEmpty(config.lt)) {
 			this.$input.attr('lt', config.lt);
 		}
-		if (!coos.isEmpty(config.ltto)) {
+		if (!co.isEmpty(config.ltto)) {
 			this.$input.attr('ltto', config.ltto);
 		}
-		if (!coos.isEmpty(config.beforeaddon)) {
+		if (!co.isEmpty(config.beforeaddon)) {
 			this.$input.attr('before-addon', config.beforeaddon);
 		}
-		if (!coos.isEmpty(config.afteraddon)) {
+		if (!co.isEmpty(config.afteraddon)) {
 			this.$input.attr('after-addon', config.afteraddon);
 		}
-		if (!coos.isEmpty(config.beforeaddononclick)) {
+		if (!co.isEmpty(config.beforeaddononclick)) {
 			this.$input.attr('before-addon-click', config.beforeaddononclick);
 		}
-		if (!coos.isEmpty(config.afteraddononclick)) {
+		if (!co.isEmpty(config.afteraddononclick)) {
 			this.$input.attr('after-addon-click', config.afteraddononclick);
 		}
 		this.$input.attr('helpinfo', helpinfo);
@@ -179,12 +179,15 @@
 		this.$input.addClass('parameter');
 		this.$input.addClass('coos-need-init-group');
 		this.$input.attr('need-file-group', true);
+		if (!co.isEmpty(this.element.config.defaultvalue)) {
+			this.$input.attr("defaultvalue", this.element.config.defaultvalue);
+		}
 		if (!this.config.design && this.config.pageObject.config.requestmap && this.element.config.userrequestmapfordefault) {
 			if (this.config.pageObject.config.requestmap[name] != null) {
 				this.$input.attr('defaultvalue', this.config.pageObject.config.requestmap[name]);
 			}
 		}
-		if (!coos.isEmpty(this.element.thisvalue)) {
+		if (!co.isEmpty(this.element.thisvalue)) {
 			this.$input.attr("defaultvalue", this.element.thisvalue);
 		}
 	};
@@ -244,7 +247,6 @@
 			}
 
 			if (datas != null) {
-				var relationname = "";
 				var $select = $('<select class="coos-select-option display-none" />');
 				if (this.$input[0].tagName == 'SELECT') {
 					$select = this.$input;
@@ -260,8 +262,10 @@
 					option.text(data.text);
 					$select.append(option);
 				});
-				if (!coos.isEmpty(this.element.config.relationname)) {
+				if (!co.isEmpty(this.element.config.relationname)) {
 					this.$input.attr('relationname', this.element.config.relationname);
+				} else if (!co.isEmpty(this.element.relationname)) {
+					this.$input.attr('relationname', this.element.relationname);
 				}
 			}
 			if (this.place == 'FORM-SEARCH') {
@@ -282,7 +286,7 @@
 						$input.change();
 					});
 					var thisvalue = $input.val();
-					if (!coos.isEmpty(thisvalue) && thisvalue.indexOf(',') > 0) {
+					if (!co.isEmpty(thisvalue) && thisvalue.indexOf(',') > 0) {
 						var start = thisvalue.split(',')[0];
 						var end = thisvalue.split(',')[1];
 
@@ -358,6 +362,6 @@
 	Element.prototype.initContent = function() {
 	};
 
-	coos.page.panel.layout.element = {};
-	coos.page.panel.layout.element.Element = Element;
-})(window, jQuery, coos);
+	co.page.panel.layout.element = {};
+	co.page.panel.layout.element.Element = Element;
+})(window, jQuery);

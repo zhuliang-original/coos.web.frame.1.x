@@ -1,4 +1,4 @@
-(function(window, jQuery, coos) {
+(function(window, jQuery) {
 	var Button = function(config) {
 		this.config = config;
 		this.button = config.button;
@@ -10,7 +10,7 @@
 		var button = config.button;
 		var buttonConfig = button.config;
 		if (buttonConfig != null) {
-			if (coos.isString(buttonConfig)) {
+			if (co.isString(buttonConfig)) {
 				buttonConfig = JSON.parse(buttonConfig);
 			}
 		}
@@ -30,14 +30,14 @@
 		}
 		var button = this.button;
 		var viewrule = button.config.viewrule;
-		if (!coos.isEmpty(viewrule)) {
+		if (!co.isEmpty(viewrule)) {
 			return this.executeViewRule(viewrule, dataConfig);
 		}
 		return true;
 	};
 
 	Button.prototype.executeViewRule = function(viewrule, dataConfig) {
-		if (!coos.isEmpty(viewrule)) {
+		if (!co.isEmpty(viewrule)) {
 			var dataMapStr = "";
 			for ( var name in dataConfig) {
 				dataMapStr += 'var ' + name + ' = dataConfig.' + name + ' || {};';
@@ -60,7 +60,7 @@
 	Button.prototype.bindEvent = function(dataConfig) {
 		var this_ = this;
 		$(this.button.events).each(function(index, event) {
-			coos.page.event.bind({
+			co.page.event.bind({
 				event : event,
 				$view : this_.$view,
 				$row : this_.dataConfig.$row,
@@ -75,6 +75,6 @@
 			});
 		});
 	};
-	coos.page.panel.layout.button = {};
-	coos.page.panel.layout.button.Button = Button;
-})(window, jQuery, coos);
+	co.page.panel.layout.button = {};
+	co.page.panel.layout.button.Button = Button;
+})(window, jQuery);

@@ -1,11 +1,11 @@
-(function(window, jQuery, coos) {
+(function(window, jQuery) {
 	function ThisElement(config) {
-		coos.page.panel.layout.element.Element.call(this, config);
+		co.page.panel.layout.element.Element.call(this, config);
 	}
 	(function() {
 		var Super = function() {
 		};
-		Super.prototype = coos.page.panel.layout.element.Element.prototype;
+		Super.prototype = co.page.panel.layout.element.Element.prototype;
 		ThisElement.prototype = new Super();
 	})();
 
@@ -21,7 +21,10 @@
 
 	var ThisElementConfig = {
 		name : "下拉框",
-		columns : []
+		columns : [ {
+			text : "级联元素",
+			name : "relationname"
+		} ]
 	};
-	coos.page.panel.layout.element.model.defind("SELECT", ThisElementConfig, ThisElement);
-})(window, jQuery, coos);
+	co.page.panel.layout.element.model.defind("SELECT", ThisElementConfig, ThisElement);
+})(window, jQuery);
