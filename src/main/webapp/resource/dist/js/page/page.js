@@ -134,7 +134,7 @@
 				}
 			} else if (request.status == 404) {
 				var erroraction = co.config.action.error['404'];
-				if (action.indexOf(erroraction) < 0) {
+				if (this.action.indexOf(erroraction) < 0) {
 					window['istoaction'] = true;
 					this.config.action = erroraction;
 					co.page.load(this.config);

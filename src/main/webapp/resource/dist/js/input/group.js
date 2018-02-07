@@ -127,7 +127,7 @@
 		labelsize = labelsize > 12 ? 12 : labelsize;
 
 		if (co.isEmpty(label)) {
-			labelsize = 0;
+			//labelsize = 0;
 		}
 
 		var inputsize = 12 - labelsize;

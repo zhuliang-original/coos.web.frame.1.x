@@ -1,5 +1,4 @@
 co.frame = new Object();
-var user_info = null;
 var project = null;
 var project_config = null;
 var themes = null;
@@ -54,6 +53,9 @@ var themes = null;
 		this.$header = $header;
 		this.$bodybox = $bodybox;
 		this.$body = $body;
+		this.$bodyleft = $body.find('.coos-body-left');
+		this.$bodyright = $body.find('.coos-body-right');
+		this.$bodycenter = $body.find('.coos-body-center');
 		this.$pagebox = $pagebox;
 		this.$footerbox = $footerbox;
 		this.$footer = $footer;
@@ -165,6 +167,31 @@ var themes = null;
 		}
 	};
 
+	Frame.prototype.initSize = function() {
+		window.setTimeout(function() {
+			co.frame.initSize();
+		}, 10);
+		var windowHeight = $(window).height();
+		var headerHeight = this.this_theme_object ? this.this_theme_object.getHeaderHeight() : 0;
+		var footerHeight = this.this_theme_object ? this.this_theme_object.getFooterHeight() : 0;
+		var bodyMarginTop = this.this_theme_object ? this.this_theme_object.getBodyMarginTop() : 0;
+		var bodyMarginBottom = this.this_theme_object ? this.this_theme_object.getBodyMarginBottom() : 0;
+		var menu_height = this.this_theme_object ? this.this_theme_object.getBodyMenuHeight() : 0;
+		var body_height = windowHeight - headerHeight - footerHeight - bodyMarginTop - bodyMarginBottom;
+		var min_height = (menu_height > body_height) ? menu_height : body_height;
+		this.$body.css('min-height', min_height);
+		if (this.$frame.hasClass('coos-body-fixed-left')) {
+			this.$bodyleft.css('top', this.$body.offset().top);
+		}
+		if (this.$frame.hasClass('coos-body-fixed-center')) {
+			this.$bodycenter.css('top', this.$body.offset().top);
+		}
+		if (this.$frame.hasClass('coos-body-fixed-right')) {
+			this.$bodyright.css('top', this.$body.offset().top);
+		}
+		co.frame.checkBackTop();
+	};
+
 	co.frame.init = function(config) {
 		co.frame.frame = co.frame.create(config);
 		return co.frame.frame;
@@ -175,58 +202,3 @@ var themes = null;
 	};
 
 })();
-
-co.page.pushLoadCallback(function() {
-	if (co.frame.frame) {
-		if (!co.frame.firstFrameViewed) {
-			co.frame.firstFrameViewed = true;
-			co.frame.frame.view();
-		}
-	}
-});
-$(function() {
-	co.frame.changeFull($('#coos-need-full-page').length > 0 && $('#coos-need-full-page').closest('.coos-box-window').length == 0);
-
-	/* 返回顶部 */
-	$('html').on('click', '.coos-back-top', function(e) {
-		e.preventDefault();
-		$('body,html').animate({
-			scrollTop : 0
-		}, 800);
-		window.setTimeout(function() {
-			co.frame.checkBackTop();
-		}, 800);
-	});
-	$(window).on("scroll", function() {
-		co.frame.checkBackTop();
-	});
-	$('html').on('click', '[coos-action="full-or-empty-horizontal"]', function(e) {
-		lastThemeObject.fullOrEmptyHorizontal();
-	});
-	$('html').on('click', '[coos-action="full-or-empty-vertical"]', function(e) {
-		lastThemeObject.fullOrEmptyVertical();
-	});
-	$('html').on('click', '[coos-action="full-or-empty-screen"]', function(e) {
-		lastThemeObject.fullOrEmptyScreen();
-	});
-	$('html').on('click', '.coos-control-body-left', function(e) {
-		var $frame = $('.coos-frame')
-		if ($frame.hasClass('coos-open-body-left')) {
-			$frame.removeClass('coos-open-body-left');
-			$(this).removeClass('active');
-		} else {
-			$frame.addClass('coos-open-body-left');
-			$(this).addClass('active');
-		}
-	});
-	$('html').on('click', '.coos-control-body-right', function(e) {
-		var $frame = $('.coos-frame');
-		if ($frame.hasClass('coos-open-body-right')) {
-			$frame.removeClass('coos-open-body-right');
-			$(this).removeClass('active');
-		} else {
-			$frame.addClass('coos-open-body-right');
-			$(this).addClass('active');
-		}
-	});
-});

@@ -3,11 +3,13 @@
 
 	var bindFunctionMap = {};
 	co.element.init = function($container) {
+		co.input.init();
 		$container = $container || $('body');
 		$container = $($container);
 		for (type in bindFunctionMap) {
 			co.element.init_(type, $container);
 		}
+		co.button.init();
 	};
 
 	co.element.init_ = function(type, $container) {
