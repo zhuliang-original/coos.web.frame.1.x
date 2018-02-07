@@ -28,12 +28,12 @@ co.frame.menu = new Object();
 			if (animation) {
 				$li.find('.coos-child-menu:first').slideUp(function() {
 					$li.removeClass('coos-open');
-					coos.frame.initHeight();
+					coos.frame.initSize();
 				});
 			} else {
 				$li.find('.coos-child-menu:first').show();
 				$li.removeClass('coos-open');
-				coos.frame.initHeight();
+				coos.frame.initSize();
 			}
 		} else {
 			this_.setCheckedParentMenuid(menu.menuid);
@@ -51,11 +51,11 @@ co.frame.menu = new Object();
 			$li.find('.arrow:first').addClass('rotate-90');
 			if (animation) {
 				$li.find('.coos-child-menu:first').slideDown(function() {
-					coos.frame.initHeight();
+					coos.frame.initSize();
 				});
 			} else {
 				$li.find('.coos-child-menu:first').show();
-				coos.frame.initHeight();
+				coos.frame.initSize();
 			}
 		}
 	};

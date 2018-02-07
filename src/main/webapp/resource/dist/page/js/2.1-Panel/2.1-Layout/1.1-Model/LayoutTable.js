@@ -51,7 +51,7 @@
 		}
 		var $tbody = $view.find('tbody');
 		if (this.layout.config.haspagesize) {
-			var $ul = co.getPaginationUl({}, function() {
+			var $ul = co.component.getPaginationUl({}, function() {
 			});
 			$ul.addClass('mgb-0');
 			$view.append($ul);
@@ -126,7 +126,7 @@
 		if (this.layout.config.haspagesize) {
 			result = result || {};
 			var this_ = this;
-			var $ul = co.getPaginationUl(result, function(currentpage) {
+			var $ul = co.component.getPaginationUl(result, function(currentpage) {
 				var data = {};
 				data.currentpage = currentpage;
 				this_.reloadResult({

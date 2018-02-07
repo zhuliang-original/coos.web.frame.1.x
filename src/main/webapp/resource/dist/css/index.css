@@ -90,3 +90,7 @@ body {
 .coos-cursor-auto {
 	cursor: auto !important;
 }
+
+.prepend-icon {
+	margin-left: 7px;
+}

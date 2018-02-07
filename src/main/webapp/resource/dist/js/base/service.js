@@ -7,7 +7,7 @@
 		var async = config.async;
 		data = data == null ? {} : data;
 		var callback = config.callback;
-		co.showLoading();
+		co.cover.showLoading();
 
 		var headers = null;
 		if (co.isString(data)) {
@@ -23,7 +23,7 @@
 			url = "/core/service/" + name + ".service";
 		}
 		$.ajax({
-			url : co.getUrl(url),
+			url : co.url.format(url),
 			data : data,
 			type : 'post',
 			dataType : 'json',
@@ -33,7 +33,7 @@
 			},
 			success : function(o) {
 				// 可添加完成后处理
-				co.hideLoading();
+				co.cover.hideLoading();
 				if (callback && $.isFunction(callback)) {
 					callback(o);
 				}
@@ -41,7 +41,7 @@
 			complete : function(XMLHttpRequest, textStatus) {
 			},
 			error : function(XMLHttpRequest, textStatus, errorThrown) {
-				co.hideLoading();
+				co.cover.hideLoading();
 				callback(XMLHttpRequest.responseText);
 			}
 

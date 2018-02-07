@@ -71,7 +71,16 @@
 	co.isEmpty = function(arg) {
 		return typeof (arg) == "undefined" || arg == null || arg.length == 0;
 	};
-
+	// 是否包含字符串
+	co.has = function(arg1, arg2) {
+		if (co.isEmpty(arg1) || co.isEmpty(arg2)) {
+			return false;
+		}
+		if (arg1.indexOf(arg2) != -1) {
+			return true;
+		}
+		return false;
+	};
 	co.isPC = function() {
 		var userAgentInfo = navigator.userAgent;
 		var agents = [ "Android", "iPhone", "SymbianOS", "Windows Phone", "iPad", "iPod" ];
