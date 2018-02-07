@@ -54,6 +54,10 @@
 			js : [ "resource/plugins/jquery/ui/interactions/jquery-ui.min.js" ],
 			css : [ "resource/plugins/jquery/ui/interactions/jquery-ui.min.css", "resource/plugins/jquery/ui/widgets/jquery-ui.theme.min.css" ]
 		},
+		jquery_sortable : {
+			js : [ "resource/plugins/jquery/ui/interactions/jquery-ui.min.js" ],
+			css : [ "resource/plugins/jquery/ui/interactions/jquery-ui.min.css", "resource/plugins/jquery/ui/widgets/jquery-ui.theme.min.css" ]
+		},
 		jquery_ui_widgets : {
 			js : [ "resource/plugins/jquery/ui/widgets/jquery-ui.min.js" ],
 			css : [ "resource/plugins/jquery/ui/widgets/jquery-ui.min.css", "resource/plugins/jquery/ui/widgets/jquery-ui.theme.min.css" ]

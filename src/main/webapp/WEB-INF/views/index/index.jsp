@@ -75,9 +75,9 @@
 	"use strict";
 	var config =
 	{
-		openSinglePage : true,
-		openSinglePageAnimation : false,
-		openUploadProgress : false,
+		page : {
+			single : true
+		},
 		action :
 		{
 			toIndex : "index/toIndex.do",
@@ -99,12 +99,11 @@
 		},
 		images :
 		{
-			loading : basePath + "/resource/core/images/image/loading.gif",
-			noimg : basePath + "/resource/core/images/image/noimage.png",
-			notfindimg : basePath + "/resource/core/images/image/notfindimage.png",
-			clickupload : basePath + "/resource/core/images/image/clickupload.png"
+			loading : basePath + "/resource/coos/images/image/loading.gif",
+			noimg : basePath + "/resource/coos/images/image/noimage.png",
+			notfindimg : basePath + "/resource/coos/images/image/notfindimage.png",
+			clickupload : basePath + "/resource/coos/images/image/clickupload.png"
 		},
-		pluginsPath : "/resource/plugins/",
 		plugins : {
 		}
 	};

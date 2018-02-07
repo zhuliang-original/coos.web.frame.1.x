@@ -1,0 +1,115 @@
+.coos-table {
+	width: 100%;
+	max-width: 100%;
+	border-spacing: 1px;
+	border-collapse: inherit;
+	margin: 0px;
+	margin-bottom: 0px;
+	background-color: white;
+}
+
+.table-responsive {
+	overflow-x: auto;
+}
+
+.coos-table .coos-menu-action {
+	padding-top: 5px !important;
+	padding-bottom: 0 !important;
+}
+
+.coos-table .coos-menu-action .coos-menu-icon {
+	background: none;
+	color: #FFF;
+	font-size: 12px;
+	padding: 2px 6px 3px;
+	margin-right: 2px;
+}
+
+.coos-table .rounded-btn .coos-menu-icon {
+	border-radius: 20px;
+}
+
+.coos-table-condensed .coos-menu-action {
+	padding-top: 2px !important;
+	padding-bottom: 0 !important;
+}
+
+.no-head-border>thead>tr>th {
+	border-bottom: none;
+	padding-top: 10px;
+	padding-bottom: 10px;
+}
+
+.coos-table-condensed>thead>tr>th, .coos-table-condensed>tbody>tr>th,
+	.coos-table-condensed>tfoot>tr>th, .coos-table-condensed>thead>tr>td,
+	.coos-table-condensed>tbody>tr>td, .coos-table-condensed>tfoot>tr>td {
+	padding: 5px 10px;
+}
+
+.coos-table thead tr th:first-child { /* border-left: 0px; */
+	
+}
+
+.coos-table thead tr th:last-child { /* border-right: 0px; */
+	
+}
+
+.coos-table tbody tr td:first-child { /* border-left: 0px; */
+	
+}
+
+.coos-table tbody tr td:last-child { /* border-right: 0px; */
+	
+}
+
+.coos-table tbody tr:last-child td {
+	border-bottom: 0px;
+}
+
+.coos-table thead tr th {
+	text-align: left;
+	white-space: nowrap;
+}
+
+.coos-table tbody tr td {
+	vertical-align: middle !important;
+	background-color: white;
+	position: relative;
+}
+
+.coos-table>thead>tr>th, .coos-table>tbody>tr>th, .coos-table>tfoot>tr>th
+	{
+	padding: 5px 5px;
+	outline: 1px solid #ddd;
+}
+
+.coos-table>thead>tr>td, .coos-table>tbody>tr>td, .coos-table>tfoot>tr>td
+	{
+	padding: 5px 5px;
+	outline: 1px solid #ddd;
+}
+
+table.coos-table thead th {
+	border-bottom: none !important;
+}
+
+.coos-table>tbody>tr>td { /* background-color: white; */
+	
+}
+
+.coos-panel .pagination-content { /* border-bottom: 1px solid #ddd; */
+	/* height: 35px; */
+	
+}
+
+.coos-panel .coos-table thead {
+	background-color: #F5F6FA;
+}
+
+.coos-data-table-form {
+	overflow: hidden;
+}
+
+.coos-data-table-footer {
+	overflow: hidden;
+}
