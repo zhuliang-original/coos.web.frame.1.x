@@ -1,0 +1,477 @@
+/*	@TODO 树样式	*/
+.coos-tree {
+	margin: 0px;
+	padding: 0px;
+	background-color: white;
+	position: relative;
+	text-align: left;
+	z-index: 0;
+	overflow-x: hidden;
+	border: 1px solid #ddd;
+}
+
+.coos-tree, .coos-tree ul, .coos-tree li {
+	margin: 0px;
+	padding: 0px;
+}
+
+.coos-tree li {
+	list-style: none;
+	position: relative;
+	padding: 5px 0px 0px;
+}
+
+.coos-tree li ul {
+	margin-left: 24px;
+}
+
+.coos-tree.coos-tree-no-level li ul {
+	margin-left: 0px;
+}
+
+.coos-tree.coos-tree-no-level {
+	border-top: 1px solid #ddd;
+}
+
+.coos-tree.coos-tree-no-level li {
+	padding: 0px;
+	margin-top: -1px;
+}
+
+.coos-tree.coos-tree-no-level-line li ul {
+	margin-left: 0px;
+}
+
+.coos-tree.coos-tree-no-level-line {
+	border-top: 1px solid #ddd;
+}
+
+.coos-tree.coos-tree-no-level-line li {
+	padding: 0px;
+	margin-top: 0px;
+}
+
+.coos-tree-open-single-level .coos-row {
+	padding: 0px !important;
+	margin: 0px !important;
+}
+
+.coos-tree-open-single-level .coos-row .tree-row-content {
+	padding: 0px !important;
+	margin: 0px !important;
+}
+
+.single-level-select ul ul .coos-row .tree-row-content {
+	margin-left: 25px !important;
+}
+
+.coos-on-line-container {
+	width: 100%;
+	overflow: hidden;
+	overflow-x: auto;
+	border: 1px solid #ddd;
+	/* border-bottom: 0px; */
+}
+
+.coos-tree-search-container {
+	width: 100%;
+	border: 1px solid #ddd;
+	display: table;
+	position: relative;
+	border-bottom: 0px;
+}
+
+.coos-tree-search-prompt {
+	width: 100%;
+	outline: 1px solid #ddd;
+	display: block;
+	background-color: white;
+	position: absolute;
+	z-index: 2;
+	left: 0px;
+	top: 29px;
+}
+
+.coos-tree-search-prompt ul {
+	margin: 10px 0px;;
+	min-height: 50px;
+	max-height: 220px;
+	overflow: hidden;
+	overflow-y: auto;
+	padding: 0px;
+}
+
+.coos-tree-search-prompt li {
+	width: 100%;
+	list-style: none;
+}
+
+li.coos-tree-search-for-high-light>.coos-tree-row .tree-row-center {
+	color: #fb8405;
+}
+
+.coos-tree-search-prompt li .coos-row {
+	margin: 0px;
+	outline: 1px solid #ddd;
+	height: 28px;
+	line-height: 28px;
+	margin: 0px 0px;
+	background: white;
+	position: relative;
+	display: table;
+	width: 100%;
+	padding: 0px 10px !important;
+	cursor: pointer;
+	color: #1fae66;
+	word-break: keep-all;
+	white-space: nowrap;
+	border: 0px;
+}
+
+.coos-tree-search-prompt li .data-icon {
+	margin: 0px;
+	cursor: pointer;
+	margin: 0px;
+	text-align: center;
+	width: 28px;
+	height: 28px;
+	line-height: 28px;
+	text-align: center;
+	float: left;
+	font-size: 16px;
+}
+
+.coos-tree-search-prompt li .coos-row:hover {
+	color: #00d067;
+}
+
+.coos-tree.coos-tree-no-level-line {
+	margin-top: -1px;
+}
+
+.coos-tree-search-container * {
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	box-sizing: border-box;
+	border-radius: 0px;
+	-webkit-appearance: none;
+}
+
+.coos-tree-search-container .coos-tree-search-input {
+	width: 100%;
+	padding: 7px 10px 6px;
+	border: 0px;
+}
+
+.coos-tree-search-container .coos-tree-search-button {
+	padding: 6px 12px;
+	font-size: 14px;
+	font-weight: 400;
+	line-height: 1;
+	color: #555;
+	text-align: center;
+	background-color: #eee;
+	border-left: 1px solid #ccc;
+	display: table-cell;
+	width: 1%;
+	white-space: nowrap;
+	vertical-align: middle;
+	cursor: pointer;
+}
+
+.coos-on-line-tree .can-point .data-text {
+	color: #4CAF50;
+}
+
+.coos-on-line-tree {
+	height: 28px;
+	line-height: 28px;
+	list-style: none;
+	margin: 0px;
+	padding: 0px;
+	padding-left: 10px;
+	background-color: white;
+}
+
+.coos-on-line-tree>li {
+	cursor: pointer;
+	float: left;
+	padding: 0px;
+	margin: 0px;
+}
+
+.coos-on-line-tree>li>.coos-row {
+	height: 28px;
+	line-height: 28px;
+	padding: 0px;
+	margin: 0px;
+	border: 0px;
+}
+
+.coos-on-line-tree .right-icon {
+	margin: 0px;
+	margin: 0px;
+	text-align: center;
+	width: 20px;
+	height: 28px;
+	line-height: 28px;
+	text-align: center;
+	float: left;
+	font-size: 20px;
+	font-weight: 600;
+	color: #ddd;
+}
+
+.coos-on-line-tree .tree-row-center {
+	float: left;
+}
+
+.coos-tree li .coos-row {
+	
+}
+
+.coos-tree li .coos-row:hover {
+	background-color: #ddd;
+}
+
+.coos-tree li .coos-row:hover .tree-row-right {
+	
+}
+
+.coos-tree .coos-tree-child {
+	display: none;
+}
+
+.coos-tree .open>.coos-tree-child {
+	display: block;
+}
+
+.coos-tree .coos-tree-has-child .li-icon {
+	
+}
+
+.coos-tree-row {
+	margin: 0px;
+	padding: 0px;
+	border-bottom: 1px solid #ddd;
+	height: 28px;
+	line-height: 28px;
+	margin: 0px 0px;
+	background: white;
+	position: relative;
+	z-index: 1;
+	display: table;
+	width: 100%;
+	word-break: keep-all;
+	white-space: nowrap;
+}
+
+.tree-row-content {
+	word-break: keep-all;
+	white-space: nowrap;
+}
+
+.coos-tree-row .tree-row-left {
+	
+}
+
+.coos-tree-row .tree-row-center {
+	
+}
+
+.coos-tree-row .tree-row-right {
+	height: 28px;
+	line-height: 28px;
+	/* float: right;
+	margin-top: -28px; */
+	position: absolute;
+	right: 0px;
+	top: 0px;
+}
+
+.coos-tree li .li-icon {
+	margin: 0px;
+	text-align: center;
+	width: 28px;
+	height: 28px;
+	line-height: 28px;
+	text-align: center;
+	float: left;
+}
+
+.coos-tree li .li-icon.fa-chevron-right {
+	cursor: pointer !important;
+}
+
+.coos-tree li .li-icon.fa-chevron-down {
+	cursor: pointer !important;
+}
+
+.coos-tree input[type="checkbox"] {
+	margin-top: 7px;
+	margin-right: 5px;
+	cursor: pointer;
+	border: 0px;
+	float: left;
+	width: auto;
+}
+
+.coos-tree input[type="radio"] {
+	margin-top: 7px;
+	margin-right: 5px;
+	cursor: pointer;
+	border: 0px;
+	float: left;
+	width: auto;
+}
+
+.tree-search-not-find {
+	display: none !important;
+}
+
+.coos-tree li .data-icon {
+	margin: 0px;
+	cursor: pointer;
+	margin: 0px;
+	text-align: center;
+	width: 28px;
+	height: 28px;
+	line-height: 28px;
+	text-align: center;
+	float: left;
+	font-size: 16px;
+	color: #848484;
+}
+
+.coos-on-line-tree li .data-icon {
+	display: none;
+}
+
+.coos-tree li .data-image {
+	margin: 4px;
+	cursor: pointer;
+	text-align: center;
+	width: 20px;
+	height: 20px;
+	line-height: 20px;
+	text-align: center;
+	float: left;
+	border: 0px;
+}
+
+.coos-tree li .data-text {
+	display: block;
+	cursor: pointer;
+	line-height: 28px;
+	word-break: keep-all;
+	white-space: nowrap;
+}
+
+.tree-row-end {
+	float: right;
+	position: absolute;
+	right: 0px;
+	top: 0px;
+	display: block;
+	height: 30px;
+	line-height: 30px;
+	background-color: white;
+}
+
+.tree-row-right.has-end-info .tree-button-group {
+	display: none;
+}
+
+.tree-row-right .data-end-info { /* font-family: cursive; */
+	margin: 0px 5px;
+}
+
+.coos-tree .coos-row:hover .tree-row-right.has-end-button .tree-button-group
+	{
+	display: block;
+}
+
+.coos-tree .coos-row:hover .tree-row-right.has-end-button .data-end-info
+	{
+	display: none;
+}
+
+.tree-button-group { /* display: none; */
+	/* margin: 3px 5px; */
+	margin: 0px 5px 0px 0px;
+}
+
+.coos-tree .coos-no-matching-data {
+	line-height: 28px;
+	height: 28px;
+	text-align: center;
+	outline: 1px solid #ddd;
+	display: block;
+	margin: 0px;
+	margin-bottom: 1px;
+}
+
+.coos-tree-search-prompt .coos-no-matching-data {
+	line-height: 30px;
+	height: 30px;
+	text-align: center;
+	border: 0px solid #ddd;
+	display: block;
+}
+
+.tree-button-group .tree-button {
+	cursor: pointer;
+	border: 1px solid #f89c2c;
+	color: #f89c2c;
+	padding: 0px 5px !important;
+	margin-left: 5px;
+	border-radius: 3px;
+	float: left;
+	font-size: 13px !important;
+	margin-top: 4px;
+	display: inline-block;
+	line-height: 18px;
+	min-width: 20px;
+	text-align: center;
+	height: 20px;
+}
+
+.coos-tree li::before, .coos-tree li::after {
+	content: '';
+	left: -10px;
+	position: absolute;
+	right: auto;
+}
+
+.coos-tree li::before {
+	border-left: 1px dashed #999;
+	bottom: 50px;
+	height: 100%;
+	top: -16px;
+	width: 1px;
+	z-index: 0;
+}
+
+.coos-tree .close li {
+	display: none;
+}
+
+.coos-tree li::after {
+	border-top: 1px dashed #999;
+	height: 20px;
+	top: 18px;
+	width: 10px;
+}
+
+.coos-tree-no-level-line li:before {
+	display: none;
+}
+
+.coos-tree-no-level-line li:after {
+	display: none;
+}
+
+.tree-search-not-find {
+	display: none !important;
+}
+/*	@TODO 树样式结束	*/

@@ -1534,7 +1534,7 @@
 					});
 				});
 			}
-			co.element.initImage(this.$tree);
+			co.element.init(this.$tree);
 			this.initCheckeds();
 		} else {
 			var $noDataLi = $('<li><div class="coos-no-matching-data">' + co.config.label.noMatchingData + '</div></li>');

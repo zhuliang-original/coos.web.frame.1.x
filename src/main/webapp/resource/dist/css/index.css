@@ -29,6 +29,10 @@ body {
 	line-height: 23px;
 }
 
+.coos-row {
+	margin-bottom: 10px;
+}
+
 .coos-row:before, .coos-row:after {
 	content: " ";
 	display: table;
