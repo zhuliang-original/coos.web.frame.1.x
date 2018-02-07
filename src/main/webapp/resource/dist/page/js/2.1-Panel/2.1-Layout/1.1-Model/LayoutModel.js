@@ -93,14 +93,14 @@
 					$el.html(value);
 				} else if (setvalueway == 'src') {
 					$el.removeAttr('src');
-					$el.attr('coos-path', value);
-					$el.addClass('coos-need-init-image');
-					co.element.initImage($one);
+					$el.attr('path', value);
+					$el.addClass('element-rule-image');
+					co.element.init($one);
 				} else if (setvalueway == 'bg') {
-					$el.attr('coos-path', value);
+					$el.attr('path', value);
 					$el.css('background-image', "url()");
-					$el.addClass('coos-need-init-image');
-					co.element.initImage($one);
+					$el.addClass('element-rule-image');
+					co.element.init($one);
 				} else {
 					$el.text(value);
 				}

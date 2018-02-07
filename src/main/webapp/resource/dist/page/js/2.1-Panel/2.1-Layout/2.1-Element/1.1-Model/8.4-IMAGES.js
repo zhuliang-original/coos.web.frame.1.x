@@ -10,8 +10,7 @@
 	})();
 
 	ThisElement.prototype.initContent = function() {
-		this.$input.addClass('inputtype-file');
-		this.$input.attr('coos-file-type', 'image');
+		this.$input.addClass('input-rule-file-image');
 		this.$input.attr('file-count', '5');
 	};
 

@@ -10,8 +10,8 @@
 	})();
 
 	ThisElement.prototype.initContent = function() {
-		this.$input.addClass('inputtype-file');
-		this.$input.attr('coos-file-type', 'audio');
+		this.$input.addClass('input-rule-file');
+		this.$input.attr('file-type', 'audio');
 	};
 
 	var ThisElementConfig = {

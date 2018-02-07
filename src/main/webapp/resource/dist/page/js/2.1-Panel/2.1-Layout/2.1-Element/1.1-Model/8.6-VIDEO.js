@@ -10,8 +10,8 @@
 	})();
 
 	ThisElement.prototype.initContent = function() {
-		this.$input.addClass('inputtype-file');
-		this.$input.attr('coos-file-type', 'video');
+		this.$input.addClass('input-rule-file');
+		this.$input.attr('file-type', 'video');
 	};
 
 	var ThisElementConfig = {

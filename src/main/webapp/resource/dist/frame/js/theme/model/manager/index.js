@@ -39,7 +39,7 @@
 			if (!coos.isEmpty(config.title) || !coos.isEmpty(config.icon)) {
 				var icon = config.icon;
 				if (!coos.isEmpty(icon)) {
-					var $image = $('<img class="coos-logo-icon float-left coos-need-init-image coos-bd-no mgtb-5 mgl-20" usefileserverurl="true" coos-path="' + icon + '"/>');
+					var $image = $('<img class="coos-logo-icon float-left element-rule-image coos-bd-no mgtb-5 mgl-20" use-file-server-url="true" path="' + icon + '"/>');
 					$content.append($image);
 					coos.element.init($content);
 				}

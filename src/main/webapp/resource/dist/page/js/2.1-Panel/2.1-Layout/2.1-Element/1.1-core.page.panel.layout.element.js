@@ -111,7 +111,7 @@
 			inputtype = "SELECT";
 		}
 		inputtype = inputtype.toLowerCase();
-		this.$input.addClass('inputtype-' + inputtype);
+		this.$input.addClass('input-rule-' + inputtype);
 
 		this.$input.attr('elementid', this.element.elementid);
 		this.$input.attr('addClass', 'coos-one-element');
@@ -168,7 +168,7 @@
 		}
 		this.$input.attr('cannull', cannull);
 		this.$input.attr('columnsize', columnsize);
-		this.$input.attr('input-group-type', inputgrouptype);
+		this.$input.attr('group-type', inputgrouptype);
 		this.$input.attr('isreadonly', readonly);
 		this.$input.attr('display', display);
 		this.$input.attr('inputtype', inputtype);
@@ -177,8 +177,8 @@
 		this.$input.attr('need-full-change', "true");
 		this.$input.attr('needaddon', true);
 		this.$input.addClass('parameter');
-		this.$input.addClass('coos-need-init-group');
-		this.$input.attr('need-file-group', true);
+		this.$input.addClass('input-rule-grup');
+		this.$input.attr('need-addon', true);
 		if (!co.isEmpty(this.element.config.defaultvalue)) {
 			this.$input.attr("defaultvalue", this.element.config.defaultvalue);
 		}
@@ -243,11 +243,11 @@
 			this.initAttribute();
 			var datas = this.element.selectdatas;
 			if (this.element.config.needwrap) {
-				this.$input.before("<div class=\"coos-column-12\"></div>");
+				this.$input.before("<div class=\"coos-col-12\"></div>");
 			}
 
 			if (datas != null) {
-				var $select = $('<select class="coos-select-option display-none" />');
+				var $select = $('<select class="option-select display-none" />');
 				if (this.$input[0].tagName == 'SELECT') {
 					$select = this.$input;
 					$select.append('<option value="">请选择</option>');

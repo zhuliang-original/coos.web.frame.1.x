@@ -14,8 +14,8 @@
 	};
 
 	ThisElement.prototype.initContent = function() {
-		this.$input.addClass('inputtype-select');
-		this.$input.attr('ischeckbox', 'true');
+		this.$input.addClass('input-rule-multi-select');
+
 	};
 
 	var ThisElementConfig = {

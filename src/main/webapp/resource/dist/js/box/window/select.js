@@ -89,8 +89,8 @@
 				$option_one.find('[type=radio]').remove();
 			}
 			if (data.image) {
-				$option_one.find('img').attr('coos-path', data.image);
-				$option_one.find('img').addClass('coos-need-init-image');
+				$option_one.find('img').attr('path', data.image);
+				$option_one.find('img').addClass('element-rule-image');
 				$select_conter.addClass('coos-has-image')
 			} else {
 				$option_one.find('img').remove();

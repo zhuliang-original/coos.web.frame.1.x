@@ -176,29 +176,29 @@ co.frame.theme = new Object();
 		var activeacolor = this.getObjectConfigData(place, "activeacolor");
 		var activeabackgroundcolor = this.getObjectConfigData(place, "activeabackgroundcolor");
 
-		var color = "" + this.theme[place].color;
-		var backgroundcolor = "" + this.theme[place].backgroundcolor;
-		var contentcolor = "" + this.theme[place].contentcolor;
-		var contentbackgroundcolor = "" + this.theme[place].contentbackgroundcolor;
-		var leftcolor = "" + this.theme[place].leftcolor;
-		var leftbackgroundcolor = "" + this.theme[place].leftbackgroundcolor;
-		var rightcolor = "" + this.theme[place].rightcolor;
-		var rightbackgroundcolor = "" + this.theme[place].rightbackgroundcolor;
+		var color = "" + (this.theme[place].color || "");
+		var backgroundcolor = "" + (this.theme[place].backgroundcolor || "");
+		var contentcolor = "" + (this.theme[place].contentcolor || "");
+		var contentbackgroundcolor = "" + (this.theme[place].contentbackgroundcolor || "");
+		var leftcolor = "" + (this.theme[place].leftcolor || "");
+		var leftbackgroundcolor = "" + (this.theme[place].leftbackgroundcolor || "");
+		var rightcolor = "" + (this.theme[place].rightcolor || "");
+		var rightbackgroundcolor = "" + (this.theme[place].rightbackgroundcolor || "");
 
-		var width = "" + this.theme[place].width;
-		var minwidth = "" + this.theme[place].minwidth;
-		var maxwidth = "" + this.theme[place].maxwidth;
-		var leftwidth = "" + this.theme[place].leftwidth;
-		var rightwidth = "" + this.theme[place].rightwidth;
-		var height = "" + this.theme[place].height;
-		var contentwidth = "" + this.theme[place].contentwidth;
-		var contentminwidth = "" + this.theme[place].contentminwidth;
-		var contentmaxwidth = "" + this.theme[place].contentmaxwidth;
-		var contentheight = "" + this.theme[place].contentheight;
-		var style_ = "" + this.theme[place].style;
-		var contentstyle = "" + this.theme[place].contentstyle;
-		var margin = "" + this.theme[place].margin;
-		var contentmargin = "" + this.theme[place].contentmargin;
+		var width = "" + (this.theme[place].width || "");
+		var minwidth = "" + (this.theme[place].minwidth || "");
+		var maxwidth = "" + (this.theme[place].maxwidth || "");
+		var leftwidth = "" + (this.theme[place].leftwidth || "");
+		var rightwidth = "" + (this.theme[place].rightwidth || "");
+		var height = "" + (this.theme[place].height || "");
+		var contentwidth = "" + (this.theme[place].contentwidth || "");
+		var contentminwidth = "" + (this.theme[place].contentminwidth || "");
+		var contentmaxwidth = "" + (this.theme[place].contentmaxwidth || "");
+		var contentheight = "" + (this.theme[place].contentheight || "");
+		var style_ = "" + (this.theme[place].style || "");
+		var contentstyle = "" + (this.theme[place].contentstyle || "");
+		var margin = "" + (this.theme[place].margin || "");
+		var contentmargin = "" + (this.theme[place].contentmargin || "");
 		var style = "";
 		!coos.isEmpty(width) && width.indexOf('%') < 0 && width.indexOf('px') < 0 && (width += "px");
 		!coos.isEmpty(minwidth) && minwidth.indexOf('%') < 0 && minwidth.indexOf('px') < 0 && (minwidth += "px");
@@ -232,7 +232,7 @@ co.frame.theme = new Object();
 		!coos.isEmpty(style_) && (style += ".coos-" + place + "-box{" + style_ + "}");
 		!coos.isEmpty(contentstyle) && (style += ".coos-" + place + "-box .coos-" + place + "{" + contentstyle + "}");
 
-		!coos.isEmpty(margin) && (style += ".coos-" + place + "{margin:" + margin + ";}");
+		!coos.isEmpty(margin) && (style += ".coos-" + place + "-box {margin:" + margin + ";}");
 		!coos.isEmpty(contentmargin) && (style += ".coos-" + place + "-box .coos-" + place + "{margin:" + contentmargin + ";}");
 
 		!coos.isEmpty(leftcolor) && (style += ".coos-" + place + " .coos-" + place + "-left{color:" + leftcolor + ";}");
@@ -354,10 +354,10 @@ co.frame.theme = new Object();
 			style = style + style_;
 		}
 		if ($('#COOS-THEME-STYLE').length > 0) {
-			$('#COOS-THEME-STYLE').text(style);
+			$('#COOS-THEME-STYLE').html(style);
 		} else {
 			var $childrens = $('head').children();
-			$($childrens[$childrens.length - 1]).before('<style id="coos-THEME-STYLE" type="text/css">' + style + '</style>');
+			$($childrens[$childrens.length - 1]).before('<style id="COOS-THEME-STYLE" type="text/css">' + style + '</style>');
 		}
 	};
 

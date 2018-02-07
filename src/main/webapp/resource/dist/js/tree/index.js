@@ -220,7 +220,7 @@
 			dataicon += '<i class="fa data-icon ' + icon + '"></i>';
 		}
 		if (!co.isEmpty(image)) {
-			dataicon += '<img class="coos-need-init-image data-image" coos-path="' + image + '"/>';
+			dataicon += '<img class="element-rule-image data-image" path="' + image + '"/>';
 		}
 		var datatext = '';
 		datatext = text;
@@ -1656,7 +1656,7 @@
 			isLazyRendering : true
 		});
 		this.initLevel();
-		co.element.initImage($li);
+		co.element.init($li);
 		this.initSingleLevel($li);
 		if ($li.hasClass('open')) {
 

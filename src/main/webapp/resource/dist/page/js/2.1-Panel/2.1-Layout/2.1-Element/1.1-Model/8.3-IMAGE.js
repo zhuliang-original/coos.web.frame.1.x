@@ -11,14 +11,14 @@
 
 	ThisElement.prototype.initContent = function() {
 		this.$input.addClass('inputtype-file');
-		this.$input.attr('coos-file-type', 'image');
+		this.$input.attr('file-count', '5');
 	};
 
 	ThisElement.prototype.appendTdValue = function(value) {
 		this.$input.empty();
-		var $img = $("<img class='coos-need-init-image' style=\"width: 40px;\" />");
-		var urls = co.getImageFullUrls(value);
-		$img.attr('coos-path', urls[0]);
+		var $img = $("<img class='element-rule-image' style=\"width: 40px;\" />");
+		var urls = co.url.formatImageUrls(value);
+		$img.attr('path', urls[0]);
 		this.$input.append($img);
 		this.$input.css('line-height', 0);
 	};
