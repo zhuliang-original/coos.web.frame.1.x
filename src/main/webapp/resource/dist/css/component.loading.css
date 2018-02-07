@@ -1,0 +1,41 @@
+.coos-component-loading {
+	position: fixed;
+	left: 0px;
+	right: 0px;
+	top: 0px;
+	bottom: 0px;
+	z-index: 51;
+	background-color: white;
+}
+
+.coos-component-loading .coos-component-loading-content {
+	width: 80%;
+	max-width: 600px;
+	height: 60px;
+	position: absolute;
+	top: 40%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	-webkit-transform: translate(-50%, -50%);
+	-moz-transform: translate(-50%, -50%);
+	-ms-transform: translate(-50%, -50%);
+	-o-transform: translate(-50%, -50%);
+	height: 60px;
+}
+
+.coos-component-loading .coos-progress-text {
+	padding-right: 5px;
+	font-size: 17px;
+	line-height: 30px;
+}
+
+.coos-component-loading .coos-progress-percentage {
+	padding-left: 5px;
+	font-size: 17px;
+	line-height: 30px;
+	font-size: 17px;
+}
+
+.coos-component-loading .coos-progress {
+	margin-top: 10px;
+}

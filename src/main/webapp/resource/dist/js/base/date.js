@@ -38,4 +38,22 @@
 		}
 		return format;
 	};
+
+	co.date.formatDatetime = function(datetime) {
+		var value = datetime || "";
+		if (!co.isEmpty(value)) {
+			value = value.replace(/-/g, '');
+			value = value.replace(/:/g, '');
+			value = value.replace(/ /g, '');
+			value = value.replace(/\//g, '');
+			if (value.length == 4) {
+				value = value.substring(0, 2) + ':' + value.substring(2, 4);
+			} else if (value.length == 8) {
+				value = value.substring(0, 4) + '-' + value.substring(4, 6) + '-' + value.substring(6, 8);
+			} else if (value.length >= 12) {
+				value = value.substring(0, 4) + '-' + value.substring(4, 6) + '-' + value.substring(6, 8) + ' ' + value.substring(8, 10) + ':' + value.substring(10, 12);
+			}
+		}
+		return value;
+	}
 })();
