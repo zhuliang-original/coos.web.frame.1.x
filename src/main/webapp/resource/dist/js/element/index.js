@@ -2,6 +2,7 @@
 	co.element = {};
 
 	var bindFunctionMap = {};
+	var bindFunctionList = [];
 	co.element.init = function($container) {
 		co.input.init();
 		$container = $container || $('body');
@@ -9,6 +10,9 @@
 		for (type in bindFunctionMap) {
 			co.element.init_(type, $container);
 		}
+		$(bindFunctionList).each(function(index, bindFunction) {
+			bindFunction && bindFunction($container);
+		});
 		co.button.init();
 	};
 
@@ -26,12 +30,16 @@
 		}
 	};
 
-	co.element.bind = function(type, bindFunction) {
-		var config = {
-			type : type,
-			bind : bindFunction
-		};
-		bindFunctionMap[type] = config;
+	co.element.bind = function(arg1, arg2) {
+		if (co.isFunction(arg1)) {
+			bindFunctionList.push(arg1);
+		} else {
+			var config = {
+				type : arg1,
+				bind : arg2
+			};
+			bindFunctionMap[arg1] = config;
+		}
 	};
 
 	co.element.isBinded = function($selector, type) {

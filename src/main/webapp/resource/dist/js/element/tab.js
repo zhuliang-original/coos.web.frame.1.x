@@ -1,13 +1,12 @@
 (function() {
-	co.element.initTablist = function(content) {
-		content = content || $('body');
+	co.element.bind(function($selector) {
 		// 下拉框
-		var actives = $(content).find('.coos-tab-buttons>[coos-target].active,.coos-tab-one>[coos-target].active');
+		var actives = $selector.find('.coos-tab-buttons>[coos-target].active,.coos-tab-one>[coos-target].active');
 
 		$(actives).each(function(index, active) {
 			chooseOne($(active));
 		});
-	};
+	});
 	function chooseOne($li) {
 		var $li = $($li);
 		var $tag = $li.closest('.coos-tab');
