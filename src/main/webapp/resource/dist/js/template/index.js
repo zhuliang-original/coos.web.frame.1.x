@@ -52,7 +52,7 @@
 		var methods = config.methods || {};
 		var watch = config.watch || {};
 		var this_ = this;
-		co.plugins.load("vue", function() {
+		co.plugin.load("vue", function() {
 			this_.data = new Vue({
 				el : config.$template[0],
 				data : config.data || {},

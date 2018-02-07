@@ -71,6 +71,10 @@
 		emmet : {
 			js : [ "resource/plugins/emmet/emmet.js" ],
 			css : []
+		},
+		vue : {
+			js : [ "resource/plugins/vue/2.4.2/vue.min.js" ],
+			css : []
 		}
 	};
 
