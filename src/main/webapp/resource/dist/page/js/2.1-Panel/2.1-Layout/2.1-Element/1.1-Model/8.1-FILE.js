@@ -10,8 +10,11 @@
 	})();
 
 	ThisElement.prototype.initContent = function() {
-		this.$input.addClass('input-rule-file');
-		this.$input.attr('file-count', '1');
+
+		if (this.$input[0].tagName == 'INPUT') {
+			this.$input.addClass('input-rule-file');
+			this.$input.attr('file-count', '1');
+		}
 
 	};
 

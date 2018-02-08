@@ -1761,7 +1761,6 @@
 		var start = new Date().getTime();
 		var t = new Tree(config);
 		var end = new Date().getTime();
-		console.log('耗时：' + (end - start) + 'ms');
 		return t;
 	};
 

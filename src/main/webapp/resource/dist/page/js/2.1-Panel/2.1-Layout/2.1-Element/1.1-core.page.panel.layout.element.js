@@ -111,7 +111,11 @@
 			inputtype = "SELECT";
 		}
 		inputtype = inputtype.toLowerCase();
-		this.$input.addClass('input-rule-' + inputtype);
+		if (inputtype == 'IMAGE' || inputtype == 'IMAGES') {
+			this.$input.addClass('input-rule-file-image');
+		} else {
+			this.$input.addClass('input-rule-' + inputtype);
+		}
 
 		this.$input.attr('elementid', this.element.elementid);
 		this.$input.attr('addClass', 'coos-one-element');

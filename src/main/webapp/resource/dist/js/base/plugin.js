@@ -30,6 +30,11 @@
 			js : [ "resource/plugins/bootstrap/switch/bootstrap-switch.min.js" ],
 			css : [ "resource/plugins/bootstrap/switch/bootstrap-switch.css" ]
 		},
+		data_tables :
+		{
+			js : [ "resource/plugins/jquery/datatables/jquery.datatables.min.js", "resource/plugins/jquery/datatables/datatables.bootstrap.js" ],
+			css : [ "resource/plugins/jquery/datatables/css/datatables.bootstrap.css", "resource/plugins/jquery/datatables/css/jquery.datatables.css" ]
+		},
 		tags_input : {
 			js : [ "resource/plugins/jquery/tagsinput/jquery.tagsinput.min.js" ],
 			css : [ "resource/plugins/jquery/tagsinput/jquery.tagsinput.css" ]

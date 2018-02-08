@@ -1,5 +1,6 @@
 (function() {
-	co.element.initAddChildButton = function(content) {
+
+	co.element.bind(function(content) {
 		content = content || $('body');
 		var elements = $(content).find('.coos-form-add-child-button');
 
@@ -78,7 +79,7 @@
 						coreChildForm.data('coos-form-add-before')(model);
 					}
 					model.find('.coos-form-add-child-button').data('mustinit', true);
-					co.element.initAddChildButton(coreChildForm);
+					co.element.init(coreChildForm);
 
 					model.find('.coos-form-delete-button:first').click(function() {
 						var button = $(this);
@@ -150,5 +151,5 @@
 				}
 			}
 		}
-	};
+	});
 })();

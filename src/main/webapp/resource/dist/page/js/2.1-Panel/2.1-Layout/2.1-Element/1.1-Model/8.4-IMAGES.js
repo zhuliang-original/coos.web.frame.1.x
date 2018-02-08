@@ -10,8 +10,11 @@
 	})();
 
 	ThisElement.prototype.initContent = function() {
-		this.$input.addClass('input-rule-file-image');
-		this.$input.attr('file-count', '5');
+
+		if (this.$input[0].tagName == 'INPUT') {
+			this.$input.addClass('input-rule-file-image');
+			this.$input.attr('file-count', '5');
+		}
 	};
 
 	var ThisElementConfig = {

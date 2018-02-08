@@ -113,3 +113,12 @@ table.coos-table thead th {
 .coos-data-table-footer {
 	overflow: hidden;
 }
+
+.table-responsive input, .table-responsive select {
+	border-radius: 0 !important;
+	width: 100%;
+	border: 1px solid #ddd;
+	font-size: 13px;
+	padding: 6px 10px 7px;
+	height: 30px;
+}

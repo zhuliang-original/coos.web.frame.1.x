@@ -1,12 +1,12 @@
 (function() {
 
 	var sortableindex = 1;
-	co.element.initSortable = function(content) {
+	co.element.bind(function(content) {
 		content = content || $('body');
 
 		var sortables = $(content).find('.coos-need-init-sortable');
 		if (sortables.length > 0) {
-			co.plugins.load("jquery_sortable", function() {
+			co.plugin.load("jquery_sortable", function() {
 
 				$(sortables).each(function(index, sortable) {
 					sortable = $(sortable);
@@ -61,5 +61,5 @@
 
 			});
 		}
-	};
+	});
 })();

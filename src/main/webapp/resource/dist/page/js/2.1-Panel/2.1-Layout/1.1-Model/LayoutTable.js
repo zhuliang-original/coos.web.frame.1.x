@@ -59,7 +59,7 @@
 		this.rowsize = 0;
 
 		if (this.layout.config.isdatatable) {
-			$view.find('table').addClass('coos-need-init-data-tables');
+			$view.find('table').addClass('element-rule-data-tables');
 		}
 		if (this.layout.config.displayserialnumber) {
 			$view.find('thead tr').append('<th width="80px" class="text-center">序号</th>');

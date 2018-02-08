@@ -1,9 +1,9 @@
 (function() {
-	co.element.initScroll = function(content) {
+	co.element.bind(function(content) {
 		content = content || $('body');
 		var elements = $(content).find('.coos-need-init-scroll');
 		if (elements.length > 0) {
-			co.plugins.load("mCustomScrollbar", function() {
+			co.plugin.load("mCustomScrollbar", function() {
 				$(elements).each(function(index, element) {
 					if (co.element.isInited(element, 'coos-need-init-scroll')) {
 						return;
@@ -25,5 +25,5 @@
 				});
 			});
 		}
-	};
+	});
 })();
