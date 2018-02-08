@@ -1,6 +1,6 @@
 (function() {
 	co.element.bind('move', function($selector) {
-		co.plugins.load("draggabilly", function() {
+		co.plugin.load("draggabilly", function() {
 			$selector.draggabilly({
 				handle : '.handle'
 			});

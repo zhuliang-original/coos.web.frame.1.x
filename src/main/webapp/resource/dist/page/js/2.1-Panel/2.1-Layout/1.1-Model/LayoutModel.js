@@ -95,11 +95,13 @@
 					$el.removeAttr('src');
 					$el.attr('path', value);
 					$el.addClass('element-rule-image');
+					$el.attr('use-file-server-url', 'true');
 					co.element.init($one);
 				} else if (setvalueway == 'bg') {
 					$el.attr('path', value);
 					$el.css('background-image', "url()");
 					$el.addClass('element-rule-image');
+					$el.attr('use-file-server-url', 'true');
 					co.element.init($one);
 				} else {
 					$el.text(value);

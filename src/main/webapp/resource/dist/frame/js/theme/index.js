@@ -60,25 +60,25 @@ co.frame.theme = new Object();
 		var theme = this.theme;
 		var headerconfig = theme.header.config;
 		var headerheight = headerconfig.height;
-		if (!this.$header.is(':visible')) {
+		if (!this.$headerbox.is(':visible')) {
 			return 0;
 		}
 		if (this.$frame.hasClass('coos-full-vertical') || this.$frame.hasClass('coos-full-page')) {
 			return 0;
 		}
-		return this.$header.outerHeight();
+		return this.$headerbox.outerHeight();
 	};
 	Theme.prototype.getFooterHeight = function() {
 		var theme = this.theme;
 		var footerconfig = theme.footer.config;
 		var footerheight = footerconfig.height;
-		if (!this.$footer.is(':visible')) {
+		if (!this.$footerbox.is(':visible')) {
 			return 0;
 		}
 		if (this.$frame.hasClass('coos-full-vertical')) {
 			return 0;
 		}
-		var h = this.$footer.outerHeight();
+		var h = this.$footerbox.outerHeight();
 		if (theme.footer.fixed) {
 			var $frame = this.$frame;
 			var number = coos.getStyle($frame, 'padding-bottom');
@@ -115,8 +115,8 @@ co.frame.theme = new Object();
 		if (this.$frame.hasClass('coos-full-vertical') || this.$frame.hasClass('coos-full-page')) {
 			return 0;
 		}
-		var $body = this.$body;
-		var number = coos.getStyle($body, 'margin-top');
+		var $bodybox = this.$bodybox;
+		var number = coos.getStyle($bodybox, 'margin-top');
 		if (!coos.isEmpty(number)) {
 			if (("" + number).indexOf('px') >= 0) {
 				number = Number(("" + number).replace('px', ''));
@@ -133,8 +133,8 @@ co.frame.theme = new Object();
 		if (this.$frame.hasClass('coos-full-vertical') || this.$frame.hasClass('coos-full-page')) {
 			return 0;
 		}
-		var $body = this.$body;
-		var number = coos.getStyle($body, 'margin-bottom');
+		var $bodybox = this.$bodybox;
+		var number = coos.getStyle($bodybox, 'margin-bottom');
 		if (!coos.isEmpty(number)) {
 			if (("" + number).indexOf('px') >= 0) {
 				number = Number(("" + number).replace('px', ''));

@@ -63,6 +63,10 @@
 			js : [ "resource/plugins/jquery/ui/interactions/jquery-ui.min.js" ],
 			css : [ "resource/plugins/jquery/ui/interactions/jquery-ui.min.css", "resource/plugins/jquery/ui/widgets/jquery-ui.theme.min.css" ]
 		},
+		draggabilly : {
+			js : [ "resource/plugins/draggabilly/draggabilly.pkgd.js" ],
+			css : []
+		},
 		jquery_ui_widgets : {
 			js : [ "resource/plugins/jquery/ui/widgets/jquery-ui.min.js" ],
 			css : [ "resource/plugins/jquery/ui/widgets/jquery-ui.min.css", "resource/plugins/jquery/ui/widgets/jquery-ui.theme.min.css" ]
