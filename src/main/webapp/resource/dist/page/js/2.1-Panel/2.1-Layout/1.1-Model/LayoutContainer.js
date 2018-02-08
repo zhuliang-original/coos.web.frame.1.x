@@ -34,7 +34,7 @@
 		var layout = this.layout;
 		var layoutConfig = layout.config;
 		if (!co.isEmpty(layoutConfig.width)) {
-			this.$view.removeClass('coos-column-' + layout.columnsize);
+			this.$view.removeClass('coos-col-' + layout.columnsize);
 			this.$content.css('width', layoutConfig.width);
 		}
 		if (!co.isEmpty(layoutConfig.height)) {

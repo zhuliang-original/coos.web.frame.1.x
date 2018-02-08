@@ -38,6 +38,8 @@
 	};
 
 	Layout.prototype.loadDataAfter = function(result) {
+		co.element.init(this.$view);
+		
 		var config = this.config;
 		var layout = config.layout;
 		if (!co.isEmpty(layout.afterdataloadexecute)) {
@@ -62,6 +64,8 @@
 	};
 
 	Layout.prototype.initViewAfter = function() {
+		co.element.init(this.$view);
+		
 		var config = this.config;
 		var layout = config.layout;
 		if (!co.isEmpty(layout.afterviewloadexecute)) {
@@ -98,7 +102,7 @@
 				this.$view.find('.coos-layout-one-content').append('<h3 class="pdtb-5">' + layout.title + '</h3>');
 			}
 		}
-		this.$view.addClass('coos-column-' + columnsize);
+		this.$view.addClass('coos-col-' + columnsize);
 		this.$content = this.$view.find('.coos-layout-one-content');
 		this.initElementObject();
 		this.initButtonObject();

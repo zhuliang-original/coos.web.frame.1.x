@@ -73,5 +73,4 @@
 		}
 	};
 	co.page.panel.layout.model.defind("FORM-CHILD", ThisLayoutConfig, ThisLayout);
-	co.page.panel.layout.model.defind("FORM_CHILD", ThisLayoutConfig, ThisLayout);
 })(window, jQuery);

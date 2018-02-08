@@ -22,8 +22,8 @@
 		var $view = $(html);
 		var this_ = this;
 		var $buttonContent = $view.find('.coos-button-container');
-		var $resetBtn = $('<a class="coos-button coos-button-xs coos-bg-grey mgl-5"><i class="fa fa-times-circle"></i> 重置</a>');
-		var $searchBtn = $('<a class="coos-button coos-button-xs coos-bg-green mgl-5"><i class="fa fa-check-circle"></i> 搜索</a>');
+		var $resetBtn = $('<a class="coos-btn coos-btn-xs coos-bg-grey mgl-5"><i class="fa fa-times-circle"></i> 重置</a>');
+		var $searchBtn = $('<a class="coos-btn coos-btn-xs coos-bg-green mgl-5"><i class="fa fa-check-circle"></i> 搜索</a>');
 		$buttonContent.append($resetBtn);
 		$buttonContent.append($searchBtn);
 		$view.on("keydown", function(e) {
@@ -47,6 +47,7 @@
 
 	ThisLayout.prototype.initViewSuccess = function() {
 		// this.$view.find('.coos-one-button').addClass('mgl-5');
+		co.element.init(this.$view);
 	};
 
 	ThisLayout.prototype.appendSearchData = function(searchData) {
@@ -85,6 +86,5 @@
 			return models;
 		}
 	};
-	co.page.panel.layout.model.defind("FORM_SEARCH", ThisLayoutConfig, ThisLayout);
 	co.page.panel.layout.model.defind("FORM-SEARCH", ThisLayoutConfig, ThisLayout);
 })(window, jQuery);

@@ -94,7 +94,7 @@
 		var columnsize = this.element.columnsize;
 		var inputgrouptype = config.inputgrouptype;
 		var labelsize = config.labelsize;
-		inputgrouptype = inputgrouptype || 1;
+		inputgrouptype = inputgrouptype || 4;
 		labelsize = labelsize || 3;
 		var helpinfo = config.helpinfo;
 		// 隐藏
@@ -167,7 +167,7 @@
 			this.$input.attr('maxlength', maxlength);
 		}
 		this.$input.attr('cannull', cannull);
-		this.$input.attr('columnsize', columnsize);
+		this.$input.attr('column-size', columnsize);
 		this.$input.attr('group-type', inputgrouptype);
 		this.$input.attr('isreadonly', readonly);
 		this.$input.attr('display', display);
@@ -175,9 +175,9 @@
 		this.$input.attr('coos-validate', config.jsvalidate);
 		this.$input.attr('coos-click', config.onclick);
 		this.$input.attr('need-full-change', "true");
-		this.$input.attr('needaddon', true);
+		this.$input.attr('need-addon', true);
 		this.$input.addClass('parameter');
-		this.$input.addClass('input-rule-grup');
+		this.$input.addClass('input-rule-group');
 		this.$input.attr('need-addon', true);
 		if (!co.isEmpty(this.element.config.defaultvalue)) {
 			this.$input.attr("defaultvalue", this.element.config.defaultvalue);

@@ -38,6 +38,8 @@
 	};
 
 	Panel.prototype.loadDataAfter = function(result) {
+		co.element.init(this.$view);
+		
 		var config = this.config;
 		var panel = config.panel;
 		if (!co.isEmpty(panel.afterdataloadexecute)) {
@@ -62,6 +64,8 @@
 	};
 
 	Panel.prototype.initViewAfter = function() {
+		co.element.init(this.$view);
+		
 		var config = this.config;
 		var panel = config.panel;
 		if (!co.isEmpty(panel.afterviewloadexecute)) {

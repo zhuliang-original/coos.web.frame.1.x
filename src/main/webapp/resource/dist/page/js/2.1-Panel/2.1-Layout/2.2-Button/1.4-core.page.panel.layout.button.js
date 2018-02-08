@@ -18,7 +18,7 @@
 		this.initView();
 	};
 	Button.prototype.getButton = function() {
-		return $('<a class="coos-button "></a>');
+		return $('<a class="coos-btn "></a>');
 	};
 	Button.prototype.initView = function() {
 		this.$view = this.getButton();

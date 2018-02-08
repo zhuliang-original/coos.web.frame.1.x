@@ -36,12 +36,14 @@
 	};
 
 	Page.prototype.loadDataAfter = function() {
+		co.element.init(this.$view);
 	};
 
 	Page.prototype.initViewBefore = function() {
 	};
 
 	Page.prototype.initViewAfter = function() {
+		co.element.init(this.$view);
 	};
 
 	Page.prototype.bindEvents = function() {

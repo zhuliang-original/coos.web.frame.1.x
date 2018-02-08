@@ -1,5 +1,5 @@
 (function(window, jQuery) {
-	var html = '<div class="coos-column-12 table-responsive"><table class="coos-table"><thead><tr></tr></thead><tbody></tbody></table></div>';
+	var html = '<div class="coos-col-12 table-responsive"><table class="coos-table"><thead><tr></tr></thead><tbody></tbody></table></div>';
 
 	function ThisLayout(config) {
 		co.page.panel.layout.Layout.call(this, config);

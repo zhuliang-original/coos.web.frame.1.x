@@ -15,7 +15,7 @@
 	ButtonBase.prototype.getButton = function() {
 		var button = this.button;
 		var config = button.config;
-		var $button = $('<a class="coos-button "></a>');
+		var $button = $('<a class="coos-btn "></a>');
 		if (!co.isEmpty(config.icon)) {
 			$button.append('<i class="fa ' + config.icon + '"></i>');
 		}
@@ -40,7 +40,7 @@
 		} else {
 			$button.addClass('coos-one-button coos-' + color + ' coos-bd-' + color);
 		}
-		$button.addClass('coos-button-' + size);
+		$button.addClass('coos-btn-' + size);
 		if (this.button.config.useforwindow) {
 			$button.addClass('coos-button-use-for-window');
 		}
