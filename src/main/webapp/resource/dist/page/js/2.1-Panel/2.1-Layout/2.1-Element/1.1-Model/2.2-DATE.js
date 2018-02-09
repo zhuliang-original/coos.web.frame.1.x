@@ -10,11 +10,11 @@
 	})();
 
 	ThisElement.prototype.getValue = function(value) {
-		return co.formatDatetime(value);
+		return co.date.formatDatetime(value);
 	};
 
 	ThisElement.prototype.getTextValue = function(value) {
-		return co.formatDatetime(value);
+		return co.date.formatDatetime(value);
 	};
 
 	ThisElement.prototype.initContent = function() {

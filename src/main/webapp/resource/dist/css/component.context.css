@@ -1,0 +1,150 @@
+/**
+ * ContextJS Styles
+ * For use WITHOUT Twitters Bootstrap CSS
+ */
+.coos-nav-header {
+	display: block;
+	padding: 3px 15px;
+	font-size: 11px;
+	font-weight: bold;
+	line-height: 20px;
+	color: #999;
+	text-shadow: 0 1px 0 rgba(255, 255, 255, 0.5);
+	text-transform: uppercase;
+}
+
+.coos-dropup .caret, .navbar-fixed-bottom .coos-dropdown .caret {
+	border-top: 0;
+	border-bottom: 4px solid #000000;
+	content: "\2191";
+}
+
+.coos-dropup .coos-dropdown-menu, .navbar-fixed-bottom .coos-dropdown .coos-dropdown-menu
+	{
+	top: auto;
+	bottom: 100%;
+	margin-bottom: 1px;
+}
+
+.coos-dropdown-submenu {
+	position: relative;
+}
+
+.coos-dropdown-submenu>.coos-dropdown-menu {
+	top: 0;
+	left: 100%;
+	margin-top: -6px;
+	margin-left: 0px;
+	-webkit-border-radius: 6px 6px 6px 6px;
+	-moz-border-radius: 6px 6px 6px 6px;
+	border-radius: 6px 6px 6px 6px;
+}
+
+.coos-dropdown-submenu>.coos-dropdown-menu.drop-left {
+	left: -100%;
+}
+
+.coos-dropdown-submenu:hover>.coos-dropdown-menu {
+	display: block;
+}
+
+.coos-dropdown-submenu>a:after {
+	display: block;
+	float: right;
+	width: 0;
+	height: 0;
+	margin-top: 5px;
+	margin-right: -10px;
+	border-color: transparent;
+	border-left-color: #cccccc;
+	border-style: solid;
+	border-width: 5px 0 5px 5px;
+	content: " ";
+}
+
+.coos-dropdown-submenu:hover>a:after {
+	border-left-color: #ffffff;
+}
+
+.coos-dropdown .coos-dropdown-menu .coos-nav-header {
+	padding-right: 20px;
+	padding-left: 20px;
+}
+/**
+ * 	Context Styles
+ */
+.coos-dropdown-context .coos-nav-header {
+	cursor: default;
+}
+
+.coos-dropdown-context:before, .coos-dropdown-context-up:before {
+	position: absolute;
+	top: -7px;
+	left: 9px;
+	display: inline-block;
+	border-right: 7px solid transparent;
+	border-bottom: 7px solid #ccc;
+	border-left: 7px solid transparent;
+	border-bottom-color: rgba(0, 0, 0, 0.2);
+	content: '';
+}
+
+.coos-dropdown-context:after, .coos-dropdown-context-up:after {
+	position: absolute;
+	top: -6px;
+	left: 10px;
+	display: inline-block;
+	border-right: 6px solid transparent;
+	border-bottom: 6px solid #ffffff;
+	border-left: 6px solid transparent;
+	content: '';
+}
+
+.coos-dropdown-context-up:before, .coos-dropdown-context-up:after {
+	top: auto;
+	bottom: -7px;
+	z-index: 9999;
+}
+
+.coos-dropdown-context-up:before {
+	border-right: 7px solid transparent;
+	border-top: 7px solid #ccc;
+	border-bottom: none;
+	border-left: 7px solid transparent;
+}
+
+.coos-dropdown-context-up:after {
+	border-right: 6px solid transparent;
+	border-top: 6px solid #ffffff;
+	border-left: 6px solid transparent;
+	border-bottom: none;
+}
+
+.coos-dropdown-context-sub:before, .coos-dropdown-context-sub:after {
+	display: none;
+}
+
+.coos-dropdown-context .coos-dropdown-submenu:hover .coos-dropdown-menu
+	{
+	display: none;
+}
+
+.coos-dropdown-context .coos-dropdown-submenu:hover>.coos-dropdown-menu
+	{
+	display: block;
+}
+
+.coos-compressed-context a {
+	padding-left: 14px;
+	padding-top: 0;
+	padding-bottom: 0;
+	font-size: 13px;
+}
+
+.coos-compressed-context .divider {
+	margin: 5px 1px;
+}
+
+.coos-compressed-context .nav-header {
+	padding: 1px 13px;
+}

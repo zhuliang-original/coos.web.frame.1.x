@@ -19,6 +19,7 @@
 	</script>
 	<div class="doc-part">
 		<jsp:include page="form.input/group.jsp" />
+		<jsp:include page="form.input/form.jsp" />
 		<jsp:include page="form.input/select.jsp" />
 		<jsp:include page="form.input/multi.select.jsp" />
 		<jsp:include page="form.input/relation.select.jsp" />
