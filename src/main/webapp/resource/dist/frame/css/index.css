@@ -1,3 +1,8 @@
+.coos-frame {
+	background-color: #e6e6e6;
+	overflow: overlay;
+}
+
 .coos-header-box {
 	clear: both;
 	background-color: white;
