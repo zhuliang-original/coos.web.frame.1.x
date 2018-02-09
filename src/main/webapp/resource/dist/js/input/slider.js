@@ -1,10 +1,11 @@
 (function() {
 	co.input.bind('slider', function($selector) {
+		
 		var min = $selector.attr('data-slider-min') || 0;
 		var max = $selector.attr('data-slider-max') || 100;
 		$selector.attr('data-slider-min', min);
 		$selector.attr('data-slider-max', max);
-		var isinterval = $selector.attr('coos-is-interval-search') ? true : false;
+		var isinterval = co.isTrue($selector.attr('coos-is-interval-search'));
 		if (isinterval) {
 			$selector.attr('data-slider-value', '[' + min + ',' + max + ']');
 		} else {
@@ -25,12 +26,12 @@
 						$(vs).each(function(index, v) {
 							vs[index] = Number(v);
 						});
-						slider.data('slider').setValue(vs);
+						slider.data('bootstrapSlider').setValue(vs);
 					} else {
-						slider.data('slider').setValue(Number(value));
+						slider.data('bootstrapSlider').setValue(Number(value));
 					}
 				}
-				var value = slider.data('slider').getValue();
+				var value = slider.data('bootstrapSlider').getValue();
 				var setvalue = null;
 				if (co.isNumber(value)) {
 					setvalue = value;
@@ -39,7 +40,7 @@
 					$selector.closest('.coos-form').find('[name="' + name + '_start"]').val(value[0]);
 					$selector.closest('.coos-form').find('[name="' + name + '_end"]').val(value[1]);
 				}
-				slider.data('slider').setValue(value);
+				slider.data('bootstrapSlider').setValue(value);
 				$selector.val(setvalue);
 				return;
 			}
@@ -52,7 +53,7 @@
 			}
 		});
 		co.plugin.load("bootstrap_slider", function() {
-			slider = $selector.slider({
+			slider = $selector.bootstrapSlider({
 				formatter : function(value) {
 					return '' + value;
 				}
@@ -63,10 +64,10 @@
 				$(vs).each(function(index, v) {
 					vs[index] = Number(v);
 				});
-				slider.data('slider').setValue(vs);
+				slider.data('bootstrapSlider').setValue(vs);
 			} else {
 				if (!co.isEmpty(thisvalue)) {
-					slider.data('slider').setValue(Number(thisvalue));
+					slider.data('bootstrapSlider').setValue(Number(thisvalue));
 				}
 			}
 

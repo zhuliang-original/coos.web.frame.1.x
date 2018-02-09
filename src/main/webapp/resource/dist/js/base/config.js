@@ -1,7 +1,6 @@
 (function() {
 	co.config = new Object();
-	co.config = {
-	};
+	co.config = {};
 
 	co.config.result = {
 		errcode : "data.errcode",
@@ -176,6 +175,51 @@
 			code : 300023,
 			info : "输入值必须小于等于$lte",
 			show : "$label不能大于$lte！"
+		},
+		isNotChinese : {
+			code : 300026,
+			info : "输入值只能包含中文",
+			show : "$label只能输入中文！"
+		},
+		isNotChineseOrEnglish : {
+			code : 300026,
+			info : "输入值只能包含中文或英文",
+			show : "$label只能输入中文或英文！"
+		},
+		isNotEnglish : {
+			code : 300024,
+			info : "输入值只能包含英文",
+			show : "$label只能输入英文！"
+		},
+		isNotEnglishOrNumber : {
+			code : 300024,
+			info : "输入值只能包含英文或数字",
+			show : "$label只能输入英文或数字！"
+		},
+		isNotEnglishOrNumberOrUnderline : {
+			code : 300025,
+			info : "输入值只能包含英文、数字或下划线",
+			show : "$label只能输入英文、数字或下划线！"
+		},
+		isNotEnglishOrNumberOrUnderlineOrSlash : {
+			code : 300025,
+			info : "输入值只能包含英文、数字、下划线或斜杠",
+			show : "$label只能输入英文、数字、下划线或斜杠！"
+		},
+		isNotEnglishOrNumberOrUnderlineOrPoint : {
+			code : 300025,
+			info : "输入值只能包含英文、数字、下划线或点",
+			show : "$label只能输入英文、数字、下划线或点！"
+		},
+		isNotEnglishOrNumberOrSymbol : {
+			code : 300025,
+			info : "输入值只能包含英文、数字或特殊符号",
+			show : "$label只能输入英文、数字或特殊符号！"
+		},
+		isNotNoSymbol : {
+			code : 300025,
+			info : "输入值不能包含特殊符号",
+			show : "$label不能包含特殊符号！"
 		}
 	};
 
@@ -190,7 +234,15 @@
 		mailbox : /^([a-zA-Z0-9_\.\-])+\@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9]{2,4})+$/,
 		url : /^(http|ftp|https):\/\/[\w\-_]+(\.[\w\-_]+)+([\w\-\.,@?^=% :\/~+#]*[\w\-\@?^=% \/~+#])?$/,
 		idcard : /(^\d{15}$)|(^\d{17}([0-9]|X|x)$)/,
-		phone : /^1[3|4|5|7|8]\d{9}$/,
-		tel : /^((0\d{2,3})-)(\d{7,8})(-(\d{3,}))?$/
+		phone : /^1[3|4|5|7|8|9]\d{9}$/,
+		tel : /^((0\d{2,3})-)(\d{7,8})(-(\d{3,}))?$/,
+		chinese : /^[\u4e00-\u9fa5]+$/,
+		chinese_or_english : /^[\u4e00-\u9fa5a-zA-Z]+$/,
+		english : /^[a-zA-Z]+$/,
+		english_or_number : /^[\a-zA-Z0-9]+$/,
+		english_or_number_or_underline : /^[_a-zA-Z0-9]+$/,
+		english_or_number_or_underline_or_slash : /^[_a-zA-Z0-9/]+$/,
+		english_or_number_or_underline_or_point : /^[_a-zA-Z0-9.]+$/,
+		has_symbol : /[)(?=.*~!@#$%^&*'"}{\]\[\\]+/
 	};
 })();

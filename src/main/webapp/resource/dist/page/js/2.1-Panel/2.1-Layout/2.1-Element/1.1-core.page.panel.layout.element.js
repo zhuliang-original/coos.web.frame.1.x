@@ -267,9 +267,9 @@
 					$select.append(option);
 				});
 				if (!co.isEmpty(this.element.config.relationname)) {
-					this.$input.attr('relationname', this.element.config.relationname);
+					this.$input.attr('rule-relation', this.element.config.relationname);
 				} else if (!co.isEmpty(this.element.relationname)) {
-					this.$input.attr('relationname', this.element.relationname);
+					this.$input.attr('rule-relation', this.element.relationname);
 				}
 			}
 			if (this.place == 'FORM-SEARCH') {

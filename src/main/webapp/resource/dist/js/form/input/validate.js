@@ -81,6 +81,16 @@
 		var isdatetime = $element.attr('isdatetime') != null;
 		var isinteger = $element.attr('isinteger') != null;
 		var isidcard = $element.attr('isidcard') != null;
+		var ischinese = $element.attr('iscn') != null;
+
+		var isenglish = $element.attr('isen') != null;
+		var ischinese_or_english = $element.attr('iscn-or-en') != null;
+		var isenglish_or_number = $element.attr('isen-or-num') != null;
+		var isenglish_or_number_or_underline = $element.attr('isen-or-num-or-ul') != null;
+		var isenglish_or_number_or_underline_or_slash = $element.attr('isen-or-num-or-ul-or-sl') != null;
+		var isenglish_or_number_or_underline_or_point = $element.attr('isen-or-num-or-ul-or-po') != null;
+		var isno_symbol = $element.attr('isnosymbol') != null;
+
 		var validate = $element.attr('coos-validate');
 		var minlength = parseInt($element.attr('minlength'), 10);
 		var maxlength = parseInt($element.attr('maxlength'), 10);
@@ -195,6 +205,40 @@
 					data.valid = false;
 					data.error = co.config.error.isNotTime;
 				}
+				if (ischinese && !co.isChinese(value)) {
+					data.valid = false;
+					data.error = co.config.error.isNotChinese;
+				}
+				if (isenglish && !co.isEnglish(value)) {
+					data.valid = false;
+					data.error = co.config.error.isNotEnglish;
+				}
+				if (ischinese_or_english && !co.isChineseOrEnglish(value)) {
+					data.valid = false;
+					data.error = co.config.error.isNotChineseOrEnglish;
+				}
+				if (isenglish_or_number && !co.isEnglishOrNumber(value)) {
+					data.valid = false;
+					data.error = co.config.error.isNotEnglishOrNumber;
+				}
+				if (isenglish_or_number_or_underline && !co.isEnglishOrNumberOrUnderline(value)) {
+					data.valid = false;
+					data.error = co.config.error.isNotEnglishOrNumberOrUnderline;
+				}
+				if (isenglish_or_number_or_underline_or_slash && !co.isEnglishOrNumberOrUnderlineOrSlash(value)) {
+					data.valid = false;
+					data.error = co.config.error.isNotEnglishOrNumberOrUnderlineOrSlash;
+				}
+				if (isenglish_or_number_or_underline_or_point && !co.isEnglishOrNumberOrUnderlineOrPoint(value)) {
+					data.valid = false;
+					data.error = co.config.error.isNotEnglishOrNumberOrUnderlineOrPoint;
+				}
+				
+				if (isno_symbol && co.hasSymbol(value)) {
+					data.valid = false;
+					data.error = co.config.error.isNotNoSymbol;
+				}
+
 				var value_ = value;
 
 				var eq_ = eq;

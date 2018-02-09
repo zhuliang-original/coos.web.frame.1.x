@@ -88,3 +88,11 @@ coos.page.pushLoadCallback(function() {
 	initNavSelect();
 
 });
+
+$(function() {
+	$('html').on('click', '.validateInputBtn', function() {
+		var $form = $(this).closest('.doc-view');
+		var data = coos.form.validate($form);
+		coos.box.info('验证成功！结果：' + JSON.stringify(data));
+	});
+});

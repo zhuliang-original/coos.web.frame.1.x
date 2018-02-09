@@ -86,7 +86,7 @@
 			}
 			var name = element.attr('name');
 			var needchange = false;
-			var relationelements = form.find('[relationname=' + name + ']');
+			var relationelements = form.find('[rule-relation=' + name + ']');
 			if (relationelements.length > 0) {
 				needchange = true;
 			}

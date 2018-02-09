@@ -16,10 +16,10 @@
 		this.rulerelation = this.$selector.attr('rule-relation');
 
 		var isreadonly = this.$selector.attr('isreadonly');
-		isreadonly = isreadonly == null || isreadonly == 'false' || isreadonly == '0' ? false : true;
+		isreadonly = co.isTrue(isreadonly);
 		this.isreadonly = isreadonly;
 		var needaddon = this.$selector.attr('need-addon');
-		needaddon = needaddon != null && needaddon == 'true' ? true : false;
+		needaddon = co.isTrue(needaddon);
 		this.needaddon = needaddon;
 		this.initView();
 		this.initDatas();

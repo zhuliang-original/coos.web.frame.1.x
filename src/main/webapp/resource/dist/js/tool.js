@@ -68,6 +68,20 @@
 	};
 
 	// 是否为空
+	co.isTrue = function(arg) {
+		var flag = false;
+		if (arg != null) {
+			if (co.isBoolean(arg)) {
+				flag = arg;
+			} else {
+				if (arg === 'true' || arg === '1') {
+					flag = true;
+				}
+			}
+		}
+		return flag;
+	};
+	// 是否为空
 	co.isEmpty = function(arg) {
 		return typeof (arg) == "undefined" || arg == null || arg.length == 0;
 	};
@@ -151,6 +165,55 @@
 			return false;
 		}
 		return (co.config.rules.url.test(arg));
+	};
+	co.isChinese = function(arg) {
+		if (this.isEmpty(arg)) {
+			return false;
+		}
+		return (co.config.rules.chinese.test(arg));
+	};
+	co.isChineseOrEnglish = function(arg) {
+		if (this.isEmpty(arg)) {
+			return false;
+		}
+		return (co.config.rules.chinese_or_english.test(arg));
+	};
+	co.isEnglish = function(arg) {
+		if (this.isEmpty(arg)) {
+			return false;
+		}
+		return (co.config.rules.english.test(arg));
+	};
+	co.isEnglishOrNumber = function(arg) {
+		if (this.isEmpty(arg)) {
+			return false;
+		}
+		return (co.config.rules.english_or_number.test(arg));
+	};
+	co.isEnglishOrNumberOrUnderline = function(arg) {
+		if (this.isEmpty(arg)) {
+			return false;
+		}
+		return (co.config.rules.english_or_number_or_underline.test(arg));
+	};
+	co.isEnglishOrNumberOrUnderlineOrSlash = function(arg) {
+		if (this.isEmpty(arg)) {
+			return false;
+		}
+		return (co.config.rules.english_or_number_or_underline_or_slash.test(arg));
+	};
+	co.isEnglishOrNumberOrUnderlineOrPoint = function(arg) {
+		if (this.isEmpty(arg)) {
+			return false;
+		}
+		return (co.config.rules.english_or_number_or_underline_or_point.test(arg));
+	};
+
+	co.hasSymbol = function(arg) {
+		if (this.isEmpty(arg)) {
+			return false;
+		}
+		return (co.config.rules.has_symbol.test(arg));
 	};
 	co.isMailbox = function(arg) {
 		if (this.isEmpty(arg)) {

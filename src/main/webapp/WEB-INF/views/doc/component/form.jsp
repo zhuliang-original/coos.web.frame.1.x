@@ -14,6 +14,7 @@
 		<div class="doc-content coos-col-9 coos-col-xs-12 coos-offset-xs-0">
 			<jsp:include page="form/input.group.jsp" />
 			<jsp:include page="form/form.input.jsp" />
+			<jsp:include page="form/form.validate.jsp" />
 			<div style="height: 200px;"></div>
 		</div>
 	</div>
