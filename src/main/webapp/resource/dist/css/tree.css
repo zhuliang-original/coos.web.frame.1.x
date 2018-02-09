@@ -405,7 +405,7 @@ li.coos-tree-search-for-high-light>.coos-tree-row .tree-row-center {
 	line-height: 28px;
 	height: 28px;
 	text-align: center;
-	outline: 1px solid #ddd;
+	/* outline: 1px solid #ddd; */
 	display: block;
 	margin: 0px;
 	margin-bottom: 1px;
