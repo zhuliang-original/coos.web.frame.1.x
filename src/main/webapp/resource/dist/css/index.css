@@ -29,6 +29,11 @@ body {
 	line-height: 23px;
 }
 
+a {
+	text-decoration: none;
+	background-color: transparent;
+}
+
 .coos-row {
 	margin-bottom: 10px;
 }
