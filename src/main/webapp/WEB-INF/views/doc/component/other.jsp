@@ -12,6 +12,7 @@
 			<jsp:include page="../doc.nav.jsp" />
 		</div>
 		<div class="doc-content coos-col-9 coos-col-xs-12 coos-offset-xs-0">
+			<jsp:include page="tab/index.jsp" />
 			<jsp:include page="table/index.jsp" />
 			<jsp:include page="list/index.jsp" />
 			<jsp:include page="card/index.jsp" />

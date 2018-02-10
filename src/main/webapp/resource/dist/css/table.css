@@ -89,7 +89,7 @@
 	outline: 1px solid #ddd;
 }
 
-table.coos-table thead th {
+.coos-table thead th {
 	border-bottom: none !important;
 }
 
@@ -102,7 +102,7 @@ table.coos-table thead th {
 	
 }
 
-.coos-panel .coos-table thead {
+.coos-table thead {
 	background-color: #F5F6FA;
 }
 
