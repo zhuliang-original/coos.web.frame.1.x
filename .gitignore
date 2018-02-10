@@ -9,6 +9,7 @@ tmp/
 *~.nib
 .project
 .classpath
+.mymetadata
 .loadpath
 .tern-project
 
