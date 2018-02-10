@@ -2,7 +2,12 @@
 	background-color: #e6e6e6;
 	overflow: overlay;
 }
-
+.coos-header-search-input{
+	color: #6d6d6d;
+    padding: 0px 5px;
+    font-size: 13px;
+    border-radius: 2px;
+}
 .coos-header-box {
 	clear: both;
 	background-color: white;

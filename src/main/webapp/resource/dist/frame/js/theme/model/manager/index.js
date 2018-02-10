@@ -48,6 +48,10 @@
 					$content.append($h3);
 				}
 			}
+			if (config.hassearchinput) {
+				var $input = $('<input class="coos-header-search-input coos-bd-no mgtb-10 mgl-20" placeholder="搜索"/>');
+				$content.append($input);
+			}
 			var $leftUl = $('<ul class="float-left coos-header-left-button coos-menu-navigation "></ul>');
 			var $rightUl = $('<ul class="float-right coos-header-right-button coos-menu-navigation "></ul>');
 			$header.find('.coos-header-left-button').remove();

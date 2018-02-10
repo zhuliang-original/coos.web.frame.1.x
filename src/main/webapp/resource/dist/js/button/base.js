@@ -10,6 +10,7 @@
 		var showtype = button.attr('showtype');
 		var before = button.attr('before');
 		var after = button.attr('after');
+		var opennewwindow = button.attr('opennewwindow');
 		if (before) {
 			before = eval('(' + before + ')');
 			config.before = before;
@@ -40,6 +41,9 @@
 		}
 		if (!co.isEmpty(showtype)) {
 			config.showtype = showtype;
+		}
+		if (!co.isEmpty(opennewwindow)) {
+			config.opennewwindow = opennewwindow;
 		}
 
 		return config;
@@ -138,6 +142,7 @@
 			if (toAction != null && toAction != '') {
 				var config = {
 					action : toAction,
+					opennewwindow : config_.opennewwindow,
 					data : data,
 					showtype : config_.showtype
 				};

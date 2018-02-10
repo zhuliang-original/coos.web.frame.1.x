@@ -85,6 +85,9 @@ co.frame.menu = new Object();
 		if (!coos.isEmpty(menu.target)) {
 			$menu.find('a').attr('target', menu.target);
 		}
+		if (!coos.isEmpty(menu.opennewwindow)) {
+			$menu.find('a').attr('opennewwindow', menu.opennewwindow);
+		}
 		if (!coos.isEmpty(menu.href)) {
 			$menu.find('a').attr('href', menu.href);
 		}

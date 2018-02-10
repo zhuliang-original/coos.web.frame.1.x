@@ -107,6 +107,10 @@
 	co.toAction = function(config) {
 		var action = config.action;
 		var data = config.data;
+		if (config.opennewwindow) {
+			co.openUrl(action, data);
+			return;
+		}
 		if ((data && data.$outFile) || action.indexOf('$outFile=true') > 0) {
 			data = data || {};
 			co.toUrl(action, data);
