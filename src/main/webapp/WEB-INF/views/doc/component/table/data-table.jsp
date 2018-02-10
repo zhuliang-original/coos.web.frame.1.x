@@ -1,10 +1,10 @@
 <%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
 
-<h2 class="doc-part-header" id="doc-table-base">基础</h2>
+<h2 class="doc-part-header" id="doc-table-data-table">DataTable</h2>
 <div class="doc-view">
-	<div id="doc-table-base-view" class=" coos-row mgb-10">
+	<div id="doc-table-data-table-view" class=" coos-row mgb-10">
 <div class="table-responsive">
-	<table class="coos-table" >
+	<table class="coos-table element-rule-data-tables" >
 		<thead>
 			<tr>
 				<th>标题1</th><th>标题2</th><th>标题3</th>
@@ -25,12 +25,12 @@
 </div>
 	</div>
 </div>
-<pre class="doc-code " id="doc-table-base-code">
+<pre class="doc-code " id="doc-table-data-table-code">
 </pre>
 <script type="text/javascript">
 	(function() {
-		var code = $('#doc-table-base-view').html();
-		$("#doc-table-base-code").text(code);
-		$("#doc-table-base-code").snippet('html', codeConfig);
+		var code = $('#doc-table-data-table-view').html();
+		$("#doc-table-data-table-code").text(code);
+		$("#doc-table-data-table-code").snippet('html', codeConfig);
 	})();
 </script>

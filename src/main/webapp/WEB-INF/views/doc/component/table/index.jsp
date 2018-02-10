@@ -19,6 +19,7 @@
 	<div class="doc-part">
 		<jsp:include page="base.jsp" />
 		<jsp:include page="pagination.jsp" />
+		<jsp:include page="data-table.jsp" />
 
 	</div>
 </div>

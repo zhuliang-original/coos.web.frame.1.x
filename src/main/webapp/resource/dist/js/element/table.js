@@ -3,7 +3,7 @@
 		co.plugin.load("data_tables", function() {
 			var pagesize = 10;
 			var viewrowindex = $selector.attr('viewrowindex');
-			var viewpageindex = $selector.attr('viewpageindex');
+			var viewpageindex = $selector.attr('viewpageindex') || 1;
 			var datatable = $selector.dataTable({
 				bSort : false
 			});
