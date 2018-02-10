@@ -1,10 +1,9 @@
 <%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
 <div class="doc-guide">
 	<div class="doc-container">
-		<h1>COOS Frame CSS组件</h1>
+		<h1>COOS Frame 表单组件</h1>
 		<p class="doc-lead">常用的CSS和组件样式，表单快速设计和验证，提供皮肤框架快速渲染，第三方插件封装，使用方便简单。</p>
 	</div>
-
 </div>
 <div class="doc-container">
 	<div class="coos-col-12">
