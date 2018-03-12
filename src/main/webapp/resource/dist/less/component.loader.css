@@ -1,0 +1,95 @@
+.coos-component-loader {
+	position: fixed;
+	left: 0px;
+	top: 0px;
+	right: 0px;
+	bottom: 0px;
+	width: 100%;
+	height: 100%;
+	z-index: 9;
+	background: white;
+}
+
+.coos-component-end-view {
+	margin: 200px auto;
+	font-size: 40px;
+	text-align: center;
+	color: #fb0;
+}
+
+.coos-component-loader-start {
+	overflow: hidden !important;
+}
+
+.coos-component-loader .hread {
+	font-size: 20px;
+	margin-top: 70px;
+}
+
+.coos-component-loader .loader-data-list {
+	width: 600px;
+	margin: 10px auto;
+}
+
+.coos-component-loader .loader-data-one {
+	overflow: hidden;
+	border: 1px solid #ddd;
+	padding: 0px 10px;
+	margin-bottom: -1px;
+}
+
+.coos-component-loader .loader-data-one .icon {
+	float: left;
+	width: 40px;
+	line-height: 40px;
+	text-align: center;
+	font-size: 16px;
+}
+
+.coos-component-loader .loader-data-one .title {
+	float: left;
+	width: 360px;
+	line-height: 40px;
+}
+
+.coos-component-loader .loader-data-one .status {
+	float: left;
+	width: 100px;
+	line-height: 40px;
+}
+
+.coos-component-loader .loader-data-one .loader {
+	float: left;
+}
+
+.coos-component-loader .loader-data-one .loader {
+	box-sizing: border-box;
+	display: flex;
+	flex: 0 1 auto;
+	flex-direction: column;
+	flex-grow: 1;
+	flex-shrink: 0;
+	flex-basis: 30px;
+	max-width: 30px;
+	height: 30px;
+	align-items: center;
+	justify-content: center;
+	margin-top: 7px;
+}
+
+.coos-component-loader .loader-data-one .loader>div>div {
+	border: 2px solid #b2f950;
+	border-bottom-color: transparent;
+	border-top-color: transparent;
+	width: 26px;
+	height: 26px;
+	left: -15px;
+	top: -15px;
+}
+
+.coos-component-loader .loader-data-one .loader>div>div:last-child {
+	width: 10px;
+	height: 10px;
+	left: -7px;
+	top: -7px;
+}

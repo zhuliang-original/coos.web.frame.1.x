@@ -14,6 +14,7 @@
 
 	var ThisElementConfig = {
 		name : "颜色",
+		forInput : true,
 		columns : []
 	};
 	co.page.panel.layout.element.model.defind("COLOR", ThisElementConfig, ThisElement);

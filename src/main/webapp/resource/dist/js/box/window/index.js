@@ -40,6 +40,10 @@
 		var $keyDownButton = null;
 		$(this.buttons).each(function(index, button) {
 			var $button = $("<a type=\"button\" class=\"coos-btn coos-box-button \">" + button.label + "</a>");
+			if (button.html) {
+				$button = $(button.html);
+				$button.addClass('coos-box-button');
+			}
 			if (!co.isEmpty(button.className)) {
 				$button.addClass(button.className);
 			}

@@ -1,0 +1,47 @@
+.coos-bd-no, .bd-no {
+	border: none;
+}
+
+.coos-bd-0, .bd-0 {
+	border-width: 0px;
+}
+
+.coos-bd-1, .bd-1 {
+	border-width: 1px;
+}
+
+.coos-bd-2, .bd-2 {
+	border-width: 2px;
+}
+
+.coos-bd-3, .bd-3 {
+	border-width: 3px;
+}
+
+.coos-bd-4, .bd-4 {
+	border-width: 4px;
+}
+
+.coos-bd-5, .bd-5 {
+	border-width: 5px;
+}
+
+.coos-bd, .coos-bdt, .coos-bdtb, .bd, .bdt, .bdtb {
+	border-top: 1px solid @border-color;
+	-webkit-box-sizing: border-box;
+}
+
+.coos-bd, .coos-bdb, .coos-bdtb, .bd, .bdb, .bdtb {
+	border-bottom: 1px solid @border-color;
+	-webkit-box-sizing: border-box;
+}
+
+.coos-bd, .coos-bdl, .coos-bdlr, .bd, .bdl, .bdlr {
+	border-left: 1px solid @border-color;
+	-webkit-box-sizing: border-box;
+}
+
+.coos-bd, .coos-bdr, .coos-bdlr, .bd, .bdr, .bdlr {
+	border-right: 1px solid @border-color;
+	-webkit-box-sizing: border-box;
+}

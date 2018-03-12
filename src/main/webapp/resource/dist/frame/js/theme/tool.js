@@ -17,12 +17,17 @@
 		themeDemo = jQuery.extend(true, {}, themeDemo, config);
 		if (THIS_PROJECT && !THIS_PROJECT.design) {
 			if (!co.isEmpty(THIS_PROJECT.name)) {
-				if (themeDemo.header && themeDemo.header.config && co.isEmpty(themeDemo.header.config.title)) {
+				if (themeDemo.header && themeDemo.header.config) {
 					themeDemo.header.config.title = THIS_PROJECT.name;
 				}
 			}
+			if (!co.isEmpty(THIS_PROJECT.title)) {
+				if (themeDemo.header && themeDemo.header.config) {
+					themeDemo.header.config.title = THIS_PROJECT.title;
+				}
+			}
 			if (!co.isEmpty(THIS_PROJECT.headertitle)) {
-				if (themeDemo.header && themeDemo.header.config && co.isEmpty(themeDemo.header.config.title)) {
+				if (themeDemo.header && themeDemo.header.config) {
 					themeDemo.header.config.title = THIS_PROJECT.headertitle;
 				}
 			}

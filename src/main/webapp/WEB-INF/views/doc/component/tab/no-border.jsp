@@ -5,8 +5,8 @@
 	<div id="doc-tab-no-bd-view" class=" coos-row mgb-10">
 <div class="coos-tab coos-tab-no-bd">
 	<ul class="coos-tab-buttons">
-		<li coos-target=".doc-tab-no-bd-span-1" class="active"><a>标签1</a></li>
-		<li coos-target=".doc-tab-no-bd-span-2"><a>标签2</a></li>
+		<li coos-target=".doc-tab-no-bd-span-1" class="active"><a>标签1 </a></li>
+		<li coos-target=".doc-tab-no-bd-span-2"><a>标签2 <span class="coos-flag">0</span></a></li>
 		<li coos-target=".doc-tab-no-bd-span-3"><a>标签3</a></li>
 	</ul>
 	<div class="coos-tab-spans" >

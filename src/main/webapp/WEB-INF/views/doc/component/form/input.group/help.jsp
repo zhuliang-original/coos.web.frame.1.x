@@ -6,7 +6,7 @@
 		<div class="coos-input-group coos-col-12">
 			<label class="coos-col-2 coos-label">
 				标签
-				<span class="font-transparent ">*</span>
+				<span class="color-transparent ">*</span>
 			</label>
 
 			<div class="coos-col-10 coos-input">
@@ -17,7 +17,7 @@
 		<div class="coos-input-group coos-col-12">
 			<label class="coos-col-12 coos-label text-left">
 				标签
-				<span class="font-transparent ">*</span>
+				<span class="color-transparent ">*</span>
 			</label>
 			<div class="coos-col-12 coos-input">
 				<input placeholder="输入框" />
@@ -27,7 +27,7 @@
 		<div class="coos-input-group coos-col-12">
 			<label class="coos-col-12 coos-label text-left">
 				标签
-				<span class="font-transparent ">*</span>
+				<span class="color-transparent ">*</span>
 			</label>
 
 			<div class="coos-col-8 coos-input">

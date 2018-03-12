@@ -15,6 +15,7 @@
 
 	var ThisElementConfig = {
 		name : "身份证",
+		forInput : true,
 		columns : []
 	};
 	co.page.panel.layout.element.model.defind("CARDID", ThisElementConfig, ThisElement);

@@ -21,6 +21,7 @@
 
 	var ThisElementConfig = {
 		name : "下拉框",
+		forInput : true,
 		columns : [ {
 			text : "级联元素",
 			name : "relationname"

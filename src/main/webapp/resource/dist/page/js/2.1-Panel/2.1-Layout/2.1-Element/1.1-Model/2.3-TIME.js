@@ -22,6 +22,7 @@
 
 	var ThisElementConfig = {
 		name : "时间",
+		forInput : true,
 		columns : []
 	};
 	co.page.panel.layout.element.model.defind("TIME", ThisElementConfig, ThisElement);

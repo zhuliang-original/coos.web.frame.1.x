@@ -29,7 +29,7 @@
 
 		var alignment = this.layout.config.alignment || "left";
 		if (this.layout.config.isbuttongroup) {
-			$view.find('.coos-button-container').addClass('coos-button-group');
+			$view.find('.coos-button-container').addClass('coos-btn-group');
 			if (this.layout.config.alignment) {
 				$view.find('.coos-button-container').addClass('float-' + this.layout.config.alignment);
 			}
@@ -37,57 +37,47 @@
 			if (this.layout.config.alignment) {
 				$view.find('.coos-button-container').addClass('text-' + this.layout.config.alignment);
 			}
-			$view.find('.coos-button-container').addClass('coos-button-group-' + this.layout.config.alignment);
+			$view.find('.coos-button-container').addClass('coos-btn-group-' + this.layout.config.alignment);
 		}
-		$view.find('.coos-button-container').addClass('coos-button-group-' + this.layout.config.size);
+		$view.find('.coos-button-container').addClass('coos-btn-group-' + this.layout.config.size);
 
 		return $view;
 	};
 
-	var ThisLayoutConfig =
-	{
+	var ThisLayoutConfig = {
 		name : "按钮",
 		hasElement : false,
 		hasButton : true,
-		columns : [
-		{
+		columns : [ {
 
 			text : "是按钮组",
 			name : "isbuttongroup",
 			inputtype : "switch"
-		},
-		{
+		}, {
 			text : "对齐方式",
 			name : "alignment",
 			inputtype : "select",
-			datas : [
-			{
+			datas : [ {
 				value : "left",
 				text : "居左"
-			},
-			{
+			}, {
 				value : "center",
 				text : "居中"
-			},
-			{
+			}, {
 				value : "right",
 				text : "居右"
 			} ]
-		},
-		{
+		}, {
 			text : "尺寸",
 			name : "size",
 			inputtype : "select",
-			datas : [
-			{
+			datas : [ {
 				value : "xs",
 				text : "小"
-			},
-			{
+			}, {
 				value : "sm",
 				text : "中"
-			},
-			{
+			}, {
 				value : "lg",
 				text : "大"
 			} ]

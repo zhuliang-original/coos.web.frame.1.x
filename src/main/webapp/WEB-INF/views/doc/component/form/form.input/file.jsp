@@ -7,7 +7,7 @@
 	<input class=" " name="file_" placeholder="文件" />
 	<div class="mgt-5 coos-btn coos-green coos-bd-green button-rule-upload" input="[name='file_']">点击上传</div>
 </div>
-<input label="文件" class="input-rule-group input-rule-file" need-addon="true" placeholder="文件" />
+<input label="文件" class="input-rule-group input-rule-file" need-addon="true" placeholder="文件" file-count="5"/>
 <input label="图片" class="input-rule-group input-rule-file-image" need-addon="true" placeholder="图片" />
 <input label="附件" class="input-rule-group input-rule-file-annex" need-addon="true" placeholder="附件" />
 <input label="视频" class="input-rule-group input-rule-file-video" need-addon="true" placeholder="视频" />

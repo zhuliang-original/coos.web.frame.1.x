@@ -1,0 +1,98 @@
+//定义全局变量
+
+//字体大小
+@size: 14px;
+@size-xs: ceil((@size * 0.85));
+@size-sm: @size;
+@size-md: ceil((@size * 1.25));
+@size-lg: ceil((@size * 1.7));
+
+//字体粗细
+@weight: 500;
+@weight-xs: 300;
+@weight-sm: @weight;
+@weight-md: 700;
+@weight-lg: 900;
+
+
+//颜色
+@red: #f85d2c;
+@red-1 : @red * 1.2;
+@red-2 : @red * 1.1;
+@red-3 : @red * 1.0;
+@red-4 : @red * 0.9;
+@red-5 : @red * 0.8;
+@red-light : @red-1;
+@red-dark : @red-5;
+
+@green: #1fae66;
+@green-1 : @green * 1.2;
+@green-2 : @green * 1.1;
+@green-3 : @green * 1.0;
+@green-4 : @green * 0.9;
+@green-5 : @green * 0.8;
+@green-light : @green-1;
+@green-dark : @green-5;
+
+@yellow: #f89c2c;
+@yellow-1 : @yellow * 1.2;
+@yellow-2 : @yellow * 1.1;
+@yellow-3 : @yellow * 1.0;
+@yellow-4 : @yellow * 0.9;
+@yellow-5 : @yellow * 0.8;
+@yellow-light : @yellow-1;
+@yellow-dark : @yellow-5;
+
+@blue: #3ea7da;
+@blue-1 : @blue * 1.2;
+@blue-2 : @blue * 1.1;
+@blue-3 : @blue * 1.0;
+@blue-4 : @blue * 0.9;
+@blue-5 : @blue * 0.8;
+@blue-light : @blue-1;
+@blue-dark : @blue-5;
+
+@grey: #7b7b7b;
+@grey-1 : @grey * 1.2;
+@grey-2 : @grey * 1.1;
+@grey-3 : @grey * 1.0;
+@grey-4 : @grey * 0.9;
+@grey-5 : @grey * 0.8;
+@grey-light : @grey-1;
+@grey-dark : @grey-5;
+
+@white: #ffffff;
+@white-1 : @white * 1.0;
+@white-2 : @white * 0.95;
+@white-3 : @white * 0.9;
+@white-4 : @white * 0.85;
+@white-5 : @white * 0.8;
+@white-light : @white-1;
+@white-dark : @white-5;
+
+@black: #191919;
+@black-1 : @black * 3.0;
+@black-2 : @black * 2.5;
+@black-3 : @black * 2.0;
+@black-4 : @black * 1.0;
+@black-5 : @black * 1.0;
+@black-light : @black-1;
+@black-dark : @black-5;
+
+//边框颜色
+@border-color: #ddd;
+
+@bg-grey: #f3f3f3;
+//圆角
+.radius (@radius: 5px) {
+  border-radius: @radius;
+  -webkit-border-radius: @radius;
+  -moz-border-radius: @radius;
+}
+
+.opacity (@opacity) {
+    @opacityPercentage: @opacity * 100;
+    opacity: @opacity;
+    -ms-filter: ~"progid:DXImageTransform.Microsoft.Alpha(opacity=(@{opacityPercentage}))"; 
+    filter: ~"alpha(opacity = (@{opacityPercentage}))";
+}

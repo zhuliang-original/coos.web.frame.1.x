@@ -28,7 +28,9 @@
 		<jsp:include page="form.input/tag.jsp" />
 		<jsp:include page="form.input/switch.jsp" />
 		<jsp:include page="form.input/checkbox.jsp" />
+		<jsp:include page="form.input/checkbox-tag.jsp" />
 		<jsp:include page="form.input/radio.jsp" />
+		<jsp:include page="form.input/radio-tag.jsp" />
 		<jsp:include page="form.input/file.jsp" />
 		<jsp:include page="form.input/slider.jsp" />
 		<jsp:include page="form.input/editor.jsp" />

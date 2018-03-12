@@ -246,10 +246,10 @@
 			if (!isreadonly) {
 				$label.append("<span class=\"coos-red\">*</span>");
 			} else {
-				$label.append("<span class=\"coos-red font-transparent \">*</span>");
+				$label.append("<span class=\"color-transparent \">*</span>");
 			}
 		} else {
-			$label.append("<span class=\"coos-red font-transparent\">*</span>");
+			$label.append("<span class=\"color-transparent\">*</span>");
 		}
 		var $options = null;
 		if ($optionselect) {

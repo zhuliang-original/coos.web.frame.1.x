@@ -14,6 +14,7 @@
 
 	var ThisElementConfig = {
 		name : "文本",
+		forInput : true,
 		columns : []
 	};
 	co.page.panel.layout.element.model.defind("TEXT", ThisElementConfig, ThisElement);

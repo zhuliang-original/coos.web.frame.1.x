@@ -6,7 +6,7 @@
 		<div class="coos-input-group coos-col-12">
 			<label class="coos-col-2 coos-col-xs-12 text-xs-left coos-col-lg-2 text-lg-right coos-label">
 				标签
-				<span class="font-transparent ">*</span>
+				<span class="color-transparent ">*</span>
 			</label>
 
 			<div class="coos-col-10 coos-col-xs-12 coos-col-lg-6 coos-input">
@@ -24,7 +24,7 @@
 		code += '<div class="coos-input-group coos-col-12">\n';
 		code += '\t<label class="coos-col-2 coos-col-xs-12 text-xs-left coos-col-lg-2 text-lg-right coos-label">\n';
 		code += '\t\t标签\n';
-		code += '\t\t<span class="font-transparent ">*</span>\n';
+		code += '\t\t<span class="color-transparent ">*</span>\n';
 		code += '\t</label>\n';
 		code += '\t<div class="coos-col-10 coos-col-xs-12 coos-col-lg-6 coos-input">\n';
 		code += '\t\t<input placeholder="输入框" />\n';

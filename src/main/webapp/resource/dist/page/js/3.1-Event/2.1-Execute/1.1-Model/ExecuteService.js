@@ -20,6 +20,11 @@
 		var this_ = this;
 		if (!co.isEmpty(serviceid)) {
 			var data = this.getData();
+			for ( var key in data) {
+				if (coos.isObject(data[key])) {
+					data[key] = JSON.stringify(data[key]);
+				}
+			}
 			jQuery.extend(true, data, paramData);
 			var config = {};
 			config.id = serviceid;

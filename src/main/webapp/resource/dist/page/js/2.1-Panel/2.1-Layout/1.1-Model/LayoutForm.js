@@ -1,5 +1,5 @@
 (function(window, jQuery) {
-	var html = '<div class=" coos-form "><div class="coos-hide-element coos-element-container"></div><div class="coos-show-element coos-element-container"></div><div class="coos-layout-container "></div><div class="coos-button-container pdt-10 pdlr-5 coos-form-button-container"></div></div>';
+	var html = '<div class=" coos-form "><div class="coos-hide-element coos-element-container "></div><div class="coos-show-element coos-element-container mglr--10"></div><div class="coos-layout-container "></div><div class="coos-button-container pdt-10 coos-form-button-container "></div></div>';
 
 	function ThisLayout(config) {
 		co.page.panel.layout.Layout.call(this, config);
@@ -7,6 +7,7 @@
 	(function() {
 		var Super = function() {
 		};
+
 		Super.prototype = co.page.panel.layout.Layout.prototype;
 		ThisLayout.prototype = new Super();
 	})();
@@ -19,15 +20,20 @@
 	};
 
 	ThisLayout.prototype.initContent = function() {
-		this.$content.addClass('mglr--10');
+		// this.$content.addClass('');
 	};
 
 	ThisLayout.prototype.getOneView = function(config) {
 		var $view = $(html);
 		var $buttonContent = $view.find('.coos-button-container');
 		if (this.layout.config.displayback) {
-			var $backBtn = $('<div class="doBackBtn coos-btn coos-btn-sm coos-bg-grey mgr-5"> 取消</div>');
+			var $backBtn = $('<div class="doBackBtn coos-btn coos-btn-sm coos-bd-grey coos-grey mgl-5"> 取消</div>');
 			$buttonContent.append($backBtn);
+		}
+
+		if (this.layout.config.displaytitle) {
+			var $title = $('<div class="pd-10 font-md">' + this.layout.title + '</div>')
+			$view.find('.coos-hide-element:first').before($title);
 		}
 		return $view;
 	};
@@ -59,6 +65,10 @@
 		hasElement : true,
 		hasButton : true,
 		columns : [ {
+			text : "显示标题",
+			name : "displaytitle",
+			inputtype : "switch"
+		}, {
 			text : "只读",
 			name : "readonly",
 			inputtype : "switch"

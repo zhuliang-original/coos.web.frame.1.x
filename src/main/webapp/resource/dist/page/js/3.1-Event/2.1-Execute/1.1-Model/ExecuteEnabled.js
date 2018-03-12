@@ -25,17 +25,17 @@
 			});
 		}
 		if (!co.isEmpty(execute.config.elementids)) {
-			$(execute.config.elementids.split()).each(function(index, elementid) {
+			$(execute.config.elementids.split(',')).each(function(index, elementid) {
 				if (!co.isEmpty(elementid)) {
-					var $object = $('.coos-one-element[elementid="' + elementid + '"]');
+					var $object = $('[elementid="' + elementid + '"]');
 					$object.removeClass('coos-disabled');
 				}
 			});
 		}
 		if (!co.isEmpty(execute.config.buttonids)) {
-			$(execute.config.buttonids.split()).each(function(index, buttonid) {
+			$(execute.config.buttonids.split(',')).each(function(index, buttonid) {
 				if (!co.isEmpty(buttonid)) {
-					var $object = $('.coos-one-button[buttonid="' + buttonid + '"]');
+					var $object = $('[buttonid="' + buttonid + '"]');
 					$object.removeAttr('disabled');
 					$object.removeClass('coos-disabled');
 				}

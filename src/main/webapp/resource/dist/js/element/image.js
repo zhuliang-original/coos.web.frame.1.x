@@ -14,8 +14,8 @@
 			}
 			return;
 		}
-		if (path.indexOf(',') > 0) {
-			path = path.split(',')[0];
+		if (path.indexOf(co.input.file.divider) > 0) {
+			path = path.split(co.input.file.divider)[0];
 		}
 		if (path.indexOf('http') < 0) {
 			if ($selector.attr('use-file-server-url')) {

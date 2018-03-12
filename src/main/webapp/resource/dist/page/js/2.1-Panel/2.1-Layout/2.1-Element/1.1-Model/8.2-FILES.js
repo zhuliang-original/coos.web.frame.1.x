@@ -19,6 +19,7 @@
 
 	var ThisElementConfig = {
 		name : "多文件",
+		forInput : true,
 		columns : []
 	};
 	co.page.panel.layout.element.model.defind("FILES", ThisElementConfig, ThisElement);

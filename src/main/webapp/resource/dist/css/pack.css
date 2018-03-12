@@ -43,15 +43,6 @@
 	display: block;
 }
 
-.coos-pack-one .coos-title {
-	height: 40px;
-	text-align: center;
-	margin-top: 5px;
-	color: black;
-	font-size: 12px;
-	vertical-align: middle;
-}
-
 .coos-text-icon {
 	width: 100%;
 	padding-top: 100%;
@@ -68,8 +59,37 @@
 	height: 100%;
 }
 
-.coos-text-icon .coos-text {
+.coos-pack-one .pack-title {
+	height: 40px;
+	text-align: center;
+	margin-top: 5px;
+	color: @color-black;
+	font-size: 12px;
+	vertical-align: middle;
+}
+
+.coos-text-icon .pack-text {
 	padding: 8%;
-	color: white;
+	color: @color-black;
 	font-size: 15px;
+}
+
+.coos-text-icon .pack-remark {
+	padding: 8%;
+	color: @color-black;
+	font-size: 15px;
+}
+
+.coos-pack-one .pack-label {
+	position: absolute;
+	text-align: center;
+	width: 94%;
+	font-size: 22px;
+	line-height: 60px;
+	transform: rotate(45deg);
+	left: 40%;
+	top: 0%;
+	z-index: 1;
+	color: @white;
+	background-color: @green;
 }

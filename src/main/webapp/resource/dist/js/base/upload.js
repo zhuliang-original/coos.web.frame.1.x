@@ -47,6 +47,9 @@
 			formDiv.append(input);
 			input.change(function() {
 				var filePath = this.value;
+				if(co.isEmpty(filePath)){
+					return;
+				}
 				var fileSize = null;
 				if (this.files && this.files.length > 0) {
 					var f = this.files[0];

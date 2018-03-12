@@ -10,12 +10,12 @@
 	})();
 
 	ThisElement.prototype.initContent = function() {
-		this.$input.addClass('input-rule-file');
-		this.$input.attr('file-type', 'audio');
+		this.$input.addClass('input-rule-file-audio');
 	};
 
 	var ThisElementConfig = {
 		name : "音频",
+		forInput : true,
 		columns : []
 	};
 	co.page.panel.layout.element.model.defind("AUDIO", ThisElementConfig, ThisElement);

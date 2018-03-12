@@ -1,0 +1,14 @@
+.text-center, .coos-xs .text-xs-center, .coos-sm .text-sm-center,
+	.coos-md .text-md-center, .coos-lg .text-lg-center {
+	text-align: center !important;
+}
+
+.text-left, .coos-xs .text-xs-left, .coos-sm .text-sm-left, .coos-md .text-md-left,
+	.coos-lg .text-lg-left {
+	text-align: left !important;
+}
+
+.text-right, .coos-xs .text-xs-right, .coos-sm .text-sm-right, .coos-md .text-md-right,
+	.coos-lg .text-lg-right {
+	text-align: right !important;
+}

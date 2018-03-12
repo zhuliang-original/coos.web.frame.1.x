@@ -88,6 +88,18 @@
 		vue : {
 			js : [ "resource/plugins/vue/2.4.2/vue.min.js" ],
 			css : []
+		},
+		chartist : {
+			js : [ "resource/plugins/chartist/chartist.min.js"],
+			css : [ "resource/plugins/chartist/chartist.min.css" ]
+		},
+		loaders : {
+			js : [ ],
+			css : [ "resource/plugins/loaders/loaders.min.css" ]
+		},
+		flot : {
+			js : [ "resource/plugins/flot/jquery.flot.js"],
+			css : [ ]
 		}
 	};
 

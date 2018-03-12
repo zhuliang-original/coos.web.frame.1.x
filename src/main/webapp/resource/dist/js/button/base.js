@@ -224,7 +224,7 @@
 			co.button.doHelp(this);
 		});
 		$('html').on('click', '.doBackBtn,.coosDoBackBtn', function() {
-			co.button.doBack(this);
+			co.button.back(this);
 		});
 
 	});

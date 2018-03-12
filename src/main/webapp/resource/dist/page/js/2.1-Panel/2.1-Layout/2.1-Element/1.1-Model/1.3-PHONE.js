@@ -13,9 +13,9 @@
 		this.$input.attr('isphone', true);
 	};
 
-	var ThisElementConfig =
-	{
+	var ThisElementConfig = {
 		name : "手机号",
+		forInput : true,
 		columns : []
 	};
 	co.page.panel.layout.element.model.defind("PHONE", ThisElementConfig, ThisElement);

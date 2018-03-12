@@ -3,7 +3,10 @@
 	<div class="coos-page-header  ">
 		<h1 class="coos-page-title pdb-5">框架使用说明</h1>
 		<small class="coos-subtitle ">
-			框架起步，依赖库、初始化等介绍11
+			框架起步，依赖库、初始化等介绍
+			<br />
+			先生成最新CSS：
+			<a class=" coos-button-link mg-5" href="${basePath }/resource/coos/merge/lessToCSS"> 生成最新CSS </a>
 			<br />
 			核心库：
 			<a class=" coos-button-link mg-5" href="${basePath }/resource/coos/css/coos.css"> coos.css </a>

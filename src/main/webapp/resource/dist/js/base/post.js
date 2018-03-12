@@ -1,5 +1,13 @@
 (function() {
-	co.POST = function(action, data, type, callback, async, config) {
+	co.POST = function(action, data, type, callback, arg1, arg2) {
+		var async = arg1;
+		var config = arg2;
+		if (arg1 != null) {
+			if (!coos.isString(arg1) && !coos.isBoolean(arg1)) {
+				async = null;
+				config = arg1;
+			}
+		}
 		config = config || {};
 		var showLoading = co.isEmpty(config.showLoading) ? true : config.showLoading;
 		if (showLoading) {
@@ -59,22 +67,26 @@
 			complete : function(XMLHttpRequest, textStatus) {
 			},
 			error : function(XMLHttpRequest, textStatus, errorThrown) {
-				if (showLoading) {
-					co.cover.hideLoading();
-				}
-				var status = XMLHttpRequest.status;
-				if (!co.isEmpty(status)) {
-					if (status >= 500) {
-						co.box.alert(url + " " + status + " Error!");
+				if (config.error) {
+					config.error(XMLHttpRequest, textStatus, errorThrown);
+				} else {
+					if (showLoading) {
+						co.cover.hideLoading();
+					}
+					var status = XMLHttpRequest.status;
+					if (!co.isEmpty(status)) {
+						if (status >= 500) {
+							co.box.alert(url + " " + status + " Error!");
+							return;
+						}
+						if (status >= 400) {
+							co.box.alert(url + " " + status + " Error!");
+							return;
+						}
+					}
+					if (!co.page.validate(XMLHttpRequest.responseText, url)) {
 						return;
 					}
-					if (status >= 400) {
-						co.box.alert(url + " " + status + " Error!");
-						return;
-					}
-				}
-				if (!co.page.validate(XMLHttpRequest.responseText, url)) {
-					return;
 				}
 			}
 		});
@@ -156,6 +168,19 @@
 		} else {
 			window['istoaction'] = true;
 			co.page.load(config);
+		}
+	};
+
+	co.reload = function() {
+		if (co.page.config.single) {
+			var action = co.url.getCurrentAction();
+			var data = co.url.getData();
+			var config = {};
+			config.action = action;
+			config.data = data;
+			co.toAction(config);
+		} else {
+			window.location.reload();
 		}
 	};
 })();

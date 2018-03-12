@@ -25,17 +25,21 @@
 			});
 		}
 		if (!co.isEmpty(execute.config.elementids)) {
-			$(execute.config.elementids.split()).each(function(index, elementid) {
+			$(execute.config.elementids.split(',')).each(function(index, elementid) {
 				if (!co.isEmpty(elementid)) {
-					var $object = $('.coos-one-element[elementid="' + elementid + '"]');
-					$object.show();
+					var $object = $('[elementid="' + elementid + '"]');
+					if ($object.closest('.coos-input-group').length > 0) {
+						$object.closest('.coos-input-group').show();
+					} else {
+						$object.show();
+					}
 				}
 			});
 		}
 		if (!co.isEmpty(execute.config.buttonids)) {
-			$(execute.config.buttonids.split()).each(function(index, buttonid) {
+			$(execute.config.buttonids.split(',')).each(function(index, buttonid) {
 				if (!co.isEmpty(buttonid)) {
-					var $object = $('.coos-one-button[buttonid="' + buttonid + '"]');
+					var $object = $('[buttonid="' + buttonid + '"]');
 					$object.show();
 				}
 			});

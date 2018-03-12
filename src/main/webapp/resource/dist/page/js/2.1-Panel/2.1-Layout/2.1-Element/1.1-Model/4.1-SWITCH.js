@@ -34,6 +34,7 @@
 
 	var ThisElementConfig = {
 		name : "开关",
+		forInput : true,
 		columns : []
 	};
 	co.page.panel.layout.element.model.defind("SWITCH", ThisElementConfig, ThisElement);

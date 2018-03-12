@@ -15,6 +15,7 @@
 
 	var ThisElementConfig = {
 		name : "数字",
+		forInput : true,
 		columns : []
 	};
 	co.page.panel.layout.element.model.defind("NUMBER", ThisElementConfig, ThisElement);

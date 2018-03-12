@@ -1,5 +1,5 @@
 (function(window, jQuery) {
-	var html = '<form class="coos-form "><div class="coos-hide-element coos-element-container"></div><div class="coos-show-element coos-element-container"></div><div class="coos-button-container pdt-10 pdlr-10 text-right coos-search-form-button-container"></div></form>';
+	var html = '<form class="coos-form "><div class="coos-hide-element coos-element-container"></div><div class="coos-show-element coos-element-container mglr--10"></div><div class="coos-button-container pdt-10 text-right coos-search-form-button-container"></div></form>';
 
 	function ThisLayout(config) {
 		co.page.panel.layout.Layout.call(this, config);
@@ -15,7 +15,7 @@
 	};
 
 	ThisLayout.prototype.initContent = function() {
-		this.$content.addClass('mglr--10');
+		// this.$content.addClass('');
 	};
 
 	ThisLayout.prototype.getOneView = function() {

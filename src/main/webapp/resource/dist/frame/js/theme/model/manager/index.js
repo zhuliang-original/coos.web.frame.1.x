@@ -49,7 +49,7 @@
 				}
 			}
 			if (config.hassearchinput) {
-				var $input = $('<input class="coos-header-search-input coos-bd-no mgtb-10 mgl-20" placeholder="搜索"/>');
+				var $input = $('<input class="coos-header-search-input coos-bd-no mgl-20" placeholder="搜索"/>');
 				$content.append($input);
 			}
 			var $leftUl = $('<ul class="float-left coos-header-left-button coos-menu-navigation "></ul>');

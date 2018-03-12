@@ -18,6 +18,7 @@
 
 	var ThisElementConfig = {
 		name : "文本域",
+		forInput : true,
 		columns : []
 	};
 	co.page.panel.layout.element.model.defind("TEXTAREA", ThisElementConfig, ThisElement);

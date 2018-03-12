@@ -41,11 +41,13 @@
 		return co.page.panel.layout.element.model.create(type, config);
 	};
 	co.page.panel.layout.element.model.appendBaseColumns = function(config) {
-		$(baseColumns).each(function(index, column) {
-			if (!hasColumn(config, column)) {
-				config.columns[config.columns.length] = column;
-			}
-		});
+		if (config.forInput) {
+			$(baseColumns).each(function(index, column) {
+				if (!hasColumn(config, column)) {
+					config.columns[config.columns.length] = column;
+				}
+			});
+		}
 	};
 	var hasColumn = function(config, column) {
 		var has = false;
@@ -57,25 +59,33 @@
 		return has;
 	};
 	co.page.panel.layout.element.model.appendInputColumns = function(config) {
-		$(inputColumns).each(function(index, column) {
-			if (!hasColumn(config, column)) {
-				config.columns[config.columns.length] = column;
-			}
-		});
+		if (config.forInput) {
+			$(inputColumns).each(function(index, column) {
+				if (!hasColumn(config, column)) {
+					config.columns[config.columns.length] = column;
+				}
+			});
+		}
 	};
 	co.page.panel.layout.element.model.appendTagColumns = function(config) {
-		$(tagColumns).each(function(index, column) {
-			if (!hasColumn(config, column)) {
-				config.columns[config.columns.length] = column;
-			}
-		});
+
+		if (config.forInput) {
+			$(tagColumns).each(function(index, column) {
+				if (!hasColumn(config, column)) {
+					config.columns[config.columns.length] = column;
+				}
+			});
+		}
 	};
 	co.page.panel.layout.element.model.appendValidateColumns = function(config) {
-		$(validateColumns).each(function(index, column) {
-			if (!hasColumn(config, column)) {
-				config.columns[config.columns.length] = column;
-			}
-		});
+
+		if (config.forInput) {
+			$(validateColumns).each(function(index, column) {
+				if (!hasColumn(config, column)) {
+					config.columns[config.columns.length] = column;
+				}
+			});
+		}
 	};
 	var baseColumns = [ {
 		text : "标签",
@@ -86,6 +96,10 @@
 	}, {
 		text : "显示",
 		name : "display",
+		inputtype : "switch"
+	}, {
+		text : "点击排序",
+		name : "clicktosort",
 		inputtype : "switch"
 	} ];
 	var inputColumns = [ {

@@ -74,7 +74,7 @@
 			if (co.isBoolean(arg)) {
 				flag = arg;
 			} else {
-				if (arg === 'true' || arg === '1') {
+				if (arg == 'true' || arg == '1' || arg == 1) {
 					flag = true;
 				}
 			}
@@ -325,4 +325,81 @@
 		return arg;
 	};
 
+	co.getWeekDate = function(type, dates, now) {
+		var now = now || new Date();
+		var nowTime = now.getTime();
+		var day = now.getDay();
+		var longTime = 24 * 60 * 60 * 1000;
+		var n = longTime * 7 * (dates || 0);
+		if (type == "s") {
+			var dd = nowTime - (day - 1) * longTime + n;
+		}
+		if (type == "e") {
+			var dd = nowTime + (7 - day) * longTime + n;
+		}
+		return new Date(dd);
+	};
+
+	co.getWeekStartDate = function(arg1, arg2) {
+		arg1 = arg1 || 0;
+		return co.getWeekDate('s', arg1, arg2);
+	};
+
+	co.getWeekEndDate = function(arg1, arg2) {
+		arg1 = arg1 || 0;
+		return co.getWeekDate('e', arg1, arg2);
+	};
+
+	co.getMonthDate = function(type, dates, now) {
+		var now = now || new Date();
+		var nowTime = now.getTime();
+		var day = now.getDate();
+		var days = co.getMonthDays(now.getMonth());
+		var longTime = 24 * 60 * 60 * 1000;
+		var n = longTime * days * (dates || 0);
+		if (type == "s") {
+			var dd = nowTime - (day - 1) * longTime + n;
+		}
+		if (type == "e") {
+			var dd = nowTime + (days - day) * longTime + n;
+		}
+		return new Date(dd);
+	};
+	co.getMonthStartDate = function(arg1, arg2) {
+		arg1 = arg1 || 0;
+		return co.getMonthDate('s', arg1, arg2);
+	};
+
+	co.getMonthEndDate = function(arg1, arg2) {
+		arg1 = arg1 || 0;
+		return co.getMonthDate('e', arg1, arg2);
+	};
+
+	co.getMonthDays = function(month, now) {
+		var now = now || new Date()
+		var year = now.getYear(); // 当前年
+		year += (year < 2000) ? 1900 : 0; //
+		var monthStartDate = new Date(year, month, 1).getTime();
+		var monthEndDate = new Date(year, month + 1, 1).getTime();
+		var days = (monthEndDate - monthStartDate) / (1000 * 60 * 60 * 24);
+		return days;
+	};
+
+	co.getLastYear = function() {
+		var lastMonthDate = new Date(); // 上月日期
+		lastMonthDate.setDate(1);
+		lastMonthDate.setMonth(lastMonthDate.getMonth() - 1);
+		var lastYear = lastMonthDate.getYear();
+		var lastMonth = lastMonthDate.getMonth();
+		return lastYear;
+	};
+
+	co.getLastMonth = function() {
+		var lastMonthDate = new Date(); // 上月日期
+		lastMonthDate.setDate(1);
+		lastMonthDate.setMonth(lastMonthDate.getMonth() - 1);
+		var lastYear = lastMonthDate.getYear();
+		var lastMonth = lastMonthDate.getMonth();
+		return lastMonth;
+	};
 })();

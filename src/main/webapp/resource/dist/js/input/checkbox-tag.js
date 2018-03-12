@@ -1,0 +1,54 @@
+(function() {
+
+	co.input.bind('checkbox-tag', function($selector) {
+		var optionGroup = $('<div class="coos-text-tag-group"></div>');
+		var name = $selector.attr('name');
+		$selector.before(optionGroup);
+		$selector.hide();
+		var options = $selector.parent().find('select.option-select').find('option');
+		options.each(function(index, option) {
+			option = $(option);
+			var value = option.attr('value');
+			var text = option.text();
+			var $tag = $('<div class="coos-text-tag"></div>');
+			$tag.attr('value', value);
+			$tag.attr('text', text);
+			$tag.append('<span class="text">' + text + '</span>')
+			optionGroup.append($tag);
+		});
+		optionGroup.find('.coos-text-tag').click(function() {
+			var value = '';
+			if ($(this).hasClass('active')) {
+				$(this).removeClass('active');
+			} else {
+				$(this).addClass('active');
+
+			}
+			$(optionGroup.find('.coos-text-tag.active')).each(function(index, one) {
+				value += $(one).attr('value') + ',';
+			});
+			$selector.val(value);
+			isFullChange = false;
+			$selector.change();
+			isFullChange = true;
+		});
+		var isFullChange = true;
+		$selector.change(function() {
+			var value = this.value;
+			if (isFullChange) {
+				var $tags = optionGroup.find('.coos-text-tag');
+				$tags.removeClass('active');
+				if (!co.isEmpty(value)) {
+					var vs = value.split(',');
+					$(vs).each(function(index, v) {
+						optionGroup.find('[value="' + v + '"].coos-text-tag').addClass('active');
+					});
+				}
+			}
+		});
+	});
+
+	$(function() {
+
+	});
+})();

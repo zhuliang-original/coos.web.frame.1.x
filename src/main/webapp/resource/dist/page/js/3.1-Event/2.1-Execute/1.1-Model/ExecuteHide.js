@@ -25,17 +25,21 @@
 			});
 		}
 		if (!co.isEmpty(execute.config.elementids)) {
-			$(execute.config.elementids.split()).each(function(index, elementid) {
+			$(execute.config.elementids.split(',')).each(function(index, elementid) {
 				if (!co.isEmpty(elementid)) {
-					var $object = $('.coos-one-element[elementid="' + elementid + '"]');
-					$object.hide();
+					var $object = $('[elementid="' + elementid + '"]');
+					if ($object.closest('.coos-input-group').length > 0) {
+						$object.closest('.coos-input-group').hide();
+					} else {
+						$object.hide();
+					}
 				}
 			});
 		}
 		if (!co.isEmpty(execute.config.buttonids)) {
-			$(execute.config.buttonids.split()).each(function(index, buttonid) {
+			$(execute.config.buttonids.split(',')).each(function(index, buttonid) {
 				if (!co.isEmpty(buttonid)) {
-					var $object = $('.coos-one-button[buttonid="' + buttonid + '"]');
+					var $object = $('[buttonid="' + buttonid + '"]');
 					$object.hide();
 				}
 			});
@@ -44,49 +48,40 @@
 		this.eventChildExecutes();
 	};
 
-	var ThisExecuteConfig =
-	{
+	var ThisExecuteConfig = {
 		name : "隐藏",
-		columns : [
-		{
+		columns : [ {
 			text : "当前",
 			name : "current",
 			inputtype : "switch"
-		},
-		{
+		}, {
 			text : "当前行",
 			name : "currentrow",
 			inputtype : "switch"
-		},
-		{
+		}, {
 			text : "当前面板",
 			name : "currentpanel",
 			inputtype : "switch"
-		},
-		{
+		}, {
 			text : "当前布局",
 			name : "currentlayout",
 			inputtype : "switch"
-		},
-		{
+		}, {
 			text : "面板",
 			name : "panelids",
 			inputtype : "selects",
 			usepanel : true
-		},
-		{
+		}, {
 			text : "布局",
 			name : "layoutids",
 			inputtype : "selects",
 			uselayout : true
-		},
-		{
+		}, {
 			text : "元素",
 			name : "elementids",
 			inputtype : "selects",
 			useelement : true
-		},
-		{
+		}, {
 			text : "按钮",
 			name : "buttonids",
 			inputtype : "selects",

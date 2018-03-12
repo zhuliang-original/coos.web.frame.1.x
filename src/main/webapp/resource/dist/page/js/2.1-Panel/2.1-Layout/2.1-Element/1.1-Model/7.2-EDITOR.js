@@ -18,6 +18,7 @@
 
 	var ThisElementConfig = {
 		name : "编辑器",
+		forInput : true,
 		columns : []
 	};
 	co.page.panel.layout.element.model.defind("EDITOR", ThisElementConfig, ThisElement);

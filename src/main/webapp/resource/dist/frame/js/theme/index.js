@@ -251,11 +251,11 @@ co.frame.theme = new Object();
 				if (!coos.isEmpty(height)) {
 					fh = (height.replace('px', '')) - 20;
 					lh = (height.replace('px', '')) - 10;
-					sh = (height.replace('px', '')) - 20;
+					sh = (height.replace('px', '')) - 24;
 				} else {
 					fh = (contentheight.replace('px', '')) - 20;
 					lh = (contentheight.replace('px', '')) - 10;
-					sh = (contentheight.replace('px', '')) - 20;
+					sh = (contentheight.replace('px', '')) - 24;
 				}
 				style += ".coos-header .coos-logo-icon{height:" + lh + "px;}";
 				style += ".coos-header .coos-header-search-input{height:" + sh + "px;line-height:" + sh + "px;}";

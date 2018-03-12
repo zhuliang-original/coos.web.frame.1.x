@@ -4,13 +4,14 @@ import java.io.BufferedInputStream;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.OutputStream;
-import java.util.Map;
 
 import javax.servlet.ServletConfig;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+
+import com.asual.lesscss.LessEngine;
 
 import top.coos.servlet.DefaultServlet;
 import top.coos.servlet.annotation.RequestMapping;
@@ -41,7 +42,7 @@ public class ResourceMergeServlet extends DefaultServlet {
 	}
 
 	@RequestMapping("/resource.zip")
-	public void resource(HttpServletRequest request, HttpServletResponse response, Map<String, Object> map) {
+	public void resource(HttpServletRequest request, HttpServletResponse response) {
 
 		String COOS_folder = COOS_AND_PLUGINS_RESOURCES_FOLDER + "coos/";
 		String plugins_folder = COOS_AND_PLUGINS_RESOURCES_FOLDER + "plugins/";
@@ -83,10 +84,36 @@ public class ResourceMergeServlet extends DefaultServlet {
 		}
 	}
 
-	@RequestMapping("/coos.js")
-	public void coosJS(HttpServletRequest request, HttpServletResponse response, Map<String, Object> map) {
+	@RequestMapping("/lessToCSS")
+	public void lessToCSS(HttpServletRequest request, HttpServletResponse response) {
 
-		String content = getCOOSJSContent(false);
+		String css_folder = COOS_AND_PLUGINS_RESOURCES_FOLDER + "coos/css";
+		String less_folder = COOS_AND_PLUGINS_RESOURCES_FOLDER + "coos/less";
+
+		File file = new File(less_folder);
+		File[] fs = file.listFiles();
+		try {
+
+			if (fs != null) {
+				for (File lessFile : fs) {
+					File cssFile = new File(css_folder + "/" + (lessFile.getName().replace("less", "css")));
+
+					LessEngine lessEngine = new LessEngine();
+					lessEngine.compile(lessFile, cssFile);
+				}
+			}
+			out(response, "生成成功！");
+		} catch (Exception e) {
+			out(response, "生成失败！\nerror:" + e.getMessage());
+		}
+	}
+
+	@RequestMapping("/coos.js")
+	public void coosJS(HttpServletRequest request, HttpServletResponse response) {
+
+		String content = getJSContent("js", false);
+		outJS(response, content);
+
 		String COOS_folder = COOS_AND_PLUGINS_RESOURCES_FOLDER + "coos/";
 		String path = COOS_folder + "js/coos.js";
 		File file = new File(path);
@@ -94,13 +121,14 @@ public class ResourceMergeServlet extends DefaultServlet {
 
 			FileTool.save(file, content);
 		}
-		outJS(response, content);
 	}
 
 	@RequestMapping("/coos.min.js")
-	public void coosMinJS(HttpServletRequest request, HttpServletResponse response, Map<String, Object> map) {
+	public void coosMinJS(HttpServletRequest request, HttpServletResponse response) {
 
-		String content = getCOOSJSContent(true);
+		String content = getJSContent("js", true);
+		outJS(response, content);
+
 		String COOS_folder = COOS_AND_PLUGINS_RESOURCES_FOLDER + "coos/";
 		String path = COOS_folder + "js/coos.min.js";
 		File file = new File(path);
@@ -108,13 +136,30 @@ public class ResourceMergeServlet extends DefaultServlet {
 
 			FileTool.save(file, content);
 		}
-		outJS(response, content);
+	}
+
+	@RequestMapping("/coos.less")
+	public void coosLess(HttpServletRequest request, HttpServletResponse response) {
+
+		String content = getLessContent("less");
+		outCSS(response, content);
+
+		String COOS_folder = COOS_AND_PLUGINS_RESOURCES_FOLDER + "coos/";
+		String path = COOS_folder + "less/coos.less";
+		File file = new File(path);
+		if (file == null || !file.isFile() || !FileTool.read(file).equals(content)) {
+
+			FileTool.save(file, content);
+		}
+
 	}
 
 	@RequestMapping("/coos.css")
-	public void coosCSS(HttpServletRequest request, HttpServletResponse response, Map<String, Object> map) {
+	public void coosCSS(HttpServletRequest request, HttpServletResponse response) {
 
-		String content = getCOOSCSSContent(false);
+		String content = getCSSContent("css", false);
+		outCSS(response, content);
+
 		String COOS_folder = COOS_AND_PLUGINS_RESOURCES_FOLDER + "coos/";
 		String path = COOS_folder + "css/coos.css";
 		File file = new File(path);
@@ -122,13 +167,14 @@ public class ResourceMergeServlet extends DefaultServlet {
 
 			FileTool.save(file, content);
 		}
-		outCSS(response, content);
 	}
 
 	@RequestMapping("/coos.min.css")
-	public void coosMinCSS(HttpServletRequest request, HttpServletResponse response, Map<String, Object> map) {
+	public void coosMinCSS(HttpServletRequest request, HttpServletResponse response) {
 
-		String content = getCOOSCSSContent(true);
+		String content = getCSSContent("css", true);
+		outCSS(response, content);
+
 		String COOS_folder = COOS_AND_PLUGINS_RESOURCES_FOLDER + "coos/";
 		String path = COOS_folder + "css/coos.min.css";
 		File file = new File(path);
@@ -136,13 +182,14 @@ public class ResourceMergeServlet extends DefaultServlet {
 
 			FileTool.save(file, content);
 		}
-		outCSS(response, content);
 	}
 
 	@RequestMapping("/coos.page.js")
-	public void coosPageJS(HttpServletRequest request, HttpServletResponse response, Map<String, Object> map) {
+	public void coosPageJS(HttpServletRequest request, HttpServletResponse response) {
 
-		String content = getCOOSPageJSContent(false);
+		String content = getJSContent("page/js", false);
+		outJS(response, content);
+
 		String COOS_folder = COOS_AND_PLUGINS_RESOURCES_FOLDER + "coos/";
 		String path = COOS_folder + "js/coos.page.js";
 		File file = new File(path);
@@ -150,13 +197,14 @@ public class ResourceMergeServlet extends DefaultServlet {
 
 			FileTool.save(file, content);
 		}
-		outJS(response, content);
 	}
 
 	@RequestMapping("/coos.page.min.js")
-	public void coosPageMinJS(HttpServletRequest request, HttpServletResponse response, Map<String, Object> map) {
+	public void coosPageMinJS(HttpServletRequest request, HttpServletResponse response) {
 
-		String content = getCOOSPageJSContent(true);
+		String content = getJSContent("page/js", true);
+		outJS(response, content);
+
 		String COOS_folder = COOS_AND_PLUGINS_RESOURCES_FOLDER + "coos/";
 		String path = COOS_folder + "js/coos.page.min.js";
 		File file = new File(path);
@@ -164,13 +212,29 @@ public class ResourceMergeServlet extends DefaultServlet {
 
 			FileTool.save(file, content);
 		}
-		outJS(response, content);
+	}
+
+	@RequestMapping("/coos.page.less")
+	public void coosPageLess(HttpServletRequest request, HttpServletResponse response) {
+
+		String content = getLessContent("page/less");
+		outCSS(response, content);
+
+		String COOS_folder = COOS_AND_PLUGINS_RESOURCES_FOLDER + "coos/";
+		String path = COOS_folder + "less/coos.page.less";
+		File file = new File(path);
+		if (file == null || !file.isFile() || !FileTool.read(file).equals(content)) {
+
+			FileTool.save(file, content);
+		}
 	}
 
 	@RequestMapping("/coos.page.css")
-	public void coosPageCSS(HttpServletRequest request, HttpServletResponse response, Map<String, Object> map) {
+	public void coosPageCSS(HttpServletRequest request, HttpServletResponse response) {
 
-		String content = getCOOSPageCSSContent(false);
+		String content = getCSSContent("page/css", false);
+		outCSS(response, content);
+
 		String COOS_folder = COOS_AND_PLUGINS_RESOURCES_FOLDER + "coos/";
 		String path = COOS_folder + "css/coos.page.css";
 		File file = new File(path);
@@ -178,13 +242,14 @@ public class ResourceMergeServlet extends DefaultServlet {
 
 			FileTool.save(file, content);
 		}
-		outCSS(response, content);
 	}
 
 	@RequestMapping("/coos.page.min.css")
-	public void coosPageMinCSS(HttpServletRequest request, HttpServletResponse response, Map<String, Object> map) {
+	public void coosPageMinCSS(HttpServletRequest request, HttpServletResponse response) {
 
-		String content = getCOOSPageCSSContent(true);
+		String content = getCSSContent("page/css", true);
+		outCSS(response, content);
+
 		String COOS_folder = COOS_AND_PLUGINS_RESOURCES_FOLDER + "coos/";
 		String path = COOS_folder + "css/coos.page.min.css";
 		File file = new File(path);
@@ -192,37 +257,14 @@ public class ResourceMergeServlet extends DefaultServlet {
 
 			FileTool.save(file, content);
 		}
-		outCSS(response, content);
-	}
-
-	@RequestMapping("/coos.model.js")
-	public void coosModelJS(HttpServletRequest request, HttpServletResponse response, Map<String, Object> map) {
-
-		outJS(response, getCOOSModelJSContent(false));
-	}
-
-	@RequestMapping("/coos.model.min.js")
-	public void coosModelMinJS(HttpServletRequest request, HttpServletResponse response, Map<String, Object> map) {
-
-		outJS(response, getCOOSModelJSContent(true));
-	}
-
-	@RequestMapping("/coos.model.css")
-	public void coosModelCSS(HttpServletRequest request, HttpServletResponse response, Map<String, Object> map) {
-
-		outCSS(response, getCOOSModelCSSContent(false));
-	}
-
-	@RequestMapping("/coos.model.min.css")
-	public void coosModelMinCSS(HttpServletRequest request, HttpServletResponse response, Map<String, Object> map) {
-
-		outCSS(response, getCOOSModelCSSContent(true));
 	}
 
 	@RequestMapping("/coos.frame.js")
-	public void coosFrameJS(HttpServletRequest request, HttpServletResponse response, Map<String, Object> map) {
+	public void coosFrameJS(HttpServletRequest request, HttpServletResponse response) {
 
-		String content = getCOOSFrameJSContent(false);
+		String content = getJSContent("frame/js", false);
+		outJS(response, content);
+
 		String COOS_folder = COOS_AND_PLUGINS_RESOURCES_FOLDER + "coos/";
 		String path = COOS_folder + "js/coos.frame.js";
 		File file = new File(path);
@@ -230,13 +272,14 @@ public class ResourceMergeServlet extends DefaultServlet {
 
 			FileTool.save(file, content);
 		}
-		outJS(response, content);
 	}
 
 	@RequestMapping("/coos.frame.min.js")
-	public void coosFrameMinJS(HttpServletRequest request, HttpServletResponse response, Map<String, Object> map) {
+	public void coosFrameMinJS(HttpServletRequest request, HttpServletResponse response) {
 
-		String content = getCOOSFrameJSContent(true);
+		String content = getJSContent("frame/js", true);
+		outJS(response, content);
+
 		String COOS_folder = COOS_AND_PLUGINS_RESOURCES_FOLDER + "coos/";
 		String path = COOS_folder + "js/coos.frame.min.js";
 		File file = new File(path);
@@ -244,13 +287,29 @@ public class ResourceMergeServlet extends DefaultServlet {
 
 			FileTool.save(file, content);
 		}
-		outJS(response, content);
+	}
+
+	@RequestMapping("/coos.frame.less")
+	public void coosFrameLess(HttpServletRequest request, HttpServletResponse response) {
+
+		String content = getLessContent("frame/less");
+		outCSS(response, content);
+
+		String COOS_folder = COOS_AND_PLUGINS_RESOURCES_FOLDER + "coos/";
+		String path = COOS_folder + "less/coos.frame.less";
+		File file = new File(path);
+		if (file == null || !file.isFile() || !FileTool.read(file).equals(content)) {
+
+			FileTool.save(file, content);
+		}
 	}
 
 	@RequestMapping("/coos.frame.css")
-	public void coosThemeCSS(HttpServletRequest request, HttpServletResponse response, Map<String, Object> map) {
+	public void coosFrameCSS(HttpServletRequest request, HttpServletResponse response) {
 
-		String content = getCOOSFrameCSSContent(false);
+		String content = getCSSContent("frame/css", false);
+		outCSS(response, content);
+
 		String COOS_folder = COOS_AND_PLUGINS_RESOURCES_FOLDER + "coos/";
 		String path = COOS_folder + "css/coos.frame.css";
 		File file = new File(path);
@@ -258,13 +317,14 @@ public class ResourceMergeServlet extends DefaultServlet {
 
 			FileTool.save(file, content);
 		}
-		outCSS(response, content);
 	}
 
 	@RequestMapping("/coos.frame.min.css")
-	public void coosFrameMinCSS(HttpServletRequest request, HttpServletResponse response, Map<String, Object> map) {
+	public void coosFrameMinCSS(HttpServletRequest request, HttpServletResponse response) {
 
-		String content = getCOOSFrameCSSContent(true);
+		String content = getJSContent("frame/css", true);
+		outCSS(response, content);
+
 		String COOS_folder = COOS_AND_PLUGINS_RESOURCES_FOLDER + "coos/";
 		String path = COOS_folder + "css/coos.frame.min.css";
 		File file = new File(path);
@@ -272,121 +332,65 @@ public class ResourceMergeServlet extends DefaultServlet {
 
 			FileTool.save(file, content);
 		}
-		outCSS(response, content);
 	}
 
-	public String getCOOSCSSContent(boolean ismin) {
+	public String getLessContent(String folder) {
 
 		StringBuffer buffer = new StringBuffer();
 
-		String coosCSSFolderPath = RESOURCES_FOLDER + "dist/css";
+		String coosLessFolderPath = RESOURCES_FOLDER + "dist/" + folder;
 
-		appendFolderSubFile(buffer, new File(coosCSSFolderPath));
+		appendFolderSubFile(buffer, new File(coosLessFolderPath));
 
-		if (ismin) {
-			buffer = new StringBuffer(CompressorTool.compressor(buffer.toString(), CompressorTool.Type.CSS));
-		}
-
-		return buffer.toString();
+		String content = buffer.toString();
+		content = content.replaceAll(";+", ";");
+		return content;
 	}
 
-	public String getCOOSJSContent(boolean ismin) {
-
-		StringBuffer buffer = new StringBuffer("(function(window, jQuery) {");
-		buffer.append("\n");
-
-		String coosJSFolderPath = RESOURCES_FOLDER + "dist/js";
-
-		appendFolderSubFile(buffer, new File(coosJSFolderPath));
-		buffer.append("\n");
-		buffer.append("})(window, jQuery);");
-
-		if (ismin) {
-			buffer = new StringBuffer(CompressorTool.compressor(buffer.toString(), CompressorTool.Type.JS));
-		}
-
-		return buffer.toString();
-	}
-
-	public String getCOOSPageJSContent(boolean ismin) {
-
-		StringBuffer buffer = new StringBuffer("(function(window, jQuery, co) {");
-		buffer.append("\n");
-		String coosJSFolderPath = RESOURCES_FOLDER + "dist/page/js";
-		appendFolderSubFile(buffer, new File(coosJSFolderPath));
-		buffer.append("\n");
-		buffer.append("})(window, jQuery, coos);");
-		if (ismin) {
-			buffer = new StringBuffer(CompressorTool.compressor(buffer.toString(), CompressorTool.Type.JS));
-		}
-		return buffer.toString();
-	}
-
-	public String getCOOSPageCSSContent(boolean ismin) {
+	public String getCSSContent(String folder, boolean ismin) {
 
 		StringBuffer buffer = new StringBuffer();
 
-		String coosCSSFolderPath = RESOURCES_FOLDER + "dist/page/css";
+		String coosCSSFolderPath = RESOURCES_FOLDER + "dist/" + folder;
+
 		appendFolderSubFile(buffer, new File(coosCSSFolderPath));
+
+		String content = buffer.toString();
+		content = content.replaceAll(";+", ";");
 		if (ismin) {
-			buffer = new StringBuffer(CompressorTool.compressor(buffer.toString(), CompressorTool.Type.CSS));
+			content = CompressorTool.compressor(buffer.toString(), CompressorTool.Type.CSS);
 		}
 
-		return buffer.toString();
+		return content;
 	}
 
-	public String getCOOSModelJSContent(boolean ismin) {
+	public String getJSContent(String folder, boolean ismin) {
 
-		StringBuffer buffer = new StringBuffer("(function(window, jQuery, co) {");
+		StringBuffer buffer;
+		if (folder.equals("js")) {
+			buffer = new StringBuffer("(function(window, jQuery) {");
+		} else {
+			buffer = new StringBuffer("(function(window, jQuery, co) {");
+		}
 		buffer.append("\n");
-		String coosJSFolderPath = RESOURCES_FOLDER + "dist/model/js";
+
+		String coosJSFolderPath = RESOURCES_FOLDER + "dist/" + folder;
+
 		appendFolderSubFile(buffer, new File(coosJSFolderPath));
 		buffer.append("\n");
-		buffer.append("})(window, jQuery, coos);");
-		if (ismin) {
-			buffer = new StringBuffer(CompressorTool.compressor(buffer.toString(), CompressorTool.Type.JS));
-		}
-		return buffer.toString();
-	}
-
-	public String getCOOSModelCSSContent(boolean ismin) {
-
-		StringBuffer buffer = new StringBuffer();
-
-		String coosCSSFolderPath = RESOURCES_FOLDER + "dist/model/css";
-		appendFolderSubFile(buffer, new File(coosCSSFolderPath));
-		if (ismin) {
-			buffer = new StringBuffer(CompressorTool.compressor(buffer.toString(), CompressorTool.Type.CSS));
+		if (folder.equals("js")) {
+			buffer.append("})(window, jQuery);");
+		} else {
+			buffer.append("})(window, jQuery, coos);");
 		}
 
-		return buffer.toString();
-	}
+		String content = buffer.toString();
 
-	public String getCOOSFrameCSSContent(boolean ismin) {
-
-		StringBuffer buffer = new StringBuffer();
-
-		String coosCSSFolderPath = RESOURCES_FOLDER + "dist/frame/css";
-		appendFolderSubFile(buffer, new File(coosCSSFolderPath));
 		if (ismin) {
-			buffer = new StringBuffer(CompressorTool.compressor(buffer.toString(), CompressorTool.Type.CSS));
+			content = CompressorTool.compressor(content, CompressorTool.Type.JS);
 		}
 
-		return buffer.toString();
-	}
-
-	public String getCOOSFrameJSContent(boolean ismin) {
-
-		StringBuffer buffer = new StringBuffer("(function(window, jQuery ,co) {");
-		buffer.append("\n");
-		String coosJSFolderPath = RESOURCES_FOLDER + "dist/frame/js";
-		appendFolderSubFile(buffer, new File(coosJSFolderPath));
-		buffer.append("\n");
-		buffer.append("})(window, jQuery, coos);");
-		if (ismin) {
-			buffer = new StringBuffer(CompressorTool.compressor(buffer.toString(), CompressorTool.Type.JS));
-		}
-		return buffer.toString();
+		return content;
 	}
 
 	public void appendFolderSubFile(StringBuffer buffer, File folderFile) {
@@ -394,8 +398,15 @@ public class ResourceMergeServlet extends DefaultServlet {
 		if (folderFile != null && folderFile.isDirectory()) {
 			File[] files = folderFile.listFiles();
 
-			String indexPath = folderFile.getAbsolutePath() + "/index.css";
+			String indexPath = folderFile.getAbsolutePath() + "/index.less";
 			File indexFile = new File(indexPath);
+			if (indexFile != null && indexFile.isFile()) {
+				String content = FileTool.read(indexFile);
+				buffer.append(content);
+				buffer.append("\n");
+			}
+			indexPath = folderFile.getAbsolutePath() + "/index.css";
+			indexFile = new File(indexPath);
 			if (indexFile != null && indexFile.isFile()) {
 				String content = FileTool.read(indexFile);
 				buffer.append(content);
@@ -411,7 +422,7 @@ public class ResourceMergeServlet extends DefaultServlet {
 
 			ArrayHelper.sortACS(files);
 			for (File file : files) {
-				if (file.isFile() && file.getName().indexOf("index.js") != 0 && file.getName().indexOf("index.css") != 0) {
+				if (file.isFile() && file.getName().indexOf("index") != 0) {
 					buffer.append(FileTool.read(file));
 					buffer.append("\n");
 				}

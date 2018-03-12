@@ -236,7 +236,7 @@
 			}
 			if (config.jumppage) {
 				var config = {};
-				config.action = co.getThisAction().split('?')[0];
+				config.action = co.url.getCurrentUrl().split('?')[0];
 				config.data = searchData;
 				co.toAction(config);
 				return;

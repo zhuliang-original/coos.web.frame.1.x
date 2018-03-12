@@ -35,21 +35,21 @@
 	var menu = {};
 	menu.menuid = 21;
 	menu.name = "其它组件";
-	 menu.servletpath = "/component/other.html";
-//	menu.onClick = function() {
-//		coos.box.info('功能暂未上线，敬请期待！');
-//		return;
-//	}
+	menu.servletpath = "/component/other.html";
+	// menu.onClick = function() {
+	// coos.box.info('功能暂未上线，敬请期待！');
+	// return;
+	// }
 	menus[menus.length] = menu;
 
 	var menu = {};
 	menu.menuid = 21;
 	menu.name = "JS组件";
-	// menu.servletpath = "/component/js.html";
-	menu.onClick = function() {
-		coos.box.info('功能暂未上线，敬请期待！');
-		return false;
-	}
+	menu.servletpath = "/component/js.html";
+	// menu.onClick = function() {
+	// coos.box.info('功能暂未上线，敬请期待！');
+	// return false;
+	// }
 	menus[menus.length] = menu;
 
 	coos.setTitle('COOS Frame');
@@ -61,7 +61,7 @@
 		},
 		header : {
 			fixed : true,
-			style : "border-bottom:3px solid #3a0133;",
+			style : "border-bottom:3px solid #da7e2b;",
 			config : {
 				title : 'COOS Frame'
 			}

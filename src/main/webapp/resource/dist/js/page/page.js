@@ -37,19 +37,21 @@
 					}, 100);
 				}
 			}
-
 			var hash = '' + window.location.hash;
 			hash = decodeURIComponent(hash);
 			if (!co.isEmpty(hash)) {
 				var $element = pageContent.find(hash);
 				if ($element.length > 0) {
 					var top = $element.offset().top;
-					$("body").animate({
+					$("html").animate({
 						scrollTop : top
 					}, 300);
 				}
+			} else {
+				$("html").animate({
+					scrollTop : 0
+				}, 300);
 			}
-
 		}
 	};
 	(function() {

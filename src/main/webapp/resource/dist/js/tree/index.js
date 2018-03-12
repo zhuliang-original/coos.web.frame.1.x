@@ -430,17 +430,14 @@
 		bean.li_html = bean.li_html.replace('#lilevel', lilevel);
 		var $li = $(bean.li_html);
 
-		var $button_group = $li.find('.tree-button-group');
-		var $buttons = $li.find('.tree-button');
-		if ($buttons.length == liConfig.buttons.length) {
-			$(liConfig.buttons).each(function(index, button) {
-				$($buttons[index]).click(function() {
-					if (button.onClick) {
-						button.onClick(data, $li);
-					}
-				});
+		var $button_group = $li.find('.tree-button-group:first');
+		$(liConfig.buttons).each(function(index, button) {
+			$($button_group.find('[button-index="' + index + '"]')).click(function() {
+				if (button.onClick) {
+					button.onClick(data, $li);
+				}
 			});
-		}
+		});
 
 		$li.data('config', liConfig);
 		$li.data('data', data);

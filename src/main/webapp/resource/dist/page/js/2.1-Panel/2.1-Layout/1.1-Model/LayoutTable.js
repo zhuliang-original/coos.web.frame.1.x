@@ -25,8 +25,33 @@
 
 	ThisLayout.prototype.getOneView = function(config) {
 		var $view = $("<tr></tr>");
+		$view.data('data', config.data);
 		if (this.layout.config.displayserialnumber) {
 			$view.append('<td class="coos-table-index text-center">' + (config.index + 1) + '</td>');
+		}
+		if (this.layout.config.needradio || this.layout.config.needcheckbox) {
+			var $td = $view.find('td:first');
+			if ($td.length == 0) {
+				$td = $('<td class="coos-table-index text-center"></td>');
+				$view.append($td);
+			}
+			if (this.layout.config.needradio) {
+				var radioname = this.radioname || "radio_" + coos.getNumber();
+				this.radioname = radioname;
+				$td.append('<input type="radio" name="' + radioname + '" class="coos-radio">');
+			}
+			if (this.layout.config.needcheckbox) {
+				var checkboxname = this.checkboxname || "checkbox_" + coos.getNumber();
+				this.checkboxname = checkboxname;
+				$td.append('<input type="checkbox" name="' + checkboxname + '" class="coos-checkbox">');
+
+			}
+			$td.click(function(e) {
+				if (e.target.tagName != 'INPUT') {
+					$td.find('input').click();
+				}
+			});
+			$td.addClass('coos-pointer');
 		}
 		return $view;
 	};
@@ -46,7 +71,7 @@
 	ThisLayout.prototype.getOneContainerView = function(config) {
 		var $view = $(html);
 		if (this.layout.config.displaytitle) {
-			var $title = $('<div class="pdtb-5">' + this.layout.title + '</div>')
+			var $title = $('<div class="pdtb-5 font-md">' + this.layout.title + '</div>')
 			$view.find('table').before($title);
 		}
 		var $tbody = $view.find('tbody');
@@ -101,7 +126,33 @@
 		// this.$tr = this.$content.find('tr:last').clone();
 		// this.$theadtr = this.$content.find('thead tr');
 	};
+	ThisLayout.prototype.getExecuteData = function() {
+		var result = {};
+		if (this.layout.config.needradio) {
+			var name = this.radioname;
+			var $input = this.$view.find('[name="' + name + '"]');
+			var radio_data = {};
+			$($input).each(function(index, input) {
+				if (input.checked) {
+					radio_data = $(input).closest('tr').data("data");
+				}
+			});
+			result.radio_data = radio_data;
+		}
+		if (this.layout.config.needcheckbox) {
+			var name = this.checkboxname;
+			var $input = this.$view.find('[name="' + name + '"]');
+			var checkbox_datas = [];
+			$($input).each(function(index, input) {
+				if (input.checked) {
+					checkbox_datas.push($(input).closest('tr').data("data"));
+				}
+			});
 
+			result.checkbox_datas = checkbox_datas;
+		}
+		return result;
+	};
 	ThisLayout.prototype.getData = function($button, button, data) {
 
 		if (this.layout.config.isformtable) {
@@ -172,6 +223,14 @@
 		}, {
 			text : "显示按钮",
 			name : "displaybutton",
+			inputtype : "switch"
+		}, {
+			text : "需要单选框",
+			name : "needradio",
+			inputtype : "switch"
+		}, {
+			text : "需要多选框",
+			name : "needcheckbox",
 			inputtype : "switch"
 		} ],
 		getElementModelList : function() {

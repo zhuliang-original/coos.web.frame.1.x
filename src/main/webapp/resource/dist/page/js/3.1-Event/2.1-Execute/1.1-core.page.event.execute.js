@@ -31,10 +31,39 @@
 			var setvaluename = data.setvaluename;
 			var value = this.getDataValue(data);
 			if (typeof (value) != "undefined") {
-				if (co.isObject(value)) {
-					jQuery.extend(true, executeData, value);
-				} else {
+				if (!coos.isEmpty(setvaluename)) {
 					executeData[setvaluename] = value;
+				} else {
+
+					if (co.isObject(value)) {
+						if (coos.isArray(value)) {
+							coos.box.info('值类型为集合，请设置值名称');
+							throw new Error('setvaluename is null');
+						} else {
+							jQuery.extend(true, executeData, value);
+						}
+					} else {
+						coos.box.info('未设置存值名称');
+						throw new Error('setvaluename is null');
+					}
+				}
+			}
+
+			if (!coos.isEmpty(data.validate)) {
+
+				var dataConfig = executeData;
+				if (executeFunction(dataConfig, data.validate)) {
+					if (!coos.isEmpty(data.validatesuccessmessage)) {
+						coos.box.info(data.validatesuccessmessage);
+						throw new Error(data.validatesuccessmessage);
+					}
+				} else {
+					if (!executeFunction(dataConfig, data.validate)) {
+						if (!coos.isEmpty(data.validateerrormessage)) {
+							coos.box.info(data.validateerrormessage);
+							throw new Error(data.validateerrormessage);
+						}
+					}
 				}
 			}
 		}
@@ -67,7 +96,13 @@
 			dataConfig.layoutData = layoutData;
 			dataConfig.executeData = executeData;
 			if (co.isEmpty(value)) {
-				return layoutData;
+				if (typeof (layoutData) != "undefined") {
+					return layoutData;
+				} else if (typeof (executeData) != "undefined") {
+					return executeData;
+				} else {
+					return null;
+				}
 			}
 		}
 
@@ -80,8 +115,19 @@
 	Execute.prototype.runAfter = function() {
 		EXECUTE_STATUS_MAP[this.execute.executeid] = 0;
 	};
+	Execute.prototype.validateRule = function() {
+		if (!coos.isEmpty(this.execute.validaterule)) {
+			var dataConfig = {};
+			dataConfig.value = this.config.value;
+			return executeFunction(dataConfig, this.execute.validaterule);
+		}
+		return true;
+	};
 	Execute.prototype.run = function() {
 		if (EXECUTE_STATUS_MAP[this.execute.executeid] != null && EXECUTE_STATUS_MAP[this.execute.executeid] == 1) {
+			return;
+		}
+		if (!this.validateRule()) {
 			return;
 		}
 		this.runBefore();

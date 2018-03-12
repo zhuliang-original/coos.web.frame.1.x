@@ -1,0 +1,350 @@
+.coos-mega-menu-wrapper {
+	width: 100%;
+	position: relative;
+	z-index: 3;
+}
+
+.coos-mega-menu-wrapper .coos-mega-menu {
+	float: left;
+}
+
+.coos-mega-menu-wrapper .coos-mega-menu .mega-ul,
+	.coos-mega-menu-wrapper .coos-mega-menu .mega-li {
+	margin: 0;
+	padding: 0;
+}
+
+.coos-mega-menu-wrapper .coos-mega-menu .mega-li {
+	list-style: none;
+}
+
+.coos-mega-menu-wrapper .coos-mega-menu>.mega-ul>li.one-icon,
+	.coos-mega-menu-wrapper .coos-mega-menu>.mega-ul>li.profile {
+	padding: 13px 7px 14px;
+}
+
+.coos-mega-menu-wrapper .coos-mega-menu>.mega-ul>li.one-big-icon>.mega-link,
+	.coos-mega-menu-wrapper .coos-mega-menu>.mega-ul>li.one-icon>.mega-link
+	{
+	display: block;
+	height: 36px;
+	line-height: 30px;
+	width: 36px;
+	text-align: center;
+	padding: 0;
+	margin: 0;
+	overflow: hidden;
+	-webkit-border-radius: 30px;
+	-moz-border-radius: 30px;
+	border-radius: 30px;
+}
+
+.coos-mega-menu-wrapper .coos-mega-menu>.mega-ul>li.one-big-icon {
+	padding: 14px 4px 13px;
+}
+
+.coos-mega-menu-wrapper .coos-mega-menu>.mega-ul>li.one-big-icon>.mega-link
+	{
+	font-size: 24px;
+}
+
+.coos-mega-menu-wrapper .coos-mega-menu>.mega-ul>li.one-big-icon>.mega-link>.mega-image
+	{
+	margin-left: 5px;
+	margin-right: 5px;
+}
+
+.coos-mega-menu-wrapper .coos-mega-menu>.mega-ul>li.one-big-icon>.mega-link>.badge
+	{
+	right: -4px;
+	top: 5px;
+}
+
+.coos-mega-menu-wrapper .coos-mega-menu>.mega-ul>li.one-big-icon .open-left:before
+	{
+	right: 11px;
+}
+
+.coos-mega-menu-wrapper .coos-mega-menu>.mega-ul>li.one-big-icon .open-right:before
+	{
+	right: auto;
+	left: 11px;
+}
+
+.coos-mega-menu-wrapper .coos-mega-menu>.mega-ul>li.profile {
+	margin-left: 15px;
+}
+
+.coos-mega-menu-wrapper .coos-mega-menu>.mega-ul>li.profile .mega-image
+	{
+	float: left;
+}
+
+.coos-mega-menu-wrapper .coos-mega-menu>.mega-ul>li.profile .mega-name {
+	display: block;
+	float: left;
+	margin-left: 10px;
+	margin-top: 5px;
+}
+
+.coos-mega-menu-wrapper .coos-mega-menu>.mega-ul .mega-image {
+	height: 36px;
+	line-height: 30px;
+	width: 36px;
+}
+
+.coos-mega-menu-wrapper .coos-mega-menu>.mega-ul .mega-image img {
+	-webkit-border-radius: 30px;
+	-moz-border-radius: 30px;
+	border-radius: 30px;
+	vertical-align: top;
+}
+
+.coos-mega-menu-wrapper .coos-mega-menu>.mega-ul>li.one-icon>.mega-link
+	{
+	border: 2px solid #EEE;
+}
+
+.coos-mega-menu-wrapper .coos-mega-menu>.mega-ul>li.one-icon>.mega-link .mega-icon
+	{
+	font-size: 16px;
+}
+
+.coos-mega-menu-wrapper .coos-mega-menu>.mega-ul>li.one-icon .mega-link:hover,
+	.coos-mega-menu-wrapper .coos-mega-menu>.mega-ul>li.one-icon .mega-link.open
+	{
+	background-color: #ffffff !important;
+	color: #1fae66;
+}
+
+.coos-mega-menu-wrapper .coos-mega-menu>.mega-ul>.mega-li {
+	float: left;
+	position: relative;
+	margin-left: 5px;
+	padding: 18px 7px 20px;
+	height: 63px;
+}
+
+.coos-mega-menu-wrapper .coos-mega-menu>.mega-ul>.mega-li>a {
+	padding: 0;
+	color: #cccccc;
+}
+
+.coos-mega-menu-wrapper .coos-mega-menu>.mega-ul>.mega-li>a:hover,
+	.coos-mega-menu-wrapper .coos-mega-menu>.mega-ul>.mega-li>a:focus {
+	background: none;
+}
+
+.coos-mega-menu-wrapper .coos-mega-menu>.mega-ul>.mega-li .btn {
+	padding: 6px 15px;
+}
+
+.coos-mega-menu-wrapper .coos-mega-menu>.mega-ul>.mega-li .btn-lg {
+	padding: 11px 19px;
+}
+
+.coos-mega-menu-wrapper .coos-mega-menu>.mega-ul>.mega-li .btn-sm {
+	padding: 5px 10px;
+}
+
+.coos-mega-menu-wrapper .coos-mega-menu>.mega-ul>.mega-li .btn-xs {
+	font-size: 11px;
+	padding: 4px 8px;
+}
+
+.coos-mega-menu-wrapper .coos-mega-menu>.mega-ul>.mega-li .caret {
+	border-top-color: #FFFFFF;
+	border-bottom-color: #FFFFFF;
+}
+
+.coos-mega-menu-wrapper .coos-mega-menu>.mega-ul>.mega-li .badge {
+	position: absolute;
+	right: 4px;
+	top: 4px;
+}
+
+.coos-mega-menu-wrapper .coos-mega-menu>.mega-ul li.hover-trigger:hover>.hover-target
+	{
+	display: block !important;
+}
+/* for horizontal menu */
+.coos-mega-menu-wrapper.horizontal-menu {
+	z-index: 6;
+}
+
+.coos-mega-menu-wrapper.horizontal-menu .coos-mega-menu>.mega-ul>.mega-li
+	{
+	padding: 8px 13px;
+	height: 42px;
+	margin-top: 10px;
+	margin-bottom: 10px;
+	border-radius: 4px;
+}
+
+.coos-mega-menu-wrapper.horizontal-menu .coos-mega-menu>.mega-ul>.mega-li>a
+	{
+	font-size: 14px;
+}
+
+.coos-mega-menu-wrapper.horizontal-menu .coos-mega-menu>.mega-ul>.mega-li:hover,
+	.coos-mega-menu-wrapper.horizontal-menu .coos-mega-menu>.mega-ul>.mega-li.active
+	{
+	background: rgba(0, 0, 0, 0.4);
+	color: #FFFFFF;
+}
+
+.coos-mega-menu-content {
+	padding-top: 5px;
+	padding-bottom: 15px;
+	top: 100%;
+	background-color: #FFF;
+	-webkit-box-shadow: 0 1px 1px rgba(0, 0, 0, 0.05);
+	box-shadow: 0 1px 1px rgba(0, 0, 0, 0.05);
+	border-top: 3px solid #1fae66;
+	z-index: 5;
+}
+
+.coos-mega-menu-content .line {
+	border-top: 1px solid #EEE;
+	margin-top: 5px !important;
+	margin-bottom: 5px !important;
+	padding: 0 !important;
+}
+
+.coos-mega-menu-content .closing {
+	margin-bottom: -15px;
+}
+
+.coos-mega-menu-content.no-top {
+	border-top: none;
+}
+
+.coos-mega-menu-content.no-top:before {
+	border: none;
+}
+
+.coos-mega-menu-content .child-menu {
+	position: relative;
+	padding: 0;
+	color: #5e656b;
+	letter-spacing: .3px;
+}
+
+.coos-mega-menu-content .child-menu a {
+	color: #5e656b;
+}
+
+.coos-mega-menu-content .child-menu .title {
+	background: #1fae66;
+	color: #FFF;
+	margin-top: -5px;
+	padding: 0 10px 3px;
+}
+
+.coos-mega-menu-content .child-menu .title .coos-panel-menu .entypo-icon
+	{
+	font-size: 18px;
+	line-height: 26px;
+}
+
+.coos-mega-menu-content .child-menu .title .coos-panel-menu .smaller-font
+	{
+	font-size: 14px;
+}
+
+.coos-mega-menu-content .child-menu .content {
+	padding: 5px 10px;
+}
+
+.closing {
+	font-size: 11.4px;
+	background: #F5F5F5 !important;
+	position: relative;
+}
+
+.closing a {
+	color: #999 !important;
+	display: block;
+	padding: 3px 10px 5px;
+}
+
+.closing a:hover {
+	color: #1fae66 !important;
+}
+
+.open-top {
+	top: auto;
+	bottom: 106%;
+}
+
+.open-top:before {
+	display: none !important;
+}
+
+.light-top-menu .coos-mega-menu-wrapper .coos-mega-menu>.mega-ul>.mega-li .mega-link,
+	.light-top-menu .coos-mega-menu-wrapper .coos-mega-menu>.mega-ul>.mega-li .one-icon,
+	.light-top-menu .coos-mega-menu-wrapper .coos-mega-menu>.mega-ul>.mega-li .mega-name
+	{
+	border-color: #707e77;
+	color: #707e77;
+}
+
+.light-top-menu .coos-mega-menu-wrapper.horizontal-menu .coos-mega-menu>.mega-ul>.mega-li>a
+	{
+	color: #707e77;
+}
+
+.light-top-menu .coos-mega-menu-wrapper.horizontal-menu .coos-mega-menu .mega-ul>.mega-li:hover,
+	.light-top-menu .coos-mega-menu-wrapper.horizontal-menu .coos-mega-menu .mega-ul>.mega-li.active
+	{
+	background: #1fae66;
+}
+
+.light-top-menu .coos-mega-menu-wrapper.horizontal-menu .coos-mega-menu .mega-ul>.mega-li:hover>a,
+	.light-top-menu .coos-mega-menu-wrapper.horizontal-menu .coos-mega-menu .mega-ul>.mega-li.active>a
+	{
+	color: #FFFFFF;
+}
+
+.light-top-menu .coos-menu-search {
+	background: #333333;
+	color: #EEEEEE;
+}
+
+.light-top-menu .coos-menu-search .coos-menu-search-text {
+	background: #333333;
+	color: #EEEEEE;
+}
+/* Specific Menu Color */
+.coos-menu-action-icon.coos-green:hover {
+	background: #1fae66 !important;
+	color: #ffffff !important;
+}
+
+.coos-menu-action-icon.coos-red:hover {
+	background: #f85d2c !important;
+	color: #ffffff !important;
+}
+
+.coos-menu-action-icon.coos-yellow:hover {
+	background: #1fae66 !important;
+	color: #ffffff !important;
+}
+
+.coos-menu-action-icon.coos-orange:hover {
+	background: #f85d2c !important;
+	color: #ffffff !important;
+}
+
+.coos-menu-action-icon.coos-blue:hover {
+	background: #1fae66 !important;
+	color: #ffffff !important;
+}
+
+.coos-mega-menu-content .title .coos-panel-menu .coos-menu {
+	border: none;
+	height: 22px;
+	line-height: 22px;
+	width: 22px;
+	margin-right: 5px;
+}

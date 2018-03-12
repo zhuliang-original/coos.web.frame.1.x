@@ -17,7 +17,9 @@
 		})();
 	</script>
 	<div class="doc-part">
-		<jsp:include page="base.jsp" />
+		<jsp:include page="pack-base.jsp" />
+		<jsp:include page="pack-over.jsp" />
+		
 
 	</div>
 </div>

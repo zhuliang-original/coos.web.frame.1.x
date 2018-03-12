@@ -6,12 +6,12 @@
 			urls[urls.length] = co.resource.images.noimg;
 		} else {
 			var paths = [ path ];
-			if (path.indexOf(',') > 0) {
-				paths = path.split(',');
+			if (path.indexOf(co.input.file.divider) > 0) {
+				paths = path.split(co.input.file.divider);
 			}
 			$(paths).each(function(index, p) {
 				if (!co.isEmpty(p)) {
-					if (p.indexOf('http') == 0) {
+					if (p.indexOf('http:') == 0 || p.indexOf('https:') == 0 || p.indexOf('ftp:') == 0 || p.indexOf('file:') == 0) {
 					} else {
 						p = co.config.server.fileServerUrl + p;
 					}
@@ -104,23 +104,21 @@
 		if (url.indexOf('?') > 0) {
 			var toActions = url.split('?');
 			var datastr = toActions[1];
-			if (datastr.indexOf('&') > 0) {
+			if (!co.isEmpty(datastr)) {
 				var datas = datastr.split('&');
 				for (var i = 0; i < datas.length; i++) {
-					if (datas[i].indexOf('=') > 0) {
-						var n = datas[i].split('=')[0];
-						var v = datas[i].split('=')[1];
-						if (data[n] == null) {
-							data[n] = v;
+					if (!co.isEmpty(datas[i])) {
+						if (datas[i].indexOf('=') > 0) {
+							var n = datas[i].split('=')[0];
+							var v = datas[i].split('=')[1];
+							v = v == null ? "" : v;
+							if (data[n] == null) {
+								data[n] = v;
+							}
+						} else {
+
+							data[datas[i]] = "";
 						}
-					}
-				}
-			} else {
-				if (datastr.indexOf('=') > 0) {
-					var n = datastr.split('=')[0];
-					var v = datastr.split('=')[1];
-					if (data[n] == null) {
-						data[n] = v;
 					}
 				}
 			}

@@ -10,12 +10,12 @@
 	})();
 
 	ThisElement.prototype.initContent = function() {
-		this.$input.addClass('input-rule-file');
-		this.$input.attr('file-type', 'video');
+		this.$input.addClass('input-rule-file-video');
 	};
 
 	var ThisElementConfig = {
 		name : "视频",
+		forInput : true,
 		columns : []
 	};
 	co.page.panel.layout.element.model.defind("VIDEO", ThisElementConfig, ThisElement);

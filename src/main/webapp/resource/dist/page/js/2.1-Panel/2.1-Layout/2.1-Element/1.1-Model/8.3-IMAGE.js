@@ -27,6 +27,7 @@
 
 	var ThisElementConfig = {
 		name : "图片",
+		forInput : true,
 		columns : []
 	};
 	co.page.panel.layout.element.model.defind("IMAGE", ThisElementConfig, ThisElement);

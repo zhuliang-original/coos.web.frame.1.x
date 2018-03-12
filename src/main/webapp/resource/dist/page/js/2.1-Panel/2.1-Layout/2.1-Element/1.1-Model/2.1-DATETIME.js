@@ -21,6 +21,7 @@
 	};
 	var ThisElementConfig = {
 		name : "日期时间",
+		forInput : true,
 		columns : []
 	};
 	co.page.panel.layout.element.model.defind("DATETIME", ThisElementConfig, ThisElement);

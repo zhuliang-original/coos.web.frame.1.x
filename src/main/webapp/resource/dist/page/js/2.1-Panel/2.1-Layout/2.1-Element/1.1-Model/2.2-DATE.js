@@ -22,6 +22,7 @@
 
 	var ThisElementConfig = {
 		name : "日期",
+		forInput : true,
 		columns : []
 	};
 	co.page.panel.layout.element.model.defind("DATE", ThisElementConfig, ThisElement);

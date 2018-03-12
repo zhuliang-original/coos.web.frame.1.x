@@ -1,0 +1,203 @@
+.coos-btn.coos-disabled, .coos-disabled>.coos-btn {
+	pointer-events: none; 
+	cursor: no-drop!important;
+	.opacity(.65);
+	-webkit-box-shadow: none;
+	box-shadow: none;
+}
+
+.coos-btn-block {
+	display: block;
+	width: 100%;
+	padding-left: 0;
+	padding-right: 0;
+}
+
+.coos-btn-lg, .coos-btn-group-lg .coos-btn {
+	padding: 11px 19px;
+}
+
+.coos-btn-sm, .coos-btn-group-sm .coos-btn {
+	padding: 5px 10px;
+}
+
+.coos-btn-xs, .coos-btn-group-xs .coos-btn {
+	font-size: 12px;
+	padding: 2px 6px;
+}
+
+.coos-btn-round.coos-btn-xs {
+	width: 30px;
+	height: 30px;
+	line-height: 28px;
+	font-size: 13px;
+}
+
+.coos-btn-round.coos-btn-sm {
+	width: 40px;
+	height: 40px;
+	line-height: 38px;
+	font-size: 16px;
+}
+
+.coos-btn-round.coos-btn-lg {
+	width: 80px;
+	height: 80px;
+	line-height: 76px;
+	font-size: 36px;
+}
+
+.coos-btn:focus {
+	color: #FFFFFF;
+	background-color: #CCCCCC;
+}
+
+.coos-btn-default {
+	color: #5e656b;
+	background-color: #fff;
+	border-color: #ccc;
+}
+
+.coos-btn.coos-btn-default:hover, .coos-btn.coos-btn-default:hover {
+	color: #5e656b;
+	background-color: #ccc;
+	border-color: #eaeaea;
+}
+
+.coos-btn-link {
+	color: #297eea;
+	font-weight: 400;
+	cursor: pointer;
+	border-radius: 0;
+}
+
+.coos-btn-link, .coos-btn-link:hover, .coos-btn-link:focus,
+	.coos-btn-link:active {
+	border-color: transparent;
+}
+
+.coos-btn-link:hover, .coos-btn-link:focus, .coos-btn-link:active {
+	text-decoration: underline;
+	background-color: transparent;
+	color: #428bca;
+}
+
+.coos-btn-link, .coos-btn-link:active, .coos-btn-link[disabled],
+	fieldset[disabled] .coos-btn-link {
+	background-color: transparent;
+	-webkit-box-shadow: none;
+	box-shadow: none;
+}
+
+.coos-btn.coos-bg-red:hover, .coos-btn.coos-red:hover {
+	background-color: @red-light !important;
+	border-color: @red-light !important;
+	color: #FFF !important;
+}
+
+.coos-btn.coos-red.coos-btn-link:hover {
+	background-color: transparent !important;
+	border-color: transparent !important;
+	color: @red-light !important;
+}
+
+.coos-btn.coos-bg-green:hover, .coos-btn.coos-green:hover {
+	background-color: @green-light !important;
+	border-color: @green-light !important;
+	color: #FFF !important;
+}
+
+.coos-btn.coos-green.coos-btn-link:hover {
+	background-color: transparent !important;
+	border-color: transparent !important;
+	color: @green-light !important;
+}
+
+.coos-btn.coos-bg-blue:hover, .coos-btn.coos-blue:hover {
+	background-color: @blue-light !important;
+	border-color: @blue-light !important;
+	color: #FFF !important;
+}
+
+.coos-btn.coos-blue.coos-btn-link:hover {
+	background-color: transparent !important;
+	border-color: transparent !important;
+	color: @blue-light !important;
+}
+
+.coos-btn.coos-bg-yellow:hover, .coos-btn.coos-yellow:hover {
+	background-color: @yellow-light !important;
+	border-color: @yellow-light !important;
+	color: #FFF !important;
+}
+
+.coos-btn.coos-yellow.coos-btn-link:hover {
+	background-color: transparent !important;
+	border-color: transparent !important;
+	color: @yellow-light !important;
+}
+
+.coos-btn.coos-bg-grey:hover, .coos-btn.coos-grey:hover {
+	background-color: @grey-light !important;
+	border-color: @grey-light !important;
+	color: #FFF !important;
+}
+
+.coos-btn.coos-grey.coos-btn-link:hover {
+	background-color: transparent !important;
+	border-color: transparent !important;
+	color: @grey-light !important;
+}
+
+.coos-btn.coos-bg-black:hover, .coos-btn.coos-black:hover {
+	background-color: @black-light !important;
+	border-color: @black-light !important;
+	color: #FFF !important;
+}
+
+.coos-btn.coos-black.coos-btn-link:hover {
+	background-color: transparent !important;
+	border-color: transparent !important;
+	color: @black-light !important;
+}
+
+
+.coos-btn-group {
+	position: relative;
+	display: inline-block;
+	vertical-align: middle;
+}
+
+.coos-btn-group .coos-btn {
+	border-radius: 0px;
+}
+
+.coos-btn-group-left .coos-btn {
+	margin-right: 5px;
+}
+
+.coos-btn-group-right .coos-btn {
+	margin-left: 5px;
+}
+
+.coos-btn-group-center .coos-btn {
+	margin-left: 2.5px;
+	margin-right: 2.5px;
+}
+
+.coos-btn-group, .coos-btn-group-vertical {
+	position: relative;
+	display: inline-block;
+	vertical-align: middle;
+}
+
+.coos-btn-group>.coos-btn, .coos-btn-group-vertical>.coos-btn {
+	position: relative;
+	float: left;
+}
+
+.coos-btn-group .coos-btn+.coos-btn, .coos-btn-group .coos-btn+.coos-btn-group,
+	.coos-btn-group .coos-btn-group+.coos-btn, .coos-btn-group .coos-btn-group+.coos-btn-group
+	{
+	margin-left: -1px;
+}

@@ -1,7 +1,7 @@
 (function() {
 
 	co.input.file = new Object();
-
+	co.input.file.divider = " ";
 	var FileBind = function($selector, config) {
 		config = config || {};
 		this.type = config.type || '';
@@ -28,49 +28,60 @@
 
 	FileBind.prototype.initView = function() {
 		this.$upload = $('<span class=\"coos-input-addon coos-input-addon-after coos-pointer \"><i class=\"fa fa-upload\"></i></span>');
-		this.$selector.after(this.$upload);
+
+		if (!this.isreadonly) {
+			this.$selector.after(this.$upload);
+		} else {
+		}
 
 		this.bindUpdate(this.$upload);
-		if (this.type == 'image') {
-			this.$imagegroup = $("<div class=\"coos-image-group\">" + "</div>");
-			this.$uploadimg = $("<div class=\"coos-image \">" + "	<img class='coos-pointer' src='" + co.resource.images.clickupload + "'>" + "</div>");
+		this.$filegroup = $("<div class=\"coos-file-group\">" + "</div>");
+		this.$filegroupupload = $("<div class=\"coos-file coos-file-for-upload\"><i class=\"mgl-5 fa fa-upload\"></i></div>");
 
-			this.$imagegroup.append(this.$uploadimg);
-			this.$selector.before(this.$imagegroup);
-			if (this.isreadonly) {
-				this.$uploadimg.hide();
-			}
-			this.$uploadimg.attr('file-type', 'image');
-			if (this.maxfilelength) {
-				this.$uploadimg.attr('maxfilelength', this.maxfilelength);
-			}
-			this.bindUpdate(this.$uploadimg);
+		this.$filegroup.append(this.$filegroupupload);
+		this.$selector.before(this.$filegroup);
+
+		if (this.isreadonly) {
+			this.$filegroupupload.hide();
+		}
+		if (this.type == 'image') {
+			this.$filegroup.addClass('coos-image-group ');
+			this.$filegroupupload.empty();
+			this.$filegroupupload.append("	<img class='coos-pointer' src='" + co.resource.images.clickupload + "'>");
+
+			this.$filegroupupload.attr('file-type', 'image');
+		} else {
+
+		}
+
+		if (!this.isreadonly) {
+			this.bindUpdate(this.$filegroupupload);
 		}
 
 	};
 
-	FileBind.prototype.bindUpdate = function($btn, $image) {
+	FileBind.prototype.bindUpdate = function($btn, $file) {
 		var this_ = this;
 
 		$btn.attr('file-type', this.type);
 		co.button.bind.upload($btn, {
 			callback : function(files) {
-				this_.addFiles(files, $image);
+				this_.addFiles(files, $file);
 			}
 		});
 	};
 
-	FileBind.prototype.addFiles = function(files, $image) {
+	FileBind.prototype.addFiles = function(files, $file) {
 		var this_ = this;
 		if (files && files.length > 0) {
 			var oldurl = this.$selector.val();
 			var oldpath = '';
-			if ($image) {
-				oldpath = $image.find('img').attr('path');
+			if ($file) {
+				oldpath = $file.attr('path');
 			}
 			var urls = [];
 			if (oldurl != null && oldurl != '') {
-				urls = oldurl.split(',');
+				urls = oldurl.split(co.input.file.divider);
 			}
 			var us = [];
 			$(urls).each(function(index, url) {
@@ -109,7 +120,7 @@
 				urls[urls.length - 1] = overfiles[0].path;
 			}
 			urls.push("");
-			var value = urls.join(",");
+			var value = urls.join(co.input.file.divider);
 			this.$selector.val(value);
 			this.$selector.change();
 		}
@@ -120,7 +131,7 @@
 			var oldurl = this.$selector.val();
 			var urls = [];
 			if (oldurl != null && oldurl != '') {
-				urls = oldurl.split(',');
+				urls = oldurl.split(co.input.file.divider);
 			}
 			var us = [];
 			$(urls).each(function(index, url) {
@@ -131,48 +142,101 @@
 				}
 			});
 			us.push("");
-			var value = us.join(",");
+			var value = us.join(co.input.file.divider);
 			this.$selector.val(value);
 			this.$selector.change();
 		}
 	};
-
-	FileBind.prototype.addImage = function(url) {
-		if (!this.$uploadimg) {
-			return;
+	FileBind.prototype.fullFileInfo = function($file, data) {
+		if (co.isString(data)) {
+			var url = data;
+			var infos = url.split('/');
+			var name = infos[infos.length - 1];// 获取最后一部分，即文件名
+			data = {};
+			data.name = name;
+			data.length = 0;
 		}
-		var this_ = this;
-		var $image = $('<div class="coos-image one"><img class="element-rule-image" /></div>');
-		var $remove = $('<div class="coos-image-remove"></div>');
-		if (!this.isreadonly) {
-			$image.find('img').before($remove);
-		}
-		$image.find('img').attr('path', url);
-		if (url.indexOf('http') == 0) {
+		$file.find('.file-name').text(data.name);
+		var length = data.length || 0;
+		if (length < 1024) {
+			length = length + "B";
+		} else if (length >= 1024 && length < 1024 * 1024) {
+			length = length / 1024;
+			length = length.toFixed(2);
+			length = length + "KB";
 		} else {
+			length = length / 1024 / 1024;
+			length = length.toFixed(2);
+			length = length + "MB";
+		}
+		$file.find('.file-length').text(length);
+	};
+
+	FileBind.prototype.addFileGroupFile = function(url) {
+		var this_ = this;
+		var $file = $('<div class="coos-file one"></div>');
+		$file.attr('path', url);
+		var useFileServer = false;
+		var path = url;
+		if (url.indexOf('http:') == 0 || url.indexOf('https:') == 0 || url.indexOf('ftp:') == 0 || url.indexOf('file:') == 0) {
+		} else {
+			useFileServer = true;
 			url = co.config.server.fileServerUrl + url;
 		}
-		$image.find('img').attr('coos-path', url);
-		this.$uploadimg.before($image);
-		co.element.init($image);
+		if (this.type == 'image') {
+			$file.append('<img class="element-rule-image" />');
+		} else {
+			$file.append('<div class="file-info" ><a class="file-name" target="_blank" ></a><div class="file-length"></div></div>');
+			$file.find('a').attr('href', url);
+			this.fullFileInfo($file, url);
+			if (useFileServer) {
+				var action = 'core/file/file.info';
+				var data = {};
+				data.path = path;
+				data.url = url;
+				var this_ = this;
+				co.POST(action, data, 'json', function(data) {
+					if (data != null && !co.isEmpty(data.name)) {
+						this_.fullFileInfo($file, data);
+					}
+				}, true, {
+					showLoading : false
+				});
+			} else {
+			}
+
+		}
+		var $remove = $('<div class="coos-file-remove"><i class="fa fa-remove"></i></div>');
+		if (!this.isreadonly) {
+			$file.append($remove);
+		}
+		if (this.type == 'image') {
+			$file.find('img').attr('path', url);
+		}
+		this.$filegroupupload.before($file);
+		co.element.init($file);
 		$remove.click(function() {
-			var path = $(this).next('img').attr('path');
+			var path = $(this).parent().attr('path');
 			this_.removeFile(path);
 			$(this).parent().remove();
 		});
-		this.bindUpdate($image, $image);
+		if (this.type == 'image') {
+			if (!this.isreadonly) {
+				this.bindUpdate($file, $file);
+			}
+		}
 	};
 
 	FileBind.prototype.bindEvent = function() {
 		var this_ = this;
 		this.$selector.change(function() {
 			var value = $(this).val();
-			if (this_.$imagegroup) {
-				this_.$imagegroup.find('.one').remove();
+			if (this_.$filegroup) {
+				this_.$filegroup.find('.one').remove();
 			}
 			var urls = [];
 			if (value != null && value != '') {
-				urls = value.split(',');
+				urls = value.split(co.input.file.divider);
 			}
 
 			var count = 0;
@@ -180,16 +244,20 @@
 				if (!co.isEmpty(url)) {
 					count++;
 					if (count <= this_.filecount) {
-						this_.addImage(url);
+						this_.addFileGroupFile(url);
 					}
 				}
 			});
-			if (this_.$uploadimg) {
+			if (this_.$filegroupupload) {
 				if (this_.filecount <= count) {
-					this_.$uploadimg.hide();
+					this_.$filegroupupload.hide();
 				} else {
-					this_.$uploadimg.show();
+
+					this_.$filegroupupload.show();
 				}
+			}
+			if (this_.isreadonly) {
+				this_.$filegroupupload.hide();
 			}
 		});
 	};

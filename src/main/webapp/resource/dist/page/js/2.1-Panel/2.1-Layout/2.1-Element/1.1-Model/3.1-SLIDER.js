@@ -15,6 +15,7 @@
 
 	var ThisElementConfig = {
 		name : "进度条",
+		forInput : true,
 		columns : []
 	};
 	co.page.panel.layout.element.model.defind("SLIDER", ThisElementConfig, ThisElement);

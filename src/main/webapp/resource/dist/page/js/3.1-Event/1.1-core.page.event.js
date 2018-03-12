@@ -20,26 +20,28 @@
 
 	Event.prototype.initEvent = function() {
 		this.$view = this.config.$view;
+		this.$input = this.config.$input;
 		this.bindEvent();
 	};
 
 	Event.prototype.bindEvent = function() {
 	};
 
-	Event.prototype.eventExecutes = function() {
+	Event.prototype.eventExecutes = function(value) {
 		this.event.executes = this.event.executes || [];
 
 		for (var index = 0; index < this.event.executes.length; index++) {
 			var execute = this.event.executes[index];
 			if (co.isEmpty(execute.parentid)) {
-				this.eventExecute(execute);
+				this.eventExecute(execute, value);
 			}
 		}
 	};
 
-	Event.prototype.eventExecute = function(execute) {
+	Event.prototype.eventExecute = function(execute, value) {
 		var config = this.config;
 		config.execute = execute;
+		config.value = value;
 		var executeObject = co.page.event.execute.create(config);
 		executeObject.run();
 	};

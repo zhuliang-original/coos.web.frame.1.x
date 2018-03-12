@@ -39,7 +39,7 @@
 
 	Layout.prototype.loadDataAfter = function(result) {
 		co.element.init(this.$view);
-		
+
 		var config = this.config;
 		var layout = config.layout;
 		if (!co.isEmpty(layout.afterdataloadexecute)) {
@@ -65,7 +65,7 @@
 
 	Layout.prototype.initViewAfter = function() {
 		co.element.init(this.$view);
-		
+
 		var config = this.config;
 		var layout = config.layout;
 		if (!co.isEmpty(layout.afterviewloadexecute)) {
@@ -376,6 +376,25 @@
 		this.clear();
 		config = config || {};
 		var searchData = this.config.panelObject.getSearchData(this.layout.bindlayoutforsearch);
+		var $sortnames = this.$view.find('.coos-sort-both');
+		if ($sortnames.length > 0) {
+			if ($sortnames.length == 1) {
+				var sortname = $sortnames.attr('rule-sort-name');
+				var sorttype = $sortnames.attr('rule-sort-type');
+				if (!coos.isEmpty(sortname) && !coos.isEmpty(sorttype)) {
+					searchData[sortname + '-for-sort'] = sorttype;
+				}
+			} else {
+				$($sortnames).each(function(index, $sortname) {
+					var $sortname = $($sortname);
+					var sortname = $sortname.attr('rule-sort-name');
+					var sorttype = $sortname.attr('rule-sort-type');
+					if (!coos.isEmpty(sortname) && !coos.isEmpty(sorttype)) {
+						searchData[sortname + '-for-sort'] = sorttype;
+					}
+				});
+			}
+		}
 		if (config) {
 			if (config.data) {
 				for ( var n in config.data) {
@@ -386,7 +405,7 @@
 			}
 			if (config.jumppage) {
 				var config = {};
-				config.action = co.getThisAction().split('?')[0];
+				config.action = co.url.getCurrentUrl().split('?')[0];
 				config.data = searchData;
 				co.toAction(config);
 				return;

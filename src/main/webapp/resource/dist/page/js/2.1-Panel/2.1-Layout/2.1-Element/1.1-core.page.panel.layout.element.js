@@ -18,7 +18,7 @@
 		}
 		element.config = elementConfig || {};
 
-		if (this.element.type == 'SWITCH') {
+		if (this.forsearch && this.element.type == 'SWITCH') {
 
 			this.element.selectdatas = [ {
 				text : '是',
@@ -85,6 +85,12 @@
 		var minlength = config.minlength;
 		var maxlength = config.maxlength;
 		var readonly = config.readonly;
+
+		if (this.config.layout && this.config.layout.config) {
+			if (coos.isTrue(this.config.layout.config.readonly)) {
+				readonly = true;
+			}
+		}
 		var display = config.display;
 		var cannull = config.cannull;
 		if (!readonly) {
@@ -107,19 +113,16 @@
 		if (co.isEmpty(inputtype)) {
 			inputtype = "TEXT";
 		}
-		if (this.forsearch && (inputtype == 'SWITCH' || inputtype == 'RADIO')) {
+		if (this.forsearch && (inputtype == 'SWITCH')) {
 			inputtype = "SELECT";
 		}
-		inputtype = inputtype.toLowerCase();
 		if (inputtype == 'IMAGE' || inputtype == 'IMAGES') {
-			this.$input.addClass('input-rule-file-image');
 		} else {
-			this.$input.addClass('input-rule-' + inputtype);
+			this.$input.addClass('input-rule-' + inputtype.toLowerCase());
 		}
 
 		this.$input.attr('elementid', this.element.elementid);
 		this.$input.attr('addClass', 'coos-one-element');
-		this.$input.attr('need-addon', 'true');
 		if (!co.isEmpty(config.pattern)) {
 			this.$input.attr('pattern', config.pattern);
 		}
@@ -175,24 +178,28 @@
 		this.$input.attr('group-type', inputgrouptype);
 		this.$input.attr('isreadonly', readonly);
 		this.$input.attr('display', display);
-		this.$input.attr('inputtype', inputtype);
 		this.$input.attr('coos-validate', config.jsvalidate);
 		this.$input.attr('coos-click', config.onclick);
 		this.$input.attr('need-full-change', "true");
 		this.$input.attr('need-addon', true);
 		this.$input.addClass('parameter');
 		this.$input.addClass('input-rule-group');
-		this.$input.attr('need-addon', true);
 		if (!co.isEmpty(this.element.config.defaultvalue)) {
 			this.$input.attr("defaultvalue", this.element.config.defaultvalue);
 		}
-		if (!this.config.design && this.config.pageObject.config.requestmap && this.element.config.userrequestmapfordefault) {
-			if (this.config.pageObject.config.requestmap[name] != null) {
-				this.$input.attr('defaultvalue', this.config.pageObject.config.requestmap[name]);
+		if (!this.config.design && this.config.pageObject.config.requestmap) {
+			if (co.isEmpty(this.element.config.userrequestmapfordefault) || this.element.config.userrequestmapfordefault) {
+
+				if (this.config.pageObject.config.requestmap[name] != null) {
+					this.$input.attr('defaultvalue', this.config.pageObject.config.requestmap[name]);
+				}
 			}
 		}
 		if (!co.isEmpty(this.element.thisvalue)) {
 			this.$input.attr("defaultvalue", this.element.thisvalue);
+		}
+		if (!this.config.design) {
+			this.bindEvent();
 		}
 	};
 
@@ -210,6 +217,34 @@
 		var display = this.element.config.display;
 		if (!display) {
 			$input.addClass('display-none');
+		}
+		if (this.element.config.clicktosort) {
+			$input.addClass('coos-sort-both');
+			$input.attr('rule-sort-name', this.element.name);
+			var type = "";
+			var this_ = this;
+			$input.click(function() {
+				var type = $input.attr('rule-sort-type');
+				if (coos.isEmpty(type)) {
+					type = "asc";
+				} else if (type == "asc" || type == "ASC") {
+					type = "desc";
+				} else {
+					type = null;
+				}
+				$input.removeClass('coos-sort-asc coos-sort-desc');
+				if (coos.isEmpty(type)) {
+					$input.removeAttr('rule-sort-type');
+				} else {
+					if (type == "asc") {
+						$input.addClass('coos-sort-asc');
+					} else if (type == "desc") {
+						$input.addClass('coos-sort-desc');
+					}
+					$input.attr('rule-sort-type', type);
+				}
+				this_.config.layoutObject.loadData();
+			});
 		}
 		return $input;
 	};
@@ -257,6 +292,12 @@
 					$select.append('<option value="">请选择</option>');
 				} else {
 					this.$view.append($select);
+					var inputtype = this.element.type;
+					if (inputtype.indexOf('RADIO') >= 0) {
+						if (this.forsearch) {
+							$select.append('<option value="">全部</option>');
+						}
+					}
 				}
 				$(datas).each(function(index, data) {
 					var option = $('<option />');
@@ -362,7 +403,23 @@
 		this.initView();
 		return this.$view;
 	};
-
+	Element.prototype.bindEvent = function() {
+		var this_ = this;
+		$(this.element.events).each(function(index, event) {
+			co.page.event.bind({
+				event : event,
+				$view : this_.$view,
+				$input : this_.$input,
+				design : this_.config.design,
+				layout : this_.config.layout,
+				layoutObject : this_.config.layoutObject,
+				page : this_.config.page,
+				pageObject : this_.config.pageObject,
+				panel : this_.config.panel,
+				panelObject : this_.config.panelObject
+			});
+		});
+	};
 	Element.prototype.initContent = function() {
 	};
 

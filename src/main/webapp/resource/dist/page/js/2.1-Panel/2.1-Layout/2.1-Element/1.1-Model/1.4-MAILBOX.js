@@ -15,6 +15,7 @@
 
 	var ThisElementConfig = {
 		name : "邮箱",
+		forInput : true,
 		columns : []
 	};
 	co.page.panel.layout.element.model.defind("MAILBOX", ThisElementConfig, ThisElement);

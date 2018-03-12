@@ -13,18 +13,12 @@
 		return true;
 	};
 
-	ThisElement.prototype.getInput = function() {
-		if (this.forsearch) {
-			return $("<select ></select>");
-		}
-		return $('<input type="text"/>');
-	};
-
 	ThisElement.prototype.initContent = function() {
 	};
 
 	var ThisElementConfig = {
 		name : "单选框",
+		forInput : true,
 		columns : []
 	};
 	co.page.panel.layout.element.model.defind("RADIO", ThisElementConfig, ThisElement);

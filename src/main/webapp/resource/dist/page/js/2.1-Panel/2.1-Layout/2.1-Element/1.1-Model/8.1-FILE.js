@@ -20,6 +20,7 @@
 
 	var ThisElementConfig = {
 		name : "文件",
+		forInput : true,
 		columns : []
 	};
 	co.page.panel.layout.element.model.defind("FILE", ThisElementConfig, ThisElement);

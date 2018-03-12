@@ -19,7 +19,12 @@
 		if (execute.operate) {
 			var operate = execute.operate;
 			var servletpath = operate.servletpath;
-			var data = this.getData();
+			var data = this.getData() || {};
+			for ( var key in data) {
+				if (coos.isObject(data[key])) {
+					data[key] = JSON.stringify(data[key]);
+				}
+			}
 			jQuery.extend(true, data, paramData);
 			var this_ = this;
 			if (operate.type == 'TO_PAGE') {

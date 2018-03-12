@@ -17,6 +17,7 @@
 
 	var ThisElementConfig = {
 		name : "复选框",
+		forInput : true,
 		columns : []
 	};
 	co.page.panel.layout.element.model.defind("CHECKBOX", ThisElementConfig, ThisElement);
