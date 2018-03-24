@@ -6,6 +6,14 @@
 		var tagName = $selector[0].tagName;
 		var noimg = co.resource.images.noimg;
 		var notfindimg = co.resource.images.notfindimg;
+		if (!co.isEmpty($selector.attr('no-path'))) {
+			noimg = $selector.attr('no-path');
+			noimg = co.url.format(noimg);
+		}
+		if (!co.isEmpty($selector.attr('not-find-path'))) {
+			notfindimg = $selector.attr('not-find-path');
+			notfindimg = co.url.format(notfindimg);
+		}
 		if (co.isEmpty(path)) {
 			if (tagName == 'IMG') {
 				$selector.attr('src', noimg);

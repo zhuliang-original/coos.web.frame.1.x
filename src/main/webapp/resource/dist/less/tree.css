@@ -230,6 +230,10 @@ li.coos-tree-search-for-high-light>.coos-tree-row .tree-row-center {
 	
 }
 
+.coos-tree li.active>.coos-row {
+	background-color: #ddd;
+}
+
 .coos-tree li .coos-row:hover {
 	background-color: #ddd;
 }

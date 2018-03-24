@@ -5,6 +5,7 @@
 	var bindFunctionList = [];
 	co.element.init = function($container) {
 		co.input.init();
+		co.template.load($container);
 		$container = $container || $('body');
 		$container = $($container);
 		for (type in bindFunctionMap) {
@@ -44,8 +45,9 @@
 
 	co.element.isBinded = function($selector, type) {
 		$selector = $($selector);
+		var must_init = co.isTrue($selector.attr('must-rule-init'));
 		var inited = $selector.data('coos-element-rule-' + type + '-binded');
-		if (inited) {
+		if (!must_init && inited) {
 			return true;
 		}
 		if ($selector.closest('[coos-model]').length > 0) {

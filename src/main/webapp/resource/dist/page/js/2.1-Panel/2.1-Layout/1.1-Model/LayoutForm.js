@@ -27,7 +27,7 @@
 		var $view = $(html);
 		var $buttonContent = $view.find('.coos-button-container');
 		if (this.layout.config.displayback) {
-			var $backBtn = $('<div class="doBackBtn coos-btn coos-btn-sm coos-bd-grey coos-grey mgl-5"> 取消</div>');
+			var $backBtn = $('<div class="doBackBtn coos-btn coos-btn-sm coos-bd-grey coos-grey mgr-5"> 返回</div>');
 			$buttonContent.append($backBtn);
 		}
 

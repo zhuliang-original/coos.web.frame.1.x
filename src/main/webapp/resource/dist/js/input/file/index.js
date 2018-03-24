@@ -64,6 +64,9 @@
 		var this_ = this;
 
 		$btn.attr('file-type', this.type);
+		if (!co.isEmpty(this.$selector.attr('file-type'))) {
+			$btn.attr('file-type', this.$selector.attr('file-type'));
+		}
 		co.button.bind.upload($btn, {
 			callback : function(files) {
 				this_.addFiles(files, $file);
