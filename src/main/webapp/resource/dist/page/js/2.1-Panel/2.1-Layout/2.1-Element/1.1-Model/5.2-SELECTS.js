@@ -21,7 +21,10 @@
 	var ThisElementConfig = {
 		name : "多选下拉框",
 		forInput : true,
-		columns : []
+		columns : [ {
+			text : "级联元素",
+			name : "relationname"
+		} ]
 	};
 	co.page.panel.layout.element.model.defind("SELECTS", ThisElementConfig, ThisElement);
 })(window, jQuery);

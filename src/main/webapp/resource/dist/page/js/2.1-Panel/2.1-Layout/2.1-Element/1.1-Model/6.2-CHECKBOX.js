@@ -18,7 +18,10 @@
 	var ThisElementConfig = {
 		name : "复选框",
 		forInput : true,
-		columns : []
+		columns : [ {
+			text : "级联元素",
+			name : "relationname"
+		} ]
 	};
 	co.page.panel.layout.element.model.defind("CHECKBOX", ThisElementConfig, ThisElement);
 })(window, jQuery);
