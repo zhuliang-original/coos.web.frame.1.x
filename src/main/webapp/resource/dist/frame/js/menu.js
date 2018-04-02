@@ -92,24 +92,31 @@ co.frame.menu = new Object();
 			$menu.find('a').attr('href', menu.href);
 		}
 		if (!coos.isEmpty(menu.servletpath) && this.getChildMenus(menu).length == 0) {
-			$menu.find('a').addClass('coosToActionBtn');
-			$menu.find('a').attr('toAction', menu.servletpath);
-			var checkedmenuid = this.getCheckedMenuid();
-			if (!coos.isEmpty(checkedmenuid) && checkedmenuid == menu.menuid) {
-				if (menu.mustcheckedthismenu || (coos.url.getCurrentAction() == menu.servletpath || ("/" + coos.url.getCurrentAction()) == menu.servletpath)) {
-					$menu.addClass('active');
-				}
-			}
-			$menu.find('a').attr("coos-menu-servletpath", menu.servletpath.replace(/\/+/g, "/"));
-			$menu.find('a').click(function() {
-				$(menus).each(function(index, menu) {
-					delete menu.mustcheckedthismenu;
+			if(menu.notonline){
+				$menu.find('a').click(function() {
+					coos.box.info('功能暂未上线，敬请期待！');
 				});
-				menu.mustcheckedthismenu = true;
-				$('[coos-menu-servletpath]').closest('li').removeClass('active');
-				var li = $(this).closest('li');
-				li.addClass('active');
-			});
+			}else{
+				$menu.find('a').addClass('coosToActionBtn');
+				$menu.find('a').attr('toAction', menu.servletpath);
+				var checkedmenuid = this.getCheckedMenuid();
+				if (!coos.isEmpty(checkedmenuid) && checkedmenuid == menu.menuid) {
+					if (menu.mustcheckedthismenu || (coos.url.getCurrentAction() == menu.servletpath || ("/" + coos.url.getCurrentAction()) == menu.servletpath)) {
+						$menu.addClass('active');
+					}
+				}
+				$menu.find('a').attr("coos-menu-servletpath", menu.servletpath.replace(/\/+/g, "/"));
+				$menu.find('a').click(function() {
+					$(menus).each(function(index, menu) {
+						delete menu.mustcheckedthismenu;
+					});
+					menu.mustcheckedthismenu = true;
+					$('[coos-menu-servletpath]').closest('li').removeClass('active');
+					var li = $(this).closest('li');
+					li.addClass('active');
+				});
+			}
+			
 		}
 
 		$menu.find('a').append('' + name + '');

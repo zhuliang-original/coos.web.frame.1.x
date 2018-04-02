@@ -52,16 +52,27 @@
 			} else if (typeof data[i].header !== 'undefined') {
 				$menu.append('<li class="coos-nav-header">' + data[i].header + '</li>');
 			} else {
-				if (typeof data[i].href == 'undefined') {
-					data[i].href = '#';
-				}
 				if (typeof data[i].target !== 'undefined') {
 					linkTarget = ' target="' + data[i].target + '"';
 				}
 				if (typeof data[i].subMenu !== 'undefined') {
-					$sub = ('<li class="coos-dropdown-submenu"><a tabindex="-1" href="' + data[i].href + '">' + data[i].text + '</a></li>');
+
+					if (typeof data[i].href == 'undefined') {
+						$sub = ('<li class="coos-dropdown-submenu"><a tabindex="-1" >' + data[i].text + '</a></li>');
+					} else {
+						$sub = ('<li class="coos-dropdown-submenu"><a tabindex="-1" href="' + data[i].href + '">' + data[i].text + '</a></li>');
+
+					}
+
 				} else {
-					$sub = $('<li><a tabindex="-1" href="' + data[i].href + '"' + linkTarget + '>' + data[i].text + '</a></li>');
+
+					if (typeof data[i].href == 'undefined') {
+						$sub = $('<li><a tabindex="-1" >' + data[i].text + '</a></li>');
+
+					} else {
+						$sub = $('<li><a tabindex="-1" href="' + data[i].href + '"' + linkTarget + '>' + data[i].text + '</a></li>');
+
+					}
 				}
 				if (typeof data[i].action !== 'undefined') {
 					var actiond = new Date(), actionID = 'event-' + actiond.getTime() * Math.floor(Math.random() * 100000), eventAction = data[i].action;
