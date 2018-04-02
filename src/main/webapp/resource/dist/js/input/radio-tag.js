@@ -30,6 +30,13 @@
 				value += $(one).attr('value');
 			});
 			$selector.val(value);
+			if (co.isEmpty(value)) {
+				$(optionGroup.find('.coos-text-tag')).each(function(index, one) {
+					if (co.isEmpty($(one).attr('value'))) {
+						$(one).addClass('active');
+					}
+				});
+			}
 			isFullChange = false;
 			$selector.change();
 			isFullChange = true;

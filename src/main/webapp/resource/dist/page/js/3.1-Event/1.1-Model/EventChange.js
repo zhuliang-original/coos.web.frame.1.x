@@ -14,8 +14,15 @@
 		var $input = this.$input || this.$view;
 		var this_ = this;
 		if ($input) {
+			var last_value = $input.val();
 			$input.on('change', function() {
-				this_.eventExecutes(this.value);
+				var this_value = this.value;
+				if (last_value == this_value) {
+
+				} else {
+					this_.eventExecutes(this_value);
+				}
+				last_value = this_value;
 			});
 		}
 	};

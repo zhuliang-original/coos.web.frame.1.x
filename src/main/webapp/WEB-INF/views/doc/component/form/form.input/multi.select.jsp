@@ -10,7 +10,7 @@
 	<option value="12值">2文本</option>
 	<option value="123值">3文本</option>
 </select>
-<input label="标签" class="input-rule-group input-rule-multi-select" need-addon="true" placeholder="多选下拉框" />
+<input label="标签" name="s_1" class="input-rule-group input-rule-multi-select" need-addon="true" placeholder="多选下拉框" />
 <select class="option-select ">
 	<option value="">请选择</option>
 	<option value="1值">1文本</option>

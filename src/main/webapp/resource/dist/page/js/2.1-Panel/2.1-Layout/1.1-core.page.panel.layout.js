@@ -355,9 +355,18 @@
 	};
 
 	Layout.prototype.search = function() {
+		var this_ = this;
+		if (this._search_ing) {
+			return;
+		}
+		this._search_ing = true;
+		var loadDataConfig = {};
+		loadDataConfig.callback = function() {
+			this_._search_ing = false;
+		};
+
 		var layout = this.layout;
 
-		var loadDataConfig = {};
 		if (layout.config.jumppagesearch) {
 			loadDataConfig.jumppage = true;
 		}
