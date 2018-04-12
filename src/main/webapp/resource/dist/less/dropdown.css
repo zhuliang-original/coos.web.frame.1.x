@@ -1,3 +1,9 @@
+.coos-dropdown-toggle{
+	cursor: pointer;
+}
+.coos-dropdown-toggle .coos-caret{
+	cursor: pointer;
+}
 .coos-dropdown {
 	position: relative;
 	margin: 0px;

@@ -15,5 +15,5 @@ String.prototype.replaceAll = function(arg1, arg2) {
 	if (co.isEmpty(value) || co.isEmpty(arg1)) {
 		return value;
 	}
-	return ("" + value).replace(new RegExp(arg1, 'gm'), arg2);
+	return ("" + value).replace(eval(arg1 + "g"), arg2);
 };

@@ -1,3 +1,11 @@
+.toActionBtn,.coosToActionBtn,.doActionBtn,.coosDoActionBtn{
+	cursor: pointer;
+}
+
+.coos-dropdown-toggle .coos-caret{
+	cursor: pointer;
+}
+
 .coos-btn.coos-disabled, .coos-disabled>.coos-btn {
 	pointer-events: none; 
 	cursor: no-drop!important;
