@@ -76,6 +76,10 @@
 
 		var folders = [];
 		folders.push(rootFolder);
+		$(rootFolder.files).each(function(index, f) {
+			f.level = 0;
+			folders.push(f);
+		});
 		for ( var level in level_folders) {
 			var fs = level_folders[level];
 			$(fs).each(function(index, f) {
