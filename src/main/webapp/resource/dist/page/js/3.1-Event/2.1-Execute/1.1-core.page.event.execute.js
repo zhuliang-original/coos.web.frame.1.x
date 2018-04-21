@@ -56,6 +56,7 @@
 				if (validateresult) {
 					if (!coos.isEmpty(data.validatesuccessmessage)) {
 						coos.box.info(data.validatesuccessmessage);
+						throw new Error(data.validatesuccessmessage);
 					}
 				} else {
 					if (!coos.isEmpty(data.validateerrormessage)) {
