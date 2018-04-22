@@ -280,7 +280,6 @@
 		} else {
 			$input = this.getInput();
 		}
-		this.initContent($input);
 		if ($th != null) {
 			this.$view.append($th);
 		}
@@ -288,6 +287,7 @@
 			this.$view.append($td);
 		}
 		if ($input != null) {
+			this.initInput($input);
 			if ($td != null) {
 				$td.empty().append($input);
 			} else {
@@ -460,7 +460,7 @@
 			});
 		});
 	};
-	Element.prototype.initContent = function($input) {
+	Element.prototype.initInput = function($input) {
 	};
 
 	co.page.panel.layout.element = {};

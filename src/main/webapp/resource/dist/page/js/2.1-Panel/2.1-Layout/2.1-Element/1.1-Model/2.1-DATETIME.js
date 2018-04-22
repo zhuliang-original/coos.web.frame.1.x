@@ -17,7 +17,7 @@
 		return co.date.formatDatetime(value);
 	};
 
-	ThisElement.prototype.initContent = function() {
+	ThisElement.prototype.initInput = function() {
 	};
 	var ThisElementConfig = {
 		name : "日期时间",

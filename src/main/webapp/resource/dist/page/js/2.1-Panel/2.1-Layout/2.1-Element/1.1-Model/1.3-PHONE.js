@@ -9,7 +9,7 @@
 		ThisElement.prototype = new Super();
 	})();
 
-	ThisElement.prototype.initContent = function($input) {
+	ThisElement.prototype.initInput = function($input) {
 		$input.attr('isphone', true);
 	};
 

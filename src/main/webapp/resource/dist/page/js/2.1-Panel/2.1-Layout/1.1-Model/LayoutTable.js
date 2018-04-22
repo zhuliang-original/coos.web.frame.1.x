@@ -127,6 +127,9 @@
 		// this.$theadtr = this.$content.find('thead tr');
 	};
 	ThisLayout.prototype.getExecuteData = function() {
+
+	};
+	ThisLayout.prototype.getData = function(dataConfig) {
 		var result = {};
 		var isformtable = this.layout.config.isformtable;
 		if (this.layout.config.needradio) {
@@ -170,25 +173,25 @@
 
 			result.checkbox_datas = checkbox_datas;
 		}
-		return result;
-	};
-	ThisLayout.prototype.getData = function(dataConfig) {
 		var rowData = {};
+		var formData = {};
 		if (dataConfig && dataConfig.data) {
 			rowData = dataConfig.data;
+			formData = dataConfig.data;
 		}
 		if (this.layout.config.isformtable && dataConfig.$row) {
 
 			var data = co.form.validate(dataConfig.$row);
 			if (data) {
 				for ( var n in data) {
-					rowData[n] = data[n];
+					formData[n] = data[n];
 				}
 			}
-			return rowData;
 		} else {
-			return rowData;
 		}
+		result.rowData = rowData;
+		result.formData = formData;
+		return result;
 	};
 
 	ThisLayout.prototype.appendDataBefore = function(config) {

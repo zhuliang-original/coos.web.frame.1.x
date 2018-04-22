@@ -16,7 +16,7 @@
 		return true;
 	};
 
-	ThisElement.prototype.initContent = function($input) {
+	ThisElement.prototype.initInput = function($input) {
 	};
 
 	var ThisElementConfig = {

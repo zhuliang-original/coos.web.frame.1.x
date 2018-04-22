@@ -9,7 +9,7 @@
 		ThisElement.prototype = new Super();
 	})();
 
-	ThisElement.prototype.initContent = function($input) {
+	ThisElement.prototype.initInput = function($input) {
 		if ($input[0].tagName == 'INPUT') {
 			$input.addClass('input-rule-file-image');
 			$input.attr('file-count', '1');
@@ -17,12 +17,12 @@
 	};
 
 	ThisElement.prototype.appendTdValue = function(value) {
-		this.$input.empty();
+		this.$td.empty();
 		var $img = $("<img class='element-rule-image' style=\"width: 40px;\" />");
 		var urls = co.url.formatImageUrls(value);
 		$img.attr('path', urls[0]);
-		this.$input.append($img);
-		this.$input.css('line-height', 0);
+		this.$td.append($img);
+		this.$td.css('line-height', 0);
 	};
 
 	var ThisElementConfig = {
