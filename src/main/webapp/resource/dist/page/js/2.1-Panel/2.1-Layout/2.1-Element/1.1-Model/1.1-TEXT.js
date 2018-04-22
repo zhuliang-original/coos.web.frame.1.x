@@ -9,7 +9,7 @@
 		ThisElement.prototype = new Super();
 	})();
 
-	ThisElement.prototype.initContent = function() {
+	ThisElement.prototype.initContent = function($input) {
 	};
 
 	var ThisElementConfig = {

@@ -9,8 +9,8 @@
 		ThisElement.prototype = new Super();
 	})();
 
-	ThisElement.prototype.initContent = function() {
-		this.$input.attr('iscardid', true);
+	ThisElement.prototype.initContent = function($input) {
+		$input.attr('iscardid', true);
 	};
 
 	var ThisElementConfig = {

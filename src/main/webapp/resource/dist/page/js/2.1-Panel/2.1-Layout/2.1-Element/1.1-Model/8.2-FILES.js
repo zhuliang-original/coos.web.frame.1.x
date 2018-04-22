@@ -9,11 +9,11 @@
 		ThisElement.prototype = new Super();
 	})();
 
-	ThisElement.prototype.initContent = function() {
+	ThisElement.prototype.initContent = function($input) {
 
-		if (this.$input[0].tagName == 'INPUT') {
-			this.$input.addClass('input-rule-file');
-			this.$input.attr('file-count', '5');
+		if ($input[0].tagName == 'INPUT') {
+			$input.addClass('input-rule-file');
+			$input.attr('file-count', '5');
 		}
 	};
 

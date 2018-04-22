@@ -9,8 +9,8 @@
 		ThisElement.prototype = new Super();
 	})();
 
-	ThisElement.prototype.initContent = function() {
-		this.$input.addClass('input-rule-file-video');
+	ThisElement.prototype.initContent = function($input) {
+		$input.addClass('input-rule-file-video');
 	};
 
 	var ThisElementConfig = {

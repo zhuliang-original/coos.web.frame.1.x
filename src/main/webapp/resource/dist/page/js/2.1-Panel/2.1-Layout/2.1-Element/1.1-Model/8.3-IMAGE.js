@@ -9,10 +9,10 @@
 		ThisElement.prototype = new Super();
 	})();
 
-	ThisElement.prototype.initContent = function() {
-		if (this.$input[0].tagName == 'INPUT') {
-			this.$input.addClass('input-rule-file-image');
-			this.$input.attr('file-count', '1');
+	ThisElement.prototype.initContent = function($input) {
+		if ($input[0].tagName == 'INPUT') {
+			$input.addClass('input-rule-file-image');
+			$input.attr('file-count', '1');
 		}
 	};
 

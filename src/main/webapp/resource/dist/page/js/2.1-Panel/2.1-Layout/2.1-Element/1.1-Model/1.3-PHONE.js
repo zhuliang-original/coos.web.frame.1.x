@@ -9,8 +9,8 @@
 		ThisElement.prototype = new Super();
 	})();
 
-	ThisElement.prototype.initContent = function() {
-		this.$input.attr('isphone', true);
+	ThisElement.prototype.initContent = function($input) {
+		$input.attr('isphone', true);
 	};
 
 	var ThisElementConfig = {

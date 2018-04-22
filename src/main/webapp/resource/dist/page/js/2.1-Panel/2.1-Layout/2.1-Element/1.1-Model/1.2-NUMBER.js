@@ -9,8 +9,8 @@
 		ThisElement.prototype = new Super();
 	})();
 
-	ThisElement.prototype.initContent = function() {
-		this.$input.attr('isinteger', true);
+	ThisElement.prototype.initContent = function($input) {
+		$input.attr('isinteger', true);
 	};
 
 	var ThisElementConfig = {

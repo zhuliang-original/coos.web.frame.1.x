@@ -9,8 +9,8 @@
 		ThisElement.prototype = new Super();
 	})();
 
-	ThisElement.prototype.initContent = function() {
-		this.$input.addClass('input-rule-file-audio');
+	ThisElement.prototype.initContent = function($input) {
+		$input.addClass('input-rule-file-audio');
 	};
 
 	var ThisElementConfig = {

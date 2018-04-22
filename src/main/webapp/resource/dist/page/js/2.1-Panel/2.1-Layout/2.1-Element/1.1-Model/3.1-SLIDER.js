@@ -9,8 +9,8 @@
 		ThisElement.prototype = new Super();
 	})();
 
-	ThisElement.prototype.initContent = function() {
-		this.$input.val(0);
+	ThisElement.prototype.initContent = function($input) {
+		$input.val(0);
 	};
 
 	var ThisElementConfig = {

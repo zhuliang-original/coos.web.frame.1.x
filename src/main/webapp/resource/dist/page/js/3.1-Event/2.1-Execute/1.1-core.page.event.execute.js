@@ -80,16 +80,15 @@
 	}
 	Execute.prototype.getDataValue = function(executeData) {
 		var dataConfig = this.config.dataConfig;
-
 		var value = executeData.value;
 		if (!co.isEmpty(executeData.layoutid)) {
 			var layoutObjects = getLayoutObject(executeData.layoutid);
 			var layoutData = {};
 			var executeData = {};
 			$(layoutObjects).each(function(index, layoutObject) {
-				layoutData = layoutObject.getData();
+				layoutData = layoutObject.getData(dataConfig);
 				if (layoutObject.getExecuteData) {
-					executeData = layoutObject.getExecuteData();
+					executeData = layoutObject.getExecuteData(dataConfig);
 				}
 			});
 			dataConfig.layoutData = layoutData;

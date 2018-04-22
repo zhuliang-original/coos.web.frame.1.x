@@ -13,8 +13,8 @@
 		return true;
 	};
 
-	ThisElement.prototype.initContent = function() {
-		this.$input.addClass('input-rule-multi-select');
+	ThisElement.prototype.initContent = function($input) {
+		$input.addClass('input-rule-multi-select');
 
 	};
 

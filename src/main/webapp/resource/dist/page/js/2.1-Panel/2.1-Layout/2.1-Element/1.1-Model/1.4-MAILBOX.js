@@ -9,8 +9,8 @@
 		ThisElement.prototype = new Super();
 	})();
 
-	ThisElement.prototype.initContent = function() {
-		this.$input.attr('ismailbox', true);
+	ThisElement.prototype.initContent = function($input) {
+		$input.attr('ismailbox', true);
 	};
 
 	var ThisElementConfig = {

@@ -128,6 +128,7 @@
 	};
 	ThisLayout.prototype.getExecuteData = function() {
 		var result = {};
+		var isformtable = this.layout.config.isformtable;
 		if (this.layout.config.needradio) {
 			var name = this.radioname;
 			var $input = this.$view.find('[name="' + name + '"]');
@@ -135,6 +136,14 @@
 			$($input).each(function(index, input) {
 				if (input.checked) {
 					radio_data = $(input).closest('tr').data("data");
+					if (isformtable) {
+						var data = co.form.validate($(input).closest('tr'));
+						if (data) {
+							for ( var n in data) {
+								radio_data[n] = data[n];
+							}
+						}
+					}
 				}
 			});
 			result.radio_data = radio_data;
@@ -145,7 +154,17 @@
 			var checkbox_datas = [];
 			$($input).each(function(index, input) {
 				if (input.checked) {
-					checkbox_datas.push($(input).closest('tr').data("data"));
+					var checkbox_data = $(input).closest('tr').data("data");
+
+					if (isformtable) {
+						var data = co.form.validate($(input).closest('tr'));
+						if (data) {
+							for ( var n in data) {
+								checkbox_data[n] = data[n];
+							}
+						}
+					}
+					checkbox_datas.push(checkbox_data);
 				}
 			});
 
@@ -153,21 +172,22 @@
 		}
 		return result;
 	};
-	ThisLayout.prototype.getData = function($button, button, data) {
+	ThisLayout.prototype.getData = function(dataConfig) {
+		var rowData = {};
+		if (dataConfig && dataConfig.data) {
+			rowData = dataConfig.data;
+		}
+		if (this.layout.config.isformtable && dataConfig.$row) {
 
-		if (this.layout.config.isformtable) {
-
-			var trData = co.form.validate($button.closest('tr'));
-			if (trData) {
+			var data = co.form.validate(dataConfig.$row);
+			if (data) {
 				for ( var n in data) {
-					if (trData[n] == null) {
-						trData[n] = data[n];
-					}
+					rowData[n] = data[n];
 				}
 			}
-			return trData;
+			return rowData;
 		} else {
-			return data;
+			return rowData;
 		}
 	};
 

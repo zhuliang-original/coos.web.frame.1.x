@@ -91,6 +91,9 @@
 		text : "标签",
 		name : "label"
 	}, {
+		text : "标签占列",
+		name : "labelsize"
+	}, {
 		text : "默认值",
 		name : "defaultvalue"
 	}, {
@@ -101,7 +104,10 @@
 		text : "点击排序",
 		name : "clicktosort",
 		inputtype : "switch"
-	} ];
+	} , {
+		text : "帮助信息",
+		name : "helpinfo"
+	}];
 	var inputColumns = [ {
 		text : "使用请求值",
 		name : "userrequestmapfordefault",
@@ -111,8 +117,23 @@
 		name : "inputgrouptype",
 		inputtype : "select",
 		datas : [ {
-			value : "TEXT",
-			text : "文本"
+			value : "1",
+			text : "单行两列"
+		}, {
+			value : "2",
+			text : "两行两列（有帮助信息）"
+		}, {
+			value : "3",
+			text : "单行三列（有帮助信息）"
+		}, {
+			value : "4",
+			text : "两行一列"
+		}, {
+			value : "5",
+			text : "三行一列（有帮助信息）"
+		}, {
+			value : "6",
+			text : "两行两列（有帮助信息）"
 		} ]
 	}, {
 		text : "可以为空",

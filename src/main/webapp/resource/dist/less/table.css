@@ -77,6 +77,24 @@
 	position: relative;
 }
 
+.coos-table tbody tr td>.coos-input-group{
+	margin: 0px;
+	padding: 0px;
+}
+
+.coos-table tbody tr td>.coos-input-group>.coos-input{
+	margin: 0px;
+	padding: 0px;
+}
+
+.coos-table tbody tr td>.coos-input-group>.coos-input input,
+.coos-table tbody tr td>.coos-input-group>.coos-input select,
+.coos-table tbody tr td>.coos-input-group>.coos-input textarea{
+	border: 0px;
+	-webkit-box-shadow: inset 0 0px 0px;
+	box-shadow: inset 0 0px 0px;
+}
+
 .coos-table>thead>tr>th, .coos-table>tbody>tr>th, .coos-table>tfoot>tr>th
 	{
 	padding: 5px 5px;

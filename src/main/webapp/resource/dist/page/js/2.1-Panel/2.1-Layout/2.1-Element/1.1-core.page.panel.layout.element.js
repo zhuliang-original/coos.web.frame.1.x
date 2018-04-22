@@ -78,7 +78,7 @@
 		return text;
 	};
 
-	Element.prototype.initAttribute = function() {
+	Element.prototype.initAttribute = function($input) {
 
 		var config = this.element.config;
 		var helpinfo = config.helpinfo;
@@ -118,85 +118,84 @@
 		}
 		if (inputtype == 'IMAGE' || inputtype == 'IMAGES') {
 		} else {
-			this.$input.addClass('input-rule-' + inputtype.toLowerCase());
+			$input.addClass('input-rule-' + inputtype.toLowerCase());
 		}
 
-		this.$input.attr('elementid', this.element.elementid);
-		this.$input.attr('addClass', 'coos-one-element');
 		if (!co.isEmpty(config.pattern)) {
-			this.$input.attr('pattern', config.pattern);
+			$input.attr('pattern', config.pattern);
 		}
 		if (!co.isEmpty(config.eq)) {
-			this.$input.attr('eq', config.eq);
+			$input.attr('eq', config.eq);
 		}
 		if (!co.isEmpty(config.eqto)) {
-			this.$input.attr('eqto', config.eqto);
+			$input.attr('eqto', config.eqto);
 		}
 		if (!co.isEmpty(config.gt)) {
-			this.$input.attr('gt', config.gt);
+			$input.attr('gt', config.gt);
 		}
 		if (!co.isEmpty(config.gtto)) {
-			this.$input.attr('gtto', config.gtto);
+			$input.attr('gtto', config.gtto);
 		}
 		if (!co.isEmpty(config.gte)) {
-			this.$input.attr('gte', config.gte);
+			$input.attr('gte', config.gte);
 		}
 		if (!co.isEmpty(config.gteto)) {
-			this.$input.attr('gteto', config.gteto);
+			$input.attr('gteto', config.gteto);
 		}
 		if (!co.isEmpty(config.lt)) {
-			this.$input.attr('lt', config.lt);
+			$input.attr('lt', config.lt);
 		}
 		if (!co.isEmpty(config.ltto)) {
-			this.$input.attr('ltto', config.ltto);
+			$input.attr('ltto', config.ltto);
 		}
 		if (!co.isEmpty(config.beforeaddon)) {
-			this.$input.attr('before-addon', config.beforeaddon);
+			$input.attr('before-addon', config.beforeaddon);
 		}
 		if (!co.isEmpty(config.afteraddon)) {
-			this.$input.attr('after-addon', config.afteraddon);
+			$input.attr('after-addon', config.afteraddon);
 		}
 		if (!co.isEmpty(config.beforeaddononclick)) {
-			this.$input.attr('before-addon-click', config.beforeaddononclick);
+			$input.attr('before-addon-click', config.beforeaddononclick);
 		}
 		if (!co.isEmpty(config.afteraddononclick)) {
-			this.$input.attr('after-addon-click', config.afteraddononclick);
+			$input.attr('after-addon-click', config.afteraddononclick);
 		}
-		this.$input.attr('helpinfo', helpinfo);
-		this.$input.attr('name', name);
-		this.$input.attr('label', label);
-		this.$input.attr('label-size', labelsize);
-		this.$input.attr('filtermode', config.filtermode);
-		this.$input.attr('linkagename', linkagename);
-		this.$input.attr('placeholder', config.oldlabel);
-		this.$input.attr('minlength', minlength);
+		$input.attr('help-info', helpinfo);
+		$input.attr('name', name);
+		$input.attr('label', label);
+		$input.attr('label-size', labelsize);
+		$input.attr('filtermode', config.filtermode);
+		$input.attr('linkagename', linkagename);
+		$input.attr('placeholder', config.oldlabel);
+		$input.attr('minlength', minlength);
 		if (maxlength > 0) {
-			this.$input.attr('maxlength', maxlength);
+			$input.attr('maxlength', maxlength);
 		}
-		this.$input.attr('cannull', cannull);
-		this.$input.attr('column-size', columnsize);
-		this.$input.attr('group-type', inputgrouptype);
-		this.$input.attr('isreadonly', readonly);
-		this.$input.attr('display', display);
-		this.$input.attr('coos-validate', config.jsvalidate);
-		this.$input.attr('coos-click', config.onclick);
-		this.$input.attr('need-full-change', "true");
-		this.$input.attr('need-addon', true);
-		this.$input.addClass('parameter');
-		this.$input.addClass('input-rule-group');
+		$input.attr('cannull', cannull);
+		$input.attr('column-size', columnsize);
+		$input.attr('group-type', inputgrouptype);
+		$input.attr('isreadonly', readonly);
+		$input.attr('display', display);
+		$input.attr('coos-validate', config.jsvalidate);
+		$input.attr('coos-click', config.onclick);
+		$input.attr('need-full-change', "true");
+		$input.attr('need-addon', true);
+		$input.addClass('parameter');
+		$input.addClass('input-rule-group');
+
 		if (!co.isEmpty(this.element.config.defaultvalue)) {
-			this.$input.attr("defaultvalue", this.element.config.defaultvalue);
+			$input.attr("defaultvalue", this.element.config.defaultvalue);
 		}
 		if (!this.config.design && this.config.pageObject.config.requestmap) {
 			if (co.isEmpty(this.element.config.userrequestmapfordefault) || this.element.config.userrequestmapfordefault) {
 
 				if (this.config.pageObject.config.requestmap[name] != null) {
-					this.$input.attr('defaultvalue', this.config.pageObject.config.requestmap[name]);
+					$input.attr('defaultvalue', this.config.pageObject.config.requestmap[name]);
 				}
 			}
 		}
 		if (!co.isEmpty(this.element.thisvalue)) {
-			this.$input.attr("defaultvalue", this.element.thisvalue);
+			$input.attr("defaultvalue", this.element.thisvalue);
 		}
 		if (!this.config.design) {
 			this.bindEvent();
@@ -268,27 +267,49 @@
 	Element.prototype.initView = function() {
 		this.initViewBefore();
 		this.$view = $(html);
-
+		var $input = null;
+		var $td = null;
+		var $th = null;
 		if (this.place == ('TABLE-TH')) {
-			this.$input = this.getTableThView();
+			$th = this.getTableThView();
 		} else if (this.place == ('TABLE-TD')) {
-			this.$input = this.getTableTdView();
+			$td = this.getTableTdView();
+			if (this.config.layoutObject.layout.config.isformtable) {
+				$input = this.getInput();
+			}
 		} else {
-			this.$input = this.getInput();
+			$input = this.getInput();
 		}
-		this.initContent();
-		this.$view.append(this.$input);
-		if (this.place.indexOf('FORM') >= 0) {
-			this.initAttribute();
+		this.initContent($input);
+		if ($th != null) {
+			this.$view.append($th);
+		}
+		if ($td != null) {
+			this.$view.append($td);
+		}
+		if ($input != null) {
+			if ($td != null) {
+				$td.empty().append($input);
+			} else {
+				this.$view.append($input);
+			}
+		}
+		if ($input != null) {
+			if ($td == null) {
+				$input.attr('elementid', this.element.elementid);
+				$input.attr('addClass', 'coos-one-element');
+
+			}
+			this.initAttribute($input);
 			var datas = this.element.selectdatas;
 			if (this.element.config.needwrap) {
-				this.$input.before("<div class=\"coos-col-12\"></div>");
+				$input.before("<div class=\"coos-col-12\"></div>");
 			}
 
 			if (datas != null) {
 				var $select = $('<select class="option-select display-none" />');
-				if (this.$input[0].tagName == 'SELECT') {
-					$select = this.$input;
+				if ($input[0].tagName == 'SELECT') {
+					$select = $input;
 					$select.append('<option value="">请选择</option>');
 				} else {
 					this.$view.append($select);
@@ -308,14 +329,13 @@
 					$select.append(option);
 				});
 				if (!co.isEmpty(this.element.config.relationname)) {
-					this.$input.attr('rule-relation', this.element.config.relationname);
+					$input.attr('rule-relation', this.element.config.relationname);
 				} else if (!co.isEmpty(this.element.relationname)) {
-					this.$input.attr('rule-relation', this.element.relationname);
+					$input.attr('rule-relation', this.element.relationname);
 				}
 			}
 			if (this.place == 'FORM-SEARCH') {
 				if (this.element.type == 'SLIDER') {
-					var $input = this.$input;
 					var name = this.element.name;
 					var startname = name + "_start";
 					var endname = name + "_end";
@@ -344,7 +364,14 @@
 
 			}
 		}
-
+		if ($td != null && $input != null) {
+			$input.attr('label-size', 0);
+			$input.attr('column-size', 12);
+			$td.addClass('pd-0');
+		}
+		this.$input = $input;
+		this.$th = $th;
+		this.$td = $td;
 		this.$view = this.$view.children();
 		this.initViewAfter();
 	};
@@ -356,13 +383,24 @@
 	};
 
 	Element.prototype.appendFormValue = function(value) {
-		this.$input.val(this.getValue(value));
-		this.$input.data('text-value', this.getTextValue(value));
-		this.$input.change();
+		var $input = this.$input;
+		if ($input != null) {
+			$input.val(this.getValue(value));
+			$input.data('text-value', this.getTextValue(value));
+			$input.change();
+		}
 	};
 	Element.prototype.appendTdValue = function(value) {
-		this.$input.empty();
-		this.$input.append(this.getTextValue(value));
+		var $td = this.$td;
+		if ($td != null) {
+			if (this.$input != null) {
+				this.appendFormValue(value);
+			} else {
+
+				$td.empty();
+				$td.append(this.getTextValue(value));
+			}
+		}
 	};
 
 	Element.prototype.appendValue = function(dataConfig) {
@@ -410,6 +448,8 @@
 				event : event,
 				$view : this_.$view,
 				$input : this_.$input,
+				$td : this_.$td,
+				$th : this_.$th,
 				design : this_.config.design,
 				layout : this_.config.layout,
 				layoutObject : this_.config.layoutObject,
@@ -420,7 +460,7 @@
 			});
 		});
 	};
-	Element.prototype.initContent = function() {
+	Element.prototype.initContent = function($input) {
 	};
 
 	co.page.panel.layout.element = {};
