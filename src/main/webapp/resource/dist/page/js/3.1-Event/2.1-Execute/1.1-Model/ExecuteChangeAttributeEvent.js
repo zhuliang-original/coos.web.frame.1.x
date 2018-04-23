@@ -32,8 +32,16 @@
 			inputtype : "selects",
 			usebutton : true
 		}, {
-			text : "标签",
-			name : "label"
+			text : "设置标签",
+			name : "setlabel"
+		}, {
+			text : "设置是否只读",
+			name : "setreadonly",
+			inputtype : "switch"
+		}, {
+			text : "设置是否可空",
+			name : "setcannull",
+			inputtype : "switch"
 		} ]
 	};
 	co.page.event.execute.model.defind("CHANGE-ATTRIBUTE-EVENT", ThisExecuteConfig, ThisExecute);
