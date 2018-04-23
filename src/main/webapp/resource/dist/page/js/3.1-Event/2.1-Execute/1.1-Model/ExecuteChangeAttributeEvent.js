@@ -12,11 +12,39 @@
 
 	ThisExecute.prototype.eventExecute = function(executeCallback) {
 		var execute = this.execute;
-		if (!coos.isEmpty(execute.config.label)) {
+		var this_ = this;
+		if (!co.isEmpty(execute.config.elementids)) {
+			$(execute.config.elementids.split(',')).each(function(index, elementid) {
+				if (!co.isEmpty(elementid)) {
+					this_.changeElementAttribute(elementid, execute.config);
+				}
+			});
+		}
+		if (!co.isEmpty(execute.config.buttonids)) {
+			$(execute.config.buttonids.split(',')).each(function(index, buttonid) {
+				if (!co.isEmpty(buttonid)) {
 
+					this_.changeButtonAttribute(buttonid, execute.config);
+				}
+			});
 		}
 		executeCallback && executeCallback();
 		this.eventChildExecutes();
+	};
+
+	ThisExecute.prototype.changeElementAttribute = function(elementid, configData) {
+		var $object = $('[elementid="' + elementid + '"]');
+
+	};
+
+	ThisExecute.prototype.changeButtonAttribute = function(buttonid, configData) {
+		var $object = $('[buttonid="' + buttonid + '"]');
+
+		if ($object && configData) {
+			if (!coos.isEmpty(configData.label)) {
+				$object.html(configData.label);
+			}
+		}
 	};
 
 	var ThisExecuteConfig = {
@@ -32,15 +60,19 @@
 			inputtype : "selects",
 			usebutton : true
 		}, {
-			text : "设置标签",
-			name : "setlabel"
-		}, {
-			text : "设置是否只读",
-			name : "setreadonly",
+			text : "还原设置",
+			name : "revert",
 			inputtype : "switch"
 		}, {
-			text : "设置是否可空",
-			name : "setcannull",
+			text : "设置标签",
+			name : "label"
+		}, {
+			text : "是否只读",
+			name : "readonly",
+			inputtype : "switch"
+		}, {
+			text : "是否可空",
+			name : "cannull",
 			inputtype : "switch"
 		} ]
 	};
