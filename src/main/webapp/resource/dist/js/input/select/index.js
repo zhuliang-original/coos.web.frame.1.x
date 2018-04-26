@@ -330,7 +330,7 @@
 			datas[datas.length] = data;
 		});
 		var windowConfig = {};
-		windowConfig.title = "选择" + label;
+		windowConfig.title = "选择" + (label || "");
 		windowConfig.datas = datas;
 		if (ismulti) {
 			if (!co.isEmpty(value)) {

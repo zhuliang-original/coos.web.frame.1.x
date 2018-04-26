@@ -203,8 +203,13 @@
 			var $ul = co.component.getPaginationUl(result, function(currentpage) {
 				var data = {};
 				data.currentpage = currentpage;
+				var jumppage = true;
+				if (this_.$view.find('ul.pagination').closest('.coos-box-window').length > 0) {
+					jumppage = false;
+				}
+
 				this_.reloadResult({
-					jumppage : true,
+					jumppage : jumppage,
 					data : data
 				});
 			});
