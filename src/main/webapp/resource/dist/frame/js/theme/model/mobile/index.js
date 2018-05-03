@@ -136,6 +136,7 @@
 
 	ThisTheme.prototype.initMenuView = function() {
 		var topmenus = this.menu_object.getTopMenus();
+		var this_ = this;
 		var $center = this.$header.find(".coos-header-center").empty();
 		if (this.hasHeaderMenu) {
 			this.initHeaderMenu(topmenus);
@@ -152,7 +153,7 @@
 			$menu.closest('li').addClass('active');
 			var $parentli = $menu.closest('ul').closest('li');
 			if ($parentli.length > 0 && !$parentli.hasClass('coos-open')) {
-				coos.frame.openOrCloseLi($parentli, true);
+				this_.menu_object.openOrCloseLi($parentli, true);
 			}
 		}
 	};
@@ -262,7 +263,7 @@
 	};
 
 	var ThisThemeConfig = {
-		name : "管理后台主题",
+		name : "移动端样式",
 		columns : [ {
 			text : "菜单位置",
 			name : "menuplaces",

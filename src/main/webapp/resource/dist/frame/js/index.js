@@ -37,7 +37,7 @@ var themes = null;
 		$frame.append($headerbox);
 
 		var $bodybox = $('<div class="coos-body-box"></div>');
-		var $body = $('<div class="coos-body"><div class="coos-body-left"></div><div class="coos-body-center"></div><div class="coos-body-right"></div></div>');
+		var $body = $('<div class="coos-body"><div class="coos-body-left"></div><div class="coos-body-center"><div class="coos-body-top"></div></div><div class="coos-body-right"></div></div>');
 		var $pagebox = $('<div class="coos-page-box"></div>');
 		$bodybox.append($body);
 		$body.find('.coos-body-center').append($pagebox);
@@ -191,7 +191,85 @@ var themes = null;
 		}
 		co.frame.checkBackTop();
 	};
+	Frame.prototype.fullOrEmptyScreen = function() {
+		if (this.$frame.hasClass('coos-full-vertical') && this.$frame.hasClass('coos-full-horizontal')) {
+			this.emptyScreen();
+		} else {
+			this.fullScreen();
+		}
+	};
 
+	Frame.prototype.fullOrEmptyVertical = function() {
+		if (this.$frame.hasClass('coos-full-vertical')) {
+			this.emptyVertical();
+		} else {
+			this.fullVertical();
+		}
+	};
+
+	Frame.prototype.fullOrEmptyHorizontal = function() {
+		if (this.$frame.hasClass('coos-full-horizontal')) {
+			this.emptyHorizontal();
+		} else {
+			this.fullHorizontal();
+		}
+	};
+	Frame.prototype.fullScreen = function() {
+		this.fullVertical();
+		this.fullHorizontal();
+	};
+
+	Frame.prototype.emptyScreen = function() {
+		this.emptyVertical();
+		this.emptyHorizontal();
+	};
+
+	Frame.prototype.fullVertical = function() {
+		var $frame = this.$frame;
+		var $body = this.$body;
+
+		$frame.addClass('coos-full-vertical');
+		$body.addClass('coos-over-hidden');
+		co.frame.initSize();
+		window.setTimeout(function() {
+			$body.removeClass('coos-over-hidden');
+		}, 300);
+	};
+
+	Frame.prototype.fullHorizontal = function() {
+		var $frame = this.$frame;
+		var $body = this.$body;
+
+		$frame.addClass('coos-full-horizontal');
+		$body.addClass('coos-over-hidden');
+		co.frame.initSize();
+		window.setTimeout(function() {
+			$body.removeClass('coos-over-hidden');
+		}, 300);
+	};
+	Frame.prototype.emptyVertical = function() {
+		var $frame = this.$frame;
+		var $body = this.$body;
+
+		$frame.removeClass('coos-full-vertical');
+		$body.addClass('coos-over-hidden');
+		window.setTimeout(function() {
+			co.frame.initSize();
+			$body.removeClass('coos-over-hidden');
+		}, 300);
+	};
+
+	Frame.prototype.emptyHorizontal = function() {
+		var $frame = this.$frame;
+		var $body = this.$body;
+
+		$frame.removeClass('coos-full-horizontal');
+		$body.addClass('coos-over-hidden');
+		co.frame.initSize();
+		window.setTimeout(function() {
+			$body.removeClass('coos-over-hidden');
+		}, 300);
+	};
 	co.frame.init = function(config) {
 		co.frame.frame = co.frame.create(config);
 		return co.frame.frame;

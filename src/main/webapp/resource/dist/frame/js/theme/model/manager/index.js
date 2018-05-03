@@ -36,6 +36,16 @@
 			var config = theme.header.config;
 			this.$frame.addClass('coos-open-header');
 			var $headerleft = $header.find(".coos-header-left");
+
+			var $leftUl = $('<ul class="coos-header-left-button coos-menu-navigation "></ul>');
+			$header.find('.coos-header-left-button').remove();
+
+			if (config.showcontrolbodyleft) {
+				$headerleft.append($leftUl);
+				var $button = $('<li class="coos-control-body-left"><a class="fa fa-navicon"></a></li>');
+				$leftUl.append($button);
+			}
+			
 			if (!coos.isEmpty(config.title) || !coos.isEmpty(config.icon)) {
 				var icon = config.icon;
 				if (!coos.isEmpty(icon)) {
@@ -52,18 +62,10 @@
 				var $input = $('<input class="coos-header-search-input coos-bd-no mgl-20" placeholder="搜索"/>');
 				$content.append($input);
 			}
-			var $leftUl = $('<ul class="float-left coos-header-left-button coos-menu-navigation "></ul>');
-			var $rightUl = $('<ul class="float-right coos-header-right-button coos-menu-navigation "></ul>');
-			$header.find('.coos-header-left-button').remove();
+			var $rightUl = $('<ul class="coos-header-right-button coos-menu-navigation "></ul>');
 			$header.find('.coos-header-right-button').remove();
-
-			if (config.showcontrolbodyleft) {
-				$header.find('.coos-header-left').before($leftUl);
-				var $button = $('<li class="coos-control-body-left"><a class="fa fa-navicon"></a></li>');
-				$leftUl.append($button);
-			}
 			if (config.showcontrolbodyright) {
-				$header.find('.coos-header-right').before($rightUl);
+				$header.find('.coos-header-right').append($rightUl);
 				var $button = $('<li class="coos-control-body-right"><a class="fa fa-navicon"></a></li>');
 				$rightUl.append($button);
 			}
@@ -140,6 +142,7 @@
 
 	ThisTheme.prototype.initMenuView = function() {
 		var topmenus = this.menu_object.getTopMenus();
+		var this_ = this;
 		var $center = this.$header.find(".coos-header-center").empty();
 		if (this.hasHeaderMenu) {
 			this.initHeaderMenu(topmenus);
@@ -156,7 +159,7 @@
 			$menu.closest('li').addClass('active');
 			var $parentli = $menu.closest('ul').closest('li');
 			if ($parentli.length > 0 && !$parentli.hasClass('coos-open')) {
-				coos.frame.openOrCloseLi($parentli, true);
+				this_.menu_object.openOrCloseLi($parentli, true);
 			}
 		}
 	};

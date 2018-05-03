@@ -1,13 +1,17 @@
 (function() {
 	co.frame.theme.getTheme = function(type, name, config) {
 		var THIS_PROJECT = window.THIS_PROJECT || {};
+		var defaultthemeconfig = {};
+		if (!co.isEmpty(THIS_PROJECT.defaultthemeconfig)) {
+			defaultthemeconfig = JSON.parse(THIS_PROJECT.defaultthemeconfig);
+		}
 		var defaultType = "MANAGER";
 		var defaultName = "STYLE-2";
-		if (THIS_PROJECT && !co.isEmpty(THIS_PROJECT.defaultthemetype)) {
-			defaultType = THIS_PROJECT.defaultthemetype;
+		if (!co.isEmpty(defaultthemeconfig.themetype)) {
+			defaultType = defaultthemeconfig.themetype;
 		}
-		if (THIS_PROJECT && !co.isEmpty(THIS_PROJECT.defaultstyletype)) {
-			defaultName = THIS_PROJECT.defaultstyletype;
+		if (!co.isEmpty(defaultthemeconfig.styletype)) {
+			defaultName = defaultthemeconfig.styletype;
 		}
 		name = co.isEmpty(name) ? defaultName : name;
 		type = co.isEmpty(type) ? defaultType : type;
@@ -31,32 +35,32 @@
 					themeDemo.header.config.title = THIS_PROJECT.headertitle;
 				}
 			}
-			if (!co.isEmpty(THIS_PROJECT.defaultcolortype)) {
-				var colorScheme = co.frame.theme.model.get(type).getColor(THIS_PROJECT.defaultcolortype);
+			if (!co.isEmpty(defaultthemeconfig.colortype)) {
+				var colorScheme = co.frame.theme.model.get(type).getColor(defaultthemeconfig.colortype);
 				jQuery.extend(true, themeDemo, colorScheme);
 			}
-			if (!co.isEmpty(THIS_PROJECT.defaultheadercolortype)) {
-				var colorScheme = co.frame.theme.model.get(type).getColor(THIS_PROJECT.defaultheadercolortype);
+			if (!co.isEmpty(defaultthemeconfig.headercolortype)) {
+				var colorScheme = co.frame.theme.model.get(type).getColor(defaultthemeconfig.headercolortype);
 				jQuery.extend(true, themeDemo, {
 					header : colorScheme.header
 				});
 			}
-			if (!co.isEmpty(THIS_PROJECT.defaultbodycolortype)) {
-				var colorScheme = co.frame.theme.model.get(type).getColor(THIS_PROJECT.defaultbodycolortype);
+			if (!co.isEmpty(defaultthemeconfig.bodycolortype)) {
+				var colorScheme = co.frame.theme.model.get(type).getColor(defaultthemeconfig.bodycolortype);
 				jQuery.extend(true, themeDemo, {
 					body : colorScheme.body
 				});
 			}
-			if (!co.isEmpty(THIS_PROJECT.defaultfootercolortype)) {
-				var colorScheme = co.frame.theme.model.get(type).getColor(THIS_PROJECT.defaultfootercolortype);
+			if (!co.isEmpty(defaultthemeconfig.footercolortype)) {
+				var colorScheme = co.frame.theme.model.get(type).getColor(defaultthemeconfig.footercolortype);
 				jQuery.extend(true, themeDemo, {
 					footer : colorScheme.footer
 				});
 			}
-			if (!co.isEmpty(THIS_PROJECT.defaultmenuplace)) {
+			if (!co.isEmpty(defaultthemeconfig.menuplace)) {
 				jQuery.extend(true, themeDemo, {
 					config : {
-						menuplaces : THIS_PROJECT.defaultmenuplace
+						menuplaces : defaultthemeconfig.menuplace
 					}
 				});
 			}
@@ -79,7 +83,28 @@
 					}
 				});
 			}
+			jQuery.extend(true, themeDemo, {
+				header : {
+					config : {
+						showcontrolbodyleft : co.isTrue(defaultthemeconfig.showcontrolbodyleft)
+					}
+				}
+			});
 
+			jQuery.extend(true, themeDemo, {
+				header : {
+					config : {
+						showcontrolbodyright : co.isTrue(defaultthemeconfig.showcontrolbodyright)
+					}
+				}
+			});
+			jQuery.extend(true, themeDemo, {
+				body : {
+					config : {
+						openfullnavigation : co.isTrue(defaultthemeconfig.openfullnavigation)
+					}
+				}
+			});
 		}
 		themeDemo.themeid = co.getNumber();
 		return themeDemo;

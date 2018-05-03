@@ -90,15 +90,16 @@
 	themeDemo.typeSchemeType = "STYLE-2";
 	themeDemo.label = "平台样式";
 	themeDemo.width = "";
-	themeDemo.minwidth = "1024";
+	themeDemo.minwidth = "1100";
 	themeDemo.backgroundcolor = "#e7e8eb";
 	themeDemo.config.menuplaces = "HEADER,BODY";
 
 	themeDemo.header.width = "";
 	themeDemo.header.minwidth = "";
 	themeDemo.header.maxwidth = "";
-	themeDemo.header.contentwidth = "80%";
-	themeDemo.header.contentmaxwidth = "1200";
+	themeDemo.header.contentwidth = "90%";
+	themeDemo.header.contentmaxwidth = "1300";
+	themeDemo.header.contentminwidth = "1100";
 	themeDemo.header.contentstyle = "font-family: \"Segoe UI\", \"Lucida Grande\", Helvetica, Arial, \"Microsoft YaHei\", FreeSans, Arimo, \"Droid Sans\", \"wenquanyi micro hei\", \"Hiragino Sans GB\", \"Hiragino Sans GB W3\", \"FontAwesome\", sans-serif;";
 	themeDemo.header.height = "50";
 	themeDemo.header.style = "border-bottom: 3px solid #2bbdb1;";

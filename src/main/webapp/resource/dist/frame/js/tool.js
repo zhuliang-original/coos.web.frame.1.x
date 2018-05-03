@@ -49,13 +49,13 @@ $(function() {
 		co.frame.checkBackTop();
 	});
 	$('html').on('click', '[coos-action="full-or-empty-horizontal"]', function(e) {
-		lastThemeObject.fullOrEmptyHorizontal();
+		co.frame.frame.fullOrEmptyHorizontal();
 	});
 	$('html').on('click', '[coos-action="full-or-empty-vertical"]', function(e) {
-		lastThemeObject.fullOrEmptyVertical();
+		co.frame.frame.fullOrEmptyVertical();
 	});
 	$('html').on('click', '[coos-action="full-or-empty-screen"]', function(e) {
-		lastThemeObject.fullOrEmptyScreen();
+		co.frame.frame.fullOrEmptyScreen();
 	});
 	$('html').on('click', '.coos-control-body-left', function(e) {
 		var $frame = $('.coos-frame')
