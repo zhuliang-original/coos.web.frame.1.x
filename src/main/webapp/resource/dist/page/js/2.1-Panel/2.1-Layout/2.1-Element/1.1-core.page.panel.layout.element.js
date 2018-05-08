@@ -418,15 +418,53 @@
 		}
 	};
 
+	Element.prototype.getValue = function(value) {
+		return this.getFormatValue(value);
+	};
 	Element.prototype.getTextValue = function(value) {
 		if (this.textUseSelectData()) {
-			return this.getSelectDataText(this.getValue(value));
+			var textValue = this.getSelectDataText(value);
+			return this.getFormatTextValue(value, textValue);
+		}
+		return this.getFormatValue(value);
+	};
+
+	Element.prototype.getFormatValue = function(value) {
+		var formatvalue = this.element.config.formatvalue;
+		if (!coos.isEmpty(formatvalue)) {
+			var dataConfig = this.dataConfig;
+			dataConfig.this_value = value;
+			var resolveValue = coos.resolve.value({
+				value : formatvalue,
+				data : dataConfig
+			});
+			try {
+				return resolveValue.getResult();
+			} catch (e) {
+				console.log(e);
+				return formatvalue;
+			}
 		}
 		return value;
 	};
-
-	Element.prototype.getValue = function(value) {
-		return value;
+	Element.prototype.getFormatTextValue = function(value, valueText) {
+		var formatvalue = this.element.config.formatvalue;
+		if (!coos.isEmpty(formatvalue)) {
+			var dataConfig = this.dataConfig;
+			dataConfig.this_value = value;
+			dataConfig.this_value_text = valueText;
+			var resolveValue = coos.resolve.value({
+				value : formatvalue,
+				data : dataConfig
+			});
+			try {
+				return resolveValue.getResult();
+			} catch (e) {
+				console.log(e);
+				return formatvalue;
+			}
+		}
+		return valueText;
 	};
 
 	Element.prototype.getView = function(place) {

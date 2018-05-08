@@ -23,6 +23,7 @@
 			"M+" : date.getMonth() + 1, // month
 			"d+" : date.getDate(), // day
 			"h+" : date.getHours(), // hour
+			"H+" : date.getHours(), // hour
 			"m+" : date.getMinutes(), // minute
 			"s+" : date.getSeconds(), // second
 			"q+" : Math.floor((date.getMonth() + 3) / 3), // quarter

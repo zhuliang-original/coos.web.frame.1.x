@@ -97,6 +97,9 @@
 		text : "默认值",
 		name : "defaultvalue"
 	}, {
+		text : "格式化值",
+		name : "formatvalue"
+	}, {
 		text : "显示",
 		name : "display",
 		inputtype : "switch"
@@ -104,10 +107,10 @@
 		text : "点击排序",
 		name : "clicktosort",
 		inputtype : "switch"
-	} , {
+	}, {
 		text : "帮助信息",
 		name : "helpinfo"
-	}];
+	} ];
 	var inputColumns = [ {
 		text : "使用请求值",
 		name : "userrequestmapfordefault",
