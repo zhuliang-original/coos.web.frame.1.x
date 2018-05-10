@@ -26,7 +26,7 @@
 		if (co.isEmpty(path)) {
 			return;
 		}
-		if (path.indexOf('http') >= 0) {
+		if (path.indexOf('http') == 0) {
 			return path;
 		}
 
@@ -52,7 +52,7 @@
 		var url = window.location.href;
 		var port = window.location.port;
 		var hostname = window.location.hostname;
-		if (basePath.indexOf('http') >= 0) {
+		if (basePath.indexOf('http') == 0) {
 			action = url.split(basePath)[1];
 		} else {
 			if (port && port != null && port > 0) {
@@ -73,7 +73,7 @@
 		var url = window.location.href;
 		var port = window.location.port;
 		var hostname = window.location.hostname;
-		if (basePath.indexOf('http') >= 0) {
+		if (basePath.indexOf('http') == 0) {
 			action = url.split(basePath)[1];
 		} else {
 			if (port && port != null && port > 0) {

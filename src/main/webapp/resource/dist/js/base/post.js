@@ -128,7 +128,7 @@
 			co.toUrl(action, data);
 			return;
 		}
-		if (action.indexOf('http') != -1) {
+		if (action.indexOf('http') == 0) {
 			co.toUrl(action, data);
 			return;
 		} else {
