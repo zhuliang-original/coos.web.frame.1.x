@@ -423,6 +423,12 @@
 	};
 	Element.prototype.getTextValue = function(value) {
 		if (this.textUseSelectData()) {
+
+			if (this.$input && typeof (value) == "undefined") {
+				if (!coos.isEmpty(this.$input.attr('defaultvalue'))) {
+					value = this.$input.attr('defaultvalue');
+				}
+			}
 			var textValue = this.getSelectDataText(value);
 			return this.getFormatTextValue(value, textValue);
 		}
@@ -443,6 +449,11 @@
 			} catch (e) {
 				console.log(e);
 				return formatvalue;
+			}
+		}
+		if (this.$input && typeof (value) == "undefined") {
+			if (!coos.isEmpty(this.$input.attr('defaultvalue'))) {
+				return this.$input.attr('defaultvalue');
 			}
 		}
 		return value;
