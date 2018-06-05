@@ -110,13 +110,29 @@
 			cancelCallback && cancelCallback();
 
 		};
+
+		$model.find('.coos-select-search-input').change(function() {
+			$model.find('.coos-select-search-button').click();
+		});
+
+		$model.find('.coos-select-search-input').on('keydown', function(e) {
+			var ev = window.event || e;
+			// 13是键盘上面固定的回车键
+			if (ev.keyCode == 13) {
+				// 你要执行的方法
+				$model.find('.coos-select-search-button').click();
+			}
+		});
+
 		$model.find('.coos-select-search-button').click(function() {
 			$model.find('.coos-one-option').show();
 			var searchInfo = $model.find('.coos-select-search-input').val();
 			$($model.find('.coos-one-option-text')).each(function(index, v) {
 				var inputInfo = $(this).text();
-				if (inputInfo.indexOf(searchInfo) == -1) {
-					$(this).closest('.coos-one-option').hide();
+				if (!co.isEmpty(inputInfo) && !co.isEmpty(searchInfo)) {
+					if (inputInfo.toLowerCase().indexOf(searchInfo.toLowerCase()) == -1) {
+						$(this).closest('.coos-one-option').hide();
+					}
 				}
 			});
 		});
