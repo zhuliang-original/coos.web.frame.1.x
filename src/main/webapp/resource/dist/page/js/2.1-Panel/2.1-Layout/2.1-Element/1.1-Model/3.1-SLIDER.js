@@ -10,13 +10,20 @@
 	})();
 
 	ThisElement.prototype.initInput = function($input) {
-		$input.val(0);
+		$input.attr('data-slider-min', this.element.config.sliderminvalue || 0);
+		$input.attr('data-slider-max', this.element.config.slidermaxvalue || 100);
 	};
 
 	var ThisElementConfig = {
 		name : "进度条",
 		forInput : true,
-		columns : []
+		columns : [ {
+			text : "进度条最小值",
+			name : "sliderminvalue"
+		}, {
+			text : "进度条最大值",
+			name : "slidermaxvalue"
+		} ]
 	};
 	co.page.panel.layout.element.model.defind("SLIDER", ThisElementConfig, ThisElement);
 })(window, jQuery);
