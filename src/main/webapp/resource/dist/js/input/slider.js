@@ -1,77 +1,98 @@
 (function() {
 	co.input.bind('slider', function($selector) {
-		
+
 		var min = $selector.attr('data-slider-min') || 0;
 		var max = $selector.attr('data-slider-max') || 100;
-		$selector.attr('data-slider-min', min);
-		$selector.attr('data-slider-max', max);
+		var step = $selector.attr('data-slider-step') || 1;
+		var labelstep = $selector.attr('data-slider-label-step') || 10;
+		var warnValue = $selector.attr('data-slider-warn');
+
 		var isinterval = co.isTrue($selector.attr('coos-is-interval-search'));
-		if (isinterval) {
-			$selector.attr('data-slider-value', '[' + min + ',' + max + ']');
-		} else {
-			$selector.attr('data-slider-value', min);
-		}
 		var name = $selector.attr('name');
 		var thisvalue = $selector.val();
-		var inited = false;
 		var slider = null;
-		var changeinited = false;
+		var issliderchange = false;
 		$selector.change(function() {
-			if (inited) {
-				if (!changeinited) {
-					changeinited = true;
-					var value = $selector.val();
-					if (value.indexOf(",") > 0) {
-						var vs = value.split(",");
-						$(vs).each(function(index, v) {
-							vs[index] = Number(v);
-						});
-						slider.data('bootstrapSlider').setValue(vs);
+			var value = $selector.val();
+			if (issliderchange) {
+				issliderchange = false;
+			} else {
+				if (slider) {
+					setHandleText(formatValue(value));
+					if (formatValue(value).length == 2) {
+						slider.slider('values', formatValue(value)[0]);
 					} else {
-						slider.data('bootstrapSlider').setValue(Number(value));
+						slider.slider('value', formatValue(value));
 					}
-				}
-				var value = slider.data('bootstrapSlider').getValue();
-				var setvalue = null;
-				if (co.isNumber(value)) {
-					setvalue = value;
-				} else {
-					setvalue = value[0] + value[1];
-					$selector.closest('.coos-form').find('[name="' + name + '_start"]').val(value[0]);
-					$selector.closest('.coos-form').find('[name="' + name + '_end"]').val(value[1]);
-				}
-				slider.data('bootstrapSlider').setValue(value);
-				$selector.val(setvalue);
-				return;
-			}
-			thisvalue = $selector.val();
-			if (co.isEmpty(thisvalue)) {
-				thisvalue = 0;
-				if (isinterval) {
-					thisvalue = "0,100";
 				}
 			}
 		});
-		co.plugin.load("bootstrap_slider", function() {
-			slider = $selector.bootstrapSlider({
-				formatter : function(value) {
-					return '' + value;
-				}
-			});
-			thisvalue = "" + thisvalue;
-			if (thisvalue.indexOf(",") > 0) {
-				var vs = thisvalue.split(",");
+
+		function formatValue(value) {
+			value = value || "0";
+			value = "" + value;
+			var vs = [];
+			if (value.indexOf(",") > 0) {
+				var vs = value.split(",");
 				$(vs).each(function(index, v) {
 					vs[index] = Number(v);
 				});
-				slider.data('bootstrapSlider').setValue(vs);
 			} else {
-				if (!co.isEmpty(thisvalue)) {
-					slider.data('bootstrapSlider').setValue(Number(thisvalue));
-				}
+				vs = [ Number(value) ];
 			}
+			return vs;
+		}
+		$selector.hide();
+		var $slider = $('<div/>');
+		$selector.before($slider);
+		function setHandleText(values) {
+			if (slider) {
+				var $handle = slider.data('uiSlider').handle;
+				if (warnValue && values[0] >= warnValue) {
+					$handle.addClass("bg-red bd-red coos-white");
+				} else {
+					$handle.removeClass("bg-red bd-red coos-white");
+				}
+				$handle.text(values[0]);
+			}
+			// if (values.length == 2) {
+			// $handle2.text(values[1]);
+			// }
+		}
+		co.plugin.load("jquery_ui_slider", function() {
+			var vs = formatValue(thisvalue);
+			slider = $slider.slider({
+				range : vs == 2,
+				range : "max",
+				min : Number(min),
+				max : Number(max),
+				step : step,
+				value : vs.length == 2 ? null : vs[0],
+				values : vs.length == 2 ? vs : null,
+				create : function() {
+				},
+				slide : function(event, ui) {
+					var vs = ui.values ? ui.values : [ ui.value ];
+					setHandleText(vs);
+					issliderchange = true;
+					var value = vs[0];
+					if (vs.length == 2) {
+						value = "," + vs[1];
+					}
+					$selector.val(value);
+					$selector.change();
+				}
+			}).slider("pips", {
+				rest : "label",
+				prefix : "",
+				suffix : "",
+				step : Number(labelstep)
+			});
 
-			inited = true;
+			setHandleText(vs);
+
+			return;
+
 		});
 	});
 
