@@ -12,6 +12,7 @@
 	ThisElement.prototype.initInput = function($input) {
 		$input.attr('data-slider-min', this.element.config.sliderminvalue || 0);
 		$input.attr('data-slider-max', this.element.config.slidermaxvalue || 100);
+		$input.attr('data-slider-warn', this.element.config.sliderwarn);
 		$input.attr('data-slider-step', this.element.config.sliderstep);
 		$input.attr('data-slider-label-step', this.element.config.sliderlabelstep);
 
@@ -26,6 +27,9 @@
 		}, {
 			text : "进度条最大值",
 			name : "slidermaxvalue"
+		}, {
+			text : "进度条预警值",
+			name : "sliderwarn"
 		}, {
 			text : "进度条梯级",
 			name : "sliderstep"
