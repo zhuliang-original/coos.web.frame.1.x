@@ -59,8 +59,12 @@
 			css : [ "resource/plugins/jquery/ui/interactions/jquery-ui.min.css", "resource/plugins/jquery/ui/widgets/jquery-ui.theme.min.css" ]
 		},
 		jquery_ui_slider : {
-			js : [ "resource/plugins/jquery/ui/slider/jquery-ui.min.js" ,"resource/plugins/jquery/ui/slider/jquery-ui-slider-pips.js" ],
-			css : [ "resource/plugins/jquery/ui/slider/jquery-ui.min.css", "resource/plugins/jquery/ui/slider/jquery-ui.theme.min.css", "resource/plugins/jquery/ui/slider/jquery-ui-slider-pips.min.css" ]
+			js : [ "resource/plugins/jquery/ui/slider/jquery-ui.min.js" ],
+			css : [ "resource/plugins/jquery/ui/slider/jquery-ui.min.css", "resource/plugins/jquery/ui/slider/jquery-ui.theme.min.css" ]
+		},
+		jquery_ui_slider_pips : {
+			js : [ "resource/plugins/jquery/ui/slider/jquery-ui-slider-pips.js" ],
+			css : [ "resource/plugins/jquery/ui/slider/jquery-ui-slider-pips.min.css" ]
 		},
 		jquery_sortable : {
 			js : [ "resource/plugins/jquery/ui/interactions/jquery-ui.min.js" ],

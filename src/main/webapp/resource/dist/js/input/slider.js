@@ -60,38 +60,39 @@
 			// }
 		}
 		co.plugin.load("jquery_ui_slider", function() {
-			var vs = formatValue(thisvalue);
-			slider = $slider.slider({
-				range : vs == 2,
-				range : "max",
-				min : Number(min),
-				max : Number(max),
-				step : step,
-				value : vs.length == 2 ? null : vs[0],
-				values : vs.length == 2 ? vs : null,
-				create : function() {
-				},
-				slide : function(event, ui) {
-					var vs = ui.values ? ui.values : [ ui.value ];
-					setHandleText(vs);
-					issliderchange = true;
-					var value = vs[0];
-					if (vs.length == 2) {
-						value = "," + vs[1];
+			co.plugin.load("jquery_ui_slider_pips", function() {
+
+				var vs = formatValue(thisvalue);
+				slider = $slider.slider({
+					range : vs == 2,
+					range : "max",
+					min : Number(min),
+					max : Number(max),
+					step : step,
+					value : vs.length == 2 ? null : vs[0],
+					values : vs.length == 2 ? vs : null,
+					create : function() {
+					},
+					slide : function(event, ui) {
+						var vs = ui.values ? ui.values : [ ui.value ];
+						setHandleText(vs);
+						issliderchange = true;
+						var value = vs[0];
+						if (vs.length == 2) {
+							value = "," + vs[1];
+						}
+						$selector.val(value);
+						$selector.change();
 					}
-					$selector.val(value);
-					$selector.change();
-				}
-			}).slider("pips", {
-				rest : "label",
-				prefix : "",
-				suffix : "",
-				step : Number(labelstep)
+				}).slider("pips", {
+					rest : "label",
+					prefix : "",
+					suffix : "",
+					step : Number(labelstep)
+				});
+
+				setHandleText(vs);
 			});
-
-			setHandleText(vs);
-
-			return;
 
 		});
 	});
