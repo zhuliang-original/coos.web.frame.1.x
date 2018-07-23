@@ -4,6 +4,7 @@
 		co.plugin.load("codemirror", function() {
 			co.plugin.load("emmet", function() {
 				$selector = $($selector);
+				$selector.attr('must-validate', true);
 				var mode = $selector.attr('codemirror-mode');
 				if (co.isEmpty(mode)) {
 					mode = "text/html";

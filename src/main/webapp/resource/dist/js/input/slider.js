@@ -12,6 +12,8 @@
 		var thisvalue = $selector.val();
 		var slider = null;
 		var issliderchange = false;
+
+		$selector.attr('must-validate', true);
 		$selector.change(function() {
 			var value = $selector.val();
 			if (issliderchange) {

@@ -6,6 +6,8 @@
 			if (isreadonly) {
 				return;
 			}
+
+			$selector.attr('must-validate', true);
 			$selector.tagsInput({
 				width : 'auto',
 				onAddTag : function(tag) {

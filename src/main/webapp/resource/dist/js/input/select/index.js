@@ -69,6 +69,7 @@
 			this.$text.removeAttr('name');
 			this.$selector.after(this.$text);
 			this.$selector.hide();
+			this.$selector.attr('must-validate', true);
 		}
 		if (this._need_create_value_input) {
 			if (this.isInputTag) {

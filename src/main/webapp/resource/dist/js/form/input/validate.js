@@ -69,7 +69,7 @@
 		var cannull = element.attr('cannull');
 		cannull = cannull == null || cannull == 'true' || cannull == '1' ? true : false;
 		var ishidden = $element.is(":hidden");
-		var mustvalidate = $element.attr('mustvalidate') != null;
+		var mustvalidate = $element.attr('must-validate') != null;
 		var isreadonly = $element.attr('readonly') != null;
 
 		var valueType = $element.attr('value-type');

@@ -10,6 +10,7 @@
 			// element.parent().css('min-height', height);
 			// element.parent().css('min-height', 53);
 			$selector.hide();
+			$selector.attr('must-validate', true);
 			var value = $selector.attr("value");
 			if (co.isEmpty($selector.attr("data-size"))) {
 				// $selector.attr('data-size', 'mini');

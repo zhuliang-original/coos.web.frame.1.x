@@ -5,6 +5,7 @@
 		var name = $selector.attr('name');
 		$selector.before(optionGroup);
 		$selector.hide();
+		$selector.attr('must-validate', true);
 		$selector.removeAttr('name');
 		if (co.isEmpty(name)) {
 			name = "checkbox_" + co.getNumber();

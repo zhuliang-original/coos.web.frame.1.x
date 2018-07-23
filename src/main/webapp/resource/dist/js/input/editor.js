@@ -7,6 +7,7 @@
 			id = co.getNumber();
 		}
 		$selector.attr('id', id);
+		$selector.attr('must-validate', true);
 		var editor = null;
 		var inited = false;
 		$selector.change(function() {

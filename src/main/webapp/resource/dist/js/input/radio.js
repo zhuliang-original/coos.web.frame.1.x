@@ -7,6 +7,7 @@
 		}
 		$selector.before(optionGroup);
 		$selector.hide();
+		$selector.attr('must-validate', true);
 		$selector.removeAttr('name');
 		var options = $selector.parent().find('select.option-select').find('option');
 		options.each(function(index, option) {
