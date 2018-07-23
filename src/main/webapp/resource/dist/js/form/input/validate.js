@@ -71,80 +71,15 @@
 		var ishidden = $element.is(":hidden");
 		var mustvalidate = $element.attr('mustvalidate') != null;
 		var isreadonly = $element.attr('readonly') != null;
-		var ismailbox = $element.attr('ismailbox') != null;
-		var isnumber = $element.attr('isnumber') != null;
-		var isphone = $element.attr('isphone') != null;
-		var istel = $element.attr('istel') != null;
-		var isurl = $element.attr('isurl') != null;
-		var isdate = $element.attr('isdate') != null;
-		var istime = $element.attr('istime') != null;
-		var isdatetime = $element.attr('isdatetime') != null;
-		var isinteger = $element.attr('isinteger') != null;
-		var isidcard = $element.attr('isidcard') != null;
-		var ischinese = $element.attr('iscn') != null;
 
-		var isenglish = $element.attr('isen') != null;
-		var ischinese_or_english = $element.attr('iscn-or-en') != null;
-		var isenglish_or_number = $element.attr('isen-or-num') != null;
-		var isenglish_or_number_or_underline = $element.attr('isen-or-num-or-ul') != null;
-		var isenglish_or_number_or_underline_or_slash = $element.attr('isen-or-num-or-ul-or-sl') != null;
-		var isenglish_or_number_or_underline_or_point = $element.attr('isen-or-num-or-ul-or-po') != null;
-		var isno_symbol = $element.attr('isnosymbol') != null;
+		var valueType = $element.attr('value-type');
+		// 验证规则
+		var validateRule = $element.attr('validate-rule');
+		var validateRuleErrmsg = $element.attr('validate-rule-errmsg') || '$label数据验证失败！';
 
 		var validate = $element.attr('coos-validate');
 		var minlength = parseInt($element.attr('minlength'), 10);
 		var maxlength = parseInt($element.attr('maxlength'), 10);
-		var eq = $element.attr('eq');
-		var gt = $element.attr('gt');
-		var gte = $element.attr('gte');
-		var lt = $element.attr('lt');
-		var lte = $element.attr('lte');
-		var eqTo = $element.data('eqTo');
-		var gtTo = $element.attr('gtTo');
-		var gteTo = $element.attr('gteTo');
-		var ltTo = $element.attr('ltTo');
-		var lteTo = $element.attr('lteTo');
-		if (eqTo) {
-			eq = $(eqTo).val();
-		}
-		if (gtTo) {
-			gt = $(gtTo).val();
-		}
-		if (gteTo) {
-			gte = $(gteTo).val();
-		}
-		if (ltTo) {
-			lt = $(ltTo).val();
-		}
-		if (lteTo) {
-			lte = $(lteTo).val();
-		}
-
-		if (eq || gt || gte || lt || lte) {
-			var v = co.getNowDate();
-			if (isdate) {
-				v = co.getNowDate();
-			} else if (isdatetime) {
-				v = co.getNowDatetime();
-			} else if (istime) {
-				v = co.getNowTime();
-			}
-			if (co.has(eq, '$now')) {
-				eq = v;
-			}
-			if (co.has(gt, '$now')) {
-				gt = v;
-			}
-			if (co.has(gte, '$now')) {
-				gte = v;
-			}
-			if (co.has(lt, '$now')) {
-				lt = v;
-			}
-			if (co.has(lte, '$now')) {
-				lte = v;
-			}
-		}
 		// 隐藏和不是必须验证的直接返回
 		if ((ishidden || isreadonly) && !mustvalidate) {
 			data.valid = true;
@@ -165,124 +100,32 @@
 					data.valid = false;
 					data.error = co.config.error.isShort;
 				}
-				if (isurl && !co.isUrl(value)) {
-					data.valid = false;
-					data.error = co.config.error.isNotUrl;
+				if (!co.isEmpty(valueType)) {
+					var vR = validateValueType(value, valueType);
+					if (vR) {
+						data = vR;
+					}
 				}
-				if (isphone && !co.isPhone(value)) {
-					data.valid = false;
-					data.error = co.config.error.isNotPhone;
-				}
-				if (istel && !co.isTel(value)) {
-					data.valid = false;
-					data.error = co.config.error.isNotTel;
-				}
-				if (ismailbox && !co.isMailbox(value)) {
-					data.valid = false;
-					data.error = co.config.error.isNotMail;
-				}
-				if (isidcard && !co.isIDCard(value)) {
-					data.valid = false;
-					data.error = co.config.error.isNotIDCard;
-				}
-				if (isnumber && !co.isNumber(value)) {
-					data.valid = false;
-					data.error = co.config.error.isNotNumber;
-				}
-				if (isinteger && !co.isInteger(value)) {
-					data.valid = false;
-					data.error = co.config.error.isNotInteger;
-				}
-				if (isdate && !co.isDate(value)) {
-					data.valid = false;
-					data.error = co.config.error.isNotDate;
-				}
-				if (isdatetime && !co.isDatetime(value)) {
-					data.valid = false;
-					data.error = co.config.error.isNotDatetime;
-				}
-				if (istime && !co.isTime(value)) {
-					data.valid = false;
-					data.error = co.config.error.isNotTime;
-				}
-				if (ischinese && !co.isChinese(value)) {
-					data.valid = false;
-					data.error = co.config.error.isNotChinese;
-				}
-				if (isenglish && !co.isEnglish(value)) {
-					data.valid = false;
-					data.error = co.config.error.isNotEnglish;
-				}
-				if (ischinese_or_english && !co.isChineseOrEnglish(value)) {
-					data.valid = false;
-					data.error = co.config.error.isNotChineseOrEnglish;
-				}
-				if (isenglish_or_number && !co.isEnglishOrNumber(value)) {
-					data.valid = false;
-					data.error = co.config.error.isNotEnglishOrNumber;
-				}
-				if (isenglish_or_number_or_underline && !co.isEnglishOrNumberOrUnderline(value)) {
-					data.valid = false;
-					data.error = co.config.error.isNotEnglishOrNumberOrUnderline;
-				}
-				if (isenglish_or_number_or_underline_or_slash && !co.isEnglishOrNumberOrUnderlineOrSlash(value)) {
-					data.valid = false;
-					data.error = co.config.error.isNotEnglishOrNumberOrUnderlineOrSlash;
-				}
-				if (isenglish_or_number_or_underline_or_point && !co.isEnglishOrNumberOrUnderlineOrPoint(value)) {
-					data.valid = false;
-					data.error = co.config.error.isNotEnglishOrNumberOrUnderlineOrPoint;
-				}
-				
-				if (isno_symbol && co.hasSymbol(value)) {
-					data.valid = false;
-					data.error = co.config.error.isNotNoSymbol;
-				}
+				if (!co.isEmpty(validateRule)) {
+					var formData = co.form.getData($form);
+					formData.value = value;
+					var validateRule = validateRule;
+					var resolveValue = co.resolve.value({
+						value : validateRule,
+						data : formData
+					});
+					var resolveResult = resolveValue.getResult();
+					if (!co.isEmpty(resolveResult)) {
+						var funstr = "function(){return " + resolveResult + ";}";
+						var r = eval('(0,' + funstr + ')')();
+						if (co.isTrue(r)) {
 
-				var value_ = value;
-
-				var eq_ = eq;
-				var gt_ = gt;
-				var gte_ = gte;
-				var lt_ = lt;
-				var lte_ = lte;
-				if (isdate || isdatetime || istime) {
-					value_ = value.replace(/\D/g, "");
-					if (eq_) {
-						eq_ = eq_.replace(/\D/g, "");
+							data.valid = false;
+							data.error = {
+								show : validateRuleErrmsg
+							};
+						}
 					}
-					if (gt_) {
-						gt_ = gt_.replace(/\D/g, "");
-					}
-					if (gte_) {
-						gte_ = gte_.replace(/\D/g, "");
-					}
-					if (lt_) {
-						lt_ = lt_.replace(/\D/g, "");
-					}
-					if (lte_) {
-						lte_ = lte_.replace(/\D/g, "");
-					}
-				}
-				if (eq_ && value_ != eq_) {
-					data.valid = false;
-					data.error = co.config.error.notEq;
-				}
-				if (gt_ && Number(value_) <= Number(gt_)) {
-					data.valid = false;
-					data.error = co.config.error.notGt;
-				}
-				if (gte_ && Number(value_) < Number(gte_)) {
-					data.valid = false;
-					data.error = co.config.error.notGte;
-				}
-				if (lt_ && Number(value_) >= Number(lt_)) {
-					data.valid = false;
-					data.error = co.config.error.notLt;
-				}
-				if (lte_ && Number(value_) > Number(lte_)) {
-					data.valid = false;
-					data.error = co.config.error.notLte;
 				}
 			}
 		}
@@ -295,13 +138,114 @@
 		if (data.error) {
 			var error = jQuery.extend(true, {}, {}, data.error);
 			var show = error.show;
-			show = show.replace(/\$label/g, label).replace(/\$minlength/g, minlength).replace(/\$maxlength/g, maxlength).replace(/\$eq/g, eq).replace(/\$gte/g, gte).replace(/\$gt/g, gt).replace(
-					/\$lte/g, lte).replace(/\$lt/g, lt);
+			show = show.replace(/\$label/g, label).replace(/\$minlength/g, minlength).replace(/\$maxlength/g, maxlength);
 
 			error.show = show;
 			data.error = error;
 		}
 
 		return data;
+	};
+
+	var validateValueType = function(value, valueType) {
+		if (!co.isEmpty(value) && !co.isEmpty(valueType)) {
+			var result = {
+				valid : true
+			};
+			switch (valueType.toUpperCase()) {
+				case "URL":
+					if (!co.isUrl(value)) {
+						result.valid = false;
+						result.error = co.config.error.isNotUrl;
+					}
+					break;
+				case "PHONE":
+					if (!co.isPhone(value)) {
+						result.valid = false;
+						result.error = co.config.error.isNotPhone;
+					}
+					break;
+				case "TEL":
+					if (!co.isTel(value)) {
+						result.valid = false;
+						result.error = co.config.error.isNotTel;
+					}
+					break;
+				case "MAILBOX":
+					if (!co.isMailbox(value)) {
+						result.valid = false;
+						result.error = co.config.error.isNotMail;
+					}
+					break;
+				case "IDCARD":
+					if (!co.isIDCard(value)) {
+						result.valid = false;
+						result.error = co.config.error.isNotIDCard;
+					}
+					break;
+				case "NUMBER":
+					if (!co.isNumber(value)) {
+						result.valid = false;
+						result.error = co.config.error.isNotNumber;
+					}
+					break;
+				case "INTEGER":
+					if (!co.isInteger(value)) {
+						result.valid = false;
+						result.error = co.config.error.isNotInteger;
+					}
+					break;
+				case "DATE":
+					if (!co.isDate(value)) {
+						result.valid = false;
+						result.error = co.config.error.isNotDate;
+					}
+					break;
+				case "DATETIME":
+					if (!co.isDatetime(value)) {
+						result.valid = false;
+						result.error = co.config.error.isNotDatetime;
+					}
+					break;
+				case "TIME":
+					if (!co.isTime(value)) {
+						result.valid = false;
+						result.error = co.config.error.isNotTime;
+					}
+					break;
+				case "CN":
+					if (!co.isChinese(value)) {
+						result.valid = false;
+						result.error = co.config.error.isNotChinese;
+					}
+					break;
+				case "EN":
+					if (!co.isEnglish(value)) {
+						result.valid = false;
+						result.error = co.config.error.isNotEnglish;
+					}
+					break;
+				case "CN_OR_EN":
+					if (!co.isChineseOrEnglish(value)) {
+						result.valid = false;
+						result.error = co.config.error.isNotChineseOrEnglish;
+					}
+					break;
+				case "EN_OR_NUM":
+					if (!co.isEnglishOrNumber(value)) {
+						result.valid = false;
+						result.error = co.config.error.isNotEnglishOrNumber;
+					}
+					break;
+				case "NO_SYMBOL":
+					if (co.hasSymbol(value)) {
+						result.valid = false;
+						result.error = co.config.error.isNotNoSymbol;
+					}
+					break;
+			}
+			return result;
+		}
+
 	};
 })();

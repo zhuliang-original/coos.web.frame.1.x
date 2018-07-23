@@ -4,6 +4,7 @@
 		this.config = config;
 		this.execute = config.execute;
 		this.design = config.design;
+		this.value = config.value;
 		this.init(config);
 		jQuery.extend(true, config.execute, this.execute);
 	};
@@ -29,7 +30,9 @@
 		for (var index = 0; index < this.execute.datas.length; index++) {
 			var data = this.execute.datas[index];
 			var setvaluename = data.setvaluename;
+
 			var value = this.getDataValue(data);
+
 			if (typeof (value) != "undefined") {
 				if (!coos.isEmpty(setvaluename)) {
 					executeData[setvaluename] = value;
@@ -79,7 +82,7 @@
 		return eval('(0,' + funstr + ')')();
 	}
 	Execute.prototype.getDataValue = function(executeData) {
-		var dataConfig = this.config.dataConfig;
+		var dataConfig = this.config.dataConfig || {};
 		var value = executeData.value;
 		if (!co.isEmpty(executeData.layoutid)) {
 			var layoutObjects = getLayoutObject(executeData.layoutid);
@@ -102,8 +105,11 @@
 					return null;
 				}
 			}
+		} else {
+			if (co.isEmpty(value)) {
+				return this.value;
+			}
 		}
-
 		return executeFunction(dataConfig, value);
 	};
 	var EXECUTE_STATUS_MAP = {};

@@ -10,7 +10,7 @@
 	})();
 
 	ThisElement.prototype.initInput = function($input) {
-		$input.attr('isphone', true);
+		$input.attr('value-type', "phone");
 	};
 
 	var ThisElementConfig = {

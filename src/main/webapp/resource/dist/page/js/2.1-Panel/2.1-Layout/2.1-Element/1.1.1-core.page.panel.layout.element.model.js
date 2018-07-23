@@ -164,35 +164,15 @@
 		text : "正则",
 		name : "pattern"
 	}, {
-		text : "等于",
-		name : "eq"
+		text : "验证规则",
+		name : "validaterule",
+		columnsize: 12,
+		labelsize : 2
 	}, {
-		text : "等于元素",
-		name : "eqto"
-	}, {
-		text : "大于",
-		name : "gt"
-	}, {
-		text : "大于元素",
-		name : "gtto"
-	}, {
-		text : "大于等于",
-		name : "gte"
-	}, {
-		text : "大于等于元素",
-		name : "gteto"
-	}, {
-		text : "小于",
-		name : "lt"
-	}, {
-		text : "小于元素",
-		name : "ltto"
-	}, {
-		text : "小于等于",
-		name : "lte"
-	}, {
-		text : "小于等于元素",
-		name : "lteto"
+		text : "验证错误信息",
+		name : "validateruleerrmsg",
+		columnsize: 12,
+		labelsize : 2
 	} ];
 
 	var tagColumns = [ {

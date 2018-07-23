@@ -84,6 +84,33 @@
 								layoutObject.loadDataAfter && layoutObject.loadDataAfter(layoutObject, resultMap);
 							});
 						}
+
+						if (!co.isEmpty(execute.config.elementids)) {
+							var servicemodelname = "";
+							for ( var name in resultMap) {
+								servicemodelname = name;
+								break;
+							}
+							var result = resultMap[servicemodelname];
+							var elementvaluemapping = [];
+							if (!co.isEmpty(execute.config.elementvaluemapping)) {
+								elementvaluemapping = execute.config.elementvaluemapping.split(',');
+							}
+							$(execute.config.elementids.split(',')).each(function(index, elementid) {
+								if (!co.isEmpty(elementid)) {
+									var $object = $('[elementid="' + elementid + '"]');
+									var name = $object.attr('name');
+									if (index > (elementvaluemapping.length - 1)) {
+									} else {
+										name = elementvaluemapping[index];
+									}
+									var data = result.value;
+									if (!co.isEmpty(data[name])) {
+										$object.val(data[name]).change();
+									}
+								}
+							});
+						}
 						this_.eventChildExecutes();
 					}
 				};
@@ -145,6 +172,16 @@
 			name : "layoutids",
 			inputtype : "selects",
 			uselayout : true
+		}, {
+			text : "填充元素",
+			name : "elementids",
+			inputtype : "selects",
+			useelement : true
+		}, {
+			text : "填充元素值映射",
+			name : "elementvaluemapping",
+			columnsize : 12,
+			labelsize : 2
 		} ]
 	};
 	co.page.event.execute.model.defind("SERVICE", ThisExecuteConfig, ThisExecute);

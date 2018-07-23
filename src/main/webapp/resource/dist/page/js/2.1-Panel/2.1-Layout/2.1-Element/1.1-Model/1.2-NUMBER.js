@@ -10,7 +10,7 @@
 	})();
 
 	ThisElement.prototype.initInput = function($input) {
-		$input.attr('isinteger', true);
+		$input.attr('value-type', "number");
 	};
 
 	var ThisElementConfig = {

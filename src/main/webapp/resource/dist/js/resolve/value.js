@@ -38,6 +38,13 @@
 		if (matchRule.toLowerCase().indexOf('now_date'.toLowerCase()) == 0) {
 			return this.resolverNowDate(matchRule);
 		}
+		var toNumber = false;
+		if (matchRule.indexOf('toNumber(') == 0) {
+			matchRule = matchRule.replace('toNumber(', '');
+			matchRule = matchRule.replace(')', '');
+			toNumber = true;
+		}
+
 		var dataConfig = this.dataConfig;
 		var dataMapStr = "";
 		for ( var name in dataConfig) {
@@ -46,6 +53,9 @@
 		}
 		var funstr = "function(){" + dataMapStr + " return " + matchRule + "; }";
 		var value = eval('(0,' + funstr + ')')();
+		if (!co.isEmpty(value) && toNumber) {
+			value = ('' + value).replace(/[^\d\.]/g, '');
+		}
 		return value;
 
 	};

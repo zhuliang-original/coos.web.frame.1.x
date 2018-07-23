@@ -315,4 +315,94 @@
 
 		return data;
 	}
+	function getFormData(form) {
+		form = $(form);
+		var data = {};
+		var parameters = form.find('.elementparameter,.parameter');
+		for (var i = 0; i < parameters.length; i++) {
+			var element = $(parameters[i]);
+			if (element.data('not-get-date')) {
+				continue;
+			}
+			data[element.attr('name')] = element.val();
+		}
+		return data;
+	}
+	/**
+	 * 验证表单
+	 * 
+	 * @param form
+	 * @returns {Boolean} 验证失败会抛出异常 可以使用e.message e.description
+	 */
+	co.form.getData = function(form) {
+		form = $(form);
+
+		form.find('.elementparameter,.parameter').data('not-get-date', false);
+		var models = form.find('[model-name]');
+		models.find('.elementparameter,.parameter').data('not-get-date', true);
+		var data = getFormData(form);
+		var models = form.find('[model-name]');
+		var modelMap = {};
+		$(models).each(function(index, model) {
+			model = $(model);
+			var modelName = model.attr('model-name');
+			modelMap[modelName] = modelName;
+		});
+
+		var m = {};
+		for ( var modelName in modelMap) {
+			var modelForms = form.find('[model-name="' + modelName + '"]');
+			var hasParentModel = false;
+			for ( var modelName_ in modelMap) {
+				if (modelName_ != modelName) {
+					var fs = modelForms.closest('[model-name="' + modelName_ + '"]');
+					if (fs.length > 0) {
+						hasParentModel = true;
+					}
+				}
+			}
+			if (!hasParentModel) {
+				m[modelName] = modelName;
+			}
+		}
+		for ( var modelName in m) {
+			var modelForms = form.find('[model-name="' + modelName + '"]');
+
+			var modelDatas = [];
+			var datatype = "ONE";
+			var setname = "";
+			$(modelForms).each(function(index, modelForm) {
+				modelForm = $(modelForm);
+				datatype = modelForm.attr('coos-data-type') || 'ONE';
+				setname = modelForm.attr('model-set-name') || '';
+				var modelData = co.form.getData(modelForm);
+				modelDatas[modelDatas.length] = modelData;
+			});
+			if (datatype == 'ONE') {
+				// data['model_' + modelName] = modelDatas[0];
+				if (co.isEmpty(setname)) {
+					var modelData = modelDatas[0];
+					for ( var n in modelData) {
+						data[n] = modelData[n];
+					}
+				} else {
+					data[setname] = JSON.stringify(modelDatas[0]);
+				}
+			} else {
+
+				var $childForm = form.find('[model-name="' + modelName + '"]').closest('.coos-child-form');
+				var deleteDatas = $childForm.data('delete-datas');
+				if (co.isEmpty(setname)) {
+					setname = modelName + '_datas';
+				}
+				// data['model_' + modelName] = modelDatas;
+				data[setname] = JSON.stringify(modelDatas);
+				if (deleteDatas && deleteDatas.length > 0) {
+					data[modelName + '_for_delete_jsonarray'] = JSON.stringify(deleteDatas);
+				}
+			}
+		}
+
+		return data;
+	}
 })();

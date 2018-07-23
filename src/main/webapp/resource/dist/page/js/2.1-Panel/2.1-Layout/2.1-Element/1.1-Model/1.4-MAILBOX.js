@@ -10,7 +10,7 @@
 	})();
 
 	ThisElement.prototype.initInput = function($input) {
-		$input.attr('ismailbox', true);
+		$input.attr('value-type', "mailbox");
 	};
 
 	var ThisElementConfig = {

@@ -124,29 +124,11 @@
 		if (!co.isEmpty(config.pattern)) {
 			$input.attr('pattern', config.pattern);
 		}
-		if (!co.isEmpty(config.eq)) {
-			$input.attr('eq', config.eq);
+		if (!co.isEmpty(config.validaterule)) {
+			$input.attr('validate-rule', config.validaterule);
 		}
-		if (!co.isEmpty(config.eqto)) {
-			$input.attr('eqto', config.eqto);
-		}
-		if (!co.isEmpty(config.gt)) {
-			$input.attr('gt', config.gt);
-		}
-		if (!co.isEmpty(config.gtto)) {
-			$input.attr('gtto', config.gtto);
-		}
-		if (!co.isEmpty(config.gte)) {
-			$input.attr('gte', config.gte);
-		}
-		if (!co.isEmpty(config.gteto)) {
-			$input.attr('gteto', config.gteto);
-		}
-		if (!co.isEmpty(config.lt)) {
-			$input.attr('lt', config.lt);
-		}
-		if (!co.isEmpty(config.ltto)) {
-			$input.attr('ltto', config.ltto);
+		if (!co.isEmpty(config.validateruleerrmsg)) {
+			$input.attr('validate-rule-errmsg', config.validateruleerrmsg);
 		}
 		if (!co.isEmpty(config.beforeaddon)) {
 			$input.attr('before-addon', config.beforeaddon);
