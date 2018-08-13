@@ -550,6 +550,7 @@
 				var layoutObject = co.page.panel.layout.create({
 					layout : layout,
 					design : this.design,
+					page : this.config.page,
 					pageObject : this.config.pageObject,
 					panel : this.config.panel,
 					panelObject : this.config.panelObject,
