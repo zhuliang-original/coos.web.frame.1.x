@@ -24,6 +24,9 @@
 		} else {
 			this.$relation = this.$selector.closest('.coos-form').find(rulerelationRule);
 		}
+		if (this.$relation.length == 0) {
+			return;
+		}
 		this.$select = null;
 		this.$options = null;
 		if (this.isInputTag) {
