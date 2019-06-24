@@ -154,7 +154,7 @@
 		if (co.isString(data)) {
 			var url = data;
 			var infos = url.split('/');
-			var name = infos[infos.length - 1];// 获取最后一部分，即文件名
+			var name = infos[infos.length - 1]; // 获取最后一部分，即文件名
 			data = {};
 			data.name = name;
 			data.length = 0;
@@ -187,7 +187,10 @@
 			url = co.config.server.fileServerUrl + url;
 		}
 		if (this.type == 'image') {
-			$file.append('<img class="element-rule-image" />');
+			this.$filegroup.css('height', '135px');
+			$file.append('<img class="element-rule-image" style="display:block" />');
+			$file.append('<a href="' + url + '" class="coos-btn coos-btn-link coos-green pdlr-0 pdtb-2" target="_blank">查看图片</a>');
+
 		} else {
 			$file.append('<div class="file-info" ><a class="file-name" target="_blank" ></a><div class="file-length"></div></div>');
 			$file.find('a').attr('href', url);
@@ -225,7 +228,7 @@
 		});
 		if (this.type == 'image') {
 			if (!this.isreadonly) {
-				this.bindUpdate($file, $file);
+				//this.bindUpdate($file, $file);
 			}
 		}
 	};
